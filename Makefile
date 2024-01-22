@@ -1,4 +1,4 @@
-IMG ?= ghcr.io/lasarobotics/purple-scout:latest
+IMG ?= purplescout:latest
 .PHONY: build
 build: ## Build Docker
 	docker buildx build . -t ${IMG}
@@ -9,5 +9,5 @@ push: build ## push docker image
 
 .PHONY: run
 run: ## Build Docker
-	docker run -p 5000:5000 ${IMG}
+	docker run -p 5000:5000 -v ".:/data" ${IMG}
 
