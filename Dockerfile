@@ -1,4 +1,5 @@
 FROM python:3-slim-bookworm
+LABEL org.opencontainers.image.source="https://github.com/lasarobotics/PurpleScout"
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 COPY requirements.txt .
 COPY *.py .
