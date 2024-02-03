@@ -85,9 +85,9 @@ def superScoutSubmit():
 
             f.close()
 
-        return redirect(url_for('submit2'))
+        return redirect(url_for('superScoutSubmit'))
 
-    return render_template('submit2.html')
+    return render_template('superScoutSubmit.html')
 
 
 #### Socket routes ####

@@ -1,4 +1,14 @@
-﻿# PurpleScout
+﻿```txt
+                                    dP                                                   dP   
+                                    88                                                   88   
+88d888b. dP    dP 88d888b. 88d888b. 88 .d8888b.    .d8888b. .d8888b. .d8888b. dP    dP d8888P 
+88'  `88 88    88 88'  `88 88'  `88 88 88ooood8    Y8ooooo. 88'  `"" 88'  `88 88    88   88   
+88.  .88 88.  .88 88       88.  .88 88 88.  ...          88 88.  ... 88.  .88 88.  .88   88   
+88Y888P' `88888P' dP       88Y888P' dP `88888P'    `88888P' `88888P' `88888P' `88888P'   dP   
+88                         88                                                                 
+dP                         dP
+
+```
 
 ## Description
 PurpleScout is an app that simplifies the scouting process for FRC teams. 
