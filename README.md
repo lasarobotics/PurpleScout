@@ -80,3 +80,24 @@ Change this line to the name of your class:
 ```
 app.config["GAME"] = ChargedUpScoutForm
 ```
+
+## Running Purple Scout as a Container
+
+### Installing a Container Runtime
+
+To run PurpleScout as a container, you will need a container runtime. If you are running Windows, follow here: https://docs.docker.com/desktop/install/windows-install/
+
+### Building the container manually (not over GitHub Actions)
+
+```
+docker buildx build . -t purple-scout:latest
+
+```
+
+### Running the container
+
+In the example above, data will be read and written on the current directory
+
+```
+docker run -p 5000:5000 ".:/data" -t purple-scout:latest
+```
