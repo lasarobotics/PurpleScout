@@ -2,7 +2,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from game import *
 from flask_socketio import SocketIO, send, emit
-import csv, secrets
+import csv, secrets, json
+import sqlite3
 
 # Create app
 app = Flask(__name__)
@@ -11,6 +12,19 @@ socketio = SocketIO(app)
 # Configure app
 app.config['FORM'] = CrescendoForm # Change this to the form you want to use
 app.config['SECRET_KEY'] = secrets.token_hex(16)
+conn = sqlite3.connect('data/scout.db')
+cursor = conn.cursor()
+
+# Create table
+cursor.execute('''CREATE TABLE IF NOT EXISTS scoutData (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    matchNum INTEGER,
+    teamNum INTEGER,
+    data TEXT
+)
+''')
+conn.commit()
+conn.close()
 
 # Index
 @app.route('/')
@@ -47,6 +61,14 @@ def scoutSubmit():
             writer.writerow(data)
 
             f.close()
+
+        # append data to sqlite3 database
+        conn = sqlite3.connect('data/scout.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO scoutData (matchNum, teamNum, data) VALUES (?, ?, ?)', 
+                       (int(data['matchNum']), int(data['teamNum']), json.dumps(data)))
+        conn.commit()
+        conn.close()
 
         print(data)
 
