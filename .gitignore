@@ -1,3 +1,6 @@
 __pycache__/
 .vscode/
-
+sqlite3.exe
+data/scout.db
+data/scout.csv
+data/superScout.csv

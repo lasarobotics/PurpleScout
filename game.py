@@ -3,7 +3,7 @@
 # Below is an example from Charged Up 2023.
 
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, RadioField, TextAreaField, BooleanField, SelectField
+from wtforms import IntegerField, RadioField, TextAreaField, BooleanField, SelectField, StringField
 from wtforms.validators import *
 
 class ChargedUpScoutForm(FlaskForm):
@@ -11,6 +11,7 @@ class ChargedUpScoutForm(FlaskForm):
 
     matchNum = IntegerField('matchNumber', validators=[DataRequired()])
     teamNum = IntegerField('teamNumber', validators=[DataRequired()])
+    
 
     autoHighCones = IntegerField('autoHighCones', validators=[DataRequired()], default=0)
     autoHighCubes = IntegerField('autoHighCubes', validators=[DataRequired()], default=0)
@@ -66,6 +67,7 @@ class CrescendoForm(FlaskForm):
     # Basic match and team information
     matchNum = IntegerField('matchNumber', validators=[DataRequired()])
     teamNum = IntegerField('teamNumber', validators=[DataRequired()])
+    scoutID = StringField('scoutID', validators=[DataRequired()])
 
     # Autonomous (15 seconds)
     autoMobility = BooleanField('autoMobility', default=False)
