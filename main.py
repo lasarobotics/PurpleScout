@@ -120,6 +120,34 @@ def superScoutSubmit():
 
     return render_template('superScoutSubmit.html')
 
+@app.route('/pitScout.html', methods=['GET', 'POST'])
+def pitScout():
+    f = open("data\\robotScouted.txt", "r")
+    robotString = []
+    lstRobots=f.read().splitlines()
+    for i in range(len(lstRobots)):
+        name = lstRobots[i].split("-")
+        if ("YES" in lstRobots[i]):
+            robotString.append(name[0] + "✅")
+        else:
+            robotString.append(name[0] + "❌")
+    return render_template('pitScout.html', lst = robotString)
+
+@app.route('/pitScoutSubmit.html', methods=['GET', 'POST'])
+def pitScoutSubmit():
+    f = open("data\\robotScouted.txt", "a")
+    if request.method == 'POST':
+        print('post')
+        print(request.form.items)
+    # print the data recieved from the form
+        for key, value in request.form.items():
+            if (key=="tname"):
+                f.write(value+"-YES")
+
+
+
+    return render_template('pitScoutSubmit.html')
+
 
 #### Socket routes ####
 @socketio.on('echo') # test route
