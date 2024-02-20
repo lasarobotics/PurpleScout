@@ -120,31 +120,55 @@ def superScoutSubmit():
 
     return render_template('superScoutSubmit.html')
 
+# Pit scout
 @app.route('/pitScout.html', methods=['GET', 'POST'])
 def pitScout():
-    f = open("data\\robotScouted.txt", "r")
-    robotString = []
-    lstRobots=f.read().splitlines()
-    for i in range(len(lstRobots)):
-        name = lstRobots[i].split("-")
-        if ("YES" in lstRobots[i]):
-            robotString.append(name[0] + "✅")
-        else:
-            robotString.append(name[0] + "❌")
-    return render_template('pitScout.html', lst = robotString)
+    with open("data\\robotScouted.csv", "r") as f:
+        reader = csv.DictReader(f)
+        robots = [row for row in reader]
+        print(robots, len(robots))
 
+    #robotString = []
+    #lstRobots = f.read().splitlines()
+
+    #count = 0
+    #for i in range(len(lstRobots)):
+        #name = lstRobots[i].split("-")
+        #if ("YES" in lstRobots[i]):
+            #robotString.append("✅" + name[0])
+        #else:
+            #robotString.append("❌" + name[0])
+            #count += 1
+        
+    # count number of robots that have not been scouted
+    count = 0
+    for robot in robots:
+        if robot['scouted'] == '0':
+            count += 1
+
+    print(count)
+    return render_template('pitScout.html', robots=robots, remaining=count)
+
+# Pit scout submit
 @app.route('/pitScoutSubmit.html', methods=['GET', 'POST'])
 def pitScoutSubmit():
-    f = open("data\\robotScouted.txt", "a")
-    if request.method == 'POST':
-        print('post')
-        print(request.form.items)
-    # print the data recieved from the form
-        for key, value in request.form.items():
-            if (key=="tname"):
-                f.write(value+"-YES")
 
-
+    # open csv file and change scouted to 1
+    with open("data\\robotScouted.csv", "r") as f:
+        reader = csv.DictReader(f)
+        robots = [row for row in reader]
+        print(robots, len(robots))
+    
+    for robot in robots:
+        if str(robot['teamNum']) == str(request.form['tname']):
+            robot['scouted'] = '1'
+    
+    with open("data\\robotScouted.csv", "w", newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=["teamNum", "teamName", "scouted"])
+        writer.writeheader()
+        writer.writerows(robots)
+    
+    f.close()
 
     return render_template('pitScoutSubmit.html')
 
@@ -154,7 +178,6 @@ def pitScoutSubmit():
 def handle_echo(data):
     print(f"received echo: {data}")
     emit('echo', data)
-
 
 @socketio.on('getTeams') # activated when the super scout clicks the button to fetch teams
 def handle_fetchTeams(data):
@@ -171,7 +194,6 @@ def handle_fetchTeams(data):
             
     # if no matchNum found, send error
     emit('sendTeams', {'red1': 'error', 'red2': 'error', 'red3': 'error', 'blue1': 'error', 'blue2': 'error', 'blue3': 'error'})
-
 
 # Both these routes bounce the data back to all the clients
 @socketio.on('scoutSelect') # activated when a scout chooses their team (red/blue and number)

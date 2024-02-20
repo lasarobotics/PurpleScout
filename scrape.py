@@ -7,7 +7,7 @@ tba = tbapy.TBA('rZxJQVjP40eTtskoUbT3OWTKEnKNxk8McjB9QqRdU8mT78o8EN3OuzuMppJTADt
 team = tba.team(418)
 
 # Current event
-EVENT = '2023txbel'
+EVENT = '2024txbel'
 
 # Get the teams at the event
 #teams = tba.event_teams(EVENT)
@@ -59,3 +59,8 @@ with open('data/matchList.csv', 'w', newline='') as f:
     writer.writerows(matchList)
     f.close()
 
+teams = tba.event_teams(EVENT)
+#print(teams)
+print(len(teams))
+for team in teams:
+    print(str(team.team_number) + "," + team.nickname)

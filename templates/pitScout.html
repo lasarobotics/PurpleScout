@@ -16,14 +16,14 @@
 </head>
 
 <body>
-    <div class="topnav">
+    <div class="topnav mb-3">
         <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
         <ul>
             <li><a href="home.html">HOME</a></li>
             <li><a href="scout.html">SCOUTING</a></li>
             <li><a href="superScout.html">SUPERSCOUT</a></li>
             <li><a class="active" href="pitScout.html">PITSCOUT</a></li>
-            <li style="float:right"><a>Developed by Soumik Chemudupati and Gabe Tao</a></li>
+            <!-- <li style="float:right"><a>Developed by Soumik Chemudupati and Gabe Tao</a></li> -->
         </ul>
     </div>
     <div class="row">
@@ -105,9 +105,22 @@
             </form>
         </div>
         <div class="col-sm-3">
-            {% for para in lst %}
-            <p>{{para}}</p>
+
+            <h4>{% if remaining == 0 %}All done! 🎉{% else %}Teams{% endif %} - <b>{{remaining}}</b> left</h4>
+            <ul>
+            {% for team in robots %}
+                <li>
+                    {% if team.scouted == "1" %}
+                    ✅<s>
+                    {% else %}
+                    ❌ 
+                    {% endif %}
+                    <b>{{team.teamNum}}</b> ({{team.teamName}})
+
+                    {% if team.scouted == "1" %}</s>{% endif %}
+                </li>
             {% endfor %}
+            </ul>
         </div>
     </div>
 

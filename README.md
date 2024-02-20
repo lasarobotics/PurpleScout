@@ -81,6 +81,18 @@ Change this line to the name of your class:
 app.config["GAME"] = ChargedUpScoutForm
 ```
 
+## SQLite database
+
+PurpleScout uses an SQLite database to store data. The database is stored in `data/scout.db` and has the following schema:
+
+#### `scoutData` table
+- `timestamp` (string): the time the data was submitted, automatically generated
+- `matchNum` (integer): the match number
+- `teamNum` (integer): the team number
+- `scoutID` (string): the scout's ID
+- `data` (string): a JSON string containing all the other data from the form
+
+
 ## Running Purple Scout as a Container
 
 ### Installing a Container Runtime
