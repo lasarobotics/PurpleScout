@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1" />
+        <!--<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css"> -->
+        {% block head %}{% endblock %}
+        <script src="static/jquery.min.js"></script>
+        <script src="static/socketio.min.js"></script>
+        <!-- <script src="static/boostrap.min.js"></script> -->
+    </head>
+    <body>
+        <div class="topnav mb-3">
+            <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="scout.html">Scout</a></li>
+                <li><a href="superScout.html"><b>Super</b>Scout</a></li>
+                <li><a href="megaScout.html"><b>Mega</b>Scout</a></li>
+                <li><a href="pitScout.html"><b>Pit</b>Scout</a></li>
+            </ul>
+        </div>
+        {% block body %}{% endblock %}
+    </body>
+</html>

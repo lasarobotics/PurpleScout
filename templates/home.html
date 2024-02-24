@@ -1,53 +1,38 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<head>
+{% block title %}ℙ𝕦𝕣𝕡𝕝𝕖 𝕊𝕔𝕠𝕦𝕥{% endblock %}
 
-    <div class="topnav">
-        <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
-        <ul>
-            <li><a class="active"  href="home.html">HOME</a></li>
-            <li><a href="scout.html">SCOUTING</a></li>
-            <li><a href="superScout.html">SUPERSCOUT</a></li>
-            <li><a href="pitScout.html">PITSCOUT</a></li>
-            <li style="float:right"><a>Developed by Soumik Chemudupati and Gabe Tao</a></li>
-        </ul>
-    </div>
-    </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ℙ𝕦𝕣𝕡𝕝𝕖 𝕊𝕔𝕠𝕦𝕥</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-    <script src="static/jquery.min.js"></script>
-    <script src="static/socketio.min.js"></script>
-</head>
+{% block head %}
+<link rel="stylesheet" href="static/home.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+{% endblock %}
 
-<body>
-    <div class="cube">
-        <div class="top"></div>
-        <div>
-            <span style="--i:0;"></span>
-            <span style="--i:1;"></span>
-            <span style="--i:2;"></span>
-            <span style="--i:3;"></span>
-        </div>
-    </div>
-    <div class="txt">
-        <p id="purpleScout">
-            Purple Scout - {{ name }}
-        </p>
-    </div>
 
-    
-    <div class="but">
-        <a href="scout.html"><button class="button">GET STARTED!</button> </a>
+{% block body %}
+
+<div class="cube">
+    <div class="top"></div>
+    <div>
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
     </div>
-</body>
+</div>
+<div class="txt">
+    <p id="purpleScout">
+        Purple Scout - {{ name }}
+    </p>
+</div>
+
+
+<div class="but">
+    <a href="scout.html"><button class="button">GET STARTED!</button> </a>
+</div>
 
 <!-- <div class="footer">
     <p><b>Courtesy of LASA Robotics, Software Developed by Soumik Chemudupati</b></p>
 </div> -->
-
-</html>
+{% endblock %}

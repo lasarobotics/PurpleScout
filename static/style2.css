@@ -1,3 +1,7 @@
+.logo {
+  float: left;
+}
+
 body {
   font-family: 'Trebuchet MS', sans-serif;
   background-color: #222;
@@ -86,9 +90,9 @@ body {
 .topnav {
   overflow: hidden;
   background-color: #663399;
-  /* border: 0;
+  border: 0;
   padding: 0;
-  margin: 0; */
+  margin: 0; 
 }
 
 .topnav a {
@@ -117,9 +121,8 @@ ul {
   padding: 0;
 }
 
-li {
-  margin-bottom: 5px;
-  accent-color: #663399;
+.topnav ul li {
+  display: inline;
 }
 
 .footer {
@@ -183,8 +186,8 @@ select.inp.select {
   position: relative;
 }
 
-.subtractButton {color: red;}
-.addButton {color: green;}
+button.subtractButton {color: red;}
+button.addButton {color: green;}
 
 
 .tbl {

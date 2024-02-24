@@ -1,132 +1,110 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>Scouter</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" type="text/css"
-        href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="static/style2.css">
-    <script src="static/jquery.min.js"></script>
-    <script src="static/socketio.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+{% block title %}Scouter{% endblock %}
 
-</head>
+{% block head %}
+<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
 
-<body>
-    <div class="topnav mb-3">
-        <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
+<link rel="stylesheet" href="static/style2.css">
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-9">
+        <form action="/pitScoutSubmit.html" method="POST">
+            <!-- need to add a onsubmit = to the form action statement above -->
+            <div id="teamSelect">
+                <p>Enter the team number</p><br>
+            </div>
+            <div id="teamSelect">
+                <input type="text" id="tname" name="tname">
+            </div>
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th style="font-size: 20px;" class="a">
+                            <center>CAPTURE AN IMAGE</center>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="font-size: 25px;">
+                            <center>
+                                <img id="blah" alt="Robot image (attach file below for image preview)" width="400"
+                                    height="300" />
+                            </center>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="font-size: 25px;">
+                            <center>
+                                <input type="file"
+                                    onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                            </center>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="str">
+                <p>INTAKE TYPE</p>
+            </div>
+            <div class="quest">
+                <div class="inner">
+                    <textarea name = 'intake' id = 'intake' class="info"></textarea>
+                </div>
+            </div>
+
+            <div class="str">
+                <p>DRIVE TRAIN</p>
+            </div>
+            <div class="quest">
+                <div class="inner2">
+                    <!--Rachit, Soumik, Yang-Fan, and Gabe are awesome :) -->
+                    <textarea name = 'drivetrain' id = 'drivetrain' nameclass="info"></textarea>
+                </div>
+            </div>
+
+            <div class="str">
+                <p>AUTO CAPABILITIES</p>
+            </div>
+            <div class="quest">
+                <div class="inner2">
+                    <textarea name = 'autocap' id = "autocap" class="info"></textarea>
+                </div>
+            </div>
+
+            <div class="str">
+                <p>ADDITONAL INFORMATION</p>
+            </div>
+            <div class="quest">
+                <div class="inner2">
+                    <textarea name = "addinfo" id = "addinfo" class="info"></textarea>
+                </div>
+            </div>
+            <div style="padding-bottom: 10px;" class="but">
+                <button type="submit" class="button">SUBMIT</button>
+            </div>
+            <!-- <button stype="submit"> -->
+
+        </form>
+    </div>
+    <div class="col-sm-3">
+
+        <h4>{% if remaining == 0 %}All done! 🎉{% else %}Teams{% endif %} - <b>{{remaining}}</b> left</h4>
         <ul>
-            <li><a href="home.html">HOME</a></li>
-            <li><a href="scout.html">SCOUTING</a></li>
-            <li><a href="superScout.html">SUPERSCOUT</a></li>
-            <li><a class="active" href="pitScout.html">PITSCOUT</a></li>
-            <!-- <li style="float:right"><a>Developed by Soumik Chemudupati and Gabe Tao</a></li> -->
+        {% for team in robots %}
+            <li>
+                {% if team.scouted == "1" %}
+                ✅<s>
+                {% else %}
+                ❌ 
+                {% endif %}
+                <b>{{team.teamNum}}</b> ({{team.teamName}})
+
+                {% if team.scouted == "1" %}</s>{% endif %}
+            </li>
+        {% endfor %}
         </ul>
     </div>
-    <div class="row">
-        <div class="col-sm-9">
-            <form action="/pitScoutSubmit.html" method="POST">
-                <!-- need to add a onsubmit = to the form action statement above -->
-                <div id="teamSelect">
-                    <p>Enter the team number</p><br>
-                </div>
-                <div id="teamSelect">
-                    <input type="text" id="tname" name="tname">
-                </div>
-                <table class="tbl">
-                    <thead>
-                        <tr>
-                            <th style="font-size: 20px;" class="a">
-                                <center>CAPTURE AN IMAGE</center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th style="font-size: 25px;">
-                                <center>
-                                    <img id="blah" alt="Robot image (attach file below for image preview)" width="400"
-                                        height="300" />
-                                </center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th style="font-size: 25px;">
-                                <center>
-                                    <input type="file"
-                                        onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                                </center>
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-                <div class="str">
-                    <p>INTAKE TYPE</p>
-                </div>
-                <div class="quest">
-                    <div class="inner">
-                        <textarea name = 'intake' id = 'intake' class="info"></textarea>
-                    </div>
-                </div>
-
-                <div class="str">
-                    <p>DRIVE TRAIN</p>
-                </div>
-                <div class="quest">
-                    <div class="inner2">
-                        <!--Rachit, Soumik, Yang-Fan, and Gabe are awesome :) -->
-                        <textarea name = 'drivetrain' id = 'drivetrain' nameclass="info"></textarea>
-                    </div>
-                </div>
-
-                <div class="str">
-                    <p>AUTO CAPABILITIES</p>
-                </div>
-                <div class="quest">
-                    <div class="inner2">
-                        <textarea name = 'autocap' id = "autocap" class="info"></textarea>
-                    </div>
-                </div>
-
-                <div class="str">
-                    <p>ADDITONAL INFORMATION</p>
-                </div>
-                <div class="quest">
-                    <div class="inner2">
-                        <textarea name = "addinfo" id = "addinfo" class="info"></textarea>
-                    </div>
-                </div>
-                <div style="padding-bottom: 10px;" class="but">
-                    <button type="submit" class="button">SUBMIT</button>
-                </div>
-                <!-- <button stype="submit"> -->
-
-            </form>
-        </div>
-        <div class="col-sm-3">
-
-            <h4>{% if remaining == 0 %}All done! 🎉{% else %}Teams{% endif %} - <b>{{remaining}}</b> left</h4>
-            <ul>
-            {% for team in robots %}
-                <li>
-                    {% if team.scouted == "1" %}
-                    ✅<s>
-                    {% else %}
-                    ❌ 
-                    {% endif %}
-                    <b>{{team.teamNum}}</b> ({{team.teamName}})
-
-                    {% if team.scouted == "1" %}</s>{% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-        </div>
-    </div>
-
-
-</body>
-
-<script>
-
-</script>
+</div>
+{% endblock %}

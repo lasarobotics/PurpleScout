@@ -1,61 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>🔎 Scouter 🔎</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link rel="stylesheet" href="static/style2.css">
-    <script src="static/jquery.min.js"></script>
-    <script src="static/socketio.min.js"></script>
-</head>
+{% extends "base.html" %}
+{% block title %}🔎 Scouter 🔎{% endblock %}
 
-<body>
-    <div class="topnav">
-        <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
-        <ul>
-            <li><a href="home.html">HOME</a></li>
-            <li><a class = "active"  href="scout.html">SCOUTING</a></li>
-            <li><a href = "superScout.html">SUPERSCOUT</a></li>
-            <li><a href="pitScout.html">PITSCOUT</a></li>
-            <li style="float:right"><a>Developed by Soumik Chemudupati and Gabe Tao</a></li>
-        </ul>
+{% block head %}
+<link rel="stylesheet" href="static/style2.css">
+{% endblock %}
+
+
+{% block body %}
+
+<div id="teamSelect2">
+
+    <p>Select your assigned team:</p>
+
+    <button class="teamSelect" id="red1">Red 1</button>
+    <button class="teamSelect" id="red2">Red 2</button>
+    <button class="teamSelect" id="red3">Red 3</button>
+    <button class="teamSelect" id="blue1">Blue 1</button>
+    <button class="teamSelect" id="blue2">Blue 2</button>
+    <button class="teamSelect" id="blue3">Blue 3</button>
+    <button class="teamSelect" id="deselect">Deselect</button>
+
+    <p id="waiting">You're scouting: <b><span></span></b></p>
+
+</div>
+
+
+
+<form id="scoutForm" action="/scoutSubmit.html" method="POST" onsubmit="return download_csv_file(event)">
+
+
+    {% block form %}
+    {% endblock %}
+
+    <div style="padding-bottom: 10px;" class="but">
+        <button type="submit" class="button">SUBMIT</button>
     </div>
 
-    <div id="teamSelect2">
-
-        <p>Select your assigned team:</p>
-
-        <button class="teamSelect" id="red1">Red 1</button>
-        <button class="teamSelect" id="red2">Red 2</button>
-        <button class="teamSelect" id="red3">Red 3</button>
-        <button class="teamSelect" id="blue1">Blue 1</button>
-        <button class="teamSelect" id="blue2">Blue 2</button>
-        <button class="teamSelect" id="blue3">Blue 3</button>
-        <button class="teamSelect" id="deselect">Deselect</button>
-
-        <p id="waiting">You're scouting: <b><span></span></b></p>
-
-    </div>
-
-    
-
-    <form id="scoutForm" action="/scoutSubmit.html" method="POST" onsubmit="return download_csv_file(event)">
+</form>
 
 
-        {% block form %}
-        {% endblock %}
-
-        <div style="padding-bottom: 10px;" class="but">
-            <button type="submit" class="button">SUBMIT</button>
-        </div>
-
-    </form>
-
-    
-    <script src="static/script.js"></script>
-    <script src="static/scout.js"></script>
-</body>
-</html>
-<!-- <div class="footer">
-    <p><b>Courtesy of LASA Robotics, Software Developed by Soumik Chemudupati</b></p>
-</div> -->
+<script src="static/script.js"></script>
+<script src="static/scout.js"></script>
+{% endblock %}
 

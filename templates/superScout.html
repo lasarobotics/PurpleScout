@@ -1,183 +1,168 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>🕵️ Super Scout 🕵️</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link rel="stylesheet" href="static/style2.css">
-    <script src="static/jquery.min.js"></script>
-    <script src="static/socketio.min.js"></script>
+{% extends "base.html" %}
 
-</head>
+{% block title %}🕵️ Super Scout 🕵️{% endblock %}
 
-<body>
-    <div class="topnav">
-        <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
-        <ul>
-            <li><a href="home.html">HOME</a></li>
-            <li><a href="scout.html">SCOUTING</a></li>
-            <li><a class="active" href="superScout.html">SUPERSCOUT</a></li>
-            <li><a href="pitScout.html">PITSCOUT</a></li>
-            <li style="float:right"><a>Developed by Soumik Chemudupati and Gabe Tao</a></li>
-        </ul>
+{% block head %}
+<link rel="stylesheet" href="static/style2.css">
+{% endblock %}
+
+{% block body %}
+
+<form action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file2(event)"> 
+
+    <table class="tbl">
+        <thead>
+            <tr>
+                <td>Match number: <input type="number" id="matchNum" min="0" max="999"></td>
+                <td><button type="button" id="fetchTeams">Fetch Teams</button></td>
+                <td><button type="button" id="sendInfo">Send Info</button></td>
+            </tr>
+        </thead>
+    </table>
+
+    <br>
+
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th>Scouter</th>
+                <th>Team Number</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="scouterStatus">
+            <tr>
+                <td>Red 1</td>
+                <td id="red1teamNum"></td>
+                <td id="red1Status">...</td>
+            </tr>
+            <tr>
+                <td>Red 2</td>
+                <td id="red2teamNum"></td>
+                <td id="red2Status">...</td>
+            </tr>
+            <tr>
+                <td>Red 3</td>
+                <td id="red3teamNum"></td>
+                <td id="red3Status">...</td>
+            </tr>
+            <tr>
+                <td>Blue 1</td>
+                <td id="blue1teamNum"></td>
+                <td id="blue1Status">...</td>
+            </tr>
+            <tr>
+                <td>Blue 2</td>
+                <td id="blue2teamNum"></td>
+                <td id="blue2Status">...</td>
+            </tr>
+            <tr>
+                <td>Blue 3</td>
+                <td id="blue3teamNum"></td>
+                <td id="blue3Status">...</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+
+
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="4">
+                    <center>ALL ROBOTS</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 20px;">
+                    <center>RED TEAM</center>
+                </th>
+                <th style="font-size: 20px;">
+                    <center>RATING</center>
+                </th>
+                <th style="font-size: 20px;">
+                    <center>BLUE TEAM</center>
+                </th>
+                <th style="font-size: 20px;">
+                    <center>RATING</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td style="font-weight:bold; font-size: 15px;">RED TEAM 1</td>
+                <td>
+                    <select style = "width : 50px; font-size: 20px;"name = "num1red" id = "num1red">
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                    </select>
+                </td>
+                <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 1</td>
+                <td>
+                    <select style = "width : 50px; font-size: 20px;"name = "num1blue" id = "num1blue">
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="active">
+                <td style="font-weight:bold; font-size: 15px;">RED TEAM 2</td>
+                <td>
+                    <select style = "width : 50px; font-size: 20px;"name = "num2red" id = "num2red">
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                    </select>
+                </td>
+                <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 2</td>
+                <td>
+                    <select style = "width : 50px; font-size: 20px;" name = "num2blue" id = "num2blue">
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="active">
+                <td style="font-weight:bold; font-size: 15px;">RED TEAM 3</td>
+                <td>
+                    <select style = "width : 50px; font-size: 20px;"name = "num3red" id = "num3red">
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                    </select>
+                </td>
+                <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 3</td>
+                <td>
+                    <select style = "width : 50px; font-size: 20px;"name = "num3blue" id = "num3blue">
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="str">
+        <p>ADDITIONAL INFO</p>
+    </div>
+    <div class="quest">
+        <div class="innerSuper">
+
+            <textarea id="infoSuper" style="font-size: 15pt;" name="info" cols="50" rows="10"></textarea>
+        </div>
     </div>
 
-    <form action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file2(event)"> 
+    <div style="padding-bottom: 10px;" class="but">
+        <a><button type="submit" class="button">SUBMIT</button> </a>
+    </div>
+    <br>
+</form>
 
-        <table class="tbl">
-            <thead>
-                <tr>
-                    <td>Match number: <input type="number" id="matchNum" min="0" max="999"></td>
-                    <td><button type="button" id="fetchTeams">Fetch Teams</button></td>
-                    <td><button type="button" id="sendInfo">Send Info</button></td>
-                </tr>
-            </thead>
-        </table>
-
-        <br>
-
-        <table class="tbl">
-            <thead>
-                <tr>
-                    <th>Scouter</th>
-                    <th>Team Number</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="scouterStatus">
-                <tr>
-                    <td>Red 1</td>
-                    <td id="red1teamNum"></td>
-                    <td id="red1Status">...</td>
-                </tr>
-                <tr>
-                    <td>Red 2</td>
-                    <td id="red2teamNum"></td>
-                    <td id="red2Status">...</td>
-                </tr>
-                <tr>
-                    <td>Red 3</td>
-                    <td id="red3teamNum"></td>
-                    <td id="red3Status">...</td>
-                </tr>
-                <tr>
-                    <td>Blue 1</td>
-                    <td id="blue1teamNum"></td>
-                    <td id="blue1Status">...</td>
-                </tr>
-                <tr>
-                    <td>Blue 2</td>
-                    <td id="blue2teamNum"></td>
-                    <td id="blue2Status">...</td>
-                </tr>
-                <tr>
-                    <td>Blue 3</td>
-                    <td id="blue3teamNum"></td>
-                    <td id="blue3Status">...</td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-    
-   
-    
-        <table class="tbl">
-            <thead>
-                <tr>
-                    <th style="font-size: 20px;" class="a" colspan="4">
-                        <center>ALL ROBOTS</center>
-                    </th>
-                </tr>
-                <tr>
-                    <th style="font-size: 20px;">
-                        <center>RED TEAM</center>
-                    </th>
-                    <th style="font-size: 20px;">
-                        <center>RATING</center>
-                    </th>
-                    <th style="font-size: 20px;">
-                        <center>BLUE TEAM</center>
-                    </th>
-                    <th style="font-size: 20px;">
-                        <center>RATING</center>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="active">
-                    <td style="font-weight:bold; font-size: 15px;">RED TEAM 1</td>
-                    <td>
-                        <select style = "width : 50px; font-size: 20px;"name = "num1red" id = "num1red">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                        </select>
-                    </td>
-                    <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 1</td>
-                    <td>
-                        <select style = "width : 50px; font-size: 20px;"name = "num1blue" id = "num1blue">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="active">
-                    <td style="font-weight:bold; font-size: 15px;">RED TEAM 2</td>
-                    <td>
-                        <select style = "width : 50px; font-size: 20px;"name = "num2red" id = "num2red">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                        </select>
-                    </td>
-                    <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 2</td>
-                    <td>
-                        <select style = "width : 50px; font-size: 20px;" name = "num2blue" id = "num2blue">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="active">
-                    <td style="font-weight:bold; font-size: 15px;">RED TEAM 3</td>
-                    <td>
-                        <select style = "width : 50px; font-size: 20px;"name = "num3red" id = "num3red">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                        </select>
-                    </td>
-                    <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 3</td>
-                    <td>
-                        <select style = "width : 50px; font-size: 20px;"name = "num3blue" id = "num3blue">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                        </select>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="str">
-            <p>ADDITIONAL INFO</p>
-        </div>
-        <div class="quest">
-            <div class="innerSuper">
-
-                <textarea id="infoSuper" style="font-size: 15pt;" name="info" cols="50" rows="10"></textarea>
-            </div>
-        </div>
-
-        <div style="padding-bottom: 10px;" class="but">
-            <a><button type="submit" class="button">SUBMIT</button> </a>
-        </div>
-        <br>
-    </form>
-    
-    <script src="static/script.js"></script>
-    <script src="static/superScout.js"></script>
-</body>
-</html>
-
+<script src="static/script.js"></script>
+<script src="static/superScout.js"></script>
+{% endblock %}
