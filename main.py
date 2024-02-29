@@ -1,11 +1,10 @@
 # Import Flask application
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 from game import *
 from flask_socketio import SocketIO, send, emit
 import csv, secrets, json
 import sqlite3
-import csv, secrets, json
-import sqlite3
+import requests
 
 # Create app
 app = Flask(__name__)
@@ -123,10 +122,9 @@ def superScoutSubmit():
 # Pit scout
 @app.route('/pitScout.html', methods=['GET', 'POST'])
 def pitScout():
-    with open("data\\robotScouted.csv", "r") as f:
+    with open("data/robotScouted.csv", "r") as f:
         reader = csv.DictReader(f)
         robots = [row for row in reader]
-        print(robots, len(robots))
 
     #robotString = []
     #lstRobots = f.read().splitlines()
@@ -154,7 +152,7 @@ def pitScout():
 def pitScoutSubmit():
 
     # open csv file and change scouted to 1
-    with open("data\\robotScouted.csv", "r") as f:
+    with open("data/robotScouted.csv", "r") as f:
         reader = csv.DictReader(f)
         robots = [row for row in reader]
         print(robots, len(robots))
@@ -163,7 +161,7 @@ def pitScoutSubmit():
         if str(robot['teamNum']) == str(request.form['tname']):
             robot['scouted'] = '1'
     
-    with open("data\\robotScouted.csv", "w", newline='') as f:
+    with open("data/robotScouted.csv", "w", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["teamNum", "teamName", "scouted"])
         writer.writeheader()
         writer.writerows(robots)
@@ -171,6 +169,13 @@ def pitScoutSubmit():
     f.close()
 
     return render_template('pitScoutSubmit.html')
+
+@app.route('/favicon.ico')
+def favicon():
+    with open('static/favicon.ico', 'rb') as f:
+        r = Response(f.read())
+        r.content_type = "image/png"
+        return r
 
 
 #### Socket routes ####
