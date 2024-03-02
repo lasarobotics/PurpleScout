@@ -3,16 +3,17 @@ import tbapy
 import csv
 import sqlite3
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, send_file
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import io
-import os
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
-tba = tbapy.TBA('rZxJQVjP40eTtskoUbT3OWTKEnKNxk8McjB9QqRdU8mT78o8EN3OuzuMppJTADtV')
+f = open("tbapyAPI.txt", "r")
+key = f.readlines()[0]
+
+tba = tbapy.TBA(key)
 
 team = tba.team(418)
 
