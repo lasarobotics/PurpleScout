@@ -93,6 +93,4 @@ def drive_url(image_bytes, filename=""):
   return f'"https://drive.google.com/uc?id={file["id"]}"'
 
 UpdateSheets()
-# conn.commit()
-# conn.close()
 print("data from scoutData table", data)

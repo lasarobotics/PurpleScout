@@ -125,20 +125,6 @@ def pitScout():
     with open("data/robotScouted.csv", "r") as f:
         reader = csv.DictReader(f)
         robots = [row for row in reader]
-
-    #robotString = []
-    #lstRobots = f.read().splitlines()
-
-    #count = 0
-    #for i in range(len(lstRobots)):
-        #name = lstRobots[i].split("-")
-        #if ("YES" in lstRobots[i]):
-            #robotString.append("✅" + name[0])
-        #else:
-            #robotString.append("❌" + name[0])
-            #count += 1
-        
-    # count number of robots that have not been scouted
     count = 0
     for robot in robots:
         if robot['scouted'] == '0':
