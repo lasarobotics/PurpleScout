@@ -82,7 +82,8 @@ class CrescendoForm(FlaskForm):
     # Endgame
     trap = IntegerField('trap', validators=[DataRequired()], default=0)
     climb = SelectField('climb', validators=[DataRequired()], choices=[
-        (0, 'None'),
+        (-1, 'None'),
+        (0, 'Park'),
         (1, 'Single'),
         (2, 'Double'),
         (3, 'Triple'),
@@ -90,7 +91,7 @@ class CrescendoForm(FlaskForm):
     spotlight = BooleanField('spotlight', default=False)
 
     droppedPieces = IntegerField('Dropped Pieces', validators=[DataRequired()])
-
+    
     # Other info
     intake = RadioField('intake', validators=[DataRequired()], choices=[
         (0, 'Intake did not work'),

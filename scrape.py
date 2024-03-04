@@ -7,7 +7,7 @@ tba = tbapy.TBA('rZxJQVjP40eTtskoUbT3OWTKEnKNxk8McjB9QqRdU8mT78o8EN3OuzuMppJTADt
 team = tba.team(418)
 
 # Current event
-EVENT = '2024txbel'
+EVENT = '2024txwac'
 
 # Get the teams at the event
 #teams = tba.event_teams(EVENT)
