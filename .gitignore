@@ -1,11 +1,10 @@
 __pycache__/
 .vscode/
 sqlite3.exe
-data/scout.db
 data/scout.csv
 data/superScout.csv
 env/
 __pycache__/main.cpython-311.pyc
 tbapyAPI.txt
-
+googlesheets.json
 robotics-scouting-414004-d07cb2963d15.json
