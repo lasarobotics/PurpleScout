@@ -78,27 +78,60 @@
             <th style="font-size: 25px;">
                 <center>SPEAKER</center>
             </th>
-            <th style="font-size: 25px;">
-                <center>AMPLIFIED</center>
+            <th style="font-size: 15px;">
+                <center>AMPLIFIED SPEAKER</center>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr class="active">
             <td>
+                <center>
                 <button type="button" class="subtractButton">-</button>
                 {{ form.teleopAmp(class="inp") }}
                 <button type="button" class="addButton">+</button>
+                </center>
             </td>
             <td>
+                <center>
                 <button type="button" class="subtractButton">-</button>
                 {{ form.teleopSpeaker(class="inp") }}
                 <button type="button" class="addButton">+</button>
+                </center>
             </td>
             <td>
+                <center>
                 <button type="button" class="subtractButton">-</button>
                 {{ form.teleopAmplified(class="inp") }}
                 <button type="button" class="addButton">+</button>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 25px;">
+                <center>DROPPED/MISSED</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>PASSED NOTES</center>
+            </th>
+            <th></th>
+        </tr>
+        <tr class="active">
+            <td>
+                <center>
+                    <button type="button" class="subtractButton">-</button>
+                    {{ form.droppedPieces(class="inp") }}
+                    <button type="button" class="addButton">+</button>
+                </center>
+            </td>
+            <td>
+                <center>
+                <button type="button" class="subtractButton">-</button>
+                {{ form.passedNotes(class="inp") }}
+                <button type="button" class="addButton">+</button>
+                </center>
+            </td>
+            <td>
             </td>
         </tr>
     </tbody>
@@ -115,7 +148,7 @@
         </tr>
         <tr>
             <th style="font-size: 25px;">
-                <center>CLIMB</center>
+                <center>PARK/CLIMB</center>
             </th>
             <th style="font-size: 25px;">
                 <center>TRAP</center>
@@ -143,22 +176,21 @@
     
 </table>
 
-<!-- Other -->
-<div class="str">
-    <p>DROPPED PIECES</p>
-</div>
-<div class="quest">
-    <button type="button" class="subtractButton">-</button>
-    {{ form.droppedPieces(class="inp") }}
-    <button type="button" class="addButton">+</button>
-</div>
-
 <div class="str">
     <p>DEFENSE QUALITY</p>
 </div>
 <div class="quest">
     <div class="inner">    
             {{ form.defense }}
+    </div>
+</div>
+
+<div class="str">
+    <p>DRIVING QUALITY</p>
+</div>
+<div class="quest">
+    <div class="inner">    
+            {{ form.driving }}
     </div>
 </div>
 
@@ -172,15 +204,25 @@
 </div>
 
 <div class="str">
+    <p>FOULS</p>
+</div>
+<div class="quest">
+    <div class="inner">    
+            {{ form.fouls }}
+    </div>
+</div>
+
+
+<div class="str">
     <p>ADDITIONAL INFO</p>
 </div>
 <div class="quest">
     <div class="inner2">
 
-        {{ form.info(class="info") }}
+        {{ form.info(class="info",placeholder="What do you think about this robot? Write any strategies they used or interesting things that happened during the match...") }}
     </div>
 </div>
 
 
-
+<!-- Rachit is awesome-->
 {% endblock %} 

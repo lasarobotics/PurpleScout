@@ -82,22 +82,25 @@ class CrescendoForm(FlaskForm):
     # Endgame
     trap = IntegerField('trap', validators=[DataRequired()], default=0)
     climb = SelectField('climb', validators=[DataRequired()], choices=[
-        (-1, 'None'),
-        (0, 'Park'),
-        (1, 'Single'),
-        (2, 'Double'),
-        (3, 'Triple'),
+        ('none', 'None'),
+        ('park', 'Park'),
+        ('single', 'Single'),
+        ('double', 'Double'),
+        ('triple', 'Triple'),
     ])
+
     spotlight = BooleanField('spotlight', default=False)
 
-    droppedPieces = IntegerField('Dropped Pieces', validators=[DataRequired()])
+    droppedPieces = IntegerField('Dropped Pieces / Missed Shots', validators=[DataRequired()], default=0)
+
+    passedNotes = IntegerField('Passed notes', validators=[DataRequired()], default=0)
     
     # Other info
     intake = RadioField('intake', validators=[DataRequired()], choices=[
-        (0, 'Intake did not work'),
-        (1, 'Human player intake'),
-        (2, 'Ground intake'),
-        (3, 'Both'),
+        ('none', 'Intake did not work'),
+        ('human', 'Human player intake'),
+        ('ground', 'Ground intake'),
+        ('both', 'Both'),
     ])
     defense = RadioField('defense', validators=[DataRequired()], choices=[
         ('none', 'Did not play defense'),
@@ -105,5 +108,16 @@ class CrescendoForm(FlaskForm):
         ('average', 'Average defense'),
         ('excellent', 'Excellent defense')
     ])
+    driving = RadioField('driving', validators=[DataRequired()], choices=[
+        ('none', 'Immobile'),
+        ('poor', 'Clunky and awkward driver'),
+        ('average', 'Average driving (most robots)'),
+        ('excellent', 'Smooth and skilled driver')
+    ])
+    fouls = RadioField('fouls', validators=[DataRequired()], choices=[
+        ('none', 'No fouls'),
+        ('some', '1-2 fouls (specify below)'),
+        ('many', '3+ fouls (specify below)')
+    ])
 
-    info = TextAreaField('info', validators=[DataRequired()])
+    info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])

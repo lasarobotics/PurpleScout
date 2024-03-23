@@ -5,6 +5,10 @@ from flask_socketio import SocketIO, send, emit
 import csv, secrets, json
 import sqlite3
 import requests
+from threading import Lock
+import time
+
+scoutSubmitLock = Lock()
 
 # Create app
 app = Flask(__name__)
@@ -13,7 +17,7 @@ socketio = SocketIO(app)
 # Configure app
 app.config['FORM'] = CrescendoForm # Change this to the form you want to use
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-conn = sqlite3.connect('data/scout.db')
+conn = sqlite3.connect('data/scoutFortWorth.db')
 cursor = conn.cursor()
 
 # Create table
@@ -54,8 +58,15 @@ def superScout():
 def scoutSubmit():
     print(f"got request via {request.method}")
     if request.method == 'POST':
+        scoutSubmitLock.acquire()
 
         data = request.form.to_dict()
+
+        if 'autoMobility' not in data.keys():
+            data['autoMobility'] = 'n'
+
+        if 'spotlight' not in data.keys():
+            data['spotlight'] = 'n'
 
         # append data to data/scout.csv
         with open('data/scout.csv', 'a', newline='') as f:
@@ -65,7 +76,7 @@ def scoutSubmit():
             f.close()
 
         # append data to sqlite3 database
-        conn = sqlite3.connect('data/scout.db')
+        conn = sqlite3.connect('data/scoutFortWorth.db')
         cursor = conn.cursor()
         matchNum = data['matchNum']
         teamNum = data['teamNum']
@@ -84,6 +95,9 @@ def scoutSubmit():
         #print(request.form.to_dict()['teamNum'])
         socketio.emit('scoutSubmit', data)
 
+        time.sleep(1.1)
+        scoutSubmitLock.release()
+
         return redirect(url_for('scoutSubmit'))
 
     return render_template('scoutSubmit.html')
@@ -100,7 +114,7 @@ def superScoutSubmit():
         print(request.form.to_dict())
 
         # append data to data/scout.csv
-        with open('data/superScout.csv', 'a') as f:
+        with open('data/superScout2.csv', 'a') as f:
             writer = csv.DictWriter(f, fieldnames=[
                 "matchNum",
                 "num1red",
@@ -109,6 +123,8 @@ def superScoutSubmit():
                 "num2blue",
                 "num3red",
                 "num3blue",
+                "redAmps",
+                "blueAmps",
                 "info"
             ])
             writer.writerow(request.form.to_dict())
@@ -172,6 +188,7 @@ def handle_echo(data):
 
 @socketio.on('getTeams') # activated when the super scout clicks the button to fetch teams
 def handle_fetchTeams(data):
+    print('getTeams')
     # read data from data/teams.csv into a dictionary
     matchNum = data['matchNum']
     # get line of matchNum

@@ -2,5 +2,3 @@ flask
 flask-socketio
 flask-wtf
 tbapy
-gspread
-google-api-python-client

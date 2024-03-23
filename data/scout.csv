@@ -1,16 +1,1030 @@
-1,5503,y,2,1,5,3,1,2,1,y,3,average,1,Testing testing test!!!
-433,3,y,1,1,1,0,0,0,0,1,poor,0,d
-4,4,0,0,0,0,0,0,0,1,poor,2,3fadsf
-4,4,0,0,0,0,0,0,0,1,poor,2,3fadsf
-4,4,0,0,0,0,0,0,0,1,poor,2,3fadsf
-4,4,0,0,0,0,0,0,0,1,poor,2,3fadsf
-43,4,y,0,0,0,0,0,0,0,3,excellent,2,dasf
-43,4,y,0,0,0,0,0,0,0,3,excellent,2,dasf
-27,-1,0,0,0,0,0,0,0,4,none,3,dfsdf
-23,141,y,0,0,0,2,7,2,0,y,4,excellent,3,teststtttt
-33,3333,y,5,4,0,0,0,0,0,3,excellent,3,gabeeee
-33,3333,y,5,4,0,0,0,0,0,3,excellent,3,gabeeee
-33,3333,y,5,4,0,0,0,0,0,3,excellent,3,gabeeee
-=======
-1,5503,y,0,0,0,0,0,1,0,3,excellent,3,tsthugfutdt
->>>>>>> Stashed changes
+test,1,418,3,0,1,2,3,4,5,none,1,excellent,none,both,many,1234567890,n,n
+test,2,418,y,0,4,2,4,3,1,1,park,0,y,average,excellent,both,none,"very good team would reccomend
+"
+test,-1,418,0,0,0,0,0,0,0,none,0,poor,poor,human,some,1234567890,n,n
+ZiaH,1,9140,0,0,0,0,0,0,0,none,0,none,none,none,none,They didnt show up for the practice round.,n,n
+Priscilla I,2,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,No Robot. ,n,n
+ZiaH,2,8625,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not show up for the match!!!!!!!!,n,n
+PenelopeC,2,9137,0,0,0,0,0,0,0,none,0,none,average,none,none,"Robot did nothing, moved just a bit but didnt attempt to intake or shoot",n,n
+AsheX,2,9524,0,0,0,0,0,0,0,none,0,none,poor,none,none,Couldn't intake note,n,n
+burrito,2,9448,0,0,0,0,0,3,0,none,0,average,average,human,none,Very clunky intake and shooter. Consistently missed.,n,n
+Jacob C.,2,418,y,0,3,2,4,1,0,0,park,0,none,excellent,ground,some,"note got stuck under robot, good autonomous, multiple note penalty, scores amp and speaker, 34 points. ",n
+Priscilla I,3,8827,0,0,0,0,0,0,0,none,0,none,none,none,none,No Robot. ,n,n
+PenelopeC,3,5503,y,0,1,0,0,0,0,0,single,0,none,poor,ground,none,"Seemed to have drivetrain issues, mostly just stayed in the center and did nothing
+Pretty fast climb",n
+AsheX,3,6369,y,0,0,0,5,0,4,0,none,0,none,poor,ground,none,shot outside on accident,n
+ZiaH,3,4332,0,0,0,0,0,0,0,none,0,poor,poor,human,none,they didnt do anything besides picking up one note and running around the field with it,n,n
+Priscilla I,3,8827,0,0,0,1,0,1,0,single,0,poor,poor,both,none,"Clunky driving, mostly stayed in their side of the field. When they moved to the other side of the field for human intake, they missed the note and they were slamming their robot against the wall to try and get the note off their robot. ",n,n
+burrito,3,8114,y,0,0,0,1,0,2,0,none,0,none,average,ground,none,"Immobile halfway through game, recorrected at endgame.",n
+Jacob C.,3,4610,y,0,0,0,0,0,2,1,none,0,none,poor,human,none,"Terrible driving, did not score in teleop, terrible human intake, takes a long time to get notes, and had trouble aiming into the speaker. autonomous missed the starting note. ",n
+davidd,4,9664,0,0,0,0,0,0,0,none,0,none,none,none,none,Not at match,n,n
+ZiaH,4,9054,0,0,0,1,0,2,0,park,0,none,average,both,none,kept missing when driver tried but their intake was good,n,n
+Jacob C.,4,3743,0,1,0,1,0,0,0,none,0,none,average,human,some,"note stuck on their robot and intake malfunction, spent a lot of time trying to get it off. crashed into an opposing robot at the beginning of the match. ",n,n
+AsheX,4,5726,y,0,0,2,0,0,0,0,park,0,none,average,human,none,"shot during auto, went over speaker ",n
+Priscilla I,4,2789,0,0,0,1,0,3,0,none,0,none,poor,ground,none,"They kept trying to line up to shoot in the speaker and spending too much time shooting and missing. Driving was clunky, but not the worst driving I've seen yet. ",n,n
+burrito,4,8879,y,0,0,1,2,0,2,0,park,0,none,excellent,ground,none,"Dropped note into itself, unable to remove it, however it was able to consistently intake and shooting was accurate.",n
+burrito,5,5052,0,0,0,0,0,0,0,none,0,none,none,none,none,Not present on field,n,n
+ZiaH,5,7138,y,0,0,0,0,0,0,0,park,0,none,poor,none,none,intake was really bad ,n
+AsheX,5,2583,y,0,1,3,0,0,1,0,single,0,poor,average,human,none,good climber,n
+Jacob C.,5,4364,0,0,0,0,0,0,0,none,0,none,none,human,none,"They had robot backwards, might be new to this year. no autonomous. ROBOT MALFUNCTION. They did not accomplish anything. 
+",n,n
+davidd,5,8507,y,0,0,0,3,0,0,0,park,0,none,average,human,none,"Overall pretty decent, stayed out of the way of the other robot. Shooter is somewhat underpowered but still works well. ",n
+Priscilla I,5,5414,y,0,1,0,0,0,1,0,none,0,none,excellent,ground,none,"Very promising start, auto was good and the driving was awesome. It had one shot, and it was done too early and flung the note out of bounds. After, a robot on the red team rammed into the 5414's robot twice, and the 5414 robot was stuck in the middle of the field. This seemed like a very good and promising robot, and I think that if they weren't rammed into they would carry their team and get a lot of points. ",n
+ZiaH,6,3679,y,0,1,0,0,0,3,0,park,0,none,average,ground,none,did throws from super far away and it made no sense not very good,n
+davidd,6,9121,y,0,0,0,1,0,1,0,park,0,none,average,none,none,"Very unreliable source intake, seems to have a ground intake but it doesn't work. They were trying to source intake for most of the match and it only worked once",n
+AsheX,6,6357,y,0,0,0,1,0,8,0,park,0,none,average,ground,none,kept shooting and missing,n
+AsheX,6,6357,y,0,0,0,1,0,8,0,park,0,none,average,ground,none,kept shooting and missing,n
+AsheX,6,6357,y,0,0,0,1,0,8,0,park,0,none,average,ground,none,kept shooting and missing,n
+AsheX,6,6357,y,0,0,0,1,0,8,0,park,0,none,average,ground,none,kept shooting and missing,n
+AsheX,6,6357,y,0,0,0,1,0,8,0,park,0,none,average,ground,none,kept shooting and missing,n
+Jacob C.,6,3561,y,0,0,2,1,0,1,0,single,0,none,average,ground,none,"normal movement autonomous, good, intake, can score amp and speaker. can hang. Driving was okay. can only score on speaker from the front (cant score from sides). ",n
+AsheX,6,6357,y,0,0,0,1,0,8,0,park,0,none,average,ground,none,kept shooting and missing,n
+Priscilla I,6,8749,0,0,2,5,0,3,0,none,0,none,average,both,none,"Fast robot, but at the beginning they kept doing a softer shooter instead of a stronger shooter, so they couldn't make the speakers. They got really good mid game, and made 3 consecutive shots in about a 5 second span.They were a small but fast robot, with a rough start but it scored a lot of points in the last half of the game. ",n,n
+Jacob C.,6,3561,y,0,0,2,1,0,1,0,single,0,none,average,ground,none,"normal movement autonomous, good, intake, can score amp and speaker. can hang. Driving was okay. can only score on speaker from the front (cant score from sides). ",n
+burrito,6,4717,y,0,0,0,0,0,0,0,park,0,average,poor,none,none,"If their intake is functional, it is not at a good angle. Bad driver, but successful defens occasionally.",n
+ZiaH,7,3847,y,0,2,6,1,0,1,0,single,0,average,excellent,both,none,really good,n
+AsheX,7,8019,y,0,1,0,1,0,0,0,park,0,none,poor,ground,none,their entire shooter broke off toward the start. ,n
+burrito,7,5894,y,0,0,0,0,0,2,0,none,0,none,poor,human,none,"Piece got stuck on shooter, flywheels too close together for piece to get out.",n
+Jacob C.,7,6155,0,0,0,0,0,0,0,none,0,none,poor,human,none,"autonomous malfunctioned. Robot malfunctioned, lost, did not do anything in teleop. Not sure what happened, but robot was not working correctly. ",n,n
+davidd,7,3802,0,0,1,0,0,1,0,none,0,poor,average,human,none,"Source intake was not very good, had two notes under them for a while but got no fouls???",n,n
+Priscilla I,7,5892,y,0,0,1,5,0,1,0,none,0,none,excellent,both,none,"Pretty good robot! Relied mostly on speaker intake, and they did not have enough time to climb. They carried their team, and when they tried to climb, the chains shaked too hard. Their grabbers on the chain were bad and thin. ",n
+test,-1,0,0,0,0,0,0,0,0,none,0,none,none,none,none,1234567890,n,n
+Naina J,8,8625,0,0,0,0,0,0,0,none,0,none,none,none,none,Not in the game!,n,n
+NimahA,8,9418,y,0,0,0,6,0,0,0,double,0,average,excellent,both,none,Very good team. They had a smooth and skilled team but they didn't really play that much offense - main goal was to score notes,n
+MAXB,8,8610,0,0,0,0,0,0,0,none,0,excellent,average,none,none,did not manage to shoot anything and was kinda just moving around the field. it made some shy defense and later on towards the end got more confident and blocked us a lot from being able to return to our side.,n,n
+maryam a.,8,418,y,3,0,1,1,0,2,0,none,0,average,average,ground,none,this is a redo in case my last one didnt submit. robot kept getting blocked by a blue alliance robot and couldnt escape for a while,n
+Madeline D,8,8598,0,0,0,4,0,5,1,single,0,none,poor,ground,none,"Intake was unreliable at times, loose. Intake touched the ground when climbing, counted as single climb despite two on the chain because of this.",n,n
+henryh,8,8114,y,0,0,0,3,0,5,0,none,0,none,average,ground,none,"The robot missed a few at the start, then made more as the game went on. I'm pretty sure it spent the whole game on it's side of the arena, using the notes that were already there. The robot had an interesting intake design, where it loaded the note into the shooter. The shooter seemed kind of wobbly/inaccurate, which contributed to its missed shots. It also seems like it had a mechanical issue towards the end of the game.",n
+Maddie D.,9,9140,0,0,0,0,0,0,0,none,0,none,none,none,none,Was not present for the match.,n,n
+Naina J,9,2789,y,0,0,0,0,0,4,0,park,0,none,average,both,none,Intake is weak. Needs to shoot higher into speaker,n
+NimahA,9,4332,y,0,0,0,2,0,2,0,none,0,none,poor,ground,none,"They were very slow and their intake took a while. Not the best defense either, and they only had ground intake. ",n
+maryam a.,9,9054,0,0,2,0,0,3,0,single,0,average,poor,human,none,"intake didnt work once, dropped it one during pick up from human player. robot bumped into a few things ",n,n
+henryh,9,9524,0,0,0,0,0,2,0,park,0,none,poor,human,none,"Modified kitbot. Looks like it was having some technical issues before the game started. Spun in circles for the first ~30 seconds, then managed to drive around a little. Intake worked, but I don't think it scored any. Tried to climb, got hook over chain, but ran out of time to pull itself up.",n,n
+MAXB,9,8879,y,0,1,0,0,0,4,0,single,0,none,poor,ground,none,was pretty slow and the intake didn't work well. it was hard to aim it and had to line up perfectly with a note. Also the driver had a lot of trouble lining up with the speaker. didn't have enought power to shoot the notes,n
+MAXB,10,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,was not here,n,n
+maryam a.,10,5726,0,0,1,0,0,2,0,park,0,average,poor,human,none,"was driving too fast and kept bumping into other robots, also very poor intake it kept dropping and robot was stuck for a long time and didnt move",n,n
+NimahA,10,2583,y,0,1,1,0,0,4,0,park,0,average,average,ground,none,Had a very smooth ground intake. But had a lot of misses. Its note would not go high enough to fall into the speaker. Had no speaker points during teleop. ,n
+Naina J,10,8507,y,0,0,0,0,0,1,0,park,0,y,none,poor,human,none,attempted climb - back was on the ground. didn't try speaker but tried the amp. Couldn't see if it made it into the amp
+Maddie D,10,5503,y,0,0,0,2,0,2,0,single,0,y,none,poor,ground,none,If-y intake and drive. Takes to long to pick up notes and load for shot.
+henryh,10,5103,y,0,0,0,0,0,1,0,none,0,poor,poor,human,none,"Practically immobile, it seemed like only one side of the robot would drive. It tried to shoot one in the speaker, but missed, then spent the rest of the game trying to make its way over to the human intake. It rammed into another robot pretty hard, and couldn't drive with one side after that, so I think the collision must've knocked something loose.",n
+MAXB,11,3743,y,0,0,0,0,0,3,0,none,0,none,excellent,human,none,wasn't powerful enough to shoot but was very fast and the driver managed to doge the defending robot.,n
+NimahA,11,4364,0,0,0,0,0,0,0,none,0,poor,none,none,none,They had no intake. They tried defense with one team but failed. They also scored no points. Their mobility also varies a lot (not a lot of control over robot),n,n
+maryam a.,11,4610,y,0,0,2,0,0,0,0,none,0,none,poor,human,none,could not tell what the penalty was even tho there were 5 penalties. also robot was stuck at notes place for so long. and robot dropped a note during auto,n
+Naina J,11,8749,y,0,0,0,1,0,5,0,park,0,none,average,ground,some,8749 foul in auto? also maybe could climb didn't have time,n
+henryh,11,4717,y,0,0,1,0,0,1,3,park,0,poor,average,ground,none,"The robot used an interesting strategy where it went into the middle, shot three notes onto its side, then went over and tried to score those. It placed two into the amp, but it seemed the third got stuck in the shooter, and it didn't shoot any after that. It has an interesting shooter design that is on an arm, and while it didn't use the human intake because of its strategy, it looks like it might have the capability to do so.",n
+henryh,11,4717,y,0,0,1,0,0,1,3,park,0,poor,average,ground,none,"The robot used an interesting strategy where it went into the middle, shot three notes onto its side, then went over and tried to score those. It placed two into the amp, but it seemed the third got stuck in the shooter, and it didn't shoot any after that. It has an interesting shooter design that is on an arm, and while it didn't use the human intake because of its strategy, it looks like it might have the capability to do so.",n
+Maddie D,11,9448,0,0,0,0,0,1,0,park,0,none,poor,human,none,My robot was stuck on a lot of notes and couldn't shoot. Maybe foul?,n,n
+Maddie D,12,3679,y,0,0,0,5,0,0,0,none,0,none,poor,ground,none,Chunky driving but extremely accurate speaker shots.,n
+maryam a.,12,5892,y,0,1,1,3,0,4,0,single,0,average,poor,ground,none,"drove really really fast and that might be why they bumped a few tiny times. strong robot tho, was not affected by hits from bumps",n
+Naina J,12,9121,y,0,0,0,1,0,2,0,none,0,none,average,both,none,1 Ranking Point (18/18 pts),n
+NimahA,12,5894,0,0,0,0,0,3,0,park,0,average,poor,both,none,They dropped a lot of notes. They had an awkward driver. Did not score any points. ,n,n
+henryh,12,5414,y,0,0,5,6,0,1,0,none,0,poor,average,ground,none,"Seems like a pretty good robot. I would've put ""smooth and skilled driver,"" but it did run into a few things. It can shoot really fast and powerful, and scored plenty of both speaker and amp notes.",n
+MAXB,12,8019,0,1,0,3,1,1,0,none,0,none,excellent,ground,none,was decently fast and the driver woeked well. their intake didn't work well and required it to either squish the note agaist the wall or drive rreally fast over it. Its shooter worked well and only missed at the very end because they were rushing to finish and didn't line up well.,n,n
+Maddie D,13,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not show up.,n,n
+MAXB,13,6155,y,0,0,0,0,0,1,0,none,0,poor,average,none,none,note stuck in intake and didn't really defend well,n
+Naina J,13,6357,y,0,0,0,3,0,3,0,none,0,none,average,both,none,"Could take notes near speaker to shoot. After missing the speaker, the note was near them. So it was quick cycles",n
+henryh,13,3802,y,0,0,0,0,0,0,6,single,0,poor,average,human,none,"Didn't attempt to shoot any, just went back and forth dropping off notes from the human intake. It also climbed pretty well at the end; the center of gravity was balanced well.",n
+maryam a.,13,7138,y,0,0,0,0,0,2,0,park,0,poor,average,human,none,could not tell if mine scored the speaker or not because people shouted when it threw it but i didnt notice anything,n
+NimahA,13,3847,y,0,4,1,9,0,1,0,park,0,average,excellent,both,none,Really fast and efficient team. Got a lot of points and were very fast. They also were super close to getting the trap point out of all the other teams I have seen. I dont know if they got a spotlight,n
+Maddie D,14,6369,y,0,1,0,5,0,2,0,none,0,none,average,ground,none,"Okay mobility, glitched at end.",n
+NimahA,14,9506,y,0,0,0,0,0,1,0,park,0,none,poor,none,none,No intake used. They missed the only note they picked up when shooting for the speaker. Not a lot of control over robot -- robot kept moving in circles,n
+Naina J,14,5052,0,0,0,0,0,1,0,park,0,none,none,none,none,"COULD move, but didn't move much. just parked in a corner. ",n,n
+henryh,14,9664,0,0,0,2,0,1,0,none,0,poor,average,human,none,"Very slow robot, and because it had no ground intake every time it missed a shot it would have to go all the way back over to the human intake. It also had issues with getting up against the human intake close enough for the ring to go in; 3 notes dropped between the bot and the human intake.",n,n
+henryh,14,9664,0,0,0,2,0,1,0,none,0,poor,average,human,none,"Very slow robot, and because it had no ground intake every time it missed a shot it would have to go all the way back over to the human intake. It also had issues with getting up against the human intake close enough for the ring to go in; 3 notes dropped between the bot and the human intake.",n,n
+maryam a.,14,8827,0,0,0,0,0,2,0,none,0,none,poor,ground,none,"robot was shaking weirdly sometimes when moving, i did not see it pick anything up but it somehow had something to throw towards the end and missed, there were over 3 fouls but i couldnt tell what they were or whos robot it was for. robot could not move very well",n,n
+MAXB,14,3561,y,0,0,2,2,0,1,0,single,0,none,average,ground,some,ground intake was quick but sometimes the not would fall out of the robot once it was loaded in. also got a foul for holding two notes during the autonomous portion of the match. had trouble lining up with the speaker and missed some shots.,n
+Naina J,15,9140,0,0,0,0,0,0,0,none,0,none,none,none,none,Not there.,n,n
+davidd,15,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,Robot was not on field,n,n
+NimahA,15,9418,0,1,1,7,0,3,0,none,0,average,excellent,both,none,Very smooth and efficient. Was very quick. Really good robot. Scored majority of the points through speaker. ,n,n
+Maddie D,15,8507,y,0,0,0,2,0,0,0,single,0,none,poor,human,none,"Kind of slow, consistently okay, but not a great scorer.",n
+maryam a.,15,2789,y,0,0,0,0,0,1,0,park,0,none,poor,human,none,the robot had a note stuck inside/under it until 20 seconds left and then finally picked something up and missed,n
+MAXB,15,2583,y,0,2,2,2,0,3,0,park,0,none,average,both,none,hit the wall a lot at the beggining of the match. was also alone. had trouble lining up with the human intake and the ground intake didn't work well. they had to push the note up against the wall in order to get it. design was probably a but to complex. had to move the intake out of the way everytime they tried to shoot so it slowed its  cycle,n
+NimahA,16,4364,0,0,0,0,0,0,0,none,0,poor,poor,none,none,No notes scored. Had no intake. Poorly driven. ,n,n
+Naina J,16,4610,0,0,0,0,0,1,2,none,0,none,poor,human,none,"missed speaker in auto. Red team blocked, so blue went for passed. ",n,n
+Maddie D,16,8610,0,0,0,7,0,2,0,park,0,none,poor,ground,none,"Fast and consistent, turning mechanism could use some work.",n,n
+maryam a.,16,8879,y,0,1,0,0,0,0,0,park,0,average,average,none,none,could not tell what the intake was because it spent the entire time just taking notes and moving them to their side (red). idk if that means passed notes,n
+MAXB,16,5103,y,0,1,0,0,0,0,0,none,0,none,none,none,none,moved a bit then gave up and waited in the middle of the field,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+henryh,16,8749,0,0,0,7,0,3,0,single,0,poor,excellent,ground,none,"Great robot, but had some weird issues at the start; it started the autonomous phase by running directly into the wall and shooting out a note, then during the start of the teleop phase it had some issues driving, then tried to pick up a note, but the rollers were spinning the wrong way, so it launched the note really far.",n,n
+KeaganF,17,8625,0,0,0,0,0,0,0,none,0,none,none,none,none,Robot was not on field,n,n
+NoamW,17,5726,0,0,0,0,0,0,0,none,0,excellent,average,none,none,"Only played defense. Did not even attempt to intake notes, got pushed around pretty easily",n,n
+NoamW,17,5726,0,0,0,0,0,0,0,none,0,excellent,average,none,none,"Only played defense. Did not even attempt to intake notes, got pushed around pretty easily",n,n
+NoamW,17,5726,0,0,0,0,0,0,0,none,0,excellent,average,none,none,"Only played defense. Did not even attempt to intake notes, got pushed around pretty easily",n,n
+AT,17,9054,0,1,0,2,0,1,0,double,0,average,average,human,none,"Not very flexible but was very accurate in the amp, pretty slow but was ok. ",n,n
+NoamW,17,5726,0,0,0,0,0,0,0,none,0,excellent,average,none,none,"Only played defense. Did not even attempt to intake notes, got pushed around pretty easily",n,n
+JackN,17,3743,y,0,1,0,1,0,3,0,none,0,none,poor,human,none,The driver was extremly bad. The driver literally drove away while the human player was feeding it the note. ,n
+JackN,17,3743,y,0,1,0,1,0,3,0,none,0,none,poor,human,none,The driver was extremly bad. The driver literally drove away while the human player was feeding it the note. ,n
+JackN,17,3743,y,0,1,0,1,0,3,0,none,0,none,poor,human,none,The driver was extremly bad. The driver literally drove away while the human player was feeding it the note. ,n
+AJ,17,8019,y,0,0,0,0,0,2,0,double,0,average,average,human,none,8019 moved around for most of the round and blacked the opposing robot to allow for the other red robot to score more.,n
+AJ,17,8019,y,0,0,0,0,0,2,0,double,0,average,average,human,none,8019 moved around for most of the round and blacked the opposing robot to allow for the other red robot to score more.,n
+AJ,17,8019,y,0,0,0,0,0,2,0,double,0,average,average,human,none,8019 moved around for most of the round and blacked the opposing robot to allow for the other red robot to score more.,n
+AJ,17,8019,y,0,0,0,0,0,2,0,double,0,average,average,human,none,8019 moved around for most of the round and blacked the opposing robot to allow for the other red robot to score more.,n
+EstherK,17,8114,y,0,2,0,1,0,2,0,none,0,average,average,ground,none,The intake was unstable (not consistent) and scoring took a few seconds to aim and launch. ,n
+KeaganF,18,8598,0,0,0,5,0,3,0,single,0,none,average,ground,none,Started out with only one shot during auto and missed. It then attempted to just shoot speaker with middling success. It can climb well. ,n,n
+JackN,18,4717,y,0,0,5,0,1,1,0,none,0,poor,average,ground,none,The bot scored 5 in a row. Insane. It also played a little defence however that wasn't really the highlight. Highlight is that it has a good ground intake and good amp system.,n
+AJ,18,7138,y,0,0,0,0,0,0,0,none,0,none,poor,human,none,7138 was very wonky when driving and could barely grab a not and did not make a single not in the goal as it missed by a very far distance every time. ,n
+AT,18,3802,1,0,1,1,0,2,0,single,0,poor,average,human,none,"Not very effective, failed to even score at amp. Did manage to climb very well. I think it was not effective because it could only do human-player intake and had to traverse the entire field (it was also very slow) every time while still not being effective, meaning it moved back in forth multiple times without any beneficial outcome. ",n,n
+NoamW,18,5894,y,0,0,0,0,0,2,0,single,0,y,none,poor,human,none,"Bad driving. Kept running into the field and moved around very slowly. Not great at aiming, took a while to align for a missed shot. Charged up for a good 5 seconds per shot."
+EstherK,18,4332,0,0,0,2,0,0,0,none,0,none,poor,ground,none,"Lining up to take a shot and then actually powering up to shoot in the speaker took a while. After scoring a few, the note got stuck in the shooter and the robot did not end up contributing after that. The driving was especially slow and not smooth at all. ",n,n
+KeaganF,19,5892,y,0,3,1,8,0,0,0,park,0,none,average,ground,none,Very good shooting. Amp shooting seem ineffective. Driving pretty good. ,n
+NoamW,19,5503,y,0,0,0,0,0,0,0,single,0,average,poor,none,none,Parked itself infront of the speaker and raised its climbers. Did not move until endgame and extremely clunky driving.,n
+AT,19,3679,y,0,0,0,2,0,4,5,double,0,excellent,excellent,both,none,"Appeared to not work at first but ended up being very fast and smooth in movements. It attempted to pass six notes, succeeding in five but failing in one. It also played excellent defense and could score in the speaker. Definitely the ideal robot as its multi-purpose functions can be applied to any situation and bring success. ",n
+JackN,19,6357,0,0,2,0,0,3,0,double,0,y,average,average,ground,none,The robot was pretty well. Pretty good defence and the driver was considerate of allied teams. Moving out the way for them to shoot. The shooting is a little too powerful for the speaker so it missed sometimes. ,n
+JackN,19,6357,0,0,2,0,0,3,0,double,0,y,average,average,ground,none,The robot was pretty well. Pretty good defence and the driver was considerate of allied teams. Moving out the way for them to shoot. The shooting is a little too powerful for the speaker so it missed sometimes. ,n
+JackN,19,6357,0,0,2,0,0,3,0,double,0,y,average,average,ground,none,The robot was pretty well. Pretty good defence and the driver was considerate of allied teams. Moving out the way for them to shoot. The shooting is a little too powerful for the speaker so it missed sometimes. ,n
+JackN,19,6357,0,0,2,0,0,3,0,double,0,y,average,average,ground,none,The robot was pretty well. Pretty good defence and the driver was considerate of allied teams. Moving out the way for them to shoot. The shooting is a little too powerful for the speaker so it missed sometimes. ,n
+JackN,19,6357,0,0,2,0,0,3,0,double,0,y,average,average,ground,none,The robot was pretty well. Pretty good defence and the driver was considerate of allied teams. Moving out the way for them to shoot. The shooting is a little too powerful for the speaker so it missed sometimes. ,n
+EstherK,19,8827,y,0,0,0,2,0,0,0,double,0,none,poor,ground,none,"During autonomous, it was moving extremely slowly (like barely even moving). The aiming and driving were a little unstable (in between ""clunky"" and ""average""). Throughout the match, it kept driving across the field, but it wasn't accomplishing much. However, it did double hang during endgame. ",n
+AJ,19,5414,y,0,0,2,2,0,6,0,none,0,none,poor,both,none,"5414 was a very fast robot that was successful in shooting in the amp and in the speaker a few times but missed a lot, over six times. This is because that it is too speedy that the driver had difficulty controlling it and therefore hitting the wall multiple times and missing. Additionally, the motor is too powerful so when the robot makes the shot, it does not go in the goal and bounces off because the motor is too powerful.",n
+Anirudh J,20,6155,y,0,0,0,0,0,1,0,park,0,average,average,both,none,"6155 did a decent job of defense by running long the side of the opposing robots to prevent them from scoring, ",n
+AT,20,4597,y,0,0,0,0,0,0,0,none,0,none,none,none,none,Wasn't on field? Only 2 robots were present. I selected the lowest possible options because it wouldn't let me submit without answering.,n
+KeaganF,20,9506,y,0,0,0,1,0,1,0,park,0,none,poor,ground,none,It was very clunk and bad at shooting. It got guarded for the second half. It got 1 foul called against the other team. ,n
+JackN,20,418,y,0,1,0,7,0,0,0,none,0,excellent,excellent,both,none,I thought that we played pretty well. Very very good defense with us locking down red for a solid 10-20 seconds. I also thought that the early point scoring was a pretty good strat. Get tons of points then play defense. ,n
+EstherK,20,6369,0,0,0,5,0,1,0,none,0,excellent,average,ground,none,"Their ground intake only worked a few times, and in the latter half it was not successful. Also, ground intake during autonomous did not work. However, shooting speed and alignment with the speaker were quick. It attempted to engage in defense and at first it wasn't too successful, but they did end up blocking the other team from taking a note. ",n,n
+NoamW,20,3561,y,0,0,2,0,0,0,0,park,0,none,average,human,none,"Kitbot, was pretty bad at holding rings in the right position so had to spend like 30 seconds wiggling around to get note in the right position",n
+Anirudh J,21,9524,y,0,0,0,1,0,0,0,none,0,average,none,both,some,"The robot ran into the other robots, therefore committing a foul. Other than that, 9524 did decent in defense.",n
+KeaganF,21,9121,0,1,0,0,0,2,0,park,0,none,poor,ground,none,Very clunky and not good at shooting in amp or speaker. It had a ring stuck in it.,n,n
+NoamW,21,9664,0,0,0,2,0,1,0,none,0,none,poor,human,none,"Parts were literally flying off the robot when it got hit. Kept rocking around every time it stopped, but hit a couple cool trick shots.",n,n
+JackN,21,9448,y,0,0,0,0,0,2,0,none,0,poor,poor,human,some,"9448 blitz passed everyone in autonomus. Giving them a foul im pretty sure. Also it crashed into pretty much every other bot including allied teams. They did NOT score a single point, missed shots, and some parts were flying everywhere. Negative points...",n
+EstherK,21,5052,0,0,0,0,0,1,0,park,0,none,poor,ground,none,"After one attempted shot, the shooter stopped working. The note fell off of the shooter and was stuck on the robot, inhibiting them from picking up another note. Right before endgame, they were able to shake off the note and re-intake it from the ground. However, a few pieces fell off of their robot onto the field. As it tried to shoot into the speaker again, the shooter was noticeably unstable (due to the pieces that had fallen off) and the same shooting malfunction happened again. ",n,n
+AT,21,3847,y,0,4,0,6,0,1,0,none,0,excellent,average,ground,none,"Was extremely aggressive and pushy around the field, knocked one robot off the ground and made them bobble back on their wheels, but got no known foul. However, it was incredibly accurate with note shooting mechanisms, both in TELEOP and human control. Did not climb or even park.",n
+NoamW,22,4364,0,0,0,0,0,0,0,none,0,poor,poor,none,none,"Broken chain on wheels so it could barely move, it tried to get in the way of other robots but could barely move.",n,n
+AJ,22,9140,y,1,0,0,2,0,0,0,none,0,average,excellent,both,none,"Robot did a good job in intaking notes and projecting them well, while being fast yet strudy and precise.",n
+JackN,22,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,No robot present,n,n
+AT,22,5103,y,0,1,0,0,0,3,0,none,0,poor,poor,human,none,"Was not very effective at all, only made on speaker and kept missing afterwards. It was vulnerable to being bullied by the other robots and driving was extremely clunky and ineffective. It took at least fifteen seconds to even get one note into it, and then due to its slow speed it took thirty seconds to fail and turn back around to try to get another note. Its structure was very sound though.",n
+EstherK,22,8019,0,1,0,7,0,2,0,none,0,none,excellent,ground,none,"They priority scoring in the speaker the whole match, so their focus allowed them to score many. The intake and shooter were efficient, and the shooter was pretty loud (not really relevant though). ",n,n
+NoamW,23,8749,y,0,0,2,2,0,4,0,none,0,none,excellent,ground,none,"Driver moved around field very well, but dropped notes very often.",n
+AJ,23,2789,y,0,0,0,0,0,4,0,none,0,none,none,ground,none,2789 broke down mid round after a piece of its machinery fell off after an interaction with an opposing robot. The robot was immobile after only moving back and forth 2 inches. ,n
+AJ,23,2789,y,0,0,0,0,0,4,0,none,0,none,none,ground,none,2789 broke down mid round after a piece of its machinery fell off after an interaction with an opposing robot. The robot was immobile after only moving back and forth 2 inches. ,n
+KeaganF,23,7130,0,1,0,0,0,0,0,single,0,poor,poor,ground,none,"I missed part o the match due to the fatc that the computer was dead, but the robot seemed very slow and didn't do anything.",n,n
+AT,23,8114,y,0,1,0,1,0,6,0,none,0,none,poor,ground,some,"Shooter mechanism was extremely clunky and loose, flapping around. It also was horrible at making speaker shots, entirely missing them and hitting the same spot below the speaker opening 2/3 of the attempted shots. ",n
+KeaganF,23,7130,0,1,0,0,0,0,0,single,0,poor,poor,ground,none,"I missed part o the match due to the fatc that the computer was dead, but the robot seemed very slow and didn't do anything.",n,n
+JackN,23,7138,0,0,0,0,0,0,0,single,0,y,average,poor,none,none,"Kinda clunky driving. Thought the robot sucked at first but it actually turned out to be mainly a defense robot. Didn't score any points. However, it did climb the chain at the end. The hooks are kinda sketchy since they were facing two different directions innitially.",n
+KeaganF,23,7130,0,1,0,0,0,0,0,single,0,poor,poor,ground,none,"I missed part o the match due to the fatc that the computer was dead, but the robot seemed very slow and didn't do anything.",n,n
+EstherK,23,4610,0,0,1,1,0,1,0,none,0,none,average,human,none,"Driving started out pretty smooth, but then near the second half it became a little awkward. It was pretty unsure throughout the match, and it was sitting around a little. When it lined up to the speaker, it took at least 10 seconds for it to finally shoot. ",n,n
+AT,24,4717,y,0,0,2,0,0,1,0,none,0,poor,poor,ground,none,"Extremely clunky, could not move around effectively. Not accurate in anything from the amp to intake and couldn't even score in the speaker or attempt to climb at the end.",n
+NoamW,24,5894,y,0,0,0,0,0,5,0,single,0,none,average,human,some,"Fouled in the very beginning, missed a ton on intake with no ground pickup, weak shots.",n
+JackN,24,3743,y,0,0,0,1,0,2,0,none,0,poor,average,human,none,Started off with decent defense then it faded down to poor defense. Did not score any points.,n
+JackN,24,3743,y,0,0,0,1,0,2,0,none,0,poor,average,human,none,Started off with decent defense then it faded down to poor defense. Did not score any points.,n
+AJ,24,3679,y,0,1,1,5,0,0,1,single,0,excellent,excellent,ground,none,3679 was a very good robot that smoothly glided across the field while being precise and accurate. It did not miss a single not and did very well throughout the round and made up for a majority of the goals,n
+KeaganF,24,8879,y,0,0,0,4,0,8,0,park,0,y,none,average,ground,none,It missed mutiple times and couldn't pick up piece consistently. 
+EstherK,24,5503,0,0,0,0,0,0,0,none,0,poor,poor,ground,none,"It picked up a note from the ground once, then was driving around the whole field not doing much. It seemed like it was focusing on defense, but that was not clear until the later half of the match because the defense was not very good at all. It mostly was just driving near the middle of the field, not contributing. ",n,n
+AJ,25,5892,y,0,0,0,2,0,2,0,single,0,average,average,both,none,Robot did a good job in scoring goals into speaker as well as hanging off the chain. ,n
+AT,25,6369,y,0,0,0,1,0,3,0,park,0,poor,poor,ground,none,"Horrible shooting mechanism, quite slow, and not very well structured in all mechanisms such as intake.",n
+JackN,25,3561,y,0,0,2,2,0,2,0,double,0,y,average,average,ground,none,"Very solid bot. I thought that the bot played great defense and had great offensive moments. The climbing system was also really smooth. Overall, a solid bot."
+JackN,25,3561,y,0,0,2,2,0,2,0,double,0,y,average,average,ground,none,"Very solid bot. I thought that the bot played great defense and had great offensive moments. The climbing system was also really smooth. Overall, a solid bot."
+JackN,25,3561,y,0,0,2,2,0,2,0,double,0,y,average,average,ground,none,"Very solid bot. I thought that the bot played great defense and had great offensive moments. The climbing system was also really smooth. Overall, a solid bot."
+JackN,25,3561,y,0,0,2,2,0,2,0,double,0,y,average,average,ground,none,"Very solid bot. I thought that the bot played great defense and had great offensive moments. The climbing system was also really smooth. Overall, a solid bot."
+KeaganF,25,8610,0,0,0,0,0,3,0,none,0,none,poor,ground,none,The robot was very bad at shooting. It had bad movment. Overall it was pretty bad.,n,n
+EstherK,25,4332,0,0,0,0,0,0,0,park,0,average,average,none,some,"It did not attempt any intake. It focused the whole match on defense, but got a foul when it was pinning the other team for more than 5 seconds near the amp. For endgame, it zoomed over to hang on the chain, but was moving too fast. One of the climbers got messed up as it contacted the chain, hindering the robot so it was unable to hang. ",n,n
+NoamW,25,6357,y,0,0,0,0,0,0,0,none,0,none,none,none,none,"Wildly flung around in auto and start of teleop, then died in the first few seconds of teleop period starting",n
+JackN,26,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,No bot present,n,n
+AT,26,8507,y,0,0,0,1,0,0,3,single,0,average,average,human,none,"Relatively functional, could be better by being faster, a little more aggressive, and having a more direct and multipurpose function.",n
+AJ,26,9664,0,0,0,2,0,1,0,none,0,average,average,ground,none,Robot did wellin shooting as well as amps.,n,n
+NoamW,26,5052,0,0,0,1,0,5,0,park,0,none,poor,ground,none,"Shooter was really unreliable, dropped notes a lot or slipped out of intake/shooter.",n,n
+EstherK,26,5414,y,0,1,3,9,0,4,0,park,0,none,excellent,ground,none,"It skillfully shot into the speaker from different areas of the field. It focused entirely on offense, which allowed it to rapidly score. Intake and shooting were very efficient. ",n
+IshantY,27,9448,0,0,0,0,0,1,2,none,0,none,poor,human,none,"Clunky and awkward driving, robot got hit and something broke off. Was immobile for the last 45 seconds.",n,n
+ZiaH,27,418,y,0,2,2,2,0,0,0,park,0,none,average,both,some,tech fouls,n
+ChanD,27,5726,0,0,0,0,0,0,0,park,0,excellent,poor,none,none,"Didn't score anything, main strategy was defense.",n,n
+GenM,27,9506,y,0,0,0,0,0,2,0,park,0,none,average,ground,none,Got notes stuck under the bumper on the wheels throughout the match,n
+DmitryM,27,3847,y,0,4,3,10,0,0,0,park,0,excellent,excellent,both,none,"Really skilled driver. Very good combination of mobility, defense, and offense. Always goes for the closest node and doesn't really play supportive roles. ",n
+davidd,27,3802,0,0,0,0,0,0,5,single,0,none,average,human,none,Very good at passing. Probably could do speaker but didn't this match,n,n
+DmitryM,28,9524,0,0,0,0,0,0,0,park,0,none,poor,human,none,"Kitbot. Didn't move during autonomous. Very clumsy human player and bad driver-human player cooperation. Attempted getting 8 nodes from the human player station, but didn't get any...",n,n
+ZiaH,28,8827,y,0,0,0,4,0,2,0,triple,0,none,average,ground,none,good driver and took alot of shots which worked out well,n
+GenM,28,6155,y,0,0,0,0,0,1,0,none,0,none,average,ground,none,"Intake worked at first but broke after attempting to shoot once, pushed notes around after",n
+IshantY,28,9121,y,0,0,1,3,0,2,0,none,0,none,average,ground,some,"Had a foul in TeleOp with having 2 notes in control. Had trouble scoring in the amp, but was good with scoring 3 notes in the speaker. All missed notes were from the Amp.",n
+ChanD,29,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,"Bad --> moved very very very little, then no movement.",n,n
+ZiaH,29,3743,0,0,0,2,0,0,0,park,0,none,excellent,human,some,intake doesnt work well at all it takes them a really long time but once w=they get the notes in they are great,n,n
+GenM,29,5894,y,0,0,0,0,0,2,0,none,0,none,average,human,some,"grabbed 2 notes for tech foul in auto, ran over a piece of a note soon after teleop started and became immobile for the rest of the match",n
+DmitryM,29,9054,0,0,0,3,0,0,0,single,0,none,poor,human,none,Kitbot with a pretty awkward but functioning climbing mechanism. I missed the autonomous part of the game because my computer died :( Sorrryyyy,n,n
+IshantY,29,5103,y,0,0,0,1,0,2,0,none,0,none,average,human,none,"Driving was smooth while traversing the field, but had a lot of trouble lining up with the speaker and scoring in the amp. It struggled with turning as well. The shooter was ok, it had some firing issues but was pretty reliable. Only missed 2 shots.",n
+El CidL,29,4610,y,0,0,0,2,0,1,0,none,0,average,average,human,none,"Very average. Sometimes seemed to slow down for a second, then continue driving at normal speed. They tried to climb, but didn't have enough time to make it off the ground.",n
+ZiaH,30,5503,y,0,0,0,0,0,0,0,single,0,average,average,none,none,Only played defense and didnt even attempt to get any notes,n
+ChanD,30,7138,y,0,0,0,0,0,3,0,park,0,none,average,human,none,"Very slow, easily blocked by other robots, missed all of its shots, can only grab notes from human player so takes longer",n
+DmitryM,30,3561,y,0,1,3,0,0,1,0,single,0,none,average,both,none,"Dropped a node during auto. I believe that the robot has both types of intakes, but they only used the ground intake. Tried climbing but I don't think they succeeded in the end because the robot was touching the floor. Only one climbing arm. The driving got awkward towards the end, probably because of some connection issues or a drive train issue. ",n
+GenM,30,5892,y,0,1,0,0,0,0,0,park,0,excellent,excellent,none,none,"Played defense pretty well throughout the entire match,attempted to climb but failed",n
+El CidL,30,9140,0,0,3,0,0,4,0,none,0,average,average,both,none,"Scored in amp well, but all misses were when scoring in speaker. Randomly vibrated when moving quickly.",n,n
+IshantY,30,8598,0,0,0,3,0,3,0,single,0,none,average,ground,none,"They had strong driving skills, and were able to pick up notes and move around well. Their shooter had a lot of aiming problems and was able to get in a few at the end. The intake was sort of shaky, it had trouble keeping notes secured, which led to 2 misses.",n,n
+ZiaH,31,9664,0,0,0,0,0,0,0,none,0,none,none,none,none,Didnt show up to match!,n,n
+DmitryM,31,3679,y,0,0,0,0,0,2,0,none,0,none,none,none,none,"Very careful driving at first but then lost connection with the robot and became immobile for the rest of the match. Outtake RPM is really high, so the robot makes uncontrolled shots. ",n
+GenM,31,8114,y,0,0,0,3,0,8,0,park,0,none,average,ground,none,"missed 2-3 notes in auto, shot many times but missed most in teleop",n
+IshantY,31,4364,0,0,0,0,0,0,0,park,0,none,poor,none,none,"Their intake was broken. They were driving around the middle and pushing around notes for the entire game. Not sure about the shooter, but got to park in the end. Didn't try to play defense and barely moved in auto.",n,n
+El CidL,31,2789,y,0,0,0,1,0,6,0,none,0,none,average,both,none,Never left their side of the court. Went for speaker every time and weren't very accurate.,n
+DmitryM,32,4332,0,0,0,0,0,0,0,none,0,none,none,none,none,"Showed up the the match late (were possibly having some issues). 
+
+They indeed had some issues, the robot was immobile... ",n,n
+ZiaH,32,9506,y,0,0,0,1,0,4,0,park,0,none,average,ground,none,their shooter wasnt strong enough but they were able to take alot of shots on target.,n
+AsheX,32,5052,0,0,0,0,0,3,0,none,0,none,poor,ground,none,shots kept falling short,n,n
+IshantY,32,8507,y,0,0,0,0,0,1,3,none,0,none,average,human,none,"Were constantly passing and going up to the speaker - confusing on what type of bot they were. Would shoot notes from the climbing area towards the speaker and midfield area, and also went up to the speaker and scored and missed once respectively.",n
+El CidL,32,3802,y,0,0,0,3,0,0,0,single,0,average,average,human,none,Attempted to score once in the speaker during autonomous and missed.,n
+AsheX,33,9448,y,0,0,0,0,0,3,0,none,0,poor,poor,human,none,very fast but kept hitting stuff,n
+ZiaH,33,2583,0,1,1,1,0,0,0,single,0,excellent,average,both,some,They had alot of tech fouls and their intake was pretty unreliable ,n,n
+DmitryM,33,6369,y,0,0,0,8,0,0,0,none,0,none,excellent,both,some,"Got a foul during auto because the node in the shooter didn't shoot and they picked up another one. I think they have both intakes, but they only used ground intake. ",n
+DmitryM,33,6369,y,0,0,0,8,0,0,0,none,0,none,excellent,both,some,"Got a foul during auto because the node in the shooter didn't shoot and they picked up another one. I think they have both intakes, but they only used ground intake. ",n
+DmitryM,33,6369,y,0,0,0,8,0,0,0,none,0,none,excellent,both,some,"Got a foul during auto because the node in the shooter didn't shoot and they picked up another one. I think they have both intakes, but they only used ground intake. ",n
+DmitryM,33,6369,y,0,0,0,8,0,0,0,none,0,none,excellent,both,some,"Got a foul during auto because the node in the shooter didn't shoot and they picked up another one. I think they have both intakes, but they only used ground intake. ",n
+DmitryM,33,6369,y,0,0,0,8,0,0,0,none,0,none,excellent,both,some,"Got a foul during auto because the node in the shooter didn't shoot and they picked up another one. I think they have both intakes, but they only used ground intake. ",n
+El CidL,33,8610,0,0,0,0,0,0,0,none,0,poor,average,ground,none,"A note got stuck on top of the robot for the whole match. Robot was not able to do anything because of this, and spent the match trying to get the note off. Attempted climb but ran out of time.",n,n
+GenM,33,6357,y,0,0,0,0,0,2,0,single,0,average,poor,ground,some,"Seemed to have multiple crashes with other robots, tech foul for 2 stuck notes, missed all shots on speaker",n
+IshantY,33,8625,0,0,0,0,0,1,0,none,0,poor,poor,human,none,"Auto was bad, missed a preloaded note. The robot was very lost and I think they had a connection issue as for the last 45 seconds they were drving back and forth, not really playing defense or pursuing notes. They were bad at driving and couldnt turn without hitting the climbing mechanism or hitting the walls. Picked up 2 notes the enitre match.",n,n
+ZiaH,34,3847,y,0,7,0,8,0,0,0,single,0,none,excellent,ground,none,One of the best robots ive seen today the auto and the driver are amazing.,n
+AsheX,34,9418,0,0,0,0,0,1,0,single,0,excellent,poor,ground,none,couldn't get stuck note off robot,n,n
+El CidL,34,5414,y,0,0,0,7,0,3,2,none,0,average,excellent,ground,none,"Threw a few notes to their side early in the game, then switched to going for speaker. Was able to score speaker from far away. Missed a speaker shot during autonomous.",n
+IshantY,34,9524,0,0,0,0,0,3,0,none,0,none,none,human,none,The robot was super slow and clunky and towards the middle of the match it was immobile in the middle of the field. It had and missed a preloaded note in auto. The robot had a shaky intake and had trouble taking in notes.,n,n
+GenM,34,8019,0,1,0,5,0,1,0,park,0,none,excellent,ground,none,"scored many speakers and drived well,tried to climb but was unable to, overall good bot/team",n,n
+ZiaH,35,418,0,0,0,0,0,0,0,none,0,none,poor,none,none,I think our robot broke that was pretty bad ,n,n
+AsheX,35,6155,0,0,0,0,0,0,0,none,0,none,none,none,none,was not there,n,n
+GenM,35,8827,0,0,0,0,0,0,0,none,0,none,none,none,none,robot did not show up,n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+DmitryM,35,5726,0,0,1,0,0,0,0,park,0,none,average,both,none,"All robots were probably having radio connections, 5726 became immobile by the end of the match. Didn't really shoot any nodes, the shooter seemed not to work either. ",n,n
+El CidL,35,8879,0,0,0,2,0,2,0,single,0,average,average,ground,none,My computer stopped working for half of the match. I did not see autonomous and some of teleop.,n,n
+IshantY,35,9121,0,0,0,2,0,1,0,park,0,none,excellent,both,none,Only scouted half the match but the robot was smooth with movement and was able to score.,n,n
+ZiaH,36,3743,y,0,0,0,0,0,1,0,none,0,none,none,ground,none,was working pretty well in the beginning but at the end became immobile,n
+GenM,36,8114,y,0,1,0,0,0,0,0,park,0,average,average,ground,none,Turning system broke at the start of teleop and could not do anything other than drive around for the whole match,n
+AsheX,36,5892,y,0,3,0,8,0,1,0,none,0,none,excellent,ground,none,note got stuck on robot but they got it off,n
+DmitryM,36,8598,0,0,0,1,0,2,0,single,0,none,poor,both,none,"Very clumsy driving, the red alliance robot kept hitting 8598 at the end so it couldn't score anything ",n,n
+DmitryM,36,8598,0,0,0,1,0,2,0,single,0,none,poor,both,none,"Very clumsy driving, the red alliance robot kept hitting 8598 at the end so it couldn't score anything ",n,n
+IshantY,36,9137,y,0,0,0,0,0,0,0,none,0,none,none,none,none,The robot wasnt able to move at all besides a couple of feet in the first 1 minutes but gained the ability to move later. Was getting hit heavily and moved around the field without interacting with notes or scoring.,n
+El CidL,36,9664,0,0,0,0,0,0,0,none,0,poor,poor,none,many,Drove on top of another bot and literally flattened it. Also bashed into many other bots around the other teams speaker.,n,n
+JackL,37,2789,y,0,0,0,0,0,0,0,park,0,none,poor,ground,none,Shooting system too weak,n
+LBT,37,3679,0,1,0,6,0,1,0,none,0,none,excellent,ground,none,Often pushed other in alliance and dragged at first. ,n,n
+EATW,37,5051,0,0,0,1,0,1,0,park,0,none,poor,ground,none,Got note stuck on wheel for about half the match but fixed,n,n
+EATW,38,4332,0,0,0,0,0,0,0,none,0,none,none,none,none,Didn't move the whole match,n,n
+JackL,38,2583,y,0,0,3,0,0,0,0,single,0,none,average,human,none,Only went for amp,n
+MAXB,37,6357,y,0,0,0,2,0,6,0,none,0,none,average,ground,some,was okay but they kept on shooting underneath the speaker and the note didn't have enough power. Got a  foul for having two notes during autonomous.,n
+LBT,38,9506,y,0,0,0,5,0,2,0,none,0,none,average,ground,none,They only shoot in speaker. Has to reverse a bit to shoot in speaker. ,n
+RithiS,38,9140,0,1,0,5,0,6,0,none,0,none,poor,ground,none,"The robot had to intake and then make a 180 to actually shoot. SInce the driver was medicore, this process took a long time. This combined with the fact that they missed half the shots made them ok at best. They had what I think was a single climber, but didn't use it. I don't think it works",n,n
+RithiS,38,9140,0,1,0,5,0,6,0,none,0,none,poor,ground,none,"The robot had to intake and then make a 180 to actually shoot. SInce the driver was medicore, this process took a long time. This combined with the fact that they missed half the shots made them ok at best. They had what I think was a single climber, but didn't use it. I don't think it works",n,n
+MAXB,39,5103,y,0,1,0,1,0,1,0,none,0,poor,poor,human,none,was just a kit bot that was average all around. only managed to make 2 cycles.,n
+PierceH,39,3847,y,0,5,4,3,1,0,0,none,0,poor,excellent,ground,none,"Great driver, looked skilled
+Played mediocre defense, could be intentional or not
+Scored a lot, especially in auto",n
+AliceW,39,4717,y,0,0,0,0,0,1,0,none,0,excellent,excellent,ground,none,Attempted amp but this broke the intake and it got locked in the ground position ,n
+LBT,39,6369,y,0,0,0,0,0,0,0,none,0,excellent,average,ground,none,"The intake didn't seem to work at first, switched to defense. Couldn't seem to pick up the note. ",n
+LBT,39,6369,y,0,0,0,0,0,0,0,none,0,excellent,average,ground,none,"The intake didn't seem to work at first, switched to defense. Couldn't seem to pick up the note. ",n
+RithiS,39,8625,0,0,1,0,0,0,0,none,0,none,poor,human,none,"For the forst half of the match, they were stuck in a corner. Then they started to really questionably edge their way way to the human player station. Then they got one note in an kitbot-esqe amp scorer and put it in the amp. They had a double climber, but it didn't work.",n,n
+RithiS,39,8625,0,0,1,0,0,0,0,none,0,none,poor,human,none,"For the forst half of the match, they were stuck in a corner. Then they started to really questionably edge their way way to the human player station. Then they got one note in an kitbot-esqe amp scorer and put it in the amp. They had a double climber, but it didn't work.",n,n
+JackL,39,5414,y,0,2,2,6,0,0,0,park,0,none,excellent,ground,none,Crashed into 3847 hard and fast multiple times,n
+PierceH,40,6155,y,0,0,0,0,0,0,0,park,0,none,poor,none,none,"Intake was not working
+Driver clumsy
+Did not score",n
+LBT,40,9448,y,0,0,0,0,0,1,0,none,0,poor,average,human,none,"9448 hit another robot, the battery started to shake, stopped moving for the rest of the match. Looks like a motor fell off.  ",n
+LBT,40,9448,y,0,0,0,0,0,1,0,none,0,poor,average,human,none,"9448 hit another robot, the battery started to shake, stopped moving for the rest of the match. Looks like a motor fell off.  ",n
+AliceW,40,8827,y,0,0,0,4,0,2,0,none,0,none,average,ground,none,got stuck on the amp for 30 seconds but got out and scored again before game ended,n
+MAXB,40,9054,0,0,0,0,0,2,0,park,0,average,average,human,none,tried to shoot but wasn't powerful enough. did a bit of defense on a deactivated bot and then blocked the middle,n,n
+RithiS,40,9418,y,0,1,0,8,0,1,0,double,0,none,excellent,ground,none,"VERY good driver, knew exactly what they were doing. Only missed piece was because another robot hit them while scoring. Only issue was that their auto stopped working after launching their pre-loaded piece. The intake got stuck while trying to load it in. 9.5/10",n
+JackL,40,7175,y,0,0,0,0,0,0,0,park,0,none,average,human,none,shoot power low,n
+PierceH,41,3561,0,0,0,0,0,0,0,single,0,none,average,human,none,Started watching late in the match,n,n
+MAXB,41,9121,y,0,1,0,5,0,2,0,park,0,none,excellent,ground,none,worked really well and was able to make a lot of shots. other team tried to block it but it just bulldozed right through and was pushing the other bots around.,n
+JackL,41,8626,y,0,0,0,0,0,0,0,double,0,average,average,ground,none,Very easy for note to get stuck. Got stuck this round,n
+RithiS,41,8879,y,0,1,0,0,0,2,0,double,0,none,average,ground,none,"The intake and shooter were not reliable, but I only got to see 3 shots because a note got stuck under the intake for the rest of the match. The climb was very strong though.",n
+LBT,41,8507,y,0,0,2,1,0,1,0,double,0,none,average,human,none,Nothing to add,n
+LBT,41,8507,y,0,0,2,1,0,1,0,double,0,none,average,human,none,Nothing to add,n
+AliceW,41,8019,0,1,0,0,0,0,0,single,0,none,poor,none,none,tried to intake once but stopped working towards beginning of match and went to climb also there were a lot of penalty's but no ones sure who did it,n,n
+PierceH,42,5726,y,0,1,0,0,0,0,0,none,0,none,none,none,none,Robot stopped working a couple seconds into the match,n
+MAXB,42,5894,y,0,0,0,0,0,0,0,single,0,poor,poor,none,none,couldn't shoot at all and tried to play defense but it was too slow so our robot was able to just zoom past them.,n
+LBT,42,5503,y,0,0,0,4,0,0,0,single,0,none,average,ground,none,"When positioning to shoot, struggled to get it right. ",n
+LBT,42,5503,y,0,0,0,4,0,0,0,single,0,none,average,ground,none,"When positioning to shoot, struggled to get it right. ",n
+RithiS,42,4364,0,0,0,0,0,0,0,park,0,average,average,none,none,It was that one robot that had nothing on it. For the first half of the mtach it just sat in a corner. Then it started playing some 4/10  defense on 418. It had a climber but I don't think it worked so they just parked,n,n
+RithiS,42,4364,0,0,0,0,0,0,0,park,0,average,average,none,none,It was that one robot that had nothing on it. For the first half of the mtach it just sat in a corner. Then it started playing some 4/10  defense on 418. It had a climber but I don't think it worked so they just parked,n,n
+AliceW,42,9524,0,0,0,0,0,2,0,park,0,none,poor,human,none,failed to ground intake and some slow driving had climber but did not uuite get off the ground,n,n
+JackL,42,418,y,3,0,0,8,0,0,0,park,0,none,excellent,ground,some,Very nice. Code worked,n
+LBT,43,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not move. ,n,n
+LBT,43,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not move. ,n,n
+PierceH,43,8598,0,1,0,9,0,1,0,none,0,none,average,ground,none,"Pretty good
+Scored a lot in speaker",n,n
+JackL,43,3679,y,0,0,0,8,0,0,0,none,0,none,excellent,ground,none,"Good driving + shooting. However, no autonomous perioud stuff.",n
+MAXB,43,5052,0,0,1,1,0,0,0,none,0,poor,average,ground,none,played a bit of defense but it was slow. got a couple shots in but overall was pretty mid.,n,n
+RithiS,43,4610,y,0,0,0,0,0,3,0,none,0,none,poor,human,none,"Only tried to score in amp. Stock KitBot, but had 2 climbers instead of the normal one. I don't know if it works becuase they were too busy trying to score instead of trying to climb.",n
+RithiS,43,4610,y,0,0,0,0,0,3,0,none,0,none,poor,human,none,"Only tried to score in amp. Stock KitBot, but had 2 climbers instead of the normal one. I don't know if it works becuase they were too busy trying to score instead of trying to climb.",n
+AliceW,43,3802,y,1,0,1,0,0,2,3,park,0,poor,excellent,human,some,foul for making contact with red robot next to blues amp for too long smooth driving looks like it could shoot in speaker but got hit while shooting very smooth cycles,n
+AliceW,44,9140,0,0,0,0,0,2,0,none,0,none,poor,ground,none,tape on intake roller broke and shut down the robot kept out taking before they were lined up with the amp,n,n
+RithiS,44,3847,0,0,0,0,0,0,0,single,0,none,none,none,none,Was broken till the last 20 seconds. Then it woke up and hung,n,n
+PierceH,44,8114,y,0,0,0,0,0,0,0,park,0,poor,poor,none,none,"Intake did not work
+Clumsy Driver
+Played mediocre defense",n
+JackL,44,8625,0,0,1,0,0,0,0,none,0,none,average,human,none,Bad intake/feeding system.,n,n
+MAXB,44,8749,y,0,0,0,2,0,2,0,park,0,none,excellent,ground,none,was very fast and scored a lot of speaker shots at the begining but towards the end it wasn't making any shots and didn't have enought power to shoot it all the way up.,n
+LBT,44,5414,y,0,0,2,4,1,5,0,none,0,none,excellent,ground,some,Touching 2 notes in auto. Often over shoot and hit too hard. ,n
+RithiS,45,9664,0,0,0,0,0,0,0,none,0,none,poor,human,none,"The most questionably made, rachet kitbot of all time. Primary made of cardboard. Drove arcoss the field over ane over. No climber",n,n
+RithiS,45,9664,0,0,0,0,0,0,0,none,0,none,poor,human,none,"The most questionably made, rachet kitbot of all time. Primary made of cardboard. Drove arcoss the field over ane over. No climber",n,n
+PierceH,45,6357,y,0,0,0,1,0,5,0,single,0,none,poor,ground,none,"Missed a ton
+Poorish driving",n
+LBT,45,4332,0,0,0,3,1,0,0,park,0,y,none,poor,ground,none,Was really slow and took a bit to shoot. ,n
+LBT,45,4332,0,0,0,3,1,0,0,park,0,y,none,poor,ground,none,Was really slow and took a bit to shoot. ,n
+MAXB,45,9054,0,0,0,3,0,1,0,single,0,none,average,human,none,was an average robot all around not amazing but not bad.,n,n
+JackL,45,6155,y,0,0,0,0,0,0,0,none,0,none,poor,ground,none,"Bad shooting system, low power, shooot arm has atrocious adjustment speed",n
+AliceW,45,4717,y,0,0,2,0,0,1,0,park,0,none,average,ground,none,had difficulty ground intaking/amp scoring outtake mechanism was lopsided and tilting slow overall,n
+PierceH,46,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,"Could not see the robot, assumed that it was immobile at the starting point blocked from my view",n,n
+MAXB,46,5103,y,0,1,0,0,0,1,0,park,0,poor,average,human,many,was OK but wasn't able to make a lot of shots. Mosty tried to do a bit of defense.,n
+LBT,46,7138,0,0,0,0,0,1,0,single,0,y,none,poor,none,none,"Drove around, then around the 50s mark, they started to climb. ",n
+LBT,46,7138,0,0,0,0,0,1,0,single,0,y,none,poor,none,none,"Drove around, then around the 50s mark, they started to climb. ",n
+LBT,46,7138,0,0,0,0,0,1,0,single,0,y,none,poor,none,none,"Drove around, then around the 50s mark, they started to climb. ",n
+LBT,46,7138,0,0,0,0,0,1,0,single,0,y,none,poor,none,none,"Drove around, then around the 50s mark, they started to climb. ",n
+AliceW,46,6369,0,0,0,4,0,2,0,park,0,none,excellent,ground,none,AUTONOMOUS they moved but outtake failed and roller was audibly falling apart a bit got not stuck on top of robot in late game and only one side of climber worked,n,n
+JackL,46,9418,y,0,0,0,1,0,0,0,double,0,y,none,average,ground,none,They got a note stuck in the most bizzare position
+RithiS,46,8879,0,0,0,6,0,0,0,park,0,none,poor,ground,none,"Good robot. Worked well earlier, but faced some sort of technical difficulty this round. Not exactly sure what it was...",n,n
+LBT,47,2583,y,0,2,0,0,0,0,0,single,0,none,excellent,ground,none,"Stopped moving at the 1:45 mark. Battery issue, pilot light is off. ",n
+RithiS,47,9524,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,"Stock kitBot. Had to go across the field each time for each piece. Stopped working halfway through, and rocked as it drove.",n
+PierceH,47,5726,y,0,1,1,0,0,2,0,park,0,none,poor,human,none,"Dropped a lot from human player station
+Clumsy driver",n
+MAXB,47,9506,y,0,0,0,1,0,2,0,park,0,none,average,ground,none,was slow and missed its shots. didn't have enough power to shoot the note into the speaker,n
+JackL,47,3743,y,0,1,0,1,0,0,0,park,0,none,average,human,none,Bad shooting and clunky intake,n
+AliceW,47,9121,0,1,0,4,0,3,0,single,0,none,average,ground,none,verry fast failed amp attempt verry good climb,n,n
+JackL,47,3743,y,0,1,0,1,0,0,0,park,0,none,average,human,none,Bad shooting and clunky intake,n
+LBT,48,9448,y,0,0,0,0,0,1,0,none,0,none,none,none,none,"Stopped moving at 1:50 mark. Battery issue, pilot light out. ",n
+AliceW,48,5892,y,0,3,0,6,0,2,0,single,0,average,excellent,ground,none,verry smoth,n
+MAXB,48,2789,y,0,0,0,0,0,3,0,park,0,none,poor,ground,none,wasn't usefulll to the team. didn't make a single shot and didn't have enough power to shoot it into the speaker or the amp. was really slow as well,n
+MichaelW,48,8507,y,0,0,0,0,0,3,0,park,0,none,average,human,none,"Was limited by being a kitbot, attempted climb but seemed too scared to commit at the last second.",n
+Parinaz E,48,8827,y,0,0,0,5,0,0,0,none,0,none,poor,both,none,Attempted to climb but was touching the ground. Was blocked once and made no attempt to push past it at the end of match.,n
+RubyV,48,4364,0,0,0,1,0,0,0,none,0,none,poor,human,none,"Didn't move that well, got stuck on chain for majority of game",n,n
+MichaelW,49,5503,y,0,1,1,0,0,2,0,single,0,poor,average,both,none,"Took like 40 seconds to climb, really scared of climbing and took time to adjust.",n
+MAXB,49,8610,y,0,0,0,0,0,0,0,park,0,poor,poor,none,none,was no help to our team. itanke got stuck on first note. autonomous code didn't work and they just drove forward the whole field and smashed into a wall. tried to play defesne but were to slow and not helpfull.,n
+Parinaz E,49,418,0,2,0,8,0,1,0,none,0,none,average,ground,none,High note scored. Intake took a note in but shot it out.,n,n
+LBT,49,3561,0,3,3,1,0,0,0,double,0,y,none,average,ground,none,Often shoot in amp. ,n
+AliceW,49,8019,y,0,3,0,6,0,1,0,park,0,y,none,average,ground,none,fast cycle time
+LBT,49,3561,0,3,3,1,0,0,0,double,0,y,none,average,ground,none,Often shoot in amp. ,n
+LBT,49,3561,0,3,3,1,0,0,0,double,0,y,none,average,ground,none,Often shoot in amp. ,n
+LBT,49,3561,0,3,3,1,0,0,0,double,0,y,none,average,ground,none,Often shoot in amp. ,n
+LBT,49,3561,0,3,3,1,0,0,0,double,0,y,none,average,ground,none,Often shoot in amp. ,n
+RubyV,49,5894,0,0,0,0,0,2,0,single,0,none,average,human,none,"Missed in auto, good single climb, fine driving but not scoring",n,n
+MilesF,50,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,Robot just didn't do anything. Never got out of the red safety zone.,n,n
+LBT,50,6357,y,0,0,0,0,0,1,0,none,0,excellent,excellent,ground,none,"Only goal was to target 3847. Guessed on intake, focused on defense. ",n
+MichaelW,50,8114,0,0,0,0,0,0,0,none,0,none,none,both,none,Had connection issues and maybe drivetrain issues. ,n,n
+AliceW,50,4332,y,0,1,0,0,0,2,0,park,0,poor,poor,ground,some,ground intake barely worked and shooter was weak not sure of the penelty but they got one (to long contackt mabey?),n
+Parinaz E,49,4717,y,0,0,3,0,0,0,0,park,0,none,average,ground,none,I think they can't score speaker notes.,n
+RubyV,50,3847,y,0,3,0,6,0,0,0,park,0,none,excellent,both,some,"Shot 2 notes at once, fantastic driving--very smooth",n
+AliceW,51,8879,0,0,0,0,0,0,0,none,0,none,none,none,none,didnt show to match,n,n
+Parinaz E,51,5052,0,0,0,3,0,1,0,none,0,none,poor,ground,none,Was pushed around a bit.,n,n
+MAXB,51,5414,y,0,3,0,9,0,0,0,none,0,none,excellent,both,none,was extermely good and scored more than half of the teams speaker shots. got greedy and tried to get an extra note at the end but didn't have enought time to finish the cycle.,n
+LBT,51,9140,0,0,0,8,0,0,0,park,0,average,excellent,ground,none,"Had shooter issues, fixed but still made many sounds. Tore up a note. Didn't foul, but took note from other team human player station. ",n,n
+RubyV,51,6155,y,0,0,0,0,0,1,0,none,0,average,poor,none,none,Just kind of pushed around the notes (couldn't do ground intake),n
+MichaelW,51,8598,0,1,0,4,0,2,0,park,0,none,average,ground,none,"Has the cringe clunky all in one shooter intake, didn't attempt climb?? Got too greedy trying to shoot in the speaker",n,n
+MAXB,52,9121,y,0,0,1,2,0,0,0,none,0,none,poor,ground,none,was doing ok and managed to score some shots but halfway throught they slamed into the speaker and it broke so it couldn't move for the rest of the match.,n
+MichaelW,52,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,Bot just wasn't present.,n,n
+AliceW,52,4610,0,0,3,0,0,1,0,park,0,none,average,human,some,fould in AUTONOMOUS for touching 2 notes only mised when trying to shoot speaker fast amp cycles,n,n
+LBT,52,9506,y,0,0,0,6,0,1,0,park,0,none,average,ground,some,Had a bit of intake problems. Has to stand back a bit for speaker shooting. Unsure of reasoning of penalties.  ,n
+Parinaz E,52,9054,y,0,0,0,3,0,1,0,single,0,none,average,both,some,I don't know why they got a foul. High note scored.,n
+RubyV,52,8625,0,0,0,0,0,0,0,none,0,none,poor,none,none,"Attempted human player intake but missed 4-5 times, disabled for a large portion of the match before moving",n,n
+MAXB,53,6369,y,0,1,0,3,0,0,0,none,0,none,excellent,ground,none,was good overall and pretty quick. they struggled a bit with the intake but made all their shots. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+RubyV,53,8507,y,0,0,0,1,0,0,4,park,0,none,average,human,none,Good strategy: passing notes to teams,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+LBT,53,3743,y,0,0,0,0,0,1,0,none,0,none,poor,human,none,Stopped moving at the 1:30 mark. Moved last few seconds. ,n
+MichaelW,53,9524,y,0,0,0,0,0,2,0,none,0,none,poor,both,none,Ground intake was so bad that they just used only the Human intake. Didn't park at the very end despite being a foot away from the stage????,n
+AliceW,53,4364,0,0,0,0,0,0,0,none,0,poor,poor,none,none,no intake at all just poor defenc and a climber that has never been used this might actualy be last years robot with a climber slaped on atp,n,n
+Parinaz E,53,3679,0,0,0,8,0,3,0,none,0,average,excellent,human,none,A good choice.,n,n
+LBT,54,5503,y,0,1,0,3,0,2,0,double,0,none,average,ground,none,Was really slow driving and shooting. ,n
+RubyV,54,9448,y,0,0,0,0,0,0,2,none,0,none,average,human,none,Clunky driving at times but slick/fast for moving long distances,n
+Parinaz E,54,8019,0,1,0,10,0,0,0,none,0,none,excellent,ground,none,Excellent speed. Can intake from all directions. Choose this team.,n,n
+MAXB,54,2789,y,0,1,0,1,0,1,0,park,0,none,poor,both,none,was slow and not very agile. intake wasn't working well. coulnd't shoot well,n
+AliceW,54,8827,y,0,0,0,4,0,5,1,double,0,none,poor,ground,none,speaker was fairly reliable although clunky most misses were interference ,n
+MichaelW,54,5103,y,0,0,0,0,0,2,2,park,0,none,average,human,none,Used cardboard for articulating flap(kinda funny). Literally just a kitbot. Driver pauses for a few seconds after they are defended in any way.,n
+Parinaz E,55,8610,0,0,0,0,0,0,0,none,0,none,none,none,none,DID NOT SHOW.,n,n
+RubyV,55,3802,y,1,0,0,4,0,0,0,none,0,average,average,human,none,Solid speaker cycles,n
+LBT,55,2583,0,1,1,1,0,0,0,none,0,none,average,both,none,Stopped moving at the 1:00 mark. ,n,n
+AliceW,55,5892,y,0,0,0,0,0,0,0,park,0,excellent,excellent,ground,some,shooter broke in AUTONOMOUS and they switched to good defenses immediately contact fouls i think,n
+MAXB,55,9418,y,0,1,0,4,0,0,0,single,0,average,excellent,ground,none,"was a decently fast robot and had a medium speed intake
+stopped trying to get points halfway throught and played deffense but didn't do that good at it",n
+MichaelW,55,418,y,0,3,0,6,0,0,0,park,0,none,excellent,both,none,"First note in auto still not shot first. Spinning a bit much, lost a couple seconds for the round.",n
+AliceW,56,8749,y,0,0,1,1,0,2,0,none,0,poor,average,ground,some,started stopping randomly and eventual full stop unstable but fast foul for hitting in a red zone,n
+MichaelW,56,9664,0,0,0,0,0,0,0,none,0,none,none,none,none,"Robot was gone, from past matches, they seemed really unstable and robot jumped as if the back wheels have more power than the front.",n,n
+SoumikC,56,7138,y,0,0,0,0,0,0,0,park,0,none,poor,none,none,"having trouble with manuevering around the field elements, may be a thing to consider with the driver. They are mainly pushing around the notes on the field to the others since they don't have ground intake.",n
+LBT,56,5894,y,0,0,0,0,0,1,0,single,0,poor,average,human,none,"Hoarding and send to the other side. Then tried to play defense, didn't do well. ",n
+MAXB,56,5726,y,0,1,0,0,0,3,0,none,0,none,average,both,none,ground intake wasn;t working well and the human player intake took them the whole match to get one note into it. kept on grabbing it then dropping it.,n
+RubyV,56,3561,y,0,2,2,0,2,1,0,park,0,none,average,ground,none,"Great auto, good ground intake/scoring with some drops",n
+SoumikC,57,6357,y,0,0,0,0,0,0,0,none,0,poor,poor,none,none,The robot stopped moving in the middle of the match. It got disabled but was only moving around for most of the match (not truly defense)>,n
+RubyV,56,9137,0,0,0,0,0,0,0,none,0,none,none,none,none,Disabled for entire match,n,n
+MAXB,57,9506,y,0,0,0,2,0,2,0,park,0,none,average,ground,none,was decent and made a couple shots. however at the end it didn't have enought force to shoot the notes all the way up the speaker,n
+LBT,57,5414,y,0,2,0,9,0,4,0,park,0,y,none,excellent,ground,some,Caught touching 2 notes at a time. Can shoot from a very far distance with a good chance of success. 
+AliceW,57,8879,0,0,0,0,0,1,0,single,0,y,poor,poor,none,some,missed auto due to collision with other team got not stuck under robot for half match ground intake did not work (foul for collision in red area),n
+MichaelW,57,8114,0,0,0,3,0,0,0,none,0,average,average,both,none,"Had connection issues again. The structural integrity of the shooter scares me, one full send and it may break. Communicated immediately after they broke down",n,n
+LBT,58,4610,y,0,0,2,0,0,2,0,single,0,y,none,poor,human,some,2 touch in auto. Only scored in amp. 
+AliceW,58,9054,0,0,0,1,0,0,0,single,0,y,poor,poor,none,none,good climb but was stopped for the first half of the match and then suddenly started,n
+SoumikC,58,8507,y,0,0,0,0,0,0,6,none,0,none,average,human,none,"It takes a really long time for this robot to pick up pieces. Although it used the hoarding strategy to give game pieces to other teams, it took a very long time to get these pieces, which helped them score more points.",n
+CC,58,3847,y,0,5,1,9,0,2,0,park,0,none,excellent,both,none,"Business as usual, Spectrum absolutely sweeps and keeps churning notes into the speaker with fast cycles.",n
+MAXB,58,8598,0,0,0,0,0,1,0,park,0,none,poor,none,none,missed its one shot then couldn't pick up another one and just drove in circle and did a bit of deffense,n,n
+MichaelW,58,6369,y,0,1,0,6,0,0,0,none,0,average,average,both,none,"Got too greedy at the end and didn't park. Scared when they might have gotten a foul. Indexer seems to have issues. Shooter is very wobbily, could break in certain situations.",n
+rachit is awesome,59,4332,0,0,0,0,0,0,0,none,0,average,average,none,none,intake couldn't pick up off the ground,n,n
+CC,59,9524,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not move at all.,n,n
+AliceW,59,4364,0,0,0,0,0,0,0,park,0,average,poor,none,none,this is the bot with no intake that looks like last years slapped on it ,n,n
+LBT,59,6155,y,0,0,0,1,0,0,0,none,0,average,average,none,some,2 note touch in auto. Got note stuck in the middle area and couldn't take out for the rest of the time --> defense. ,n
+MAXB,59,3679,y,0,1,0,8,0,2,0,none,0,none,excellent,ground,none,"really fast and agile, scored a lot of shots and was able to doge any defense it encountered",n
+MichaelW,59,5103,y,0,1,0,3,0,1,0,park,0,average,average,both,some,Double note foul. Didn't use ground intake. Only defended in retalliation.,n
+ArunV,60,4717,y,0,0,3,0,0,0,0,park,0,none,average,ground,none,Mainly scored amp.,n
+CC,60,5892,y,0,0,0,0,0,0,0,single,0,average,average,none,none,"Attempted to play defense the entire time, did a mediocre job of it.",n
+Soumik C,60,5052,0,0,0,3,0,0,0,single,0,none,average,ground,none,"Having trouble holding on to the notes. They had to pick up the notes and got rid of them for a long period of time. Other than that, this robot did a good job as they were able to score more notes (than usual) in the speaker.",n,n
+LBT,60,9121,y,0,1,0,2,0,2,0,single,0,none,average,ground,some,"Foul in auto, touched 2 notes. Shoots from the side. Stopped moving at the 45s mark. ",n
+MAXB,60,9418,0,1,0,6,1,1,0,park,0,none,excellent,ground,none,very fast agile robot.has a quick intake that worked well and only missed one shot. managed to doge a lot of defences and made some shots from a difficult angle.,n,n
+MichaelW,60,5503,y,0,1,0,5,0,0,0,single,0,none,average,ground,none,"Intake is too slow(+over the bumper yuck) climber takes too long to extend. Driver is a solid choice though, very reliable but nothing special.",n
+CC,61,7138,y,0,0,0,0,0,0,0,park,0,poor,poor,none,none,Wandered aimlessly and played poor defense.,n
+ArunV,61,9664,y,0,0,0,0,0,0,0,park,0,none,poor,human,none,Alpha bot -,n
+MAXB,61,2583,y,0,1,2,0,0,1,0,none,0,none,average,both,none,ground intake didn't work so they had to rely on human player but with human player intake they can only score in the amp. shut down halfway through.,n
+LBT,61,8749,y,0,0,1,0,0,1,0,park,0,average,average,ground,none,"Hit tower, something broke (maybe intake). Then played defense. ",n
+SoumikC,61,418,y,0,4,0,3,0,0,0,park,0,y,none,excellent,both,none,"In this match, the ground intake was not working. Regardless, the team was able to score a lot of different nodes even with our human player intake. Great job, 418!"
+MichaelW,61,8019,0,1,0,6,0,0,0,park,0,none,excellent,both,none,Honestly solid bot. Auto is kind of meh. ,n,n
+LBT,62,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,There was no robot. ,n,n
+ArunV,62,9140,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not show up during match,n,n
+MAXB,62,3743,0,0,0,0,0,1,0,park,0,poor,average,none,none,couldn't pick up any puieces so after it missed its first shot so it kinda just stayed around the centert of the field.,n,n
+NoamW,62,8610,y,0,0,0,0,0,4,0,none,0,none,poor,ground,none,Slightly modified kitbot with a fold forward intake that seemed to work very well but shooter was just barely not powerful enough so it kept falling short. Also very clunky movement,n
+SoumikC,62,9448,y,0,0,1,2,0,0,0,park,0,none,average,human,none,"It is a decent alphabot that could work well with a driver. It had a lot of time to pick up notes, but took up too much time gathering them. It would not be efficient to work with.",n
+MichaelW,62,5726,y,0,1,3,2,0,0,0,park,0,none,average,both,none,"Kind of hate the extending human intake, bit slow and clunky. ",n
+LBT,63,2789,y,0,0,0,1,0,0,0,park,0,poor,poor,ground,none,Intake problems. ,n
+MAXB,63,3561,y,0,2,1,0,0,1,0,none,0,none,average,ground,none,disconnected at the start if the march but reconnected later and then disconected again.,n
+SoumikC,63,8625,0,0,0,0,0,2,0,none,0,none,poor,human,none,"This robot took a very long time to position itself properly. This was done when trying to score in the amp, but this did not happen. They are moving very slowly and it feels as if the driver does not have much experience.",n,n
+NoamW,63,8827,y,0,0,0,4,0,0,0,park,0,none,excellent,ground,none,Played very well,n
+MichaelW,63,3802,0,0,0,2,0,1,1,park,0,none,poor,human,none,"Very clunky driving
+",n,n
+ZW,64,3679,y,0,0,0,8,0,3,0,none,0,none,average,ground,none,N/A I don't remember,n
+AryaK,64,9054,0,0,0,4,0,0,0,single,0,average,average,both,none,They mainly focused on getting notes from the human intake area,n,n
+AdityaG,66,5503,y,1,0,1,2,0,0,1,park,0,excellent,average,ground,none,"Played heavy defense, cornered robots to stop red points. team was successful",n
+ZW,65,9121,y,0,1,0,4,0,0,0,single,0,y,none,average,ground,none,I don't remember
+AryaK,65,4717,0,0,0,0,0,0,0,none,0,excellent,average,ground,none,They didn't really get any points. Played good defense though.,n,n
+ben,64,9506,0,0,0,1,0,1,0,none,0,average,average,human,none,Had a kitbot design,n,n
+ben,64,9506,0,0,0,1,0,1,0,none,0,average,average,human,none,Had a kitbot design,n,n
+ben,68,5103,y,0,0,0,0,0,2,0,none,0,poor,average,human,none,"Low power shooter, missed all speaker shots. Battery knocked out mid-match.",n
+ZW,68,9448,y,0,0,0,0,0,0,7,park,0,none,average,human,none,They hit the battery out of a robot and their stategy was to pass notes,n
+AryaK,68,8114,0,0,0,5,1,0,0,none,0,none,excellent,ground,none,"Focused on notes from the other side, made the mistake of trying to get another point instead of climbing.",n,n
+AdityaG,68,3802,1,0,3,0,0,2,1,single,0,average,average,human,none,"very offensive driver, focused on amp",n,n
+lydiad,68,8879,y,0,1,0,7,0,3,0,single,0,none,poor,ground,none,not sure ab fouls and amp during teleop,n
+AzielQ,68,3561,y,0,0,3,0,0,1,0,y,0,none,1,Spam amp strategy
+ZW,66,9664,y,0,0,0,0,0,0,0,none,0,average,poor,human,none,They only picked up one note and did not shoot it. A few times they randomly stopped moving,n
+AryaK,66,6155,y,0,0,0,0,0,0,0,none,0,average,poor,both,none,"They got stuck on the chain for a while, started blocking after.",n
+ben,65,8507,y,0,0,0,1,0,0,0,none,0,none,poor,human,none,They had missed a speaker note,n
+AdityaG,67,4610,1,0,0,1,0,0,0,park,0,average,poor,human,none,"Clunky driving, attempted climb, offensive",n,n
+AryaK,66,6155,y,0,0,0,0,0,0,0,none,0,average,poor,both,none,"Got stuck on the chain for a while, blocking more than shooting.",n
+AzielQ,69,8625,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not partcipate,n,n
+AdityaG,69,2789,0,0,0,5,0,1,0,park,0,none,average,ground,none,made good speaker shots,n,n
+ben,69,7138,0,0,0,0,0,0,0,none,0,none,poor,human,none,Shooter did not seem to work. ,n,n
+AryaK,67,5892,y,0,2,0,6,0,0,0,single,0,none,excellent,both,none,Played very fast.,n
+ZW,69,4332,y,0,1,0,0,0,0,0,park,0,poor,poor,ground,none,They picked up one note did not shoot is and just kind of slowly wandered around the field. They might have gotten one foul but it was hard to tell,n
+lydiad,69,8610,y,0,0,0,1,0,0,0,park,0,none,poor,ground,none,something malfunctioned? stopped shooting and wasn't able to climb,n
+AryaK,69,9254,0,0,0,0,0,0,0,none,0,poor,poor,human,some,"""Yellow flag"" stayed still and appeared ""stuck"" for a while on the opposing side. Clunky, slow, and appeared to try a hoarding mechanism.",n,n
+ZW,67,5726,y,0,1,2,1,0,1,0,none,0,none,average,human,none,I did this when there was no ethernet so I don't remember,n
+AzielQ,66,4364,y,0,0,0,0,0,0,0,park,0,none,poor,none,none,Connectivity issues,n
+ben,66,8749,y,0,0,0,0,0,0,0,single,0,excellent,excellent,human,none,"Note was stuck in robot preventing shooting, but had really good defense.",n
+lydiad,66,9418,y,0,3,0,8,0,-1,0,1,none,2,unsure about intake + fouls,n
+AryaK,70,418,y,0,5,0,3,0,0,0,none,0,none,excellent,ground,none,"W plays, very good auto.",n
+AdityaG,70,5894,0,0,0,0,0,0,0,single,0,poor,none,ground,none,"didnt do much, no attempt to score",n,n
+lydiad,70,9140,0,0,2,0,0,0,0,park,0,poor,average,ground,some,unsure about fouls + intake type. shooter didnt seem to work,n,n
+ZW,70,5052,0,0,0,0,0,0,0,none,0,average,poor,ground,some,They got a note stuck so they couldn't do anything all match. I think they got fouls for having two notes,n,n
+ben,70,8827,y,0,0,0,6,0,2,0,single,0,none,average,ground,none,Fast ground intake and good at scoring into speaker. Shooter sometimes too little power.,n
+AzielQ,70,3743,0,1,0,0,0,1,2,park,0,average,average,human,none,"The robot was relatively slow with a slow launch but was useful to defense and overall team, did not really score points, just passed and blocked",n,n
+lydiad,65,9137,y,0,0,0,0,0,2,0,park,0,none,none,none,none,"not sure abt fouls, robot stopped working early on i think",n
+ZW,71,5503,y,0,0,0,5,0,3,0,park,0,none,average,ground,none,They picked up all the notes on the ground to score,n
+AryaK,71,9506,y,0,0,0,1,0,0,0,none,0,poor,average,ground,none,"Tried to help teammate against defense, had very little pushing force against the defense however.",n
+AzielQ,71,9121,y,0,1,0,4,0,2,0,single,0,none,average,ground,none,"This robot was relatively average, had an okay launcher and okay driver, better than average speaker spam strategy",n
+ben,71,8507,y,0,0,0,0,0,0,4,park,0,none,average,human,none,fast at passing notes down field.,n
+lydiad,71,6155,y,0,0,0,0,0,0,0,none,0,poor,poor,none,some,issues with robot? not sure about fouls but they stayed around the red side for most of the time ,n
+AdityaG,71,9137,y,0,0,0,0,0,0,0,park,0,none,poor,none,some,"robot shooter broke (rammed into wall), unable to do anything
+
+might be damaged
+
+foul - controlling two notes during auto
+cant have a stationary part outside of perimeter
+",n
+AdityaG,71,9137,y,0,0,0,0,0,0,0,park,0,none,poor,none,some,"robot shooter broke (rammed into wall), unable to do anything
+
+might be damaged
+
+foul - controlling two notes during auto
+cant have a stationary part outside of perimeter
+",n
+lydiad,72,6369,y,0,0,0,0,0,0,0,none,0,none,none,none,none,stopped workimg ,n
+ben,72,9054,y,0,0,0,1,0,2,0,single,0,none,average,human,none,"Bad aiming, low power shooter. No auto. Built like alphabot, unique climber.",n
+AryaK,72,5892,y,0,2,0,0,0,0,0,single,0,poor,poor,ground,none,"Decent defense towards the end. Very bad at the beginning: random pauses, going around in circles without any clear intent, completely missing easy defense blocks.",n
+ZW,72,3847,y,0,5,1,10,1,0,0,park,0,none,excellent,ground,none,There was a little bit where some of the other teams were able to block them from getting notes pretty well,n
+AdityaG,72,2583,0,0,2,1,0,1,0,single,0,none,average,human,none,"very fast climb, very speedy robot but clunky-ish driving. collision along with climb at the end. ",n,n
+AzielQ,72,8749,y,0,0,2,4,0,1,0,double,0,none,excellent,ground,none,"Very fast and skilled driver that moved quickly across field, took advantage of rings everywhere, balanced amp and speaker scoring cycle",n
+AdityaG,65,6369,1,1,0,7,0,3,0,park,0,none,average,ground,none,"very good/fast shooter, team scored 44-7",n,n
+AzielQ,67,2583,0,1,3,0,0,0,0,park,0,none,average,human,none,"Okay team overall, just spam amp strategy",n,n
+ben,73,6357,0,0,0,0,0,0,0,none,0,none,none,none,none,"No movement at all during match even with power on.
+",n,n
+AryaK,73,8879,0,0,0,1,0,0,0,single,0,y,poor,average,ground,none,"Missed a lot of open and easy speaker shots, appeared to be a lack of power.",n
+AdityaG,73,3802,1,0,3,0,0,1,0,park,0,none,average,human,none,"smooth driving, but very slow. Focused on amp and hit most shots.",n,n
+ZW,73,4364,0,0,0,0,0,0,0,park,0,poor,poor,none,none,It was basically immobile because when it would move it would randomly drift in a direction or make weird circles,n,n
+AzielQ,73,8019,0,1,0,6,0,3,0,park,0,y,none,excellent,ground,none,"Overall smooth driving and even with average speed was able to quickly get across the field, but missed a lot of shots close to speaker because it was at the wrong angle",n
+lydiad,73,8598,y,0,0,0,5,3,1,0,park,0,none,average,both,none,unsure abt fouls (?) i dont think any,n
+AdityaG,64,3847,y,1,0,0,5,0,0,0,single,0,average,excellent,ground,none,"Jammed note disrupted system, otherwise very offensive",n
+AdityaG,74,9418,0,0,1,5,0,2,0,park,0,none,average,human,none,"one shot missed (bad angle)
+smooth driving, ",n,n
+ZW,74,5726,0,0,3,0,0,0,0,park,0,none,average,human,none,They might have gotten one in the speaker during auto but a giant pear walked in front of me,n,n
+AryaK,74,8625,0,1,0,2,0,0,0,none,0,none,average,both,none,Waited for a while at the human intake spot but didn't do much besides a few shots at the start.,n,n
+ben,74,4332,0,1,0,0,0,0,0,none,0,average,average,none,none,"Played defense the entire time, no attempt to shoot or score.",n,n
+AzielQ,74,3561,y,0,1,2,2,0,1,0,single,0,none,poor,ground,none,"Had okay stragey of switching between amp and speaker but wasnt very good at moving around, bad driver",n
+ben,67,4597,0,0,0,0,0,0,0,none,0,none,poor,none,none,"Had a human intake, it had trouble driving especially turning.",n,n
+lydiad,74,3679,y,0,1,0,5,0,2,0,none,0,average,average,both,none,shot right after robots on their team did. played some average defense sometimes but was overall more aggressive and tried shooting in the speaker themselves most of the time. i don't think they tried touching amp (?),n
+AzielQ,68,5414,0,1,0,6,0,3,0,park,0,none,excellent,ground,none,"Overall very skilled driver that efficiently moved across the field and also had a very good launcher that missed a lot when they were far away but worked well to get rings close to the speaker, so even when they missed it could be  considered a pass, were very quick to score",n,n
+lydiad,64,6357,y,0,0,0,0,0,0,0,none,0,none,average,ground,none,super unsure about this probably good to ignore,n
+LaurenB,75,4597,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not appear,n,n
+ben,75,9664,0,0,0,0,0,1,0,none,0,poor,average,human,none," missed note (speaker) during auto. Low power shooter, missing speaker shots. Stopped moving for a little mid match. Completly stopepd near end after ramming pole.",n,n
+lydiad,75,4717,y,0,0,4,0,0,0,0,park,0,none,poor,ground,none,unsure about fouls. they didn't really even try to score in the speaker,n
+AryaK,75,9140,0,0,1,2,1,0,0,park,0,none,average,ground,none,"very quick, good shooting method for the speaker.",n,n
+AdityaG,75,8610,0,0,0,2,0,0,0,park,0,none,poor,human,some,"foul in auto, pushed some other robots
+
+lost control in auto, went too far, collided with other robots
+
+slow robot, or slow driving
+taking a while to shoot",n,n
+AzielQ,75,8827,y,0,0,0,8,0,2,0,park,0,none,average,ground,none,"Great ground intake that picked up efficiently, not fast speed but was able to get a lot of shots because blue team defense was not good, reliable shots",n
+AliceW,76,8114,0,1,4,3,0,1,0,none,0,none,average,ground,none,could have better auto but conflicted with another robot outtake is very wobbly but works ,n,n
+DmitryM,76,5894,y,0,0,0,1,0,2,0,single,0,none,poor,human,none,"Dropped a node during auto due to very low outtake RPM. Were probably having connection issues in the middle of the match, so they didn't show their full potential. Sometimes the outtake was running at very low RPM so they would just drop the piece. Pretty flimsy but stable climbing mechanism. ",n
+Maddie D,76,9448,y,0,0,0,0,0,0,5,none,0,none,average,human,none,Speedy but intake takes a while and human players weren't consistent. Overall wasn't bad but didn't have enough power to launch to speaker.,n
+IshantY,76,9524,y,0,0,0,1,0,0,0,park,0,poor,poor,human,none,"The driving was pretty bad and they weren't able to efficiently get any rings from the human player station, they only got one ring the entire match. They tried to play defense towards the end and struggled.",n
+LaurenB,76,5052,0,0,0,0,0,0,0,park,0,poor,poor,none,none,"No auto, connection issues for first half? started moving but did not cross center line, tried playing defense and stop other team from accessing intake area. barely mobile, not sure if it was driver or connection issues",n,n
+Parinaz E,76,4610,y,0,0,1,0,0,2,0,none,0,average,poor,human,none,Limited ability to score because of human intake. Both teams achieved coopertition. Possible fouls but unlikely.,n
+Maddie D,77,7138,y,0,1,0,0,0,1,2,single,0,none,poor,human,none,"SUPER SUPER slow. Entire robot seems inefficient. Overall the robot could not launch, it could only drop notes, which it did to pass. Blocked teammates because of how slow it was.",n
+Parinaz E,77,5414,y,0,0,1,10,0,2,0,none,0,average,excellent,both,none,Really fast. Scored a lot.,n
+MAXB,77,3743,0,0,0,1,0,2,0,park,0,poor,average,human,none,was average but its intake was pretty mid. had to go to human player and wasn't very quick becaus ethey hyad to line it up perfectly. also had trouble lining up and shooting into the speaker. did a bit of defence but it wasnt that great and not that agile.,n,n
+IshantY,77,5103,y,0,0,0,0,0,2,0,none,0,average,poor,human,some,"They died for 30 seconds in the match but played really good defense at the end stopping us from parking. They werent able to get many human player intake notes, only got 2 notes but didnt score any of them. They dropped 4 notes from the human player intake and missed their preloaded note in auto.",n
+AliceW,77,418,0,2,0,7,0,0,0,none,0,none,excellent,ground,none,Auto was working but slowed down?,n,n
+DmitryM,78,4364,y,0,0,0,0,0,0,0,none,0,none,none,none,none,"The robot just randomly moved across the field, most likely connection issues. ",n
+Maddie D,78,8879,0,1,0,1,0,2,0,park,0,none,poor,ground,none,Ground intake was not working and took round 4-5 tries to pick up one note. Driving was slow.,n,n
+Parinaz E,78,9506,y,0,0,0,3,0,1,0,park,0,y,average,average,both,some,"Foul: Entered the source zone. Not bad, could be better with the right team."
+AliceW,78,9054,y,0,0,0,2,0,0,0,single,0,average,average,human,none,stuck at a slow speed for a few seconds but very good driver and climber got not stuck towards the end,n
+LaurenB,78,3847,y,0,3,3,4,3,0,0,none,0,none,excellent,ground,none,"very speedy, missed one speaker during auto bc of note hitting another note midair, driver is very smooth but a little reckless? strat is doing one amp, another teamate does amp, then amplifying speaker and shooting 1-2 notes in speaker. did defense for last 5 seconds of endgame to stop oposing robot from parking",n
+IshantY,78,5503,y,0,0,0,4,0,1,0,park,0,poor,poor,ground,none,They had mobility during auto but their ground intake couldn't pick up their note. They were able to use their ground intake well during tele. Their intake is really slow and they were struggling with driving towards the end of the match. They were hitting the stage and other robots frequently.,n
+IshantY,79,8598,0,1,0,2,0,0,0,park,0,none,average,ground,none,"They were doing well, intake was smooth and were going up and down well. Towards the middle of the match they got hit and their shooter mechanism broke so they parked for the last 45 seconds.",n,n
+DmitryM,79,8019,0,1,0,8,0,1,0,none,0,none,average,both,none,Fast and stable speaker cycle,n,n
+Parinaz E,79,8625,0,1,0,1,0,1,0,none,0,y,none,average,both,none,Good cooperation at the beginning.,n
+Maddie D,79,5726,y,0,1,1,3,0,0,0,park,0,none,average,human,none,"Decent overall, didn't score much but was kind of speedy.",n
+LaurenB,79,8507,y,0,0,0,0,0,0,0,park,0,none,poor,human,none,"connection/movement issues, tired amp",n
+AliceW,79,6357,y,0,0,0,0,0,1,0,none,0,average,average,none,many,shooter malfunctioned and then intake stooped working i believe some penelty for breaking 8598 and shut down in the red area towards the end,n
+Parinaz E,80,5892,0,4,2,5,0,2,0,none,0,none,excellent,ground,none,Red achieved co-opertition. Fast.,n,n
+MAXB,80,9121,y,0,1,0,3,0,3,0,none,0,none,excellent,ground,none,was really fast and smooth. Intake worked really well but when it tried to shoot sometimes the shooter didn't have enough power and the note would fall back down,n
+LaurenB,80,6369,0,1,0,5,0,0,0,none,0,none,average,ground,none,"lost connection in last 30 seconds and was immobile. very consistent shooter, dropped note during auto. driver collided with stage a few times.",n,n
+Maddie D,80,9664,y,0,0,0,2,0,0,0,park,0,poor,poor,human,none,Chunky with no balance. Takes FOREVER to fire.,n
+AliceW,80,3802,y,0,0,2,0,0,2,0,none,0,none,none,none,none,had amp auto but missed good climb but other robot drove under them so it didn't count,n
+IshantY,80,9140,y,0,0,0,8,0,1,0,none,0,none,excellent,ground,none,"Able to cycle very quickly, their intake and driving very smooth and their shooter is very reliable. They dont score or preload during auto and drive to the middle.",n
+MAXB,81,5052,0,0,0,0,0,0,0,none,0,none,none,none,none,broke down and shifted in place a bit at the begin but didn't do anhything else.,n,n
+IshantY,81,9137,y,0,0,0,0,0,0,0,none,0,poor,poor,none,none,"Extrmley shaky, didnt know what they were doing couldnt move well at all and their entire intake mechanism fell off.",n
+Parinaz E,80,8749,y,0,0,2,4,0,1,0,single,0,none,excellent,both,none,Seems to be better at amp. Was pushed around a little.,n
+AliceW,81,9524,y,0,0,0,0,0,1,0,park,0,poor,poor,human,some,stops randomly for periods of 10-30 seconds 3 times foul for touching 2 notes in auto ,n
+Maddie D,81,8827,y,0,0,0,7,0,3,0,park,0,none,average,ground,none,"Okay ground intake, mostly average robot. Did miss quite a bit, but scores quickly afterwards.
+",n
+LaurenB,81,8610,y,0,0,0,0,0,1,0,park,0,none,poor,ground,none,"attempted to climb but failed, kinda just sat by the stage for most of teleop. tried going to intake area but was stopped by opposing robot, driver doesn't seem very good",n
+LaurenB,82,3743,0,0,0,0,0,0,0,none,0,none,none,none,none,"tired scoring speaker during auto but missed, disabled for rest of match",n,n
+Parinaz E,82,5414,y,0,1,2,13,0,1,0,none,0,none,excellent,ground,none, It would be a good pairing. Really good speaker scoring. Bad autonomous.,n
+IshantY,82,4332,y,0,0,0,0,0,0,0,park,0,poor,poor,none,none,"Tried to play defense, wasn't great at all and couldnt shoot or use intake.",n
+MAXB,82,9448,y,0,0,0,0,0,0,5,park,0,none,average,human,none,was a really good assist robot. loaded in the notes quickly and then then sped to the other side of the field to pass the notes to its teammates. mostly pased the notes to the amp,n
+Maddie D,82,3679,y,0,1,0,6,0,1,0,none,0,none,excellent,ground,none,"Extremely susceptible to agile yet heavy defense, spins out of defense. Doesn't do well without good teammates, would be good with a defense and a amp. Only goes for speaker.",n
+AliceW,82,7138,y,0,1,0,0,0,0,0,park,0,y,average,poor,none,none,woblly outtake very slow drive no intake only one climber arm works
+LaurenB,83,5103,y,0,1,0,0,0,0,0,none,0,none,none,none,none,"disabled for all of teleop, possibly caused by big collision with teamate right after auto",n
+MAXB,83,4597,y,0,0,0,0,0,0,0,park,0,poor,average,none,none,robot broke so it couldn't move well. tried to play defense but due to its lack of mobility it wasn't able to do it well. just kinda wiggled around on its spot. but managed to park at the very end.,n
+AliceW,83,9418,y,0,1,0,1,0,1,0,single,0,average,average,ground,none,intake broke after 1 use and started playing defense good climb,n
+Maddie D,83,2583,y,0,1,1,0,0,1,0,park,0,none,poor,both,none,"Intake was slow, scores amp and speaker, off balance. Kind of jerk-y (driving).",n
+Parinaz E,83,8114,y,0,1,0,0,0,0,0,none,0,excellent,excellent,ground,none,REALLY GOOD DEFENSE.,n
+IshantY,83,5894,y,0,0,0,0,0,0,0,single,0,none,poor,human,none,Their shooter broke so they had one note stuck in their intake the entire match. They struggled with driving but was able to climb well at the end.,n
+ArunV,1,7271,0,0,0,0,0,0,0,none,0,none,none,none,none,Was disabled for entire match,n,n
+Ben,1,9081,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not move.,n,n
+KeaganF,1,6672,y,0,2,1,0,0,1,0,single,0,none,excellent,ground,none,Good auto but had a bad intake and got a note stuck for almost all of the match.,n
+henryh,1,4153,0,0,0,8,0,1,0,park,0,none,average,ground,none,"Good robot, seemed like the autonomous didn't work, the only reason it didn't play defense is because neither of the robots on the other team moved.",n,n
+MichaelW,1,7540,0,1,0,0,0,0,0,park,0,none,poor,both,none,Ground intake was so bad that they scored no points in auto. Didn't try source intake??? Did nothing for the rest of the match,n,n
+ArunV,2,7321,0,0,0,0,0,0,0,none,0,none,none,none,none,Was not here,n,n
+ben,2,2687,y,0,4,0,2,0,2,0,single,0,y,none,excellent,ground,none,"Good at speaker score, bad at amp."
+MichaelW,2,9492,0,0,3,2,0,0,0,park,0,none,poor,both,none,"Surprisingly somewhat dependable amp scorer. Driving quality is not really good though, had trouble with finding notes, as well as got themselves lodged into the stage. ",n,n
+KeaganF,2,7503,0,1,0,1,0,2,0,single,0,none,average,both,none,It had a weak shooter that missed sometimes and mainly focused on human intake. It managed to pick up one piece of the ground.,n,n
+henryh,2,9105,0,2,0,2,0,5,0,park,0,none,average,ground,none,"Had good autonomous, went for another in autonomous but missed it, and during teleop it had some issues with the speed of the shooter, as all of the ones it missed in the speaker barely flew out of the robot. I also think I slightly miscounted how many it missed/made in the speaker",n,n
+DmitryM,2,3310,y,0,1,0,9,0,0,0,single,1,y,average,excellent,ground,none,Attempted mid field node pickup auto with long range shooting. Amazing long range shooting and fast node pickup cycle during teleop. Amazing robot-human player cooperation. 
+DmitryM,3,7492,0,0,2,2,0,3,0,single,0,y,none,poor,ground,none,Kept missing nodes into the speaker even from up close. ,n
+ben,3,5906,y,0,0,0,0,0,0,0,none,0,none,none,none,none,Stopped moving after auto.,n
+henryh,3,8512,y,0,0,0,0,0,1,0,park,0,average,poor,human,none,"Made out of cardboard, pretty slow, seemed to have connection/controlling issues, seemed kind of shaky.",n
+henryh,3,8512,y,0,0,0,0,0,1,0,park,0,average,poor,human,none,"Made out of cardboard, pretty slow, seemed to have connection/controlling issues, seemed kind of shaky.",n
+KeaganF,3,9156,y,0,0,0,0,0,1,0,park,0,none,poor,none,none,It seemed to be having connection issues as after shooting first piece it stumbled around stage not attempting to pick up any pieces.,n
+ArunV,3,4251,0,0,0,0,0,0,0,park,0,none,poor,human,none,"Barely moved during the entire match, only got park and very slow robot.",n,n
+MichaelW,3,3005,y,0,5,5,5,2,2,1,none,0,none,excellent,both,none,Very prone to tipping when trying to score amp.  Missed a few shots when rushing to get melody. ,n
+DmitryM,4,2689,y,0,0,0,5,0,0,0,park,0,none,poor,human,none,Kitbot. Very low RPM on the speaker outtake,n
+DmitryM,4,2689,y,0,0,0,5,0,0,0,park,0,none,poor,human,none,Kitbot. Very low RPM on the speaker outtake,n
+ben,4,7534,0,0,0,0,0,0,0,none,0,none,poor,none,none,moved slighlty during teleop but mostly not moving.,n,n
+henryh,4,9080,y,0,0,0,0,0,0,0,none,0,excellent,poor,none,none,"Robot didn't seem to work so it tried to just stay in front of the opponents speaker, and eventually just turned off/ran out of power.",n
+KeaganF,4,2582,y,0,1,1,6,0,1,0,none,0,none,average,ground,none,It had missed pieces during the auto because it got hit by another robot causing it to mess up. It seems good at scoring but needs to be lined up with the speaker right at the base.,n
+ArunV,4,8088,y,0,4,2,5,0,0,0,none,0,none,excellent,both,none,"mainly offense and not much defense, had very good shooter which could shoot from distances",n
+MichaelW,4,9088,y,0,1,0,6,0,3,0,none,0,none,average,ground,none,"Somewhat reliable speaker scorer. Not the biggest fan of the scoring mechanism, seems too complicated and makes their center of gravity too high. ",n
+ArunV,5,4295,0,0,0,1,0,0,0,park,0,poor,average,both,none,slow driving ,n,n
+DmitryM,5,418,0,1,1,2,0,0,0,park,0,none,poor,both,none,What was happening with the connection issues? ,n,n
+ben,5,2468,0,0,2,6,0,1,0,none,0,average,excellent,ground,none,"Could shoot both speaker and amp, better at speaker",n,n
+henryh,5,5411,0,1,3,2,0,1,0,park,0,none,excellent,ground,none,"Could score both amp and speaker, missed a few times but recovered quickly",n,n
+KeaganF,5,4206,0,1,0,7,0,4,0,park,0,none,excellent,ground,none,It was very good at moving down the field and grabbing notes and sniping them in to the speaker.,n,n
+MichaelW,5,9752,y,0,4,0,0,0,0,0,single,0,average,excellent,ground,none,Very prone to getting notes stuck. Immediately stops chasing robots once they go under the stage.,n
+ArunV,6,9081,0,0,4,0,0,1,0,park,0,none,poor,both,none,mainly went for amp to amplify 3310,n,n
+DmitryM,6,3310,y,0,4,0,8,0,1,0,none,0,excellent,excellent,both,none,"Attempted climb with a trap at the end but failed, one of the hanging arms slipped. Amazing driving quality.",n
+KeaganF,6,8512,y,0,0,2,0,0,1,0,none,0,none,poor,human,none,It is very clunky at moving around and can only get notes from the human intake and score them in the amp which it is bad at.,n
+henryh,6,9407,0,0,0,0,0,0,0,none,0,none,none,none,none,robot not on field,n,n
+henryh,6,9407,0,0,0,0,0,0,0,none,0,none,none,none,none,robot not on field,n,n
+MichaelW,6,7506,0,0,1,3,0,1,0,none,0,none,poor,both,none,"Ground intake seems very vulnerable. Very slow when moving sideways for some reason, something in the swerve broke? Also very slow when firing and intaking ",n,n
+ben,6,9156,y,0,0,0,0,0,1,0,park,0,none,poor,ground,none,"Had a clunky ground intake, not consistent intake.",n
+ben,7,5908,y,0,0,1,0,0,0,0,none,0,average,poor,human,none,"Slow driving, stopped alot, took a while to shoot,",n
+DmitryM,7,7503,y,0,1,0,0,0,0,0,single,0,average,poor,both,none,Acted silly throughout the entire match and didn't really score anything. Played defense a bit???,n
+ArunV,7,2689,y,0,1,0,5,0,0,0,park,0,none,excellent,human,none,Although it is a kitbot very good driver and able to get good speaker cycles.,n
+henryh,7,7271,0,0,0,0,0,0,0,park,0,none,poor,none,none,"Got hit once near the start of the game, didn't move for ~45 seconds, then moved a little afterwards, but seemed pretty clunky. The intake looks to be just human intake, but it never used it.",n,n
+KeaganF,7,4251,0,0,0,0,0,0,0,park,0,none,poor,none,none,It may have been having issues because it was  moving around and didn't take any shots.,n,n
+MichaelW,7,6672,y,0,1,2,2,2,2,0,none,0,none,excellent,ground,many,Very Very prone to getting notes stuck. Auto seems okay. Got stuck in the stage and blue bullied them :(. Notes seem to just slip out. Somewhat prone to tipping. ,n
+KeaganF,8,9080,0,0,0,0,0,0,0,single,0,poor,poor,none,none,It didn't attempt to do anything besides play bad defense.,n,n
+MichaelW,8,5411,0,1,3,2,1,0,1,park,0,none,excellent,ground,none,Somewhat prone to tipping. Shooter is too bouncy. Somewhat dependable amp scorer as well as dependable speaker scorer.,n,n
+ArunV,8,7534,0,0,0,0,0,0,0,none,0,none,poor,human,none,Was very immobile and driving was really bad ,n,n
+DmitryM,8,3005,y,0,3,6,5,2,0,0,single,0,y,average,excellent,both,none,"Missed a lot of nodes during auto, but if they didn't it would've been an amazing 6 or 7 piece node auto. Climbing very high off the ground by anchoring against the stage. "
+ben,8,4206,0,1,0,2,0,0,7,park,0,y,none,excellent,ground,none,"Quick intake, really good at passing downfield.",n
+henryh,8,9105,y,0,0,0,5,0,4,0,single,0,none,average,ground,none,"Shot 3 during auto, missed them all, went for a fourth but didn't get close enough to pick it up. Might be able to do a 4 note auto with some tweaks. Seemed to be kind of fragile with lots of moving parts, and once or twice when it got bumped by another robot it just dropped the note it was carrying.",n
+ben,9,2687,y,0,4,1,4,1,1,1,park,0,average,excellent,ground,none,Good intake and speaker shoot.,n
+DmitryM,9,9752,y,0,1,4,5,0,0,0,single,0,average,average,both,none,For some reason auto started late??? Amazing driving quality but sometimes they hit a lot of things including other robots. Can shoot mid distance pretty well. ,n
+ArunV,9,7492,0,0,0,3,0,4,0,park,0,none,average,ground,some,Had two notes at one time.,n,n
+KeaganF,9,4295,0,0,0,0,0,1,0,park,0,average,poor,none,some,It attempted to score into the amp but dropped a piece on its self causing it to play defense. It got a foul for being in the wrong spot on the stage.,n,n
+MichaelW,9,9088,0,1,0,5,0,3,0,none,0,none,excellent,ground,none,Very prone to notes falling out when bumped. Auto seems to be able to be better but isn't.,n,n
+henryh,9,8088,y,0,2,0,8,0,0,0,park,0,none,average,ground,some,"One foul for either hitting a robot really hard or touching it for too long. During the auto phase it was really good, went to the middle, may be able to do a 5-note auto. Looked like the climber worked, it just didn't have enough time to get all the way up. Ran into a few things a few times, but robot is overall very sturdy. Can also shoot notes into speaker from a decent distance, it doesn't have to be super close to the speaker.",n
+ArunV,10,7321,0,0,0,0,0,0,0,none,0,none,none,none,none,Did not show during match,n,n
+ben,10,418,y,0,1,1,0,0,0,0,park,0,average,excellent,ground,none,"Issues with auto, also intake did not seem to be working well.",n
+KeaganF,10,7506,0,1,0,0,0,0,0,none,0,none,poor,none,none,It was very bad at moving and did nothing after auto.,n,n
+henryh,10,4153,0,0,0,3,0,0,3,park,0,none,average,ground,none,"During the start it scored a few in the speaker, then realized that 2468 was doing most of red alliance's scoring, so it began going back and forth from the human intake to red alliance's side, so 2468 could shoot them. Might be a good bot to have as a teammate.",n,n
+Jacob C.,10,7540,0,1,0,3,0,2,0,none,0,none,poor,ground,none,"Scored in a slow inefficient manner. they had new drivers I assume as their robot was slow to move from one side of the field to the other. Could not score in the amp, only can score from the front of the speaker. 
+",n,n
+MichaelW,10,2468,y,0,3,5,5,5,2,2,park,0,none,excellent,ground,none,Auto seemed to be kind of faulty. Didn't climb? Shooter seemed to be under powered for a few of the shots,n
+ArunV,11,7271,y,0,0,0,0,0,1,0,park,0,none,poor,human,none,"Very bad drivetrain, was not consisntent at all",n
+henryh,11,2582,0,0,0,0,0,0,0,double,0,average,average,ground,none,"Spent most of autonomous spinning in circle.
+Climbed well at end.
+Cool font for numbers on bumper.
+Shooter wasn't working, so robot played defense for a bit, then realized it could carry notes back and forth for its team, so it did that for one or two notes, then the intake stopped working too.",n,n
+MichaelW,11,9081,0,0,4,0,0,1,0,park,0,none,average,ground,none,"Very slow but dependable amp scorer, other teammates used it to their advantage well. Ground intake is a bit crooked? ground intake is also very vulnerable to being 118'ed",n,n
+KeaganF,11,3005,y,0,4,3,6,3,3,0,double,0,none,excellent,ground,none,The robot has a very good auto with only some misses with many attempted speakers. It is pretty fast. It is a sniper bot being able to shoot from well away. It seems to focus and getting amp which it is good at then shooting amp points. It can also climb very well easily being able to complete a double because it climbs on the very edge of the chain not shaking.,n
+ben,11,9492,0,0,1,0,0,0,0,park,0,none,poor,human,none,stopped moving for a while.,n,n
+Jacob C,11,9080,0,0,0,0,0,2,0,single,0,none,poor,none,none,"No autonomous. They intake only worked once, and their scoring method did not generate enough power to score in the speaker. Their driving was slow and clunky. they were able to hand single at the end. ",n,n
+ben,12,6672,y,0,0,0,0,0,0,0,park,0,average,average,ground,some,It had 2 notes stuck so fouls. Stuck since auto ,n
+Jacob C.,12,4206,0,1,0,1,0,1,0,none,0,none,average,ground,none,Their robot started to malfunction after collisions with other robots. Their intake is very volatile and had trouble picking up the notes. They were scoring efficiently until their robot started malfunctioning. no hanging,n,n
+ArunV,12,2687,y,0,3,0,1,0,1,0,none,0,none,excellent,ground,none,In last part of match got hit and robot broke,n
+KeaganF,12,9752,y,0,4,5,1,2,2,0,none,0,none,excellent,ground,many,It had a very good auto with 4 pieces scored all in the speaker. It then switch to try to score in the amp during teleop only missing once due to them pulling away too early. I then attempted to score during amplification missing once and getting 2 in. It was pretty fast. It then broke in the enemy stage causing many penalties. ,n
+henryh,12,5908,0,0,0,0,0,1,0,none,0,none,poor,none,none,"Seemed to be robot issues/connection issues, it was driving in a very strange way.",n,n
+henryh,12,5908,0,0,0,0,0,1,0,none,0,none,poor,none,none,"Seemed to be robot issues/connection issues, it was driving in a very strange way.",n,n
+MichaelW,12,3310,y,0,1,2,5,1,2,0,park,0,none,excellent,ground,none,May have miscounted amped speaker shots. May have a high center of gravity. Kind of falters when faced with traffic jams. ,n
+ben,13,4295,0,0,0,0,0,1,0,single,0,poor,poor,ground,none,Very slow intake and adjustment. Also slow moving. Hung a little but was tilted.,n,n
+KeaganF,13,8088,0,2,0,7,0,1,0,single,0,none,average,ground,none,It had an ok auto. It was pretty fast but got stuck sometimes and scored a decent amount of amp lining up with the speaker but shot one from far away which it made.,n,n
+henryh,15,2468,y,0,5,4,4,1,0,2,double,0,none,excellent,ground,none,"Passed a few to itself, where it launched them over to the amp area then went over there and scored them.",n
+Michael W,15,2582,y,0,3,1,4,1,1,2,none,0,none,excellent,ground,none,Notes seem very easy to knock it out of the bot. Driver is very easy to defend against.,n
+ben,15,7503,y,0,1,0,2,0,2,0,single,0,none,excellent,human,none,"Went only for speaker, just ran between loading zone and speaker.",n
+Jacob C. ,15,5411,0,0,1,8,0,0,0,none,0,none,excellent,ground,none,Insanely efficient scorer. can score both amp and speaker. We're not able to hang at the end due to defending by the red. ,n,n
+KeaganF,16,9088,y,0,1,0,6,0,5,0,park,0,none,average,ground,none,It was pretty good at auto and fast. It was bad at shooting from far or close.,n
+MichaelW,16,2687,y,0,3,0,2,0,1,0,none,0,excellent,excellent,ground,none,"Had a very aggressive driver until ground intake broke then they played excellent defense against 3310, adapting against common manuveurs.",n
+Jacob C,16,9080,0,0,0,0,0,2,0,single,0,none,average,ground,none,They were defended from in-taking could not score due to very good defense from red. ,n,n
+ben,16,3310,0,3,1,5,0,2,0,single,1,none,excellent,ground,none,"Good at scoring in the speaker, also good trap score.    Good climb                                                                                                                                                                                                                                                                  ",n,n
+henryh,16,9492,0,0,5,0,0,0,0,park,0,none,average,ground,none,"Didn't move at all in auto, seemed to be pretty unbalanced as most of the weight is in front, the back wheels lifted off the ground once, it tried to climb but couldn't reach high enough to get over the chain.",n,n
+sophiak,17,7492,0,0,0,0,0,0,0,none,0,none,none,none,none,no show to the game,n,n
+DmitryM,17,418,y,0,1,6,1,1,0,0,park,0,excellent,excellent,both,none,WHO ARE WE??? 418 WHAT'S OUR NAME??? PURPLE HAZE,n
+AryaK,17,2689,0,1,0,3,0,0,0,double,0,none,average,human,none,"Pretty good, was able to make it to the human intake and back in a decent amount of time and score a good amount of speaker shots. Autonomous wasn't the ""best"" however.",n,n
+IshantY,17,3005,y,0,3,0,3,2,0,3,single,0,none,excellent,ground,none,"Their shooting mechanism got stuck on the chain after auto. Their auto was good and they got 3 notes but missed 2 of the notes in the middle. Their driving was really good, 2 teams were playing defense on them and they were able to get by them each time even though the defense was good. Their shooting mechanism was very reliable.",n
+Naina J,17,9407,0,0,0,0,0,0,0,park,0,average,average,none,none,"Penalty - came late
+Mainly defensive",n,n
+JackL,17,6672,0,0,0,0,0,0,0,none,0,average,average,none,none,They didn't use the intake. They played defense the entire round. Autonomous didn't work for them.,n,n
+DmitryM,18,4153,y,0,1,0,0,0,1,5,park,0,poor,average,both,none,Weren't scoring nodes into a speaker or the amp for some reason. They just passed the nodes over to the speaker side of their alliance.,n
+DmitryM,18,4153,y,0,1,0,0,0,1,5,park,0,poor,average,both,none,Weren't scoring nodes into a speaker or the amp for some reason. They just passed the nodes over to the speaker side of their alliance.,n
+Naina J,18,9156,0,0,2,0,0,2,0,park,0,none,poor,ground,none,"When intaking from ground, if a robot rammed into it you could damage its intake
+immobile for a portion of game
+also missed notes came from trying to hit speaker",n,n
+AryaK,18,4295,0,0,0,0,0,0,0,single,0,poor,poor,ground,none,"Bad movement. Bad driver, when the driver did move to the middle, did a bad job blocking. No auto from what I could tell.",n,n
+sophiak,18,7540,0,0,0,0,0,3,0,none,0,none,poor,ground,none,"missed the auto portion but likely missed the speaker during auto as well. Was generally unable to make speaker (not high enough), missed the amps but could make it. Ring got stuck in the robot. Extremely slow drive",n,n
+JackL,18,9752,y,0,3,1,8,0,0,0,none,0,none,average,ground,some,Great shooting and auto. Carried 2 notes at once.,n
+IshantY,18,5411,y,0,1,1,1,0,0,0,park,0,poor,poor,ground,none,They got a note stuck on them so they were trying to play defense for most of the match. Their defense was poor and their shooting mechanism was super shaky. They got a ranking point because one of the red alliance teams collided with them while parking. Their intake missed 2 notes in auto and it took all of the auto period for them to fire the note they had preloaded.,n
+DmitryM,19,7503,y,0,2,0,0,0,0,0,none,0,none,none,none,none,Got stuck on a node in the beginning of the match lmao. Didn't move after,n
+AryaK,19,4251,0,0,0,0,0,0,0,park,0,poor,poor,ground,none,"Just moved around, no auto, didn't do anything during teleop. Got a note stuck in the shooter mechanism that was squished.",n,n
+JackL,19,4206,0,0,0,3,0,2,0,park,0,average,average,ground,none,"Missed a few notes,",n,n
+IshantY,19,8512,y,0,0,1,0,0,1,0,park,0,poor,poor,human,many,"Amp only robot, the robot seems very unreliable, there was cardboard and it would randomly stop in the middle of the field. Had trouble taking notes from the human player station and missed twice in the amp. They got 2 fouls for going in the red alliances source zone, and 1 foul for colliding with the red alliance robots while they were parking.",n
+sophiak,19,7506,0,1,0,0,0,0,0,park,0,none,poor,none,none,"very clunky, seemed like they had something broken as they wouldn't attempt to intake, wasn't able to move very well either. Seemed unstable and there may be a possibility of them falling over midgame",n,n
+Naina J,19,8088,y,0,2,3,3,1,1,0,single,0,excellent,excellent,ground,none,"Smooth and skilled
+was able to naviagate agaisnt robots trying to block it",n
+sophiak,20,7534,0,0,0,0,0,0,0,none,0,none,none,none,none,no show to the game,n,n
+DmitryM,20,5908,0,0,0,0,0,0,1,none,0,none,poor,human,none,Drove around the field and did literally NOTHING,n,n
+JackL,20,7271,y,0,0,0,0,0,0,0,none,0,none,none,none,none,"Moved a tiny bit in autonomous. Otherwise, drive completely failed. No movement and shooting during teleop.",n
+NainaJ,20,9088,y,0,2,0,4,0,1,0,park,0,excellent,excellent,ground,none,"Has a hard time aligning the hooks for climb on the chain. 
+Also tall robot if led under chain can get caught.",n
+AryaK,20,2468,0,4,4,5,0,0,4,single,0,y,none,excellent,ground,none,"Pretty Goated team, good amount of amp plays, and also speakers, good offense robot for sure, very good either way. ",n
+IshantY,20,9105,y,0,0,0,5,1,0,0,none,0,none,average,ground,none,"Their missed a note in auto, and couldn't pick up any other notes. Their speed and reliabilty was good and missed no shots. They struggled with getting notes from the human player station, but played well.",n
+IshantY,21,7321,0,0,0,0,0,0,0,park,0,none,none,none,none,Robot was dead for everything except the last 10 seconds of the match where they parked.,n,n
+AryaK,21,2582,0,1,1,2,0,0,0,single,0,none,average,ground,none,"Decent bot, didnt stand out however, missed a large amount of their speaker shots. Tank against defense.",n,n
+MilesF,21,6672,y,0,0,0,9,0,0,0,double,0,none,excellent,both,none,Very very good robot. Has a small ammount of stability issues where it starts to tip over but never becomes a real issue. Has great cycle speeds and perfect accuracy.,n
+NainaJ,21,9081,0,0,6,0,0,0,0,park,0,none,average,ground,none,"One strong hit when its intake is down can damage its intake - so not great for defense
+
+",n,n
+NainaJ,21,9081,0,0,6,0,0,0,0,park,0,none,average,ground,none,"One strong hit when its intake is down can damage its intake - so not great for defense
+
+",n,n
+sophiak,21,4295,0,0,0,0,0,0,0,park,0,none,poor,none,none,"missed speaker in auto. During endgame, did manage to slightly hang on the chain (one corner looked like it was on the ground) but at the buzzer, the robot was in full contact with the ground. I'm not sure what they were doing, their intake didn't work, seemed like something broke. Didn't attempt defense, hit their own alliance a couple times",n,n
+JackL,21,9492,0,0,0,7,0,0,0,single,0,none,average,ground,some,Two tech fouls. No auto.,n,n
+AryaK,22,8512,y,0,0,1,0,0,0,0,park,0,none,poor,human,none,"Not a good robot. Fumbled the amp several times, ran into teammates consistently. ",n
+MilesF,22,9080,0,0,2,0,0,0,0,park,0,poor,poor,ground,none,The robot seemed to work fine when it was doing something but it moved very slowly and barely picked up two notes the whole time. I imagine there was an issue with the driving system but all the other parts seemed to be okay.,n,n
+sophiak,22,7540,0,0,0,0,0,0,0,park,0,none,none,none,none,"missed speaker during auto. While having difficulty intaking from the ground, they bumped into the wall and was immobile for nearly half the match. After that, they regained connection, however, did little besides parking in the stage",n,n
+JackL,22,9156,y,0,0,0,1,0,5,0,park,0,none,poor,ground,none,Unreliable shooter. Dropped/missed too many notes. No auto.,n
+Naina J,22,4251,0,0,0,0,0,0,0,park,0,poor,average,none,many,"REd4251 touch blue in human player intake zone 3-4 penalties
+Another penalty for longer then 5 sec block
+HAD A NOTE THE WHOLE TIME BUT NEVER SHOT IT IN!! 
+Never intaked because note was there from auto and they never shot it ",n,n
+IshantY,22,7492,y,0,0,0,0,0,0,0,none,0,excellent,excellent,none,some,"Im not sure what the foul was, but I saw the flag go up for them. Their intake didnt work after auto, so they played defense and were able to play really good defense. They stopped robots from getting to the middle notes mulitple times and also blocked the red alliance from scoring in their speaker. They also were able to bait multiple penalties from the source zone.",n
+JackL,23,5908,0,0,0,0,0,0,0,none,0,none,none,none,none,Bot didn't do anything.,n,n
+IshantY,23,3310,0,1,0,0,0,0,15,park,0,none,excellent,ground,none,Their auto scored once but missed both notes in the middle. They stayed in the source zone and fed notes to their alliance partners the entire time.,n,n
+AryaK,23,8088,0,2,0,4,2,0,0,single,0,none,excellent,ground,none,"Did a good job of picking up notes at the human intake area and bringing them back efficiently, was able to score speakers both normally and amplified because of this.",n,n
+Naina J,23,5411,y,0,1,3,4,1,2,0,park,0,average,excellent,ground,none,"Good driving and had a quick cycle time
+",n
+MilesF,23,3005,y,0,3,8,5,5,1,0,single,0,none,excellent,ground,none,Amazing driving and ridiculous speed. Missed one shot at the very end and made something like 20...so very very good. Can score amp and speaker easily.,n
+sophiak,23,418,y,0,1,0,2,0,1,0,none,0,none,average,ground,none,"From an observer's veiw: Performance wasn't the worst, definitely could improve. We crashed on multiple ocassions and the ground intake could've been smoother. However, the teamwork with 5411 was decent taking into consideration that 5908 was immobile and restricting access to a number of rings",n
+NainaJ,24,7321,0,0,0,0,0,0,0,none,0,none,none,none,none,"No Show
+PREMATCH: some work being done on field - had to get ref and yellow shirt agent involved. couldn't see any blaring issues tho",n,n
+AryaK,24,7534,y,0,0,1,0,0,0,0,park,0,none,poor,ground,none,"Not good. Kept missing the amp, and then gave up and went to park",n
+MilesF,24,2687,y,0,2,0,6,0,2,0,none,0,none,average,human,none,They had a very odd thing where they were able to do ground intake from anywhere (I saw them do it) but during teleop they would only pick up notes dropped on the ground next to the human station even when there was three notes right next to their speaker that they had dropped from earlier shots. I don't know why they wouldn't just pick those up instead since they are closer. Their shooter was also slightly finicky and not very fast but overall was pretty average.,n
+IshantY,24,4153,y,0,0,0,0,0,4,0,park,0,average,poor,ground,none,"They missed a lot of notes and decided to play defense for the majority of the game. It wasn't horribnle but they werent able to stop the robots from getting to the speaker for long. Their intake during auto didnt work, and they missed 4 notes in tele.",n
+JackL,24,7583,0,0,0,1,0,1,0,park,0,average,average,human,none,Played good defense for the entirety of the match. Stalled robots. Spun around a few times during autonomous,n,n
+sophiak,24,4206,y,0,0,0,12,0,4,0,park,0,none,excellent,ground,none,"2 attempts for speaker during auto, both missed. Very skilled driver, smooth driving. I'm not entirely sure about the legitamacy of the 12 speaker scores but either way very skilled",n
+AryaK,25,7506,0,0,0,0,0,0,0,park,0,poor,poor,ground,none,"Played ""defense"" didn't do anything. Terrible bot, stayed in one of the three openings for a bot to go from offense on and despite this couldn't guard anything or anyone, kept moving in rigid movements and kept trying to defend one corner.",n,n
+Naina J,25,9407,0,0,0,0,0,0,0,park,0,excellent,average,none,none,"couldn't see it's auto well
+soemtimes got in the other reds way",n,n
+sophiak,25,9088,0,1,0,4,0,3,0,park,0,none,average,ground,none,"Pretty skilled, though the climb was attempted, it failed. The intake was a bit clumsy at times, they would still be a reliable teammate. ",n,n
+MilesF,25,2582,y,0,1,5,2,1,3,0,park,0,none,excellent,both,none,Worked very well. Aside from the small problem where a note kept falling out of their shooter onto their back they played almost perfect. Even when the note fell on their back it was just a quick spin and 10 seconds later they scored the note.,n
+JackL,25,2468,y,4,0,3,10,0,3,1,park,0,none,excellent,ground,none,"Fast, efficient cycling, led to scoring of many notes. Good driving, and good auto.",n
+IshantY,25,9492,0,0,0,0,0,4,0,park,0,none,poor,ground,none,"Consistently missed the speaker, wasnt able to play defense and had trouble going to the source zone. They were stuck in their zone during auto and couldn't hit any shots.",n,n
+AryaK,26,9752,y,0,3,0,6,0,0,0,none,0,none,excellent,ground,none,"Good speakers, probably can climb, driver attempted another speaker instead and whiffed the opportunity.",n
+Naina J,26,9105,y,0,3,0,0,0,0,0,double,0,average,average,ground,none,"right of subwoofer during auto - great auto
+RING GOT STUCK on corner motor so played defense 
+idk if it got a foul in the auto 
+just stayed near subwoofer for majority of the game and climbed early",n
+MilesF,25,9081,0,0,2,0,0,0,0,park,0,none,poor,ground,none,Was very very slow and the intake system was clearly not working very well. It was barely able to pick up off the ground and took forever to dispose of notes into the amp.,n,n
+sophiak,26,7271,y,0,0,0,0,0,3,0,park,0,none,average,ground,none,They were unable to score speaker as their shots would be too short,n
+JackL,26,2689,y,1,0,0,4,0,0,0,double,0,none,average,human,none,Modified alphabot.,n
+IshantY,26,4251,0,0,0,0,0,0,0,park,0,poor,poor,none,some,"Got a penalty for going in the red alliance source zone. Their intake broke, so they played defense for most of the match. It wasn't great, they tried to block a lot of the teams from coming from the source zone and almost fouled multiple times.",n,n
+MilesF,26,418,0,0,0,3,0,2,0,park,0,none,average,both,none,We tried... Stuff was messed up though.,n,n
+NainaJ,27,4295,0,0,0,0,0,1,0,park,0,excellent,average,ground,none,made blue get a foul so good defense. never did much intaking tho,n,n
+JackL,27,7540,0,0,0,0,0,1,0,none,0,none,none,none,none,"Shot once in teleop, and missed. After that, it didn't move, didn't contribute.",n,n
+sophiak,27,3310,y,0,3,1,8,0,3,0,park,0,none,excellent,ground,none,"attempted a hang, failed but otherwise, really skilled and quick robot that can shoot at varying distances",n
+AryaK,27,7503,y,0,1,0,0,0,0,0,none,0,none,poor,ground,none,Got stuck on note and stopped for the rest of the match.,n
+IshantY,27,9080,0,0,2,0,0,2,0,park,0,none,poor,ground,none,"Had trouble scoring in the amp, had no notes in auto and only could score in amp. Their intake was really slow and they struggled with movement.",n,n
+MilesF,28,9156,y,0,1,2,1,0,5,0,none,0,none,poor,ground,none,was slow and missed a lot,n
+NainaJ,28,9492,0,0,2,0,0,2,0,single,0,average,average,ground,none,"not good at speaker
+good at amps
+ok cycle time ",n,n
+JackL,28,7321,0,0,0,1,0,0,0,park,0,none,none,none,none,No auto. Only moved to park line during teleop.,n,n
+Ishant,28,94,0,0,0,0,0,0,0,park,0,poor,average,none,none,"They didnt attempt to shoot in the amp or speaker, played defense the enire match. They were able to hold teams for 10-15 seconds but would get beaten easily.",n,n
+AryaK,28,7534,0,0,0,0,0,0,0,none,0,none,none,none,none,Bot was not there,n,n
+sophiak,28,3005,y,0,3,0,16,1,1,0,park,0,none,excellent,ground,none,missed two speaker shots during auto and couldn't grab one ring. Unsure of the speaker count during teleop as melody was activated but spekaer notes don't add up to 18 - may have scored more speaker notes than counted or other scouters missed some shots.  ,n
+YangFanC,29,5411,0,0,0,0,0,0,0,none,0,none,none,none,none,It died during the beginning of the match,n,n
+NainaJ,29,5908,0,0,0,0,0,0,0,none,0,none,none,none,none,disabled or dead,n,n
+IshantY,30,5411,0,0,0,2,0,0,0,none,0,none,poor,ground,none,"Didnt attempy anything in auto, they were able to intake notes and fire slowly, but died in the middle of the match.",n,n
+AryaK,29,2468,0,0,1,3,1,1,0,double,0,none,average,ground,none,"Pretty good, no",n,n
+JackL,29,2687,y,4,0,1,11,0,1,0,single,0,none,excellent,ground,none,"Great driving. Kept the match going, even when it was a 2v1 in blue's favor. Scored a lot",n
+MilesF,29,2582,y,0,1,5,2,0,2,2,double,0,y,none,average,both,none,Was generally a good bot. At the start it passed two notes to the front but one of them got stuck on the top of the stage so I counted it as a miss. Overall worked well and could score amp and speaker + climb so very versatile. It also was able to do all of them quickly and accurately it seemed like.
+YangFanC,30,9081,y,0,0,4,0,0,0,0,park,0,none,poor,ground,none,"really slow intake, and the amount of time it took for the arm holding the note to traverse was really slow, in addition to being really shaky.",n
+Maddie,30,9105,y,0,0,0,4,0,1,0,park,0,none,excellent,ground,none,Good intake with a bit slow firing but can fire from farther out.,n
+ashex,30,8088,y,0,0,0,8,0,2,0,park,0,none,poor,ground,none,"kept hitting stuff while driving, otherwise very quick",n
+ZW,30,9752,y,0,4,1,6,0,2,0,single,0,none,average,ground,none,They could score in the speaker pretty consistently and only had problems trying at angles ,n
+MilesF,30,8512,y,0,0,2,1,0,0,0,none,0,none,average,both,none,Has the cardboard on it. Is very solid but just slow; it takes a lot of time to put into the amp and to shoot and to move but gets it done. Seems consistent but not great.,n
+MilesA,30,7492,y,0,0,0,5,0,4,0,none,0,none,average,ground,none,"Overall pretty decent rotation just trouble with lining up the shot. Auto potential just missed speaker, but picked up a node in auto.",n
+ashex,31,7506,y,0,1,0,0,0,0,0,park,0,poor,poor,none,none,hit the chain during auto. stayed in the same spot the entire match and wasn't doing much,n
+MilesA,31,2689,y,0,1,0,2,0,2,0,single,0,none,excellent,human,none,"Efficient hang, bad intake, and bad accuracy",n
+Maddie D.,31,6672,y,0,2,2,6,0,2,1,park,0,none,average,ground,none,"VERY good and efficient intake, fast scoring and can score amps well. In auto launched but missed on speaker.",n
+YangFanC,31,4206,y,0,0,0,9,0,5,0,none,0,none,average,both,none,shooter could be a bit more accurate.,n
+ZW,31,9088,y,0,2,0,9,0,0,0,none,0,none,average,ground,none,Its intake seemed like it could break easily if it gets hit because it goes over the bumper and it doesn't look very sound,n
+MilesF,31,4153,0,0,0,0,0,1,0,park,0,poor,poor,ground,many,"Fouls: Kept hitting robots while they were trying to shoot on their side.
+
+Generally the robot had no idea what to do and tried to play defense but did not actually block or slow anything. It made one shot at the beginning and missed. ",n,n
+NoamW,35,7321,0,0,0,0,0,0,0,none,0,none,none,none,none,noshow this needs to be 10 characters?,n,n
+YangFanC,32,9156,y,0,1,0,1,0,2,0,none,0,none,average,ground,none,stopped moving several times throughout the match for extended periods of time.,n
+Maddie D.,32,7271,y,0,0,0,0,0,3,0,park,0,none,poor,human,none,Overall clunky and cannot score anything. A kit-bot that cannot hang.,n
+MilesA,32,9080,0,0,3,0,0,4,0,park,0,none,poor,ground,none,Scoring mechanism just didn't work everything else was ok.,n,n
+ashex,32,3005,y,0,2,12,3,10,0,0,single,0,none,excellent,ground,none,used notes passed by others to quickly score amp then amplified speaker. could get 3 notes in amplified speaker consistently. ,n
+ZW,32,2468,y,0,1,0,5,0,0,19,double,0,none,average,ground,none,It was very good at quickly passing notes to about midfield,n
+MilesA,33,7492,0,1,1,0,0,0,0,park,0,none,average,ground,none,Clipped a chain then stopped really working,n,n
+Maddie D.,33,4251,0,0,0,0,0,0,0,park,0,poor,poor,human,none,"Scored no points, could barely drive, and had climbers but couldn't use them in time. Kind of just blocked the way for the other robots.",n,n
+YangFanC,33,2687,y,0,4,0,9,0,0,0,park,0,y,none,excellent,ground,many,ran into other robots
+ashex,33,9081,0,0,5,0,0,0,0,none,0,none,poor,ground,none,stood frozen next to amp near the end. intake always took a while/multiple attempts.,n,n
+ZW,33,5411,y,0,0,0,5,0,5,0,none,0,none,average,ground,none,The shooter kept rocking up and down so sometimes it would line up and the shooter would rock so it would miss. Also sometimes it would drive up to the speaker and just randomly shoot a note horizontally at the base.,n
+NoamW,33,9105,y,0,1,0,6,0,1,0,park,0,none,excellent,ground,none,Looked like it was lining up to score amp but ended up going for speaker so can most likely score amp. Took a good hit and just seemed to brush it off,n
+YangFanC,34,4153,y,0,0,0,0,0,0,0,none,0,none,none,none,none,didn't show up,n
+Maddie D.,34,4206,y,0,3,0,8,0,2,0,park,0,none,excellent,ground,none,Smooth pick up and farther back firing range. Average speed.,n
+ashex,34,8512,y,0,0,2,0,0,0,0,park,0,none,poor,human,none,very slow. note could fall out when other robots collided with it,n
+ZW,34,7540,0,1,0,3,0,0,0,park,0,average,poor,ground,none,Their intake was very clunky and they had to smash into a wall to fully intake a note,n,n
+NoamW,34,2582,y,0,0,5,0,1,1,0,park,0,average,average,both,none,"seemed to prefer human player intake over ground intake, almost climbed but didn't have enough time and climbers couldn't retract fully",n
+MilesA,34,8088,y,0,2,0,7,0,1,0,single,0,none,average,ground,some,Driving was really good they just kept clipping things. Potential for more in auto.,n
+ashex,32,3005,y,0,2,8,3,10,0,0,single,0,none,excellent,ground,none,"used notes passed by others to quickly score amp then amplified speaker. could get 3 notes in amplified speaker consistently. 
+
+Amp view obstructed ",n
+MilesA,35,7534,0,0,0,0,0,1,0,park,0,none,poor,none,none,Attempted ground intake. Slowly moved around and always looked like it was about to tip.,n,n
+NoamW,35,418,y,0,1,0,1,0,0,0,park,0,excellent,excellent,both,some,"good team spirit, driver tried to shake ring off even though it didn't affect intakes",n
+ashex,35,2689,y,0,1,0,2,0,0,0,single,0,none,average,human,none,had some trouble lining up with human player. started climbing early.,n
+YangFanC,35,3310,y,0,1,2,5,0,1,0,none,0,none,excellent,ground,some,collided with other robots.,n
+ZW,35,6672,y,0,1,0,7,0,2,0,park,0,average,average,ground,none,It almost climbed on a chain with another but couldn't stay up,n
+Maddie D,35,9752,y,0,4,4,2,0,1,0,single,0,none,excellent,ground,none,"Smooth driving and can launch fast, stopped in the middle of the match for seemingly no reason (???). Keep in mind I was distracted because Phrog got a not stuck on it.",n
+MilesA,36,4295,0,0,1,0,0,1,0,none,0,average,poor,ground,none,Nothing really worked,n,n
+ZW,36,9407,0,0,0,0,0,0,0,none,0,none,none,none,none,It didn't move at all,n,n
+YangFanC,36,7503,y,0,2,0,6,0,0,0,single,0,none,excellent,both,none,"just cycled rings from one side to the other, didn't cooperate much with its team.",n
+NoamW,36,7506,0,0,0,0,0,0,0,park,0,poor,poor,none,none,note somehow got stuck ontop of it and it just parked under stage the whole time,n,n
+Maddie D.,36,9492,0,0,4,0,0,1,0,park,0,average,poor,ground,none,"Slow but specializes in amp and can play defense. Not that good overall though, it's kind of slow.",n,n
+ashex,36,9088,y,0,1,0,9,2,1,0,park,0,none,excellent,ground,none,"couldn't pick up 2 notes during auto, otherwise very fast and skilled driver and accurate shooting",n
+Maddie D.,37,9080,0,0,4,0,0,0,0,park,0,poor,poor,ground,none,"Very slow everything, specialized in amp, and doesn't seem to have enough power/speed for speaker, too slow to play defense but tried. Got a note stuck on it for ~20 secs before game ended.",n,n
+NoamW,37,7321,0,0,0,0,0,8,0,none,0,none,poor,human,some,"carried an extra note, intake didn't work but i marked the fact that it existed.",n,n
+MilesA,37,5908,0,0,0,0,0,0,0,none,0,none,none,none,none,No show.    ,n,n
+ZW,37,8088,y,0,3,0,4,0,6,0,single,0,none,average,ground,none,They did ok,n
+ashex,37,7540,0,1,0,5,1,0,0,none,0,none,poor,ground,none,"seem confused at first, circling around the red human intake",n,n
+YangFanC,37,9081,y,1,0,0,0,0,2,0,none,0,none,poor,ground,none,"Due to a design flaw, a ring got stuck in a place where they couldn't get rid of it, causing them to be unable to shoot or intake any more rings for the rest of the match",n
+ashex,38,9156,0,0,0,0,0,0,5,park,0,none,poor,ground,none,attempted speaker during auto but missed. drove to human intake to get notes and drop them off near speaker repeated,n,n
+YangFanC,38,7534,0,0,0,0,0,0,0,none,0,poor,poor,human,none,"shooter system seemed to be broken, couldn't shoot preloaded note. Drive train also appeared to be incredibly flawed, leading to unstable and very slow driving.",n,n
+YangFanC,39,9457,0,0,0,0,0,0,0,none,0,none,none,none,none,didn't show up,n,n
+ashex,39,7492,0,0,0,0,0,0,0,none,0,none,none,none,none,robot was not there,n,n
+NoamW,39,2687,y,0,4,0,8,0,0,0,none,0,none,excellent,ground,none,"could not amp, incredible driver",n
+ZW,39,4295,0,0,0,0,0,0,0,none,0,average,poor,ground,none,They were kind of going in circles and couldn't get rid of the one note they intook,n,n
+Maddie D.,39,4206,y,0,0,1,0,0,1,0,park,0,excellent,excellent,ground,none,"Not got stuck on robot, played really good defense in response though.",n
+MilesA,39,2689,y,0,1,0,5,0,2,0,park,0,none,average,human,none,"Slow and inconsistent intake, driver struggled with defense.",n
+ZW,38,2582,y,0,1,1,0,0,0,0,single,0,none,average,ground,none,They were weirdly wandering around most of the match and it looked like they were lost,n
+MilesA,38,2468,y,0,1,1,4,0,8,2,none,0,none,excellent,ground,none,"Picked up 2 in auto, missed both. 4 of the 68 missed are missed passes.",n
+MilesA,40,7503,0,0,0,0,0,0,0,single,0,excellent,average,none,none,Almost got mobility during auto. Had node stuck under for first 30 seconds. Ground intake didn't work then defense was really good.,n,n
+NoamW,40,4153,y,0,0,0,0,0,1,0,park,0,none,average,ground,none,intook notes from the ground and spat them out infront of player. ,n
+YangFanC,40,3310,y,0,2,1,11,0,1,0,none,0,poor,excellent,ground,none,"nothing special to note, the stats speak for themself.",n
+Maddie D.,40,8512,y,0,0,1,0,0,0,0,park,0,poor,poor,human,none,Intake does not hold notes well or broke after receiving one note. Clunky and slow.,n
+ashex,40,5411,y,0,1,0,4,0,2,0,park,0,y,none,average,ground,none,heavily defended against by 7503. caused them to miss shots and prevented them from obtaining notes
+ZW,40,7271,y,0,0,0,0,0,0,1,park,0,average,average,none,none,They didn't intake any notes and just played defense the whole time. They didn't let anyone through but other teams pretty easily went around them.,n
+YangFanC,41,5908,0,0,0,0,0,0,0,none,0,none,none,none,none,robot didn't show up,n,n
+ZW,41,7506,0,1,0,0,0,0,0,park,0,none,poor,ground,none,They were only able to pick up one note and weren't able to score it they also kept randomly crashing into things for no reason,n,n
+Maddie D.,41,4251,0,0,0,0,0,3,0,park,0,none,poor,human,none,"Slow to get note and to drive, drive train is not swerve making it harder to drive. The shooter lacks enough power and precision to fire shots into speaker, didn't try amp. Kit-bot.",n,n
+ashex,41,9105,y,0,3,0,0,0,3,0,double,0,average,poor,ground,none,missed one in auto. may have scored amp (view obstructed). note got stuck on top of robot towards end. ,n
+MilesA,41,949,0,0,0,3,0,4,0,park,0,none,average,ground,none,"Didn't attempt anything in auto, Good overall just inaccurate shooting.",n,n
+NoamW,41,6672,y,0,1,3,4,1,2,0,park,0,none,excellent,ground,none,"looks like could climb but tried to rush another note and ended up missing, very clear that this robot could make its way around the field well and score both targets mildly consistently",n
+ashex,41,9105,y,0,3,0,0,0,3,0,double,0,average,poor,ground,none,missed one in auto. may have scored amp (view obstructed). note got stuck on top of robot towards end. ,n
+YangFanC,42,4295,0,0,0,0,0,0,0,none,0,average,poor,none,none,the only thing they contributed was shoving a note to their side and delaying a few robots.,n,n
+ashex,42,9081,0,0,0,0,0,1,0,none,0,none,none,none,none,stayed in the corner. initially had a note but seemed to drop it,n,n
+AyanI,42,2667,y,0,1,0,2,0,1,2,none,0,none,none,both,some,"Immobile after massive contact within a minute of teleop.
+Tech foul before disabled because of contact in the stage.",n
+MilesA,42,3005,y,0,3,3,0,0,1,0,single,0,none,average,ground,some,Didn't move for about 30 seconds. While moving did very well. Could've done more in auto if it didn't miss 3 times.,n
+ZW,42,7540,0,0,0,1,0,0,1,park,0,none,poor,ground,some,They got a foul for picking up two notes and I think something with their wheels broke because they had to waddle back and forth to move by the end,n,n
+Maddie D.,43,9088,y,0,2,0,6,0,0,0,none,0,none,excellent,ground,none,"Precise and consistent! Good overall, fast and can get out of defensive holds!",n
+RithiS,43,4153,0,0,0,0,0,1,0,park,0,poor,average,none,none,"The intake was broken, so the driver switched to playing defense. They were bad at it, because the robot was too weak to push back against the others, so it was just pushed along by the other robot instead of actually blocking it. ",n,n
+MilesF,44,4206,0,0,0,3,0,6,4,park,0,none,average,human,none,Mostly started the match by shooting from human intake towards the speaker but mostly hoarding. For the second half they then went on to miss a ton of shots on the speaker and kind of just walk around.,n,n
+RithiS,44,2468,y,0,2,2,3,0,1,0,none,0,none,excellent,ground,none,"They had a good driver, but 2 min in the intake and chassis stopped working. 30 seconds later it started up again. They had a functional (i think) double climber, but didn't use it.",n
+GabeR,44,5411,y,0,1,0,1,1,7,6,park,0,none,average,ground,none,"May have human intake, but it was not used. Spent most of the match passing notes into blue side. Often overshot notes out of the field.",n
+PierceH,44,6672,y,0,1,4,7,0,0,0,park,0,none,excellent,ground,none,"Very good driver - good at maneuvering and dodging defense
+Very good at scoring - can score in both amp and speaker a lot
+Can climb - Ran out of time to climb",n
+burrito,45,4251,0,0,0,0,0,2,0,park,0,none,poor,human,none,"Inaccurate shooter, not enough power in shots",n,n
+RithiS,45,2689,y,0,0,0,2,0,0,0,none,0,none,poor,human,none,"Disconnected for the last 45 seconds. They had a single climber, but it didn't look like it would work (looked very fragile and weak). Kitbot, but it worked pretty well.",n
+MilesF,45,7321,0,0,0,0,0,2,0,park,0,none,poor,human,none,"Just sat at the human intake station the whole game trying to get a note and then just missed it. It only made two cycles the whole game (one whole cycle, one miss from the preplaced note in auto, and one last cycle but no shot at the end when they parked).",n,n
+PierceH,45,3310,y,0,3,4,6,0,1,0,single,1,none,excellent,ground,none,"Very good driving - Were able to quickly grab notes and score
+Able to score trap and climb",n
+GabeR,45,9105,y,0,0,0,6,1,1,0,single,0,none,poor,ground,none,Often drove into teammates. Driver had difficult time operating intake and driving at the same time.,n
+RohanK,45,2582,y,0,0,0,2,0,1,6,single,0,average,excellent,ground,none,"They had a strong scoring alliance, so they only tried to pass until the last 30 seconds. They passed really well, although once they got a note stuck on the stage. In the last 30 seconds, they scored really fast and hung on the stage, so it went really well.",n
+RohanK,46,9088,y,0,2,0,1,0,0,0,none,0,none,none,ground,none,"They broke down 5 seconds after auto and never came back, helped us win.",n
+MilesF,46,418,0,1,0,6,0,1,0,park,0,none,average,both,none,I think the controls were inverted..? Something looked off but overall things worked alright,n,n
+burrito,46,9080,y,0,0,1,4,0,0,0,park,0,none,average,ground,none,Was mainly held back by us as they were waiting for our bot to shoot. Could have performed better under more optimal conditions.,n
+PierceH,46,8512,y,0,0,2,0,0,0,0,none,0,none,poor,human,none,"Robot was moving slowly - Slowly turning and slow at moving
+Could only score in amp, not possible at all to score in speaker",n
+RithiS,46,9407,y,0,0,0,0,0,1,0,park,0,average,average,ground,none,"VERY unstable. The giant arm caused it to almost fall over multiple times. The lower intake rollerbar fell out. Design is not practical, and is falling apart.",n
+GabeR,46,5908,0,0,0,0,0,0,0,park,0,none,poor,none,none,Drive train was very slow. The bot didn't move for the first couple seconds of teleop. Bot often came to complete stops in the middle of driving. Never shot a note. Didn't move at all in auto. Spent all of teleop attempting to line up an amp shot.,n,n
+burrito,47,9081,y,0,0,4,0,0,1,0,park,0,none,poor,both,none,"Slow but very consistent amp. High center of mass, looks like it will tip over sometimes.",n
+PierceH,47,4153,y,0,0,0,0,0,0,4,park,0,none,excellent,ground,none,"Robot did not score due to its passing abilities - Was able to quickly move across the field to grab a note and go to the amp to drop it
+Strategy seemed to involve letting 3005 score while 4153 passed its notes",n
+RithiS,47,7506,y,0,0,0,0,0,0,0,park,0,average,poor,none,none,"ALSO VERY UNSTABLE. Too many moving parts that were all only half working. SO big, so the driving was clunky. Since nothing worked they started playing defense.",n
+RohanK,47,3005,y,0,3,6,2,5,0,5,park,0,none,excellent,ground,none,"They are the #1 team and they looked really good. They were passing notes to themselves, and then spent the last 45 seconds scoring a ton of points. Their alliance was not good, but they were still able to do really well.",n
+GabeR,47,7492,0,0,0,0,0,1,1,none,0,average,poor,ground,some,Touched opposing bot in source. No auto. Often crashed.,n,n
+MilesF,47,7534,y,0,1,0,2,0,0,0,none,0,none,average,human,none,Kitbot...didn't really do anything special or interesting. Was not very good.,n
+RithiS,48,740,0,1,0,1,0,1,0,park,0,average,average,human,none,Average. Pretty normal. Modified KitBot.,n,n
+GenM,48,2468,y,0,1,0,1,0,1,10,single,0,none,excellent,ground,none,Very good passing robot that can still shoot into the speaker well. ,n
+MilesF,48,7271,y,0,0,0,1,0,0,0,none,0,none,none,human,none,"Was able to move but barely and basically never did. Just sat in a corner for 95% of the match.
+",n
+burrito,48,8088,y,0,3,1,6,0,2,0,none,0,none,excellent,both,none,"Very good shooter, even has a mechanism to score into amp. Bad matchup for them, basically solo-d the entire match.",n
+PierceH,48,3310,y,0,2,6,5,3,0,0,single,0,none,excellent,ground,none,"Very strong strategy - stayed by amp and had notes passed to it
+Amplified a lot due to its proficiency in scoring the amp
+Very good driver - Smooth and efficient
+Could have scored trap but when it climbed it tilted and was unable to score trap",n
+RohanK,48,9492,0,0,0,6,0,0,0,park,0,none,average,ground,none,"They weren't too bad, but the driving wasn't great and it took them a long time to line up to get a shot off. That being said, they didn't miss any, and seemed pretty consistent.",n,n
+burrito,44,9156,y,0,0,0,0,0,0,0,none,0,poor,poor,none,none,"Shut down during teleop, browned out, regained connection but was very clunky afterward. Did not see auto as we had just set up.",n
+MilesF,49,4251,0,0,0,0,0,2,0,park,0,poor,poor,human,none,"Just sat at the blue speaker for ""defense"" did not actually get anything done though and was practically useless.",n,n
+burrito,49,2689,y,0,1,0,2,0,3,0,park,0,none,average,human,none,Tank drive,n
+PierceH,49,4206,y,0,1,0,8,0,3,0,park,0,y,none,excellent,ground,none,"Conflicting Auto - They blocked 418's auto
+Scored a lot in speaker - Appears to be unable to score in amp"
+GenM,49,9088,0,0,0,0,0,0,0,none,0,none,poor,none,none,"Their robot did not work for most of the match, drove around for a little at the start of teleop.",n,n
+RohanK,49,418,y,0,1,1,10,0,0,0,park,0,none,excellent,ground,none,"Really good match, for once we had a decent alliance, but we scored enough points by ourselves to take our opponents on. It was a good one!",n
+RithiS,49,9080,0,0,3,1,0,1,0,park,0,none,excellent,ground,none,"It worked pretty well, the amp scorer was very reliable, but the robot overall very very slow, even with a good driver",n,n
+GenM,50,9156,0,0,0,0,0,0,0,none,0,average,poor,none,none,"Could not shoot in auto and teleop, played defense at the center of the field most of the match, then became immobile for the last 30 seconds.",n,n
+MilesF,50,9407,0,0,0,0,0,0,0,none,0,none,none,ground,none,Robot was able to move around for a little while but was odd...then it just stopped and didn't do anything. Maybe a network error/emergency shutoff? There were judges by the robot.,n,n
+RithiS,50,3005,0,3,2,9,0,1,0,park,0,none,excellent,ground,none,"GOOD. Works well, smooth, no issues",n,n
+PierceH,50,2687,y,0,3,0,10,0,2,0,park,0,none,excellent,ground,none,"Extremely fast robot - Very good driver
+Able to climb but hit the ground this match",n
+RohanK,50,5411,0,1,1,2,0,5,0,none,0,none,poor,ground,none,"They missed so many shots, and they had to keep picking up their missed shots for another attempt. Their aiming is really bad and inconsistent, and they kept dropping notes.",n,n
+burrito,50,7503,0,0,0,2,0,2,0,single,0,none,average,human,none,"Awkward shooter, needs to open to shoot, and the opening mechanism is in the opposite direction of what the controller thinks is ""forward"".",n,n
+RithiS,51,7534,0,0,0,0,0,0,0,none,0,none,poor,human,none,"KitBot, No signaling between human player and driver, so the driver didn't know if they had a note and kept leaving the station early, wasting time.",n,n
+GenM,51,7321,0,0,0,1,0,0,0,park,0,poor,poor,human,none,"Robot was a kitbot, driving was very weird and clunky, human intake was difficult.",n,n
+PierceH,51,9752,0,1,1,4,0,0,0,single,0,poor,excellent,ground,none,"9752's intake appeared to stop working at the start of the match but around the middle of it, it fixed itself
+Driver was very good and smooth as well
+Played some defense at the start of the match but stopped after intake worked",n,n
+Miles,51,6672,y,0,2,3,5,1,3,0,single,0,none,excellent,both,none,Amazing driver and really good shooter. Biggest problem (and a serious one) is that the driver would commonly and cockily shoot from very far away and then miss. They need to take the extra half second to get 3 feet closer and not miss 1/3 of their speaker. Overall though still amazing performance.,n
+RohanK,51,7506,y,0,1,2,1,0,0,0,none,0,poor,poor,both,none,"They almost tipped over 4 times, and half way through tele-op they gave up and tried to park in a way to block the opponents.",n
+burrito,51,9105,y,0,0,0,4,1,2,0,single,0,none,excellent,both,none,"Attempted midfield auto, but failed unfortunately. May have shot into amped speaker more, but not sure.",n
+RohanK,52,4295,0,0,0,0,0,0,0,none,0,poor,poor,human,none,"Tried to block because they can't do anything else. The driver is really bad and the robot almost tipped over a couple of times. Wasn't a good game plan, couldn't even park at the end.",n,n
+PierceH,52,8512,y,0,0,3,0,0,0,0,park,0,none,poor,human,none,"Only able to score in amp
+Very slow robot, especially at turning",n
+GenM,52,2689,y,0,0,0,4,0,0,0,single,0,none,average,human,none,"Kitbot, overall shooting and driving were fine, but took a while to line up shots.",n
+burrito,52,2582,y,0,2,1,4,0,2,0,park,0,none,excellent,ground,none,"Piece got stuck halfway through, but they spun and the piece got unstuck. Intake slightly inconsistent, but quite reliable amp and speaker.",n
+MilesF,52,5908,y,0,0,0,0,0,1,0,park,0,poor,poor,none,none,The robot tried to score its preloaded note into the amp but missed and then played really poor defense on the human intake station for the blue team which they did draw a penalty for but other than that did nothing of use. Also for mobility they only went halfway over the line so that might not actually count but was unsure.,n
+RithiS,52,4206,y,0,2,0,2,0,3,0,park,0,none,average,ground,none,"I thin there is something wrong with their shooter angle adjusting system, because it wouldn't mover, so they repeatedly missed speaker shots",n
+GenM ,53,7271,y,0,0,0,0,0,1,0,park,0,poor,poor,human,none,"Kitbot, did not do human intake well causing a note to get stuck, attempted to play defense but did not do it very well.",n
+MilesF,53,9088,y,0,1,0,0,0,0,0,none,0,none,none,both,none,The robot hit a wall and just died on the spot. Looked like it was going to be good though after its solid auto. Not actually sure about its intake ability but looks like it could do both based on design.,n
+PierceH,53,9156,y,0,1,1,5,0,6,0,park,0,none,poor,ground,none,"Slow robot - every movement was slow
+Missed a ton when shooting speaker",n
+RithiS,53,5411,0,0,0,0,0,0,5,park,0,none,excellent,ground,none,Did a very refined hoarding technique that easily carried red alliance,n,n
+RohanK,53,7492,y,0,0,0,0,0,0,3,park,0,excellent,average,both,none,"The robot and driving themselves are not very good, but it was able to play really good defense at the beginning and broke another robot without a foul. Other than that, not great.",n
+burrito,53,3310,y,0,4,5,2,3,2,0,single,0,none,excellent,ground,none,Great auto. Attempted trap but failed. Good hoarder strategy earlygame allowing it to score amp and speaker shortly after.,n
+YangFanC,54,9080,0,0,1,1,0,0,0,none,0,poor,poor,ground,none,robot was moving really slow either because of a unskilled driver or some mechanical issue. Intake also seemed really slow.,n,n
+CorryG,54,9492,0,0,2,2,0,1,0,none,0,none,average,ground,none,"Mid, had trouble decideing what to do (amp or speaker) but was accurate shooting amp
+",n,n
+ParinazE,54,9752,y,0,2,4,0,1,0,0,single,0,none,average,both,some,Similar autonomous as 418. Good. Very focused on the amp.,n
+LBT,54,418,y,0,3,1,9,0,2,0,none,0,none,excellent,ground,none,"Robot was good at shooting and had minimum losses. Defense and moving around other robots was tough at times, but overall did a great job !!",n
+JackN,54,4251,0,0,0,0,0,0,0,none,0,poor,poor,human,none,My robot did not do anything. The robot literally drove only in linear lines trying to play defense but failing. It attempted to shoot for speaker but it did not score. The rest of the match it seems like it wanted to play defense but did not do much on defense. ,n,n
+JackN,54,4251,0,0,0,0,0,0,0,none,0,poor,poor,human,none,My robot did not do anything. The robot literally drove only in linear lines trying to play defense but failing. It attempted to shoot for speaker but it did not score. The rest of the match it seems like it wanted to play defense but did not do much on defense. ,n,n
+JackN,54,4251,0,0,0,0,0,0,0,none,0,poor,poor,human,none,My robot did not do anything. The robot literally drove only in linear lines trying to play defense but failing. It attempted to shoot for speaker but it did not score. The rest of the match it seems like it wanted to play defense but did not do much on defense. ,n,n
+YangFanC,55,8512,0,0,2,0,0,0,0,park,0,none,poor,human,none,"really slow, seemed like a mechanical issue.",n,n
+LBT,55,7506,y,0,1,0,0,0,0,0,none,0,none,none,ground,none,"At the 1:40 mark, robot stopped moving. Pilot light off, battery issue (?). In AUTO, tried to get more notes, but intakes was really slow to move towards the note. (grabber hand thing as intake)",n
+ParinazE,55,7321,0,0,0,1,0,2,0,none,0,none,poor,human,none,No autonomous. A kitbot. Climber wasn't working. They were defended against and didn't go through the stage. Poor strategy.,n,n
+JackN,55,2687,y,0,3,0,12,0,1,0,park,0,none,excellent,ground,none,"The driver was insane. The driver had 2 bots on him and he spun, juking all of them out. The bot is mainly just a speaker type of robot. The ground intake is also wroking pretty well, same with the shooter. ",n
+JackN,55,2687,y,0,3,0,12,0,1,0,park,0,none,excellent,ground,none,"The driver was insane. The driver had 2 bots on him and he spun, juking all of them out. The bot is mainly just a speaker type of robot. The ground intake is also wroking pretty well, same with the shooter. ",n
+JackN,55,2687,y,0,3,0,12,0,1,0,park,0,none,excellent,ground,none,"The driver was insane. The driver had 2 bots on him and he spun, juking all of them out. The bot is mainly just a speaker type of robot. The ground intake is also wroking pretty well, same with the shooter. ",n
+JackN,55,2687,y,0,3,0,12,0,1,0,park,0,none,excellent,ground,none,"The driver was insane. The driver had 2 bots on him and he spun, juking all of them out. The bot is mainly just a speaker type of robot. The ground intake is also wroking pretty well, same with the shooter. ",n
+JackN,55,2687,y,0,3,0,12,0,1,0,park,0,none,excellent,ground,none,"The driver was insane. The driver had 2 bots on him and he spun, juking all of them out. The bot is mainly just a speaker type of robot. The ground intake is also wroking pretty well, same with the shooter. ",n
+AJ,55,5908,0,0,0,0,0,0,0,park,0,average,average,human,none,Intake looked broken throughout the round so the bot opted to take defense. The driving was average and the defense was decent doing an average job in blocking the other team from scoring points. ,n,n
+ParinazE,56,7540,0,0,0,0,0,1,2,park,0,y,none,average,ground,none,"Passed to 3005, otherwise, it wasn't fast and it didn't pass often.",n
+YangFanC,56,9105,y,0,3,0,2,0,1,0,none,0,average,average,ground,none,"Bulky enough that it could stop robots and play defensively, seemed a bit slower than normal, but otherwise average in every other metric.",n
+AJ,56,2468,0,1,0,8,0,1,6,double,0,none,excellent,both,none,"2468 was a very passive robot in the first half of the round, mainly going to the other side, collecting notes, and projecting to their teammates on their goal to shoot for points. In the second half of the round, 2468 went for shooting for speaker, getting the notes in the speaker eight times. ",n,n
+ryank,56,3005,y,0,3,6,1,5,2,0,park,0,y,average,excellent,ground,none,Played partially defensively on the way to get notes. Very efficient at cycling amp and getting multiple notes during amp
+JackN,56,6672,y,0,0,4,3,1,0,0,double,0,average,average,ground,none,"I thought that the robot was a very good overall robot. It had a great intake with a very good amp and solid speaker shoots. The robot also had a really reliable climbing hook. The bot played a little defense, locking down one of the robots for a while then letting them pass. I would not say this is a defense robot but it did have its moments. Mainly a offense robot.",n
+JackN,56,6672,y,0,0,4,3,1,0,0,double,0,average,average,ground,none,"I thought that the robot was a very good overall robot. It had a great intake with a very good amp and solid speaker shoots. The robot also had a really reliable climbing hook. The bot played a little defense, locking down one of the robots for a while then letting them pass. I would not say this is a defense robot but it did have its moments. Mainly a offense robot.",n
+LBT,56,7503,0,0,0,0,0,0,0,single,0,average,average,ground,none,"Didn't score, but only played defense. But it was overwhelmed by so many passing robots. Could pin down a robot, but not for long.  Couldn't tell if moved in AUTO. ",n,n
+YangFanC,57,2582,y,0,2,3,1,2,0,0,park,0,poor,average,ground,some,collided several times with other robots near their stage.,n
+ParinazE,57,4295,0,0,0,0,0,0,0,single,0,none,poor,both,none,It was trying to move the entire match. It would turn to move. Did not contribute.,n,n
+ParinazE,57,4295,0,0,0,0,0,0,0,single,0,none,poor,both,none,It was trying to move the entire match. It would turn to move. Did not contribute.,n,n
+ryank,57,9081,y,0,0,0,0,0,1,0,park,0,none,poor,none,none,"Inconsistent intake, very hard to get them to actually take in a note. Difficulty driving and didn't make much use to the team even after they realized they couldn't intake a note.",n
+ryank,57,9081,y,0,0,0,0,0,1,0,park,0,none,poor,none,none,"Inconsistent intake, very hard to get them to actually take in a note. Difficulty driving and didn't make much use to the team even after they realized they couldn't intake a note.",n
+LBT,57,9407,0,0,0,0,0,0,0,none,0,average,average,ground,some,"Fouled for pushing a red robot into their intake zone. Took over the area closest to us for defense. Stopped moving at 0:45, pilot light off. Didn't move at all in AUTO. Defense was okay, could block, but not effectively stop another robot. ",n,n
+JackN,57,8088,y,0,3,2,4,0,0,0,none,0,none,average,ground,none,"The robot started off great, great scoring/offense. It was a really good speaker robot and did shoot for amp a few times. Until later in the match someone on red rammed into the robot and the robots shooter fell apart and the robot stopped moving. Overall, was a great robot until it got broken. ",n
+AJ,57,4206,0,1,0,9,0,1,0,park,0,none,excellent,ground,none,"4206 was a offensive robot that had a main objective of trying to score goals within the speaker, which it did successfully and skillfully for a majority of the match. However, towards the end of the match, 4206 had trouble shooting a goal in the speaker, taking a long time of 10-15 seconds just to shoot one speaker goal. The driver was however very good as he maneuvered the bot around the field and grabbed the notes effectively.",n,n
+YangFanC,58,7321,0,0,0,2,0,1,0,park,0,none,poor,human,none,An every bot.,n,n
+ryank,58,7492,y,0,0,0,0,0,1,0,none,0,average,average,none,none,"Started having driving issues with 1:30 left in teleop. After slightly jittering for 15 or so seconds they became completely immobile. For intake, they never really got the chance to even use their intake so I wouldn't know if it works",n
+LBT,58,3310,y,0,3,0,6,0,2,0,single,0,none,excellent,ground,none,"Got note stuck, touched other notes. Other robots tried to block, but swirled to move around them. ",n
+AJ,58,4251,0,0,0,0,0,1,0,none,0,none,poor,none,none,"4251 could not even shoot once in a speaker or an amp. It was completely immobile during autonomous and during human control it went to the middle of the field and started inching forward and backward, giving an impression that the bot was broken. It did not even play defense at all and at the end it was unsuccessful in park/climb.",n,n
+JackN,58,9088,y,0,1,0,0,0,1,0,park,0,poor,poor,none,none,Pretty sure the robot broke. The robot rammed into a wall and for the rest of the match drove around like a madman. Only scored in auto. Its either the driver is really bad or the robots driving system actually broke. Most likely the 2nd one.,n
+JackN,58,9088,y,0,1,0,0,0,1,0,park,0,poor,poor,none,none,Pretty sure the robot broke. The robot rammed into a wall and for the rest of the match drove around like a madman. Only scored in auto. Its either the driver is really bad or the robots driving system actually broke. Most likely the 2nd one.,n
+JackN,58,9088,y,0,1,0,0,0,1,0,park,0,poor,poor,none,none,Pretty sure the robot broke. The robot rammed into a wall and for the rest of the match drove around like a madman. Only scored in auto. Its either the driver is really bad or the robots driving system actually broke. Most likely the 2nd one.,n
+ParinazE,58,5411,0,0,0,0,0,0,0,park,0,average,average,ground,many,"Did not attempt to score the entire match. The defense and quality of the driving got better as the match went along. Fouls due to hitting robots in prohibited areas(stage, etc.).",n,n
+LBT,59,7534,0,0,0,0,0,0,0,none,0,poor,poor,none,none,"Really slow, stopped at random moments. Tried to play defense, but couldn't block anyone even though at their speaker area. Their look was an average kit bot. Didn't intake, but assumed it's ground intake. ",n,n
+YangFanC,59,4153,y,0,0,0,2,0,2,0,park,0,poor,poor,ground,none,"when attempting to shoot, often stopped for extended periods of time doing some sort of mechanical correction that sometimes lasted longer than the time it took to get the ring and get back to the speaker in the first place.",n
+ParinazE,59,9156,0,1,0,7,0,0,0,none,0,none,average,both,none,Struggled with scoring the one note in autonomous(wasn't perfectly coded). Could intake both ways but only in-took from the ground.,n,n
+AJ,59,2689,y,0,0,0,3,0,1,0,none,0,none,average,human,none,"2689 did a decent job in steering. Although the driver was pretty clunky throughout the round, he/she did a good job in shooting speaker points as a majority of their shots were successful. It had a good intake that did a good job in capturing notes given by the human player and had very little difficulty in intaking notes throughout the round. ",n
+JackN,59,7540,0,0,0,6,0,2,0,park,0,none,average,ground,none,"I would say that this bot has an ok speaker. It felt like it needed more power for the shots. It also missed some shots due to the drivers aim and the lack of shooting power. I also felt like the driver was okay, they rammed into their teammates a couple of times. Other than that I wouldn't really pick this robot. ",n,n
+JackN,59,7540,0,0,0,6,0,2,0,park,0,none,average,ground,none,"I would say that this bot has an ok speaker. It felt like it needed more power for the shots. It also missed some shots due to the drivers aim and the lack of shooting power. I also felt like the driver was okay, they rammed into their teammates a couple of times. Other than that I wouldn't really pick this robot. ",n,n
+YangFanC,60,2687,y,0,2,0,4,1,0,2,none,0,none,excellent,ground,none,dodged other robots pretty well.,n
+ryank,60,8512,0,0,2,0,0,2,0,none,0,none,poor,human,none,"Very slow driving, they were just getting SHOVED around and not really making much value to the team, other than occasional amp notes",n,n
+ParinazE,60,2468,y,0,3,6,6,0,2,1,park,0,none,excellent,ground,none,"Good autonomous. Prioritized amp at the beginning, then amp later. Got to the stage at the last second. Great.",n
+LBT,60,8088,0,1,0,4,0,2,0,park,0,none,average,ground,some,Held 2 notes at a time. In AUTO only shot once and didn't move. Missed some shoots because of the lack of power. Only shot speaker. ,n,n
+AJ,60,9081,0,0,4,0,0,1,0,none,0,none,poor,human,none,"9081 was an amp bot and the driving was very clunky because it had a giant arm over its chassis, causing an imbalance in weight and very awkward driving experience. However, 9081 did a decent job in scoring amp points and collecting notes through human intake.  ",n,n
+JackN,60,6672,y,0,2,3,7,1,1,0,none,0,none,excellent,ground,some,"The foul was the robot having 2 notes in its intake at once. I think one of them was jammed? I don't really know, it could be that both of them were there on purpose. The driver was really skillful, moving around the stage really quickly and the shooting was really good. Very good overall robot.",n
+YangFanC,61,7506,y,0,1,1,1,0,0,0,park,0,none,poor,ground,none,"kinda slow, intake is also kinda slow.",n
+ParinazE,61,7271,y,0,0,0,0,0,1,0,park,0,none,poor,human,none,"Kitbot. Was moving a little, intook one note, and that was it.",n
+ryank,61,418,y,0,2,0,0,0,2,0,park,0,average,average,none,none,Intake broke,n
+AJ,61,9407,0,0,0,0,0,0,0,none,0,none,none,ground,some,"9407 was a very bad robot. It was completely immobile during auto and in human control, the bot seemed have broke down and come to a complete stop on the side of the field and stayed in that position for the rest of the match.",n,n
+LBT,61,9105,0,0,0,9,0,1,0,single,0,none,excellent,ground,none,Carried with the speaker. Didn't start moving till the 2:00 mark. Stuck around the speaker area and didn't make many rotations around the field. Didn't do anything during AUTO. ,n,n
+JackN,61,4295,0,0,0,0,0,0,0,none,0,poor,poor,none,none,"The robot this match wanted to use a ground intake but it didn't work. It just drove around for a while not really playing defense. Overall, a really bad bot. ",n,n
+JackN,61,4295,0,0,0,0,0,0,0,none,0,poor,poor,none,none,"The robot this match wanted to use a ground intake but it didn't work. It just drove around for a while not really playing defense. Overall, a really bad bot. ",n,n
+ryank,62,7503,y,0,0,0,0,0,0,0,none,0,excellent,excellent,none,none,"Their entire intake broke off halfway, even though they weren't using it. Very good about defending without getting fouls",n
+YangFanC,62,9752,y,0,4,7,1,4,0,0,none,0,none,excellent,ground,none,nothing to note.,n
+LBT,62,5908,y,0,0,0,0,0,1,0,park,0,poor,poor,none,none,"At 1:45 note got stuck on top of climb. I think overall this is an amp bot. Tried to play defense, but driver only moved it around the blue area closest to us. Couldn't climb because of note. ",n
+AJ,62,9080,0,0,0,0,0,0,3,none,0,none,poor,human,none,"The bot was passive but it did not do a good job as it just passed from a close distance, being practically useless. Also, the driving was very bad as it hit a wall and had trouble driving around. Additionally, 9080 just stopped midway  near the red chain and was immobile for the rest of the match.",n,n
+AJ,62,9080,0,0,0,0,0,0,3,none,0,none,poor,human,none,"The bot was passive but it did not do a good job as it just passed from a close distance, being practically useless. Also, the driving was very bad as it hit a wall and had trouble driving around. Additionally, 9080 just stopped midway  near the red chain and was immobile for the rest of the match.",n,n
+ParinazE,62,2582,y,0,0,0,1,0,0,5,park,0,average,excellent,ground,none,It didn't need to pass as much and it didn't change its strategy since the other teams didn't seem to take full advantage of it. Overall good.,n
+JackN,62,3005,y,0,2,2,4,3,0,1,single,0,average,excellent,ground,none,"3005 in my opinion is the best robot. This match the robot focused on defense. They still scored a lot but considering the other matches, the robot locked down some of the red bots. I feel like they could have won this match but got screwed over by their teammates. ",n
+JackN,62,3005,y,0,2,2,4,3,0,1,single,0,average,excellent,ground,none,"3005 in my opinion is the best robot. This match the robot focused on defense. They still scored a lot but considering the other matches, the robot locked down some of the red bots. I feel like they could have won this match but got screwed over by their teammates. ",n

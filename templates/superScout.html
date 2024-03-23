@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<form action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file2(event)"> 
+<form action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file2(event)">
 
     <table class="tbl">
         <thead>
@@ -94,57 +94,87 @@
             <tr class="active">
                 <td style="font-weight:bold; font-size: 15px;">RED TEAM 1</td>
                 <td>
-                    <select style = "width : 50px; font-size: 20px;"name = "num1red" id = "num1red">
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
+                    <select style="width : 50px; font-size: 20px;" name="num1red" id="num1red">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
                 <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 1</td>
                 <td>
-                    <select style = "width : 50px; font-size: 20px;"name = "num1blue" id = "num1blue">
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
+                    <select style="width : 50px; font-size: 20px;" name="num1blue" id="num1blue">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
             </tr>
             <tr class="active">
                 <td style="font-weight:bold; font-size: 15px;">RED TEAM 2</td>
                 <td>
-                    <select style = "width : 50px; font-size: 20px;"name = "num2red" id = "num2red">
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
+                    <select style="width : 50px; font-size: 20px;" name="num2red" id="num2red">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
                 <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 2</td>
                 <td>
-                    <select style = "width : 50px; font-size: 20px;" name = "num2blue" id = "num2blue">
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
+                    <select style="width : 50px; font-size: 20px;" name="num2blue" id="num2blue">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
             </tr>
             <tr class="active">
                 <td style="font-weight:bold; font-size: 15px;">RED TEAM 3</td>
                 <td>
-                    <select style = "width : 50px; font-size: 20px;"name = "num3red" id = "num3red">
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
+                    <select style="width : 50px; font-size: 20px;" name="num3red" id="num3red">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
                 <td style="font-weight:bold; font-size: 15px;">BLUE TEAM 3</td>
                 <td>
-                    <select style = "width : 50px; font-size: 20px;"name = "num3blue" id = "num3blue">
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
+                    <select style="width : 50px; font-size: 20px;" name="num3blue" id="num3blue">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
             </tr>
+        </tbody>
+    </table>
+
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th class="a">
+                    <p class="str">RED AMPLIFICATIONS</p>
+                </th>
+                <th class="a">
+                    <p class="str">BLUE AMPLIFICATIONS</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>
+                
+                <center>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" id="redAmps" name="redAmps" required="" type="number" value="0">
+                <button type="button" class="addButton">+</button>
+                </center>
+            </td>
+            <td>
+                <center>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" id="blueAmps" name="blueAmps" required="" type="number" value="0">
+                <button type="button" class="addButton">+</button>
+                </center>
+            </td>
         </tbody>
     </table>
 

@@ -1,1 +1,591 @@
-matchNum,num1red,num1blue,num2red,num2blue,num3red,num3blue,info,
+matchNum,num1red,num1blue,num2red,num2blue,num3red,num3blue,redAmps,blueAmps,info
+45,2,1,1,2,3,3,4,4,joojohuhlhkjhlkjh
+
+2,3,3,2,1,1,3,0,0,"R 1 - 9137 didn't work 
+R 2 - 9524 bad human station intake was there the whole game
+R 3 - 9448 trouble with human station and scoring speaker
+
+B 1 - 4597 didn't show
+B 2 - 418 did really well but fouled a lot
+B 3 - 8625 didn't show"
+3,2,3,1,1,3,2,0,0,"R 1 - 5503 stopped working halfway hung in endgame
+R 2 - 6369 failed intake in auto but potential decent speaker accuracy good human player
+R 3 - 8114 didn't show
+
+B 1 - 8827 bad human intake parked at the end
+B 2 - 4610 bad driving and attempts to throw notes back poorly
+B 3 - 4332 didn't really do anything, intake no score"
+4,3,2,1,3,2,1,0,0,"R 1 - 9664 didn't show
+R 2 - 5726 trouble with human intake
+R 3 - 8879 ground intake sporadic driving
+
+B 1 - 2789 ground intake but gets suck on notes
+B 2 - 3743 bad human intake
+B 3 - 9054 missed 2 got one in speaker human and ground intake"
+5,1,1,2,1,1,1,0,0,"R 1 - 8507 bad driving
+R 2 - 2583 auto ground intake
+R 3 - 5052 didn't show
+ 
+B 1 - 5414 didn't really work
+B 2 - 4364 stopped working for a bit didn't do much little bit of defense
+B 3 - 7138 trouble with human intake"
+6,1,1,2,2,1,2,0,0,"R 1 - 9121 trouble with human intake
+R 2 - 6357 solid speaker with decent mobility
+R 3 - 4717 almost hung endgame other than that nothing
+
+B 1 - 8749 didn't do much
+B 2 - 3561 clean end game hang not much else
+B 3 - 3679 far shot across field"
+7,1,1,1,1,1,3,0,0,"B 1 - 5892 decent
+B 2 - 6155 decent nothing crazy
+B 3 - 3847 good fast auto speaker rotation fast amp rotation and defense endgame hang
+
+R 1 - 3802 bad driving
+R 2 - 8019 whole intake broke off
+R 3 - 5894 trouble with intake"
+8,1,3,2,2,3,1,0,0,"Blue 1: 8625***NOT ON FIELD***
+
+Blue 2: 8114 
+Missed a few shots. 
+
+Blue 3: 8610
+Good defense against our robot
+
+
+Red 1: 9418
+Had an auto close to ours. Start shot and then let us take over for auto. Fast cycles. Climbed on chain with 8598 but 8598 was a little too loose and it counted as touching the ground
+
+Red 2: 418
+
+Red 3: 8598"
+9,1,1,1,1,1,1,0,0,"Blue 1: 2789
+Blue 2: 9524
+Blue 3: 8879
+Red 1: 4332
+Red 2: 9054
+Red 3: 9140
+
+NOTES:
+Only one ring was scored in auto. All robots just sat around. 4332 has a really slow cycle time. All the bots are slow both in speed and aiming time. 8879 does not have enough power to make almost any shots. No human players made a spotlight. 8879 got climb but barely. "
+10,1,1,3,1,2,1,0,0,"Blue 1: 8507
+Blue 2: 5103
+Blue 3: 9137
+Red 1: 2583 - Scored two rings in auto
+Red 2: 5726
+Red 3: 5503
+
+Notes:
+Whole red team is taking a long time per cycle. None are ground intake (except 5503 which has slow ground take). 55726 Has a very slow player intake; it gets stuck easily on the rim of the intake. Two spotlights made by blue team and one from red team. "
+11,3,3,2,1,1,2,1,0,"Blue 1: 8749
+Blue 2: 4717
+Blue 3: 3743
+Red 1: 4364
+Red 2: 4610
+Red 3: 9448
+
+Notes:
+One missed shot during auto by 9448. All other bots just moved slightly. 8749 has driving problems still can move though. 9448 had problems about shooting and moving over notes. Held a not for a long time and did not shoot at all. 4610 was stuck around the human station. It could leave but didn't. No robots climbed."
+,2,1,3,3,2,2,0,0,"Blue 1: 9121
+Blue 2: 5414
+Blue 3: 8019
+Red 1: 5894
+Red 2: 5892
+Red 3: 3679
+
+Notes:
+5892 was able to move very smoothly in auto and was able to maneuver in order to score these pieces. Miles told me to write that 8019 has RGB lights on their robot - Style points? 3679 is able to move under the stage. I noticed that 3679 is able to pick up these game pieces consistently. 5414 looks like a good robot. Best of the robots in this game so far. 5414 is able to shoot extremely quickly. They are able to score speaker and amp. 5892 was able to hand but 5414 was able to win the match even with teammates who were kitbots. They scored most of the 14 notes that were scored."
+,1,1,3,2,2,3,0,0,"Blue 1: 6357 - Only to make notes but dropped a lot
+Blue 2: 3802 - Got climbing 
+Blue 3: 6155
+Red 1: 3847 - good shooting and ground intake. Hits the wall alot. Almost scored trap
+Red 2: 7138 Sat a long time on the chain but got climb points. Did not contribute many notes.
+Red 3: 4597 "
+14,3,2,2,3,1,1,0,0,"Blue 1: 5052
+Blue 2: 9664
+Blue 3: 3561
+Red 1: 9506
+Red 2: 8827
+Red 3: 6369 - made one auto ring
+
+Notes:
+6369 is much more capable than all other bots. 9664 is a kit bot and so is 3561 it looks like. 3561 ha a slow cycle time and low accuracy. 3561 did climb."
+15,3,1,2,1,2,2,0,1,"Blue 1: 9140
+Blue 2: 9137
+Blue 3: 2583
+Red 1: 9418
+Red 2: 2789
+Red 3: 8507
+
+Notes:
+Autos were not super reliable for these groups. 9418 does not always pick up the note on their first try, which is something to keep in mind. 8507 does not have a swerve drive, so it is harder to maneuver around for them. 8507 climb relies on pneumatics so they do not always make it on the first try. 2789 was physically unstable, so it may not be a reliable choice."
+16,1,2,3,1,2,3,0,0,"Blue 1: 4610 - Is a kit bot
+Blue 2: 8749
+Blue 3: 5103 - Is a kit bot
+ Red 1: 4364
+ Red 2: 8879 - Is a kit bot
+ Red 3: 8610
+
+Notes: 
+Scored one point per team for auto while other robots did not move. 5103 is disabled/very broken.4364 is doing heavy defense not allowing 4610 to leave intake. 8749 has fast cycle times and is not being defended allowing it to score alot. Whole red team was defending against 4610. 8749 climbed. A ton of penalties for red team. Bad communication between 4610 and their driver."
+,1,1,2,1,3,2,0,0," Red 1: 8114
+ Red 2: 9054
+ Red 3:8019
+Blue 1: 3743
+Blue 2: 6625
+Blue 3: 5726
+3743 is a kitbot is not that good. 9045 is a kitbot. 8019 is able to move very smoothly, but not quickly. IT has some jagged movements and is having some trouble in this match. This could be ont he driver, but needs to be checked. 5726 is blocking the robotics from scoring. this robot is doing very good defense. 3743 has been having trouble picking up game pieces in this game."
+,2,2,1,3,2,1,0,2,"Blue 1- 4717
+Blue 2 - 8598
+Blue 3 - 5894 
+Red 1 - 4332
+Red 2 - 3802
+Red 3 - 7138
+
+7138 looks like kitbot with angleable shooter. Red team not going for auto  very much. 8598 very aggressive in scoring and ground intake is impressive. 3802 also kitbot and mobility not very good with not scoring many points. 4332 a swerve drive but not angling their shoot very well. "
+,3,3,3,3,3,3,3,3,"Blue 1- 6357
+Blue 2-5892
+Blue 3- 5503
+
+Red 1- 8827
+Red 2 - 3679
+Red 3 - 5414
+
+6357 auto doesnt seem too good, 5892 very aggresive and 5503 mobility very good. 5503 playing defense while 6357 and 5892 are scoring. 5414 and 3679 mobility very good, and 8827 not scoring much. although 3679 is passing notes to teammates. 5414 is scoring majority of points.
+
+"
+,3,3,1,1,1,2,0,0,"Blue Team 1 - 418 (us!)
+Blue Team 2 - 9506
+Blue Team 3 - 3561
+Red team 1 - 6369
+Red team 2 - 4597
+Red team 3 - 6155
+
+4597 didn't play this game. 418 perfect auto. 6369 good attacking and 9506 not much good mobility or shooting. 6155 mainly trying to play defense and trapping, and 9506 and 6115 in a lock. 6369 and 418 also in a lock. 3561 playing defense for most of the game
+
+"
+,1,1,3,1,1,1,0,0,"Blue team 1 - 9448
+Blue team 2 - 9121
+Blue team 3 - 9664
+Red team 1 - 5052
+Red team 2 - 3847
+Red team 3 - 9524
+
+9448 straight line into crash into 3847 in auto, auto not working well. 3847 has a really good auto. also 3847 has incredible attack. 9524 mainly trying to go for amp. 9121 not getting much mobility and doing nothing much, with 9664 having an unstable drivetrain. blue trying to play defense but THEIR METAL BREAKS OFF OF THEIR robot"
+,3,1,1,1,3,2,0,0,"Blue 1- 9137
+Blue 2 - 9054
+Blue 3 - 4364
+Red 1- 8019
+Red 2 - 5103
+Red 3 - 9140
+Both teams autos not verygood. 8019 red auto only one scoring. 8019 also has good mobility and good attack. 5103 with good mobility but not very much attack, and 4364 also has good mobility with not very much attack. 9054 not very good attack and mainly scoring amps, 9140 also getting a pretty good attack later in the match. only 9054 got climb"
+,1,2,2,3,1,2,0,1,"Blue team 1 - 7138
+Blue team 2- 8598
+Blue team 3- 8749
+Red team 1- 4610
+Red team 2- 8114
+Red team 3 - 2789
+
+
+8114 auto only one scoring, also has good attack. 7138 with not good mobility and not good attack, 2789 has a kitbot shooter with ground intake and overall good mobility, and getting a good amount of points. 8598 getting good attack with a lot of mobility, and 7138 not gettinga lot of points. 6749  has really good mobility but not a good shooter overall. 
+
+"
+,1,2,2,1,3,1,0,0,"Blue team 1 - 3743
+Blue team 2- 8879
+Blue team 3 - 5894
+Red team 1 - 5503
+Red team 2 - 4717
+Red team 3- 3679
+
+3679 auto good, getting most of the notes, 5894 very mobile  and trying to be attacking, attacking well. 8879 having a weird drivetrain but overall stable shooting. 3697 also being very fast and very good shooting, with 4717 having decent mobility. 5503 with not very good mobility and drive, and not getting very many points. 3743 also pretty fast and mainly trying to get amp. only 5894 getting climb."
+,1,2,3,3,2,1,0,1,"Red 1- 4332
+Red 2- 6369
+Red 3- 5892
+Blue 1- 3561
+Blue 2 - 8610
+Blue 3 - 6357
+
+
+5802 auto really good. 6357 mobility really good but not shooting very well, 6369 mobility and shooting really good. 8610 mobility janky but overall good and shooting well. 5802 mobility and mainly trying to play defense. 6357 just stopped in middle of match, maybe teleop disabled. 3561 mobility okay but not scoring many points. 3561 got climber, and 5892 got climber as well."
+,3,2,2,3,1,1,0,0,"5414 having good auto and scoring. 5414 also had good mobility and good scoring. 9669 with a kitbot and mobility but not good shooting. 5052 has good mobility but also not good shooting. 9418 trying to get note unstuck but not working. 5414 doing incredible on shooting, and 8507 playing okay and getting some shots with kitbot. 9418 having really good mobility, and 8507 gets climb well."
+27,1,3,2,2,2,1,0,0,"Red 1	5726       clunky defense
+Red 2	3802    short passing && haung
+Red 3	418	 2  auto tech fouls
+Blue 1	3847	good but had one poor cycle with 2 collisions
+Blue 2	9506	notes get stuck easily.
+Blue 3	9448  spark max disconnect"
+28,3,2,1,2,2,2,0,0,"Red 1	2583 can hang
+Red 2	8625 no show
+Red 3	8827 collision with stage.
+Blue 1	9524 clunky and slow
+Blue 2	6155 okay but nothing extraordinary
+Blue 3	9121 Auto tech foul double note"
+29,2,3,1,1,2,2,0,0,"Red 1	4610 moved well
+Red 2	9137 disable mechanical promblem
+Red 3	3743 difficult time at station
+Blue 1	9054 climbed
+Blue 2	5894 tech foul auto disabled
+Blue 3	5103 clunker and issue with speed"
+30,1,2,1,2,3,1,0,0,"Red 1	9140 slow and no auto
+Red 2	7138 auto broken
+Red 3	5503 climb good
+Blue 1	3561 okay but climb not work
+Blue 2	5892 okay defense intake problem
+Blue 3	8598 weak shooting not even close to speaker"
+31,2,1,1,2,1,1,0,0,"Red 1	2789 unable to do much pretty slow
+Red 2	4597 NO SHOW
+Red 3	9664 NO SHOW
+Blue 1	3679 disable mech problem
+Blue 2	8114 missed all autos 
+Blue 3	4364 intake problem and drive problem"
+32,3,1,2,3,2,2,0,0,"Red 1	3802 good scoring and hang
+Red 2	5052 ok slow cycles
+Red 3	9506 ok passing but climb is poor
+Blue 1	4332 NO SHOW
+Blue 2	8749 missed long shots tech fouls
+Blue 3	8507 clunky but good"
+33,1,2,2,1,2,2,0,0,"Red 1	8610 clunky
+Red 2	9448 drive/bumper issue
+Red 3	2583 good cycles ~ 10-15 sec
+Blue 1	6369 shooting was inaccurate but drive was good
+Blue 2	6357 had a note stuck and stuck on chain
+Blue 3	8625 clunky"
+34,3,2,3,2,3,1,0,0,"Red 1	5414 lot of score 
+Red 2	9418 good cycles 
+Red 3	3847 very fast and good cycle
+Blue 1	4717 okay routing
+Blue 2	8019 okay with what they had
+Blue 3	9524 disabled"
+35,1,1,2,2,1,3,0,0,"Red 1	8879 missing shots
+Red 2	6155 okay
+Red 3	418 outake broken
+Blue 1	5726 clunky driving
+Blue 2	8827 okay driving
+Blue 3	9121 smooth driving"
+36,1,1,2,2,1,1,0,0,"Red 1	9664 big mechanical problem(Card)penalties 
+Red 2	5892 2 tech auto fouls but smooth 
+Red 3	3743 NOT SHOW
+Blue 1	8598 half park
+Blue 2	8114 park
+Blue 3	9137 hard damage"
+37,1,3,2,1,3,2,0,0,"Red 1: 8749
+Red 2: 3802
+Red 3: 4597
+Blue 1: 2789
+Blue 2: 3679
+Blue 3: 5052
+
+Both scored 9 on auto 
+2789 seems to have some serious troubles possibly with balance.
+8749 is able to make full rotations but is slow
+2789 has a short shot and cant seem to score speaker
+8749 can score amp it looks like
+3802 can climb"
+38,1,1,1,1,1,1,0,0,
+38,2,3,1,2,3,1,0,1," Red 1: 6357 
+ Red 2: 9140
+ Red 3: 4610
+-------
+Blue 1: 2583
+Blue 2: 9506
+Blue 3: 4332
+
+Notes: 9506 can shoot
+4610 is unstable physically
+9140 Has a good shooting on speaker
+2583 makes a weird clicking... sounds broken
+4610 has a long and weak speaker shot
+2553 was able to climb"
+39,3,1,2,3,1,2,1,0," Red 1: 5103 
+ Red 2: 8625
+ Red 3: 3847
+-------
+Blue 1: 5414
+Blue 2: 6369
+Blue 3: 4717
+
+Notes: 
+3847 got 2 in auto
+5414 can score speaker from kinda far away
+6369 seems broken. Moving very slowly
+3847 is going for the amp alot and is very good at evading defense from other team. Has great movement
+5414 trying to block 3847
+No spotlights scored
+"
+39,1,1,1,1,1,1,0,0,"DID NOT GET TEAM NUMBERS. CHECK OTHER SITE FOR BOTS
+
+Notes: All blue team autos are not good. 9418 scored a note during auto.
+9418 has good, accurate and fast speaker shots
+6155 has trouble with getting notes
+9448 is disabled
+9054 is playing defense not very well. It is a kit bot
+6155 is attacking the disabled robot trying to get it to foul.
+7138 tried to climb but couldn't get both arms on the chain
+9418 successfully climbed"
+41,1,1,3,2,2,3,1,0," Red 1: 9121 
+ Red 2: 8879
+ Red 3: 3561
+-------
+Blue 1: 8610
+Blue 2: 8507
+Blue 3: 8019
+
+Notes: All good autos from red alliance. They all scored at least one note.
+8019 is too fast to effectively pick up notes well
+9121 is a little unbalanced but overall good
+8019 just sits in the center of the stage for no reason
+8610 is playing defense
+8879 got a note stuck ontop; couldnt do anthing else
+Red made two spotlights on the same pole
+3561 and 8879 made a climb
+9121 tried to get on the same chain as 3561 but wasnt able to."
+42,1,1,3,3,2,2,0,0," Red 1: 5894
+ Red 2: 4364
+ Red 3: 5726
+-------
+Blue 1: 418 THE GOOOOAT
+Blue 2: 5503
+Blue 3: 9524
+
+Notes: 
+418 has auto working!!!!!
+5894 has a balance issue
+9524 takes forever to get a note from human player
+418 is getting attacked from red team
+Red made a spotlight but not blue
+5894 got climb with spotlight"
+43,2,3,1,1,2,2,0,0," Red 1:5052 okay
+ Red 2:4610 slow cycles and poor shooter
+ Red 3:8598 clunky 
+-------
+Blue 1: 3679 very good 
+Blue 2: 9137 disabled 
+Blue 3: 3802 had people playing good d on them 
+
+Notes: "
+44,2,2,2,3,2,1,0,1," Red 1: 8749 park and okay 
+ Red 2: 3847 disabled for most of match
+ Red 3: 8114 okay clunky driving defense okay
+-------
+Blue 1: 8625 okay
+Blue 2: 5414 very fast 
+Blue 3: 9140 disabled mech issue
+
+Notes: "
+,2,2,1,1,3,1,0,1,"Blue 1 - 6165
+Blue 2 - 4332
+Blue 3- 4717
+Red 1- 9054
+Red 2- 9664
+Red 3- 6357
+
+6357 okay auto, but really aggresive driving and shooting. 9054 is an alphabot and has okay driving.  9669 has not good driving and not good shooting. 6155 has good drive but not very good at shooting. 4717 has swerve but also not good at driving and not good at shooting.
+
+"
+,2,2,2,1,2,2,0,0,"8879 having good mobilization and good shooter, 9418 also good intake but shooter is too far and a little janky. 7138 is a alpha with not good mobilization and not much shooting potential. 8879 has good mobility with a good shooter, and 5103 is an alpha not much mobility and not that good of a shooter. 6369 has good intake and shooter but note was stuck in their chassis so they couldn't do much."
+,2,2,1,1,2,2,0,0," Red 1: 5506 park and okay 
+ Red 2: 9524 troubled getting notes from station 
+ Red 3: 5726 kept hitting teammate
+-------
+Blue 1: 3743 troubled getting notes
+Blue 2: 2583 disabled
+Blue 3: 9121 okay
+
+Notes: "
+48,2,2,2,1,1,3,0,0," Red 1: 4364 stuck on chain
+ Red 2: 8827 okay movement and almost climbed
+ Red 3: 2789 bad movement having trouble
+-------
+Blue 1: 8507 missing and okay at recieving
+Blue 2:9448 disabled
+Blue 3: 5892 very good clean cycle and climb
+
+Notes: "
+49,2,3,3,2,1,2,0,1," Red 1: 5894 okay with movement okay recieving notes
+ Red 2: 418 good with notes and speaker
+ Red 3: 8610 got penalties and defense mostly
+-------
+Blue 1: 5503 good
+Blue 2: 3561 climb
+Blue 3: 8019 missed a few
+
+Notes: "
+50,3,1,2,3,1,2,0,0," Red 1: 3847 very good 
+ Red 2: 4717 hard time picking notes up
+ Red 3: 9137 no auto disabled
+-------
+Blue 1: 8114 disabled
+Blue 2: 6357 good defense
+Blue 3: 4332 okay movement and little scoring
+
+Notes: "
+51,1,2,1,1,3,2,0,0," Red 1: 6155 pushed notes
+ Red 2: 5052 clunky movement  disabled
+ Red 3: 5414 very good shooter
+-------
+Blue 1: 8598 okay
+Blue 2: 9140 some issue with shooter(its loud and keeps breaking)
+Blue 3: 8879 okay
+
+Notes: "
+52,1,1,1,2,2,1,0,1," Red 1: 8625 disabled for a bit
+ Red 2: 9054 slow and problem with movement
+ Red 3: 9121 good at amp disabled for last 45 sec
+-------
+Blue 1: 4597 NO SHOW
+Blue 2: 9506 okay at speaker
+Blue 3: 4610 low power speaker, kit bot
+
+Notes: "
+53,2,1,2,1,3,1,0,0," Red 1: 8507 okay
+ Red 2: 3679 smooth 
+ Red 3: 6369 good cycle
+-------
+Blue 1: 9524 trouble moving
+Blue 2: 3743 missed speaker too low
+Blue 3: 4364 okay no def disabled
+
+Notes: "
+54,3,1,2,2,1,1,0,0," Red 1: 9448 : Offensive attack with very good shooting, shooting a lot of points
+ Red 2: 8019 : Good drivetrain, really good shooter
+ Red 3: 2789 : Alpha bot with okay driving and shooter
+-------
+Blue 1: 5103 Alpha bot with good manuvering and ok shooting
+Blue 2: 5503: Blocking red robots 
+Blue 3: 8827 Good ground intake with okay driving and 
+
+Notes: "
+,1,3,2,1,3,2,0,0,"Blue 1: 418 really good auto, very aggressive driving and shooting notes
+Blue 2 : 2583 disabled for a lot of the game
+Blue 3 : 5892 also very aggressive shooting with a also played a lot of defense 
+Red 1 : 3802 alpha bot with drive train and not very good shooting
+Red 2 : 8610 okay drivetrain with okay shooting
+Red 3: 9418 very aggressive drivetrain and shooting
+
+
+"
+,3,1,1,1,1,3,0,0,"8749 is good drive train with janky shooter, 7138 is alpha bot and getting climb, 3561 is a swerve drive with aggresive shooting, 5894 is alpha bot with an okay shooter, 9664 didn't show up."
+,1,2,2,3,1,2,0,0," Red 1: 9137 DISABLE
+ Red 2: 6357 defense on pearadox and 8879 mostly DISABLE for a bit
+ Red 3: 9506 weak shooter
+-------
+Blue 1: 8114 good rotations and good movement DISABLE
+Blue 2: 5414 great shooter
+Blue 3: 8879 kit bot with clunky movement
+
+Notes: "
+58,3,2,2,2,1,2,0,1," Red 1: 3847 perfect auto
+ Red 2: 8507 passing robot
+ Red 3: 8598 hitting own teamate and having trouble moving
+-------
+Blue 1: 6369 an do speaker but trouble coordination
+Blue 2: 4610 amp scorer and bumper is high
+Blue 3: 9054 defensive robot ok defense
+
+Notes: "
+59,1,2,2,2,2,1,0,0," Red 1: 9524 DISABLED
+ Red 2: 4332 defense mostly ok def
+ Red 3: 3679 trouble moving
+-------
+Blue 1: 5103 good rotation(about 15 sec)
+Blue 2: 6155  movement but it isnt shooting good.
+Blue 3: 4364 trouble really poor movement
+
+Notes: "
+60,2,2,2,1,3,3,1,0," Red 1: 5892 good defense trouble moving for a bit
+ Red 2: 4717 movement troubles
+ Red 3: 9418 good shooting
+-------
+Blue 1: 5503 okay shooting but long cycles
+Blue 2: 9121 trouble shooting and DISABLED
+Blue 3: 5052 good defense 
+
+Notes: "
+61,2,3,1,2,2,3,0,0," Red 1: 7183  ok defense
+ Red 2: 9664 rickety robot
+ Red 3: 2583 okay rotations and cycles
+-------
+Blue 1: 8918 good shots
+Blue 2: 8749 defense mustly
+Blue 3: 418 good at speaker 
+
+Notes: "
+62,1,3,1,2,1,1,0,0," Red 1: 8610 auto foul in ops territory 
+ Red 2: 9140 NO SHOW
+ Red 3: 3743 pushing notes unable to do much 
+------- 
+Blue 1: 5726 good shoot
+Blue 2: 4597 okay
+Blue 3: 9448 bad job with shooting and terrible movement
+
+Notes: "
+63,2,3,2,2,2,1,1,0,"Red 1: 8827  okay
+Red 2: 5894 hang good and quick
+Red 3: 3561 ok shooter but disconnected
+---------
+Blue 1: 3802 climbed and ver good
+Blue 2: 2789 good defense
+Blue 3: 8625 trouled scoring in amp"
+,1,1,1,1,1,1,0,0,2583 is moving very awkward - lack of smooth movement makes it hard to move. 6155 is getting stuck on the chain once again. 5503 is doing pretty good defense against the robots. 
+,1,1,1,1,1,1,0,0,6369 is having trouble taking shots in the first match. 9121 is having trouble picking up the notes. 
+,1,1,1,1,1,1,0,0,"3847 driver does not seem to be doing that good in the morning matches. In this match, their note jammed. They may have a different driver today.
+
+8598 is having trouble picking up the game pieces. Something may have disconnected for 3679. "
+,2,1,3,2,1,2,2,1,8879 is having trouble moving. 9448 missed its shots and was unable to shoot into the speaker. 3561 is consistently able to cycle amps. 5103 has a very strong shooter and is able to shoot into the speaker. 
+,3,2,1,3,2,1,0,0,"2789 has bad auto, same with 4332. 4332 slow handoff to shooter. 9524 can't move anymore after like 20 seconds. 7138 having trouble moving with 1:00 left. 4332 has bad ground pickup and notes get easily stuck. 7138, 8625, and 9524 were mostly immobile at the end and none could climb (all on red team)."
+70,1,3,2,2,3,1,0,0,"8827 super slow movement. 5052 and 5894 have bad auto. 5894 playing very good defense. 5052 slowed down towards end. 9140 driver is kind of bad (running into things, etc)"
+71,3,2,1,1,2,3,0,0,6155 trying to interfere with red. 9506 struggling to move. 8507 has trouble getting notes from human player station. 9137 driver is ramming their robots shooter into the wall (???) 9137 got a foul for pinning for more than 5 sec. 9121 is very fast at picking notes and bringing to speaker. 9137 picking up multiple notes at once.
+72,1,3,2,1,3,2,0,1,5892 has good auto. 3847 has a crazy auto as usual (40pts). 6369 is immobile within 10 seconds of teleop. 3847 and 5892 had a collision. 5892 has VERY good defense. 2583 has poor human intake accuracy. 8749 having trouble with intake. 3847 has very consistent speaker notes.
+73,2,1,1,3,3,2,0,1,"6357 can't move at all. 4364 moves in a weird circular pattern that's super slow. 3802 good at farming amp notes. 8019 good at pushing robots back. 8598 has consistent speaker shots, but has some trouble with ground intake."
+74,1,2,3,3,2,1,1,0,"3561 has a bad intake that shoots it out of their robot vertically sometimes. 8625 has a slow handoff to the shooter. 5726 has a bad human intake. 9418 has consistent speaker shots in teleop. 4332 driver is slow. 3679 playing defensive, but not too well at it. 9418 dropped a note from their intake. 5726 trying to play defensive as well but its not good at it, which is bad considering their robot has a major portion built for defense."
+75,2,2,1,1,3,3,1,0,"8610 got a foul in auto. 9664 has bad human intake. 8827's intake is dragging against the ground which is damaging it. 9140 going for notes in the amp, but is better at speaker.  8610 had bad defense. 4717 is having trouble moving towards the end."
+76,2,2,1,1,1,2,0,0,"Red 1	5894	hang
+Red 2	9524	bad
+Red 3	4610	rocking up and down
+Blue 1	9448	passing but big part off
+Blue 2	5052	disabled for first half of match 
+Blue 3	8114	good cycles"
+77,2,2,2,1,2,2,0,0,"Red 1	3743	hung but pearodox hit them
+Red 2	5103	good cycles
+Red 3	5414	missed auto
+Blue 1	7138	hang is good
+Blue 2	2789	disabled for a bit
+Blue 3	418     poor auto defense"
+78,1,2,2,2,2,2,0,1,"Red 1	4364 no move in auto	and barely move
+Red 2	5503	tried to stage but fail okay
+Red 3	9506	okay at shooting
+Blue 1	8879	okay overall
+Blue 2	3847	missed all auto but recovered in teleop
+Blue 3	9054	medium cycles"
+79,1,2,2,1,2,2,0,0,"Red 1	8019	problems moving
+Red 2	8598	shooter outake broke after collision
+Red 3	8625	okay job
+Blue 1	5726	park trouble moving effectively
+Blue 2	8507	Movement issue
+Blue 3	6357	vey slow at picking up notes"
+80,2,1,3,2,3,3,0,0,"Red 1	9121	medium quick rotations
+Red 2	9140	fast cycles
+Red 3	5892	smooth avoiding obstacles
+Blue 1	9664	weak shooter and rocking
+Blue 2	6369	jittery
+Blue 3	3802	hung and very very good
+"
+81,1,2,1,1,1,1,1,0,"Red 1	5052	trouble moving broken
+Red 2	9137	trouble moving broken intake
+Red 3	8749	rocking back and forth
+Blue 1	8827	good at angled speaker
+Blue 2	8610	not on and some mech problems
+Blue 3	9524	 broken movement
+"
+82,1,3,1,1,2,2,1,0,"Red 1	9448	bumping into many things
+Red 2	4332	movement problems
+Red 3	5414	missed a bit in auto
+Blue 1	3679	good shooting and cycle
+Blue 2	3743	DISABLED
+Blue 3	7138	okay defense and parked"
+83,1,3,1,1,2,2,0,0,"Red 1	4597	issues movment
+Red 2	5894	trouble turning
+Red 3	8114	rickety
+Blue 1	2583	GAME AWARNESS did not climb in order 
+Blue 2	5103	DISABLED after auto
+Blue 3	9418	issue movement
+"
