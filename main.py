@@ -84,6 +84,13 @@ def scoutSubmit():
         del data['matchNum']
         del data['teamNum']
         del data['scoutID']
+
+        # make sure checkboxes appear
+        if 'autoMobility' not in data:
+            data['autoMobility'] = 'n'
+        if 'spotlight' not in data:
+            data['spotlight'] = 'n'
+            
         cursor.execute('INSERT INTO scoutData (matchNum, teamNum, scoutID, data) VALUES (?, ?, ?, ?)', 
                        (matchNum, teamNum, scoutID, json.dumps(data)))
         conn.commit()
