@@ -1,0 +1,198 @@
+{% extends "scout.html" %} 
+
+{% block form %}
+
+<!-- These are the two items that the super scout will control, but the user can type it in if it fails -->
+ <div class="dropDown">
+    <label>
+        <bold>MATCH NUMBER: </bold>
+    </label>
+    <input name="matchNum" class="inp" id="matchNum" type="text" value="0" />
+</div>
+
+<div class="dropDown">
+    <label>
+        <bold>YOU ARE WATCHING: </bold>
+    </label>
+    <input name="teamNum" class="inp" id="teamNum" type="text" value="0" />
+</div>
+<!---------------------------->
+
+
+<table class="tbl">
+    <thead>
+        <tr>
+            <th style="font-size: 20px;" class="a" colspan="3">
+                <center>AUTONOMOUS</center>
+            </th>
+        </tr>
+        <tr>
+            <th style="font-size: 25px;">
+                <center>LEVEL</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CONES</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CUBES</center>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">HIGH</td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" type="text" id="auto-high-cones" value="0" />
+                <button type="button" class="addButton">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton"">-</button>
+                <input class="inp" type="text" id="auto-high-cubes" value="0" />
+                <button type="button" class="addButton"">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">MID</td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" type="text" id="auto-mid-cones" value="0" />
+                <button type="button" class="addButton">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" type="text" id="auto-mid-cubes" value="0" />
+                <button type="button" class="addButton">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">LOW</td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" type="text" id="auto-low-cones" value="0" />
+                <button type="button" class="addButton">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" type="text" id="auto-low-cubes" value="0" />
+                <button type="button" class="addButton">+</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="tbl2">
+    <thead>
+        <tr>
+            <th style="font-size: 20px;" class="a" colspan="3">
+                <center>TELEOP</center>
+            </th>
+        </tr>
+        <tr>
+            <th style="font-size: 25px;">
+                <center>LEVEL</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CONES</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CUBES</center>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">HIGH</td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo()">-</button>
+                <input class="inp" type="text" id="teleop-high-cones" value="0" />
+                <button type="button" class="addButton" onclick="incTwo()">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwob()">-</button>
+                <input class="inp" type="text" id="teleop-high-cubes" value="0" />
+                <button type="button" class="addButton" onclick="incTwob()">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">MID</td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo2()">-</button>
+                <input class="inp" type="text" id="teleop-mid-cones" value="0" />
+                <button type="button" class="addButton" onclick="incTwo2()">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo2b()">-</button>
+                <input class="inp" type="text" id="teleop-mid-cubes" value="0" />
+                <button type="button" class="addButton" onclick="incTwo2b()">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">LOW</td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo3()">-</button>
+                <input class="inp" type="text" id="teleop-low-cones" value="0" />
+                <button type="button" class="addButton" onclick="incTwo3()">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo3b()">-</button>
+                <input class="inp" type="text" id="teleop-low-cubes" value="0" />
+                <button type="button" class="addButton" onclick="incTwo3b()">+</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="str">
+    <p>DEFENSE QUALITY</p>
+</div>
+<div class="quest">
+    <div class="inner">
+
+        <input type="radio" name="defense" value="none" id="def1" required>Did Not Really Perform Defense<br>
+        <input type="radio" name="defense" value="poor" id="def2">Poor Defense Quality<br>
+        <input type="radio" name="defense" value="average" id="def3">Average Defense Quality<br>
+        <input type="radio" name="defense" value="excellent" id="def4">Excellent Defense Quality<br>
+    </div>
+</div>
+
+<div class="str">
+    <p>SUBSTATION (ask for clarifiation)</p>
+</div>
+<div class="quest">
+    <div class="inner">
+
+        <input type="radio" name="sub" value="single" id="sub1">Single Substation<br>
+        <input type="radio" name="sub" value="double" id="sub2">Double Station<br>
+        <input type="radio" name="sub" value="both" id="sub3">Used Both Substations<br>
+    </div>
+</div>
+
+<div class="str">
+    <p>TOTAL PIECES DROPPED (Cubes + Cones)</p>
+</div>
+<div class="quest">
+    <button type="button" class="subtractButton" onclick="decThree()">-</button>
+    <input class="inp" type="text" id="dropped-pieces" value="0" />
+    <button type="button" class="addButton" onclick="incThree()">+</button>
+</div>
+
+<div class="str">
+    <p>ADDITIONAL INFO</p>
+</div>
+<div class="quest">
+    <div class="inner2">
+
+        <textarea id="info" style="font-size: 15pt;" name="info" cols="50" rows="10"></textarea>
+    </div>
+</div>
+
+<div style="padding-bottom: 10px;" class="but">
+    <button type="submit" class="button">SUBMIT</button>
+</div>
+
+<br>
+
+{% endblock %} 

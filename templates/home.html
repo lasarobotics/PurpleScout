@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}ℙ𝕦𝕣𝕡𝕝𝕖 𝕊𝕔𝕠𝕦𝕥{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/home.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="cube">
+    <div class="top"></div>
+    <div>
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+    </div>
+</div>
+<div class="txt">
+    <bold><p style = "font-weight:bolder; font-family:sans-serif" id="purpleScout">
+        Purple Scout - {{ name }}
+    </p></bold>
+</div>
+
+
+<div class="but">
+  <a href="scout.html"><button class="button">Regular </button> </a>
+  <a href="superScout.html"><button class="button">Super </button> </a>
+  <!-- <a href="scout.html"><button class="button">Mega </button> </a> -->
+  <a href="pitScout.html"><button class="button">Pit </button> </a>
+</div>
+  
+<!-- <div class="footer">
+    <p><b>Courtesy of LASA Robotics, Software Developed by Soumik Chemudupati</b></p>
+</div> -->
+{% endblock %}

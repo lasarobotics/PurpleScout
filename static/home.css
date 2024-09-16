@@ -1,0 +1,199 @@
+.logo {
+  float: left;
+}
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  min-height: 100vh;
+  background: #111;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Link to Cube Effect: https://www.youtube.com/watch?v=nOdDtnHWaDo */
+
+.cube {
+  position: fixed;
+  top: -100%;
+  right: -100%;
+  margin: auto;
+  z-index: 0;
+  left: 0px;
+  bottom: -220px;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+.cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#151515, #663399);
+  transform: rotateY(calc(90deg*var(--i))) translateZ(150px);
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #222;
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+.top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #b869f5;
+  transform: translateZ(-360px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(169, 100, 222, 0.2),
+      0 0 200px rgba(169, 100, 222, 0.4),
+      0 0 300px rgba(169, 100, 222, 0.6),
+      0 0 400px rgba(169, 100, 222, 0.8),
+      0 0 400px rgba(169, 100, 222, 1);
+}
+
+.img {
+  position: relative;
+  left: 900px;
+  bottom: 100px;
+}
+
+.txt {
+  
+  position: relative;
+  bottom: -325px;
+  text-align: center;
+}
+
+#purpleScout {
+  font-family: 'Libre Baskerville', serif;
+  color: #663399;
+  font-size: 50px;
+}
+
+.but {
+  height: 200px;
+  /* position: relative; */
+  bottom: 200px;
+  text-align: center;
+}
+
+.button {
+  width: 200px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 2px solid #663399;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  /* font-family: 'Trebuchet MS', sans-serif; */
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  bottom: -300px;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #663399;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 1.0s;
+}
+
+.button:hover::before {
+  width: 100%
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #663399;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.topnav a {
+  float: left;
+  color: #ddd;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: all 1.0s;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: #663399;
+}
+
+.topnav a.active {
+  background-color: #ddd;
+  color: #663399;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+
+.footer {
+  position: fixed;
+  bottom:-50px;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  background-color: #663399;
+  color: white;
+  text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#home_button {
+  display: none;
+}

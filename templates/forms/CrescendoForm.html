@@ -1,0 +1,238 @@
+{% extends "scout.html" %}
+
+{% block form %}
+<div class="horizontalBlock">
+    <!-- Autonomous  -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>AUTONOMOUS</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>MOBILITY</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>AMP</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>SPEAKER</center>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>
+                    {{ form.autoMobility(class="inp check") }}
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.autoAmp(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.autoSpeaker(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Teleop  -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>TELEOP</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>AMP</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>SPEAKER</center>
+                </th>
+                <th style="font-size: 15px;">
+                    <center>AMP'ED SPEAKER</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.teleopAmp(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.teleopSpeaker(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.teleopAmplified(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>DROPPED/MISSED</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>PASSED NOTES</center>
+                </th>
+                <th></th>
+            </tr>
+            <tr class="active">
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.droppedPieces(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.passedNotes(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <!-- Endgame  -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>ENDGAME</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>PARK/CLIMB</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>TRAP</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>SPOTLIGHT</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>
+                    {{ form.climb(class="inp select") }}
+                </td>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.trap(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+                <td>
+                    {{ form.spotlight(class="inp check") }}
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<div id="questionaireGrouping">
+    <div class="question">
+        <div class="questionHeader">
+            <p>DEFENSE QUALITY</p>
+        </div>
+        <div class="quest">
+            {{ form.defense }}
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="questionHeader">
+            <p>DRIVING QUALITY</p>
+        </div>
+        <div class="quest">
+            <div class="inner">
+                {{ form.driving }}
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="questionHeader">
+            <p>FOULS</p>
+        </div>
+        <div class="quest">
+            <div class="inner">
+                {{ form.fouls }}
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="questionHeader">
+            <p>INTAKE TYPE</p>
+        </div>
+        <div class="quest">
+            <div class="inner">
+                {{ form.intake }}
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div id="additionalInfo" class="question">
+    <div class="questionHeader">
+        <p>ADDITIONAL INFO</p>
+    </div>
+    <div class="quest">
+        <div class="inner2">
+            {{
+            form.info(class="info",placeholder="What do you think about this robot? Write any questions or strategies they used or interesting things that happened during the match...")
+            }}
+        </div>
+    </div>
+</div>
+
+<!-- Rachit is awesome-->
+{% endblock %}

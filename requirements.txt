@@ -1,0 +1,10 @@
+flask
+flask-socketio
+flask-wtf
+tbapy
+python-dotenv
+requests
+WTForms
+gspread
+oauth2client
+google-api-python-client

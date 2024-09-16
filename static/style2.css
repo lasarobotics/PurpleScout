@@ -1,0 +1,525 @@
+.logo {
+  float: left;
+}
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  background-color: #222;
+  color: #ffffff;
+  margin: 0;
+}
+
+.questionHeader {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.questionHeader p {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+  border-bottom: 5px solid #663399;
+  margin: 0; /* Remove default margin */
+  padding: 3px 0; /* Add padding for spacing */
+}
+
+.quest {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+}
+
+.dropDown {
+  text-align: center;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.inner {
+  display: inline-block;
+  text-align: left;
+}
+
+.but {
+  padding-bottom: 200px;
+  text-align: center;
+  color: white;
+}
+
+.button {
+  width: 200px;
+  height: 80px;
+  border-radius: 12px;
+  background-color: transparent;
+  border: 2px solid #663399;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  bottom: -200px;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #663399;
+  color: white;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 1.0s;
+}
+
+.button:hover::before {
+  color: white;
+  width: 100%
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #663399;
+  border: 0;
+  padding: 0;
+  margin: 0; 
+}
+
+.topnav a {
+  float: left;
+  color: #ddd;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: all 1.0s;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: #663399;
+}
+
+.topnav a.active {
+  background-color: #ddd;
+  color: #663399;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.topnav ul li {
+  display: inline;
+}
+
+.footer {
+  position: absolute;
+  top: 1700px;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  background-color: #663399;
+  color: white;
+  text-align: center;
+}
+
+/* Number inputs */
+
+.inp {
+  width: 40px;
+  height: 30px;
+  font-size: 25px;
+  text-align: center;
+  accent-color: #663399;
+}
+
+input.inp.wide {
+  width: 80px;
+}
+
+input.inp.check {
+  width: 100%;
+}
+
+select.inp.select {
+  width: 100%;
+  font-size: 20px;
+}
+
+
+
+/* Hide arrows on number input */
+
+/* Chrome, Safari, Edge, Opera */
+.inp::-webkit-outer-spin-button,
+.inp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.inp[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Buttons to left/right of numbers */
+.subtractButton, .addButton {
+  width: 40px;
+  height: 30px;
+  font-size: 25px;
+  text-align: center;
+  bottom: -3px;
+  position: relative;
+}
+
+button.subtractButton {color: red;}
+button.addButton {color: green;}
+
+
+.tbl {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  font-family: 'Trebuchet MS', sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+}
+
+.a {
+  background-color: #663399;
+  color: #ffffff;
+}
+
+.tbl th,
+.tbl td {
+  padding: 10px 10px;
+  border-bottom: 2px solid #111;
+}
+
+.tbl tbody tr {
+  border-bottom: 2px solid #111;
+}
+
+.tbl tbody tr:last-of-type {
+  border-bottom: 10px solid #663399;
+  padding-bottom: 100px;
+}
+
+.tbl tbody tr.active-row {
+  font-weight: bold;
+  color: #663399;
+}
+
+
+.tbl2 th,
+.tbl2 td {
+  padding: 10px 10px;
+  border-bottom: 2px solid #111;
+}
+
+.tbl2 tbody tr {
+  border-bottom: 2px solid #111;
+}
+
+.tbl2 tbody tr:last-of-type {
+  border-bottom: 10px solid #663399;
+  padding-bottom: 100px;
+}
+
+.tbl2 tbody tr.active-row {
+  font-weight: bold;
+  color: #663399;
+}
+
+.hidden {
+  display: none;
+}
+
+.info {
+  font-family: 'Trebuchet MS', sans-serif;
+  width: 300px;
+  height: 100px;
+}
+
+#infoSuper {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+
+#selectTeamGrouping {
+  margin-left: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  
+  margin-bottom:20px;
+}
+
+#teamSelect {
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100vw; */
+  display:flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* margin :50vw; */
+  left: 50vw;
+  margin-bottom:20px;
+  /* transform: translateX(10%); */ 
+}
+
+th, th>select {
+  font-size: 25px;
+}
+
+#questionaireGrouping {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.question {
+  min-width: 200px;
+  min-height: 200px;
+  margin: 20px 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 30px 10px;
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #663399;
+}
+
+#additionalInfo {
+  width: 75vw;
+  height: 25vh;
+  margin: auto;
+}
+
+.question textarea {
+  width: 70vw;
+  height: 20vh;
+  border-radius: 10px;
+}
+
+.question textarea::placeholder {
+  text-indent: 10px;
+}
+
+/* Rachit is awesome */
+#home_button {
+  position: fixed;
+  left: 3vmin;
+  top: 3vmin;
+
+  width: 80px;
+  aspect-ratio: 1;
+
+  background: rgba(0, 0, 0, 0.2);
+  /* The 'important' is required for some reason so that the border actually shows up */
+  /* border: 10px solid #663399 !important; */
+  
+  background: rgba(102, 51, 153, 0.5);
+  background-image: url("/static/home_icon.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+
+  border-radius: 30%;
+  padding: 20px !important;
+
+  /* box-shadow: 0 0 15px black; */
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  transition: 0.5s ease-in-out;
+}
+
+#home_button:hover {
+  cursor: pointer;
+  /* background-color: #aa88dd; */
+  opacity: 0.9;
+  scale: 1.1;
+  box-shadow: 0 0 10px black;
+}
+
+#avoidHomeButton {
+  margin-left: calc(3vmin + (80px * 1.05) + 20px);
+}
+
+#chatDiv {
+  position: fixed;
+  right: 3vmin;
+  top: 3vmin;
+}
+
+.horizontalBlock {
+  /* background: rgba(255, 0, 0, 0.2); */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.addsubInput>* {
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.addsubInput :nth-child(1), .addsubInput :nth-child(3) {
+  color: white;
+  font-weight: bolder;
+  border-radius: 5px;
+  width: 25px;
+  top: 0;
+}
+
+.addsubInput :nth-child(1) {
+  background-color: rgb(150, 0, 0);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.addsubInput :nth-child(2) {
+  /* background-color: yellow; */
+  border-radius: 0;
+}
+
+.addsubInput :nth-child(3) {
+  background-color: rgb(0, 75, 0);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#account_table input[type="text"] {
+  width: 200px;
+  text-align: left;
+}
+
+#submitBlock {
+  margin: auto;
+  margin-top: 20vh;
+  border-radius: 10px;
+
+  font-weight: bolder;
+  text-align: center;
+  font-size: 3rem;
+}
+
+#submitBlock a#scoutAnotherMatch {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #663399;
+  opacity: 0.8;
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 0 50px #663399;
+  transition: 0.5s ease-in-out;
+}
+
+#teamButtons {
+  background: linear-gradient(90deg, rgb(99.608% 23.137% 23.137%) 0%, rgb(99.511% 23.144% 23.212%) 6.25%, rgb(98.83% 23.189% 23.738%) 12.5%, rgb(96.981% 23.313% 25.164%) 18.75%, rgb(93.382% 23.554% 27.941%) 25%, rgb(87.449% 23.951% 32.52%) 31.25%, rgb(78.597% 24.544% 39.35%) 37.5%, rgb(66.243% 25.37% 48.883%) 43.75%, rgb(49.804% 26.471% 61.569%) 50%, rgb(33.365% 27.571% 74.254%) 56.25%, rgb(21.011% 28.398% 83.787%) 62.5%, rgb(12.159% 28.99% 90.617%) 68.75%, rgb(6.225% 29.387% 95.196%) 75%, rgb(2.626% 29.628% 97.973%) 81.25%, rgb(0.778% 29.752% 99.4%) 87.5%, rgb(0.097% 29.797% 99.925%) 93.75%, rgb(0% 29.804% 100%) 100% );
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+#redButtons, #blueButtons {
+  width: 50%;
+  /* display: flex; */
+  justify-content: space-around;
+  flex-direction: column;
+
+  border-radius: 10px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+}
+
+#redButtons > *, #blueButtons > * {
+  margin: 4px 10px;
+  
+  background: rgb(102, 51, 153, 0.6);
+  border: 5px solid #663399;
+  border-radius: 40px;
+
+  font-weight: bolder;
+  color: white;
+  
+  height: 30px;
+  width: 80%;
+
+  cursor: pointer;
+}
+
+#redButtons > *:disabled, #blueButtons > *:disabled {
+  background: rgba(54, 31, 78, 0.8);
+  border-color: #222;
+
+  color: gray;
+
+  cursor: default;
+}
+
+#redButtons {
+  /*background: linear-gradient(to right, red, transparent);*/
+  
+  padding: 5px 10px;
+}
+
+#redButtons > * {
+  margin-left: 0;
+}
+
+#blueButtons {
+  /*background: linear-gradient(to left, lightblue, transparent);*/
+  
+  /* Required to get on right side of box */
+  display: flex;
+  align-items: flex-end;
+  
+  padding: 5px 10px;
+}
+
+#blueButtons > * {
+  margin-right: 0;
+}
+
+#deselect {
+  margin-top: 20px;
+  width: 250px;
+  height: 40px;
+  
+  background: rgb(102, 51, 153, 0.6);
+  border: 5px solid #663399;
+
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: white;
+
+  border: none;
+  border-radius: 30px;
+
+  cursor: pointer;
+}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}🔎 Scouter 🔎{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/style2.css">
+<script defer href="/static/scout.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="topnav mb-3">
+    <center>
+        <h1>
+            BASE SCOUTING FORM
+        </h1>
+    </center>
+</div>
+
+<form id="scoutForm" action="/scoutSubmit.html" method="POST"
+    onsubmit="return download_csv_file(event)">
+    <table id="account_table" class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>Set Up</center>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <center>Name: </center>
+                </th>
+                <th>
+                    {{ form.scoutID(class_="inp wide", value=cookie_values) }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <center>Match #: </center>
+                </th>
+                <th>
+                    {{ form.matchNum(class_="inp wide") }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <center>Robot #: </center>
+                </th>
+                <th>
+                    {{ form.teamNum(class_="inp wide") }}
+                </th>
+            </tr>
+            <tr>
+                <!--
+                <th>
+                    <center>Team #: </center>
+                </th>
+                <th>
+                    <select name="allianceNum" id="allianceNum">
+                        <option value="Red 1" {% if cookie_values[2]=='Red 1' %} selected {% endif %}> Red 1 </option>
+                        <option value="Red 2" {% if cookie_values[2]=='Red 2' %} selected {% endif %}> Red 2 </option>
+                        <option value="Red 3" {% if cookie_values[2]=='Red 3' %} selected {% endif %}> Red 3 </option>
+                        <option value="Blue 1" {% if cookie_values[2]=='Blue 1' %} selected {% endif %}> Blue 1
+                        </option>
+                        <option value="Blue 2" {% if cookie_values[2]=='Blue 2' %} selected {% endif %}> Blue 2
+                        </option>
+                        <option value="Blue 3" {% if cookie_values[2]=='Blue 3' %} selected {% endif %}> Blue 3
+                        </option>
+                    </select>
+                </th>
+            -->
+                <th colspan="2">
+                    <center id="waiting">
+                        Select your team:
+                        <b>
+                            <span>None</span>
+                        </b>
+                    </center>
+                </th>
+                <!-- <p>Select your assigned team:</p> -->
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <div id="teamButtons">
+                        <div id="redButtons">
+                            <button type="button" class="teamSelect" id="red1">RED 1</button>
+                            <button type="button" class="teamSelect" id="red2">RED 2</button>
+                            <button type="button" class="teamSelect" id="red3">RED 3</button>
+                        </div>
+                        <div id="blueButtons">
+                            <button type="button" class="teamSelect" id="blue1">BLUE 1</button>
+                            <button type="button" class="teamSelect" id="blue2">BLUE 2</button>
+                            <button type="button" class="teamSelect" id="blue3">BLUE 3</button>
+                        </div>
+                    </div>
+                    <button type="button" class="teamSelect" id="deselect">Deselect</button>
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+    {% block form %}
+    {% endblock %}
+
+    <div style="padding-bottom: 10px;" class="but">
+        <button type="submit" class="button">SUBMIT</button>
+    </div>
+</form>
+
+<script src="static/script.js"></script>
+<script src="static/scout.js"></script>
+{% endblock %}

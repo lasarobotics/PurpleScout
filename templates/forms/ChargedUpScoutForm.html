@@ -1,0 +1,189 @@
+{% extends "scout.html" %} 
+
+{% block form %}
+
+<!-- These are the two items that the super scout will control, but the user can type it in if it fails -->
+ <div class="dropDown">
+    <label>
+        <bold>MATCH NUMBER: </bold>
+    </label>
+    {{ form.matchNum(class_="inp") }}
+</div>
+
+<div class="dropDown">
+    <label>
+        <bold>YOU ARE WATCHING: </bold>
+    </label>
+    {{ form.teamNum(class="inp") }}
+</div>
+<!---------------------------->
+
+
+<table class="tbl">
+    <thead>
+        <tr>
+            <th style="font-size: 20px;" class="a" colspan="3">
+                <center>AUTONOMOUS</center>
+            </th>
+        </tr>
+        <tr>
+            <th style="font-size: 25px;">
+                <center>LEVEL</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CONES</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CUBES</center>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">HIGH</td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                {{ form.autoHighCones(class="inp") }}
+                <button type="button" class="addButton">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton"">-</button>
+                {{ form.autoHighCubes(class="inp") }}
+                <button type="button" class="addButton"">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">MID</td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                {{ form.autoMidCones(class="inp") }}
+                <button type="button" class="addButton">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                {{ form.autoMidCubes(class="inp") }}
+                <button type="button" class="addButton">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">LOW</td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                {{ form.autoLowCones(class="inp") }}
+                <button type="button" class="addButton">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton">-</button>
+                {{ form.autoLowCubes(class="inp") }}
+                <button type="button" class="addButton">+</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class="tbl2">
+    <thead>
+        <tr>
+            <th style="font-size: 20px;" class="a" colspan="3">
+                <center>TELEOP</center>
+            </th>
+        </tr>
+        <tr>
+            <th style="font-size: 25px;">
+                <center>LEVEL</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CONES</center>
+            </th>
+            <th style="font-size: 25px;">
+                <center>CUBES</center>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">HIGH</td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo()">-</button>
+                {{ form.teleopHighCones(class="inp") }}
+                <button type="button" class="addButton" onclick="incTwo()">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwob()">-</button>
+                {{ form.teleopHighCubes(class="inp") }}
+                <button type="button" class="addButton" onclick="incTwob()">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">MID</td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo2()">-</button>
+                {{ form.teleopMidCones(class="inp") }}
+                <button type="button" class="addButton" onclick="incTwo2()">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo2b()">-</button>
+                {{ form.teleopMidCubes(class="inp") }}
+                <button type="button" class="addButton" onclick="incTwo2b()">+</button>
+            </td>
+        </tr>
+        <tr class="active">
+            <td style="font-weight:bold; font-size: 25px;">LOW</td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo3()">-</button>
+                {{ form.teleopLowCones(class="inp") }}
+                <button type="button" class="addButton" onclick="incTwo3()">+</button>
+            </td>
+            <td>
+                <button type="button" class="subtractButton" onclick="decTwo3b()">-</button>
+                {{ form.teleopLowCubes(class="inp") }}
+                <button type="button" class="addButton" onclick="incTwo3b()">+</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="str">
+    <p>DEFENSE QUALITY</p>
+</div>
+<div class="quest">
+    <div class="inner">
+
+        {{ form.defense }}
+
+    </div>
+</div>
+
+<div class="str">
+    <p>SUBSTATION (ask for clarifiation)</p>
+</div>
+<div class="quest">
+    <div class="inner">
+
+        {{ form.sub }}
+
+    </div>
+</div>
+
+<div class="str">
+    <p>TOTAL PIECES DROPPED (Cubes + Cones)</p>
+</div>
+<div class="quest">
+    <button type="button" class="subtractButton" onclick="decThree()">-</button>
+    {{ form.droppedPieces(class="inp") }}
+    <button type="button" class="addButton" onclick="incThree()">+</button>
+</div>
+
+<div class="str">
+    <p>ADDITIONAL INFO</p>
+</div>
+<div class="quest">
+    <div class="inner2">
+
+        {{ form.info(class="info") }}
+    </div>
+</div>
+
+{% endblock %} 

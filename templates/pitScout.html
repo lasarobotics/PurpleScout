@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Google Sheets To SQL | Robotics</title>
+  <link rel="stylesheet" type="text/css" href="/static/pitScoutStyle.css">
+</head>
+<div class="topnav mb-3">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/scout.html">Scout</a></li>
+        <li><a href="/superScout.html"><b>Super</b>Scout</a></li>
+        <li><a href="/megaScout.html"><b>Mega</b>Scout</a></li>
+        <li><a href="/pitScout.html"><b>Pit</b>Scout</a></li>
+    </ul>
+</div>
+<body>
+  <h1>Purple Haze PIT SCOUTING FORM</h1>
+  <p>Developed by Soumik Chemudupati and Miles Fritzmather of Team 418 (Purple Haze)</p>
+  <hr>
+  <div id="submissionGroup">
+    <form action="/pitScout.html/pitScoutSubmit" method="post" enctype="multipart/form-data">
+    <label>TEAM NUMBER</label><br>
+    <input type="number" id="team" placeholder="Enter info..." name="team" required><br><br>
+
+    <label>Intake Type</label>
+    <textarea placeholder="Enter info..." name="intake" required></textarea><br>
+
+    <label>Scoring Location</label>
+    <textarea placeholder="Enter info..." name="scoring" required></textarea><br>
+
+    <label>Drive Train</label>
+    <textarea placeholder="Enter info..." name="drive" required></textarea><br>
+
+    <label>Auto Capabilities</label>
+    <textarea placeholder="Enter info..." name="auto" required></textarea><br>
+
+    <label>Can Climb (Yes / No)</label><br>
+    <input type="checkbox" name="climb"><br><br>
+
+    <label>Can Trap (Yes / No)</label><br>
+    <input type="checkbox" name="trap"><br><br>
+    
+    <label>Image</label><br>
+    <input type="file" placeholder="Enter Image..." name="image"><br><br>
+    
+    <label>Additional Info</label>
+    <textarea placeholder="Enter info..." name="info" required></textarea><br>
+
+
+    <button type="submit" name="UpdateSQL">Save Submission</button>
+  </form><br><br>
+
+    <h2>Extra Functionality:</h2>
+    <span id="button_holder">
+      <button onclick="window.location.href += '/UpdateSheets'; alert('working')">Post All Submissions to Google Sheet</button>
+      <!-- <button onclick="window.location.href += '/Download'">Download Images</button> -->
+      <button onclick="clearSubmissions()">Clear Submissions</button><br>
+    </span>
+    
+  </div>
+
+  <script>
+    function clearSubmissions() {
+      input = window.prompt(
+        'What data would you like to be cleared:\n' +
+        '  - Posted Ids (Which submissions have been posted to google sheets)\n' +
+        '  - Posted Data (Posted Ids and data *ONLY FOR POSTED SUBMISSIONS*)\n' +
+        '  - Unposted Entries (Data from unposted submissions)\n' +
+        '  - All Entries (Everything...)'
+      );
+      switch (input) {
+        case "Posted Ids":
+          window.location.href += '/ClearPostedIds';
+          break;
+        case "Posted Data":
+          window.location.href += '/ClearPosted';
+          break;
+        case "Unposted Entries":
+          window.location.href += '/ClearUnposted';
+          break;
+        case "All Entries":
+          window.location.href += '/ClearAll';
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
+
+  
+  <br>
+  <div id="submissionGroup">
+    <h2>SQL DATABASE</h3>
+    <h2>Unposted</h2>
+    <div id="submissionGroup">
+      {% if unposted_robots %}
+        {% for robot in unposted_robots %}
+          <div id="postedBlock">
+            <h2>Team {{robot[0]}}</h2>
+            <p>
+              <strong> Intake: </strong> {{robot[1]}}
+            </p>
+            <p>
+              <strong> Drive: </strong> {{robot[2]}}
+            </p>
+            <p>
+              <strong> Auto: </strong> {{robot[3]}}
+            </p>
+            <p>
+              <strong>Can Climb: </strong> {{robot[4]}}
+            </p>
+            <p>
+              <strong>Can Trap: </strong> {{robot[5]}}
+            </p>
+            <p>
+              <strong>Image: </strong> Team_{{robot[0]}}.{{robot[7]}}
+            </p>
+            <p>
+              <strong>Additional Info: </strong> {{robot[9]}}
+            </p>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p id="empty">No unposted robots</p>
+      {% endif %}
+    </div>
+      
+    <h2>Posted to Google Sheets</h2>
+    <div id="submissionGroup">
+      {% if posted_robots %}
+        {% for robot in posted_robots %}
+          <div id="postedBlock">
+            <h2>Team {{robot[0]}}</h2>
+            <p>
+              <strong> Intake: </strong> {{robot[1]}}
+            </p>
+            <p>
+              <strong> Drive: </strong> {{robot[2]}}
+            </p>
+            <p>
+              <strong> Auto: </strong> {{robot[3]}}
+            </p>
+            <p>
+              <strong>Can Climb: </strong> {{robot[4]}}
+            </p>
+            <p>
+              <strong>Image: </strong> Team_{{robot[0]}}.{{robot[5]}}
+            </p>
+            <p>
+              <strong>Additional Info: </strong> {{robot[7]}}
+            </p>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p id="empty">No posted robots</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
