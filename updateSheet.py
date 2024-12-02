@@ -4,7 +4,7 @@ import sqlite3, requests, json
 SCRIPT = "https://script.google.com/macros/s/AKfycbw-5C92MLl44wy9g19Lxv7MEKWVZOji2Dz6Z12p7k3byT3JbeqdGoJjNogaR4-q1Jtf/exec"
 #################################################################################
 
-def get_data(min, max):
+def get_data(min, max):     
     # return the rows whose matchNum is within the range
 
     conn = sqlite3.connect('data/scoutState.db')
@@ -47,8 +47,9 @@ print(to_send)
 if input(f"Sending {len(to_send)} records for {max-min+1} matches. Confirm? (y/n) ") == "y":
     print("Sending... ", end="")
     req = requests.post(SCRIPT, data=json.dumps(to_send).encode())
+    print(to_send)
     print("Done!")
-    print(req.content)
+    #print(req.content)
 else:
     print("Aborted")
     exit(0)

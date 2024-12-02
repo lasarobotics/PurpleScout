@@ -178,25 +178,7 @@
 </div>
 
 <div id="questionaireGrouping">
-    <div class="question">
-        <div class="questionHeader">
-            <p>DEFENSE QUALITY</p>
-        </div>
-        <div class="quest">
-            {{ form.defense }}
-        </div>
-    </div>
 
-    <div class="question">
-        <div class="questionHeader">
-            <p>DRIVING QUALITY</p>
-        </div>
-        <div class="quest">
-            <div class="inner">
-                {{ form.driving }}
-            </div>
-        </div>
-    </div>
 
     <div class="question">
         <div class="questionHeader">
@@ -221,18 +203,7 @@
     </div>
 </div>
 <br>
-<div id="additionalInfo" class="question">
-    <div class="questionHeader">
-        <p>ADDITIONAL INFO</p>
-    </div>
-    <div class="quest">
-        <div class="inner2">
-            {{
-            form.info(class="info",placeholder="What do you think about this robot? Write any questions or strategies they used or interesting things that happened during the match...")
-            }}
-        </div>
-    </div>
-</div>
+
 
 <!-- Rachit is awesome-->
 {% endblock %}

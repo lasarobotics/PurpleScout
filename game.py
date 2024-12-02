@@ -102,25 +102,24 @@ class CrescendoForm(FlaskForm):
         ('ground', 'Ground Only'),
         ('both', 'Both'),
     ])
-    defense = RadioField('defense', validators=[DataRequired()], choices=[
-        #('null', 'Unsure'),
-        ('none', 'Did not play defense'),
-        ('poor', 'Poor defense'),
-        ('average', 'Average defense'),
-        ('excellent', 'Excellent defense')
-    ])
-    driving = RadioField('driving', validators=[DataRequired()], choices=[
-        #('null', 'Unsure'),
-        ('none', 'Immobile'),
-        ('poor', 'Clunky/Awkward'),
-        ('average', 'Average'),
-        ('excellent', 'Smooth/Skilled')
-    ])
+    # defense = RadioField('defense', validators=[DataRequired()], choices=[
+    #     #('null', 'Unsure'),
+    #     ('none', 'Did not play defense'),
+    #     ('poor', 'Poor defense'),
+    #     ('average', 'Average defense'),
+    #     ('excellent', 'Excellent defense')
+    # ])
+    # driving = RadioField('driving', validators=[DataRequired()], choices=[
+    #     #('null', 'Unsure'),
+    #     ('none', 'Immobile'),
+    #     ('poor', 'Clunky/Awkward'),
+    #     ('average', 'Average'),
+    #     ('excellent', 'Smooth/Skilled')
+    # ])
     fouls = RadioField('fouls (list in notes)', validators=[DataRequired()], choices=[
-        #('null', 'Unsure'),
         ('none', 'No fouls'),
         ('some', '1-2 fouls'),
         ('many', '3+ fouls')
     ])
 
-    info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])
+    # info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])
