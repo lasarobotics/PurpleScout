@@ -1,206 +1,89 @@
 {% extends "base.html" %}
-
 {% block title %}🕵️ Super Scout 🕵️{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="static/style2.css">
+<script defer href="/static/scout.js"></script>
 {% endblock %}
 
 {% block body %}
-
-<form action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file2(event)">
-
-    <table class="tbl">
-        <thead>
-            <tr>
-                <td>Match number: <input type="number" id="matchNum" min="0" max="999" required></td>
-                <td><button type="button" id="fetchTeams">Fetch Teams</button></td>
-                <td><button type="button" id="sendInfo">Send Info</button></td>
-            </tr>
-        </thead>
-    </table>
-
-    <br>
-
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th>Scouter</th>
-                <th>Team Number</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody id="scouterStatus">
-            <tr>
-                <td>Red 1</td>
-                <td class="red1teamNum"></td>
-                <td id="red1Status">...</td>
-            </tr>
-            <tr>
-                <td>Red 2</td>
-                <td class="red2teamNum"></td>
-                <td id="red2Status">...</td>
-            </tr>
-            <tr>
-                <td>Red 3</td>
-                <td class="red3teamNum"></td>
-                <td id="red3Status">...</td>
-            </tr>
-            <tr>
-                <td>Blue 1</td>
-                <td class="blue1teamNum"></td>
-                <td id="blue1Status">...</td>
-            </tr>
-            <tr>
-                <td>Blue 2</td>
-                <td class="blue2teamNum"></td>
-                <td id="blue2Status">...</td>
-            </tr>
-            <tr>
-                <td>Blue 3</td>
-                <td class="blue3teamNum"></td>
-                <td id="blue3Status">...</td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-
-
-
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th style="font-size: 20px;" class="a" colspan="4">
-                    <center>ALL ROBOTS</center>
-                    <p class="a">Higher is better</p>
-                </th>
-            </tr>
-            <tr>
-                <th style="font-size: 20px;">
-                    <center>RED TEAM</center>
-                </th>
-                <th style="font-size: 20px;">
-                    <center>RATING</center>
-                </th>
-                <th style="font-size: 20px;">
-                    <center>BLUE TEAM</center>
-                </th>
-                <th style="font-size: 20px;">
-                    <center>RATING</center>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="active">
-                <td class="red1teamNum" style="font-weight:bold; font-size: 15px;">RED TEAM 1</td>
-                <td>
-                    <select style="width : 50px; font-size: 20px;" name="red1Ranking" id="num1red">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-                <td class="blue1teamNum" style="font-weight:bold; font-size: 15px;">BLUE TEAM 1</td>
-                <td>
-                    <select style="width : 50px; font-size: 20px;" name="blue1Ranking" id="num1blue">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-            </tr>
-            <tr class="active">
-                <td class="red2teamNum" style="font-weight:bold; font-size: 15px;">RED TEAM 2</td>
-                <td>
-                    <select style="width : 50px; font-size: 20px;" name="red2Ranking" id="num2red">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-                <td class="blue2teamNum" style="font-weight:bold; font-size: 15px;">BLUE TEAM 2</td>
-                <td>
-                    <select style="width : 50px; font-size: 20px;" name="blue2Ranking" id="num2blue">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-            </tr>
-            <tr class="active">
-                <td class="red3teamNum" style="font-weight:bold; font-size: 15px;">RED TEAM 3</td>
-                <td>
-                    <select style="width : 50px; font-size: 20px;" name="red3Ranking" id="num3red">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-                <td class="blue3teamNum" style="font-weight:bold; font-size: 15px;">BLUE TEAM 3</td>
-                <td>
-                    <select style="width : 50px; font-size: 20px;" name="blue3Ranking" id="num3blue">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th class="a">
-                    <p class="str">RED AMPLIFICATIONS</p>
-                </th>
-                <th class="a">
-                    <p class="str">BLUE AMPLIFICATIONS</p>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <td>
-                
-                <center>
-                <button type="button" class="subtractButton">-</button>
-                <input class="inp" id="redAmps" name="redAmps" required="" type="number" value="0">
-                <button type="button" class="addButton">+</button>
-                </center>
-            </td>
-            <td>
-                <center>
-                <button type="button" class="subtractButton">-</button>
-                <input class="inp" id="blueAmps" name="blueAmps" required="" type="number" value="0">
-                <button type="button" class="addButton">+</button>
-                </center>
-            </td>
-        </tbody>
-    </table>
-
-    <div class="str">
+<div class="topnav mb-3">
     <center>
-        <p>ADDITIONAL INFO</p>
+        <h1>
+            🕵️ SUPER SCOUT 🕵️
+        </h1>
     </center>
-    </div>
-    <div class="quest">
-        <div class="innerSuper">
-            <center>
-            <textarea class = "" id="infoSuper" style="font-size: 15pt;" name="info" cols="75" rows="10" placeholder="Start each line with the team number. Example:
-418 very skilled driver that can spin to avoid defense, scores trap every time
-2468 good at speaker, driver has inconsistent aim
-118 broken ground intake, but used human player intake instead
-1111 works well with 2222"></textarea>
-            </center>
-        </div>
-    </div>
+</div>
+
+
+<form id="scoutForm" action="/superScout.html" method="POST" onsubmit="return download_csv_file(event)">
+    <table id="account_table" class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>Set Up</center>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <center>ScoutID: </center>
+                </th>
+                <th>
+                    {{ form.scoutID(class_="inp wide") }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <center>Match #: </center>
+                </th>
+                <th>
+                    {{ form.matchNum(class_="inp wide") }}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <center>Robot #: </center>
+                </th>
+                <th>
+                    {{ form.teamNum(class_="inp wide") }}
+                </th>
+            </tr>
+            <tr>
+                
+                <th colspan="2">
+                    <center id="waiting">
+                        Select your team:
+                        <b>
+                            <span>None</span>
+                        </b>
+                    </center>
+                </th>
+                <!-- <p>Select your assigned team:</p> -->
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <div id="teamButtons">
+                        <div id="redButtons">
+                            <button type="button" class="teamSelect" id="red1">RED</button>
+                        </div>
+                        <div id="blueButtons">
+                            <button type="button" class="teamSelect" id="blue1">BLUE</button>
+                        </div>
+                    </div>
+                    <button type="button" class="teamSelect" id="deselect">Deselect</button>
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+    {% block form %}
+    {% endblock %}
 
     <div style="padding-bottom: 10px;" class="but">
-        <a><button type="submit" class="button">SUBMIT</button> </a>
+        <button type="submit" class="button">SUBMIT</button>
     </div>
-    <br>
 </form>
 
 <script src="static/script.js"></script>
-<script src="static/superScout.js"></script>
+<script src="static/scout.js"></script>
 {% endblock %}

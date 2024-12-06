@@ -12,7 +12,8 @@ app.register_blueprint(pitScout_bp)
 socketio = SocketIO(app)
 
 # Configure app
-app.config['FORM'] = CrescendoForm # Change this to the form you want to use
+app.config['SCOUT_FORM'] = CrescendoForm # Change this to the form you want to use
+app.config['SUPER_FORM'] = CrescendoSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = 'data/scoutState.db'
 
@@ -47,12 +48,12 @@ conn.close()
 # Index
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
 
 # Home
 @app.route('/home.html')
 def home():
-    return render_template('home.html', name=app.config['FORM'].name)
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
 
 def changeValue(inputString="", val=""):
     print("input: " + inputString + " | val: " + val)
@@ -71,7 +72,7 @@ def changeValue(inputString="", val=""):
 # Scout
 @app.route('/scout.html')
 def scout():
-    form = app.config['FORM']()
+    form = app.config['SCOUT_FORM']()
     
     account_info = request.cookies.get("acc_info")
     if account_info is not None:
@@ -95,14 +96,23 @@ def scout():
     else:
         cookie_values = None
 
-    return render_template('forms/' + app.config['FORM'].__name__ + '.html', form=form, cookie_values=cookie_values)
+    return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html', form=form, cookie_values=cookie_values)
 
 # Super scout
 @app.route('/superScout.html')
 def superScout():
+    form = app.config['SUPER_FORM']()
     # Tell the scouts that the super scout is ready 
     socketio.emit('superScoutConnect')
-    return render_template('superScout.html')
+
+    print(vars(CrescendoSuperScoutForm()))
+    
+    return render_template('superForms/' + app.config['SUPER_FORM'].__name__ + '.html', form=form)
+
+# Admin
+@app.route('/megaScout.html')
+def megaScout():
+    return render_template('megaScout.html')
 
 # Normal scout submit
 @app.route('/scoutSubmit.html', methods=['POST', 'GET'])

@@ -3,7 +3,7 @@
 # Below is an example from Charged Up 2023.
 
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, RadioField, TextAreaField, BooleanField, SelectField, StringField
+from wtforms import IntegerField, RadioField, TextAreaField, BooleanField, SelectField, StringField, FormField
 from wtforms.validators import *
 
 class ChargedUpScoutForm(FlaskForm):
@@ -62,6 +62,7 @@ class UltimateAscentScoutForm(FlaskForm):
     info = TextAreaField('info', validators=[DataRequired()])
 
 class CrescendoForm(FlaskForm):
+
     name = "Crescendo 2024"
 
     # Basic match and team information
@@ -102,6 +103,7 @@ class CrescendoForm(FlaskForm):
         ('ground', 'Ground Only'),
         ('both', 'Both'),
     ])
+
     # defense = RadioField('defense', validators=[DataRequired()], choices=[
     #     #('null', 'Unsure'),
     #     ('none', 'Did not play defense'),
@@ -123,3 +125,40 @@ class CrescendoForm(FlaskForm):
     ])
 
     # info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])
+
+class SubjectiveRobotData(FlaskForm):
+    role = RadioField('role', validators=[DataRequired()], choices=[
+        ('offense', 'Offense'),
+        ('defense', 'Defense'),
+        ('passing', 'Passing')
+    ])
+    defense = RadioField('defense', validators=[DataRequired()], choices=[
+        ('none', 'Did not play defense'),
+        ('poor', 'Poor defense'),
+        ('average', 'Average defense'),
+        ('excellent', 'Excellent defense')
+    ])
+    driving = RadioField('driving', validators=[DataRequired()], choices=[
+        ('none', 'Immobile'),
+        ('poor', 'Clunky/Awkward'),
+        ('average', 'Average'),
+        ('excellent', 'Smooth/Skilled')
+    ])
+    info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])
+
+class CrescendoSuperScoutForm(FlaskForm):
+    # Basic match and team information
+    matchNum = IntegerField('matchNumber', validators=[DataRequired()])
+    teamNum = IntegerField('teamNumber', validators=[DataRequired()])
+    scoutID = StringField('scoutID', validators=[DataRequired()])
+
+    robot1 = FormField(SubjectiveRobotData)
+    robot2 = FormField(SubjectiveRobotData)
+    robot3 = FormField(SubjectiveRobotData)
+
+    redAmps = IntegerField('redAmps', validators=[DataRequired()], default=0)
+    blueAmps = IntegerField('blueAmps', validators=[DataRequired()], default=0)
+
+
+
+

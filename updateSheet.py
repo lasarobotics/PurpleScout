@@ -43,13 +43,9 @@ for d in data:
     to_send[-1]["teamNum"] = d[2]
     to_send[-1]["scoutID"] = d[3]
 
+
+print("Sending... ", end="")
+req = requests.post(SCRIPT, data=json.dumps(to_send).encode())
 print(to_send)
-if input(f"Sending {len(to_send)} records for {max-min+1} matches. Confirm? (y/n) ") == "y":
-    print("Sending... ", end="")
-    req = requests.post(SCRIPT, data=json.dumps(to_send).encode())
-    print(to_send)
-    print("Done!")
-    #print(req.content)
-else:
-    print("Aborted")
-    exit(0)
+print("Done!")
+#print(req.content)
