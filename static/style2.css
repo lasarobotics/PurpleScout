@@ -109,6 +109,10 @@ body {
   color: #663399;
 }
 
+.color-fade {
+  transition: background-color 0.5s ease;
+}
+
 ul {
   list-style-type: none;
   margin: 0;

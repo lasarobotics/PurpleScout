@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="topnav mb-3">
+<div class="topnav mb-3 color-fade">
     <center>
         <h1>
             🕵️ SUPER SCOUT 🕵️
@@ -20,7 +20,7 @@
     <table id="account_table" class="tbl">
         <thead>
             <tr>
-                <th style="font-size: 20px;" class="a" colspan="3">
+                <th style="font-size: 20px;" class="a color-fade" colspan="3">
                     <center>Set Up</center>
                 </th>
             </tr>
@@ -41,18 +41,10 @@
                 </th>
             </tr>
             <tr>
-                <th>
-                    <center>Robot #: </center>
-                </th>
-                <th>
-                    {{ form.teamNum(class_="inp wide") }}
-                </th>
-            </tr>
-            <tr>
                 
                 <th colspan="2">
                     <center id="waiting">
-                        Select your team:
+                        Alliance:
                         <b>
                             <span>None</span>
                         </b>
@@ -64,13 +56,13 @@
                 <th colspan="2">
                     <div id="teamButtons">
                         <div id="redButtons">
-                            <button type="button" class="teamSelect" id="red1">RED</button>
+                            <button type="button" class="teamSelect" id="redSuper">RED</button>
                         </div>
                         <div id="blueButtons">
-                            <button type="button" class="teamSelect" id="blue1">BLUE</button>
+                            <button type="button" class="teamSelect" id="blueSuper">BLUE</button>
                         </div>
                     </div>
-                    <button type="button" class="teamSelect" id="deselect">Deselect</button>
+                    <button type="button" class="teamSelect color-fade" id="deselect">Deselect</button>
                 </th>
             </tr>
         </thead>
@@ -85,5 +77,5 @@
 </form>
 
 <script src="static/script.js"></script>
-<script src="static/scout.js"></script>
+<script src="static/superScout.js"></script>
 {% endblock %}

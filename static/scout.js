@@ -22,7 +22,7 @@ $('button.teamSelect').click(function() {
 
         // deselect the current one, and select the new one
         socket.emit('scoutSelect', {type: selectedTeam, action: 'deselect'})
-        socket.emit('scoutSelect', {type: this.id, action: 'select'});
+        socket.emit('scoutSelect', {type: this.id, scoutID: $('#scoutID').val(), action: 'select'});
 
         // show the waiting message
         waiting.style.display = 'block';
