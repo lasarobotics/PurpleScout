@@ -529,3 +529,31 @@ th, th>select {
 }
 
 /* specific to super scouting */
+#sqlTblDiv{
+  margin:auto;
+  width:50%;
+  height:200px;
+
+}
+#sqlTbl {
+border-collapse: collapse;
+border-spacing: 0;
+width: auto;
+border: 1px solid #663399;
+}
+
+#sqlTh, #sqlTd {
+text-align: left;
+padding: 8px;
+font-size:15px;
+border: 1px solid #663399;
+}
+
+#sqlTblDiv::-webkit-scrollbar { 
+  display: none;
+}
+
+#sqlTblDiv {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}

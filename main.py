@@ -112,9 +112,18 @@ def superScout():
 # Admin
 @app.route('/megaScout.html')
 def megaScout():
-    return render_template('megaScout.html')
+    conn = sqlite3.connect('data/scoutState.db')
+    cursor = conn.cursor()
+    data = cursor.execute('select data from scoutData')
+    vals = cursor.fetchall()
+    newArr = []
+    for i in range (len(vals)):
+        # newArr.append(json.loads(vals[i][0][0]))
+        newArr.append(json.loads(vals[i][0]))
+    print(newArr)
+    return render_template('megaScout.html', dat = newArr, len = len(newArr))
 
-# Normal scout submit
+# Normal scout submit   
 @app.route('/scoutSubmit.html', methods=['POST', 'GET'])
 def scoutSubmit():
     print(f"got request via {request.method}")
