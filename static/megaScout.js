@@ -24,22 +24,22 @@ $('#sendInfo').prop('disabled', true);
 $('button#fetchTeams').click(function() {
     console.log('fetching teams');
     socket.emit('getTeams', {matchNum: $('#matchNum').val()});
-    $('.red1teamNum').text('...');
-    $('.red2teamNum').text('...');
-    $('.red3teamNum').text('...');
-    $('.blue1teamNum').text('...');
-    $('.blue2teamNum').text('...');
-    $('.blue3teamNum').text('...');
+    $('#red1teamNum').text('...');
+    $('#red2teamNum').text('...');
+    $('#red3teamNum').text('...');
+    $('#blue1teamNum').text('...');
+    $('#blue2teamNum').text('...');
+    $('#blue3teamNum').text('...');
 });
 // ... receive the teams and display them
 socket.on('sendTeams', function(data) {
     console.log(data);
-    $('.red1teamNum').text(data.red1);
-    $('.red2teamNum').text(data.red2);
-    $('.red3teamNum').text(data.red3);
-    $('.blue1teamNum').text(data.blue1);
-    $('.blue2teamNum').text(data.blue2);
-    $('.blue3teamNum').text(data.blue3);
+    $('#red1teamNum').text(data.red1);
+    $('#red2teamNum').text(data.red2);
+    $('#red3teamNum').text(data.red3);
+    $('#blue1teamNum').text(data.blue1);
+    $('#blue2teamNum').text(data.blue2);
+    $('#blue3teamNum').text(data.blue3);
 
     // enable the start button if there is no error
     if (data.red1 != 'error') {

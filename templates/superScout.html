@@ -16,7 +16,7 @@
 </div>
 
 
-<form id="scoutForm" action="/superScout.html" method="POST" onsubmit="return download_csv_file(event)">
+<form id="scoutForm" action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file(event)">
     <table id="account_table" class="tbl">
         <thead>
             <tr>
@@ -47,6 +47,7 @@
                         Alliance:
                         <b>
                             <span>None</span>
+                            <input type="hidden" name="alliance" id="alliance" value="none">
                         </b>
                     </center>
                 </th>
