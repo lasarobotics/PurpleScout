@@ -1,3 +1,4 @@
+## rachit is awesome
 IMG ?= purplescout:latest
 .PHONY: build
 build: ## Build Docker
