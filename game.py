@@ -124,6 +124,11 @@ class CrescendoForm(FlaskForm):
         ('many', '3+ fouls')
     ])
 
+    freeze = RadioField('Did the robot freeze/disconnect at any time?', validators=[DataRequired()], choices=[
+        (False, 'No'),
+        (True, 'Yes')
+    ])
+
     # info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])
 
 class SubjectiveRobotData(FlaskForm):

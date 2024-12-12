@@ -1,10 +1,10 @@
 import sqlite3, requests, json
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbw-5C92MLl44wy9g19Lxv7MEKWVZOji2Dz6Z12p7k3byT3JbeqdGoJjNogaR4-q1Jtf/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbz4C0ChdzdRIwL7sRBIPcbrgepH5bzXI2ctxmpQhzfCJoqACx73gEAMTkEPbpDToMCq/exec"
 #################################################################################
 
-def get_data(min, max):     
+def get_data(min, max):
     # return the rows whose matchNum is within the range
 
     conn = sqlite3.connect('data/scoutState.db')
