@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}🕵️ Super Scout 🕵️{% endblock %}
+{% block title %}🕵️ Mega Scout 🕵️{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="static/style2.css">
@@ -14,6 +14,7 @@
             🤓 MEGA SCOUT 🤓
         </h1>
     </center>
+    
 </div>
 
 <!---
@@ -147,4 +148,22 @@
 
 <script src="static/script.js"></script>
 <script src="static/megaScout.js"></script>
+
+<div id = "sqlTblDiv" style="overflow-x:auto;">
+    <table id = "sqlTbl">
+    {%for i in range(0, len)%}
+    <tr id = "sqlTr">
+        {% for key, segment in dat[i].items() %}
+          
+            <th id = "sqlTh">{{ key }}</th>
+            <th id = "sqlTh">{{ segment }}</th>
+        {% endfor %}
+    </tr>
+    {%endfor%} 
+    </table>
+</div>
+
 {% endblock %}
+
+<style>
+</style>
