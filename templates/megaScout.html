@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}🕵️ Mega Scout 🕵️{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/style2.css">
+{% endblock %}
+
+{% block body %}
+
+<div class="topnav mb-3">
+    <center>
+        <h1>
+            🤓 MEGA SCOUT 🤓
+        </h1>
+    </center>
+    
+</div>
+
+<!---
+<form action="/superScoutSubmit.html" method="POST" onsubmit="return download_csv_file2(event)">
+    -->
+    <!-- Match selector -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <td>Match number: <input class="inp" type="number" id="matchNum" min="0" max="999" required></td>
+                <td><button type="button" id="fetchTeams">Fetch Teams</button></td>
+                <td><button type="button" id="sendInfo">Send Info</button></td>
+            </tr>
+        </thead>
+    </table>
+
+    <br>
+
+    <!-- Scout status display -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Team</th>
+                <th>Current Status</th>
+            </tr>
+        </thead>
+        <tbody id="scouterStatus">
+            <tr>
+                <td><b>Red Super Scout</b></td>
+                <td></td>
+                <td><span id="redSuperStatus">...</span><span id="redSuperScoutID"></span></td>
+            </tr>
+            <tr>
+                <td >Red 1</td>
+                <td id="red1teamNum">-</td>
+                <td><span id="red1Status">...</span><span id="red1ScoutID"></span></td>
+            </tr>
+            <tr>
+                <td>Red 2</td>
+                <td id="red2teamNum">-</td>
+                <td><span id="red2Status">...</span><span id="red2ScoutID"></span></td>
+            </tr>
+            <tr>
+                <td>Red 3</td>
+                <td id="red3teamNum">-</td>
+                <td><span id="red3Status">...</span><span id="red3ScoutID"></span></td>
+            </tr>
+
+            <tr>
+                <td><b>Blue Super Scout</b></td>
+                <td></td>
+                <td><span id="blueSuperStatus">...</span><span id="blueSuperScoutID"></span></td>
+            </tr>
+            <tr>
+                <td>Blue 1</td>
+                <td id="blue1teamNum">-</td>
+                <td><span id="blue1Status">...</span><span id="blue1ScoutID"></span></td>
+            </tr>
+            <tr>
+                <td>Blue 2</td>
+                <td id="blue2teamNum">-</td>
+                <td><span id="blue2Status">...</span><span id="blue2ScoutID"></span></td>
+            </tr>
+            <tr>
+                <td>Blue 3</td>
+                <td id="blue3teamNum">-</td>
+                <td><span id="blue3Status">...</span><span id="blue3ScoutID"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <!--
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th class="a">
+                    <p class="str">RED AMPLIFICATIONS</p>
+                </th>
+                <th class="a">
+                    <p class="str">BLUE AMPLIFICATIONS</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>
+                
+                <center>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" id="redAmps" name="redAmps" required="" type="number" value="0">
+                <button type="button" class="addButton">+</button>
+                </center>
+            </td>
+            <td>
+                <center>
+                <button type="button" class="subtractButton">-</button>
+                <input class="inp" id="blueAmps" name="blueAmps" required="" type="number" value="0">
+                <button type="button" class="addButton">+</button>
+                </center>
+            </td>
+        </tbody>
+    </table> 
+
+    <div class="str">
+    <center>
+        <p>ADDITIONAL INFO</p>
+    </center>
+    </div>
+    <div class="quest">
+        <div class="innerSuper">
+            <center>
+            <textarea class = "" id="infoSuper" style="font-size: 15pt;" name="info" cols="75" rows="10" placeholder="Start each line with the team number. Example:
+418 very skilled driver that can spin to avoid defense, scores trap every time
+2468 good at speaker, driver has inconsistent aim
+118 broken ground intake, but used human player intake instead
+1111 works well with 2222"></textarea>
+            </center>
+        </div>
+    </div> -->
+
+
+
+<!--
+    <div style="padding-bottom: 10px;" class="but">
+        <a><button type="submit" class="button">SUBMIT</button> </a>
+    </div>
+    <br>
+</form> 
+-->
+
+<script src="static/script.js"></script>
+<script src="static/megaScout.js"></script>
+
+<div id = "sqlTblDiv" style="overflow-x:auto;">
+    <table id = "sqlTbl">
+    {%for i in range(0, len)%}
+    <tr id = "sqlTr">
+        {% for key, segment in dat[i].items() %}
+          
+            <th id = "sqlTh">{{ key }}</th>
+            <th id = "sqlTh">{{ segment }}</th>
+        {% endfor %}
+    </tr>
+    {%endfor%} 
+    </table>
+</div>
+
+{% endblock %}
+
+<style>
+</style>

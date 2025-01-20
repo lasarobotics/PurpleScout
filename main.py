@@ -12,7 +12,8 @@ app.register_blueprint(pitScout_bp)
 socketio = SocketIO(app)
 
 # Configure app
-app.config['FORM'] = CrescendoForm # Change this to the form you want to use
+app.config['SCOUT_FORM'] = CrescendoForm # Change this to the form you want to use
+app.config['SUPER_FORM'] = CrescendoSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = 'data/scoutState.db'
 
@@ -27,18 +28,12 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS scoutData (
     data TEXT
 )
 ''')
-cursor.execute('''CREATE TABLE IF NOT EXISTS superScoutData (
+cursor.execute('''CREATE TABLE IF NOT EXISTS superScoutData2 (
     timestamp STRING PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
     matchNum INTEGER,
-    red1Ranking INTEGER,
-    red2Ranking INTEGER,
-    red3Ranking INTEGER,
-    blue1Ranking INTEGER,
-    blue2Ranking INTEGER,
-    blue3Ranking INTEGER,
-    redAmps INTEGER,
-    blueAmps INTEGER,
-    info TEXT
+    alliance STRING,
+    scoutID STRING,
+    data TEXT
 )
 ''')
 conn.commit()
@@ -47,12 +42,12 @@ conn.close()
 # Index
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
 
 # Home
 @app.route('/home.html')
 def home():
-    return render_template('home.html', name=app.config['FORM'].name)
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
 
 def changeValue(inputString="", val=""):
     print("input: " + inputString + " | val: " + val)
@@ -71,7 +66,7 @@ def changeValue(inputString="", val=""):
 # Scout
 @app.route('/scout.html')
 def scout():
-    form = app.config['FORM']()
+    form = app.config['SCOUT_FORM']()
     
     account_info = request.cookies.get("acc_info")
     if account_info is not None:
@@ -95,16 +90,34 @@ def scout():
     else:
         cookie_values = None
 
-    return render_template('forms/' + app.config['FORM'].__name__ + '.html', form=form, cookie_values=cookie_values)
+    return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html', form=form, cookie_values=cookie_values)
 
 # Super scout
 @app.route('/superScout.html')
 def superScout():
+    form = app.config['SUPER_FORM']()
     # Tell the scouts that the super scout is ready 
     socketio.emit('superScoutConnect')
-    return render_template('superScout.html')
 
-# Normal scout submit
+    print(vars(CrescendoSuperScoutForm()))
+    
+    return render_template('superForms/' + app.config['SUPER_FORM'].__name__ + '.html', form=form)
+
+# Admin
+@app.route('/megaScout.html')
+def megaScout():
+    conn = sqlite3.connect('data/scoutState.db')
+    cursor = conn.cursor()
+    data = cursor.execute('select data from scoutData')
+    vals = cursor.fetchall()
+    newArr = []
+    for i in range (len(vals)):
+        # newArr.append(json.loads(vals[i][0][0]))
+        newArr.append(json.loads(vals[i][0]))
+    print(newArr)
+    return render_template('megaScout.html', dat = newArr, len = len(newArr))
+
+# Normal scout submit   
 @app.route('/scoutSubmit.html', methods=['POST', 'GET'])
 def scoutSubmit():
     print(f"got request via {request.method}")
@@ -173,13 +186,26 @@ def superScoutSubmit():
         print(request.form.to_dict())
         data = request.form.to_dict()
 
+        # define fields to keep
+        matchNum = data['matchNum']
+        alliance = data['alliance']
+        scoutID = data['scoutID']
+
+        # remove unneeded data
+        #del data['robot1-csrf_token'] # only include if you render the whole subjective robot form as `form.robot1`
+        #del data['robot2-csrf_token']
+        #del data['robot3-csrf_token']
+        del data['matchNum']
+        del data['alliance']
+        del data['scoutID']
 
         # append data to sql database
+        # rachit is awesome
         conn = sqlite3.connect('data/scoutState.db')
         cursor = conn.cursor()
             
-        cursor.execute('INSERT INTO superScoutData (timestamp, matchNum, red1Ranking, red2Ranking, red3Ranking, blue1Ranking, blue2Ranking, blue3Ranking, redAmps, blueAmps, info) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                       (str(datetime.now()), data['matchNum'], data['red1Ranking'], data['red2Ranking'], data['red3Ranking'], data['blue1Ranking'], data['blue2Ranking'], data['blue3Ranking'], data['redAmps'], data['blueAmps'], data['info']))
+        cursor.execute('INSERT INTO superScoutData2 (timestamp, matchNum, alliance, scoutID, data) VALUES (?, ?, ?, ?, ?)',
+                       (str(datetime.now()), matchNum, alliance, scoutID, json.dumps(data)))
         conn.commit()
         conn.close()
 
@@ -228,7 +254,7 @@ def handle_scoutSelect(data):
     print(f"received scoutSelect: {data}")
     emit('scoutSelect', data, broadcast=True)
 
-@socketio.on('scoutAssign') # activated when the super scout assigns the team# to scouts
+@socketio.on('scoutAssign') # activated when the mega scout assigns the team# to scouts
 def handle_scoutAssign(data):
     print(f"received scoutAssign: {data}")
     emit('scoutAssign', data, broadcast=True)

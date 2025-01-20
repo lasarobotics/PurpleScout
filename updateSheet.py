@@ -1,7 +1,7 @@
 import sqlite3, requests, json
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbw-5C92MLl44wy9g19Lxv7MEKWVZOji2Dz6Z12p7k3byT3JbeqdGoJjNogaR4-q1Jtf/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbz4C0ChdzdRIwL7sRBIPcbrgepH5bzXI2ctxmpQhzfCJoqACx73gEAMTkEPbpDToMCq/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -43,12 +43,9 @@ for d in data:
     to_send[-1]["teamNum"] = d[2]
     to_send[-1]["scoutID"] = d[3]
 
+
+print("Sending... ", end="")
+req = requests.post(SCRIPT, data=json.dumps(to_send).encode())
 print(to_send)
-if input(f"Sending {len(to_send)} records for {max-min+1} matches. Confirm? (y/n) ") == "y":
-    print("Sending... ", end="")
-    req = requests.post(SCRIPT, data=json.dumps(to_send).encode())
-    print("Done!")
-    print(req.content)
-else:
-    print("Aborted")
-    exit(0)
+print("Done!")
+#print(req.content)
