@@ -1,12 +1,16 @@
 # game.py: define the form for the scout page
 
 # Below is an example from Charged Up 2023.
-
+import wtforms
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, RadioField, TextAreaField, BooleanField, SelectField, StringField, FormField
 from wtforms.validators import *
 
-class ChargedUpScoutForm(FlaskForm):
+class ScoutForm(FlaskForm):
+    def fields(self):
+        return [key for key in self.__dict__.keys() if not key.startswith('_')]
+
+class ChargedUpScoutForm(ScoutForm):
     name = "Charged Up 2023"
 
     matchNum = IntegerField('matchNumber', validators=[DataRequired()])
@@ -43,7 +47,7 @@ class ChargedUpScoutForm(FlaskForm):
 
     info = TextAreaField('info', validators=[DataRequired()])
 
-class UltimateAscentScoutForm(FlaskForm):
+class UltimateAscentScoutForm(ScoutForm):
     name = "Ultimate Ascent 2013"
 
     matchNum = IntegerField('matchNumber', validators=[DataRequired()])
