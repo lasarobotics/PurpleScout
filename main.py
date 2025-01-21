@@ -49,6 +49,11 @@ def index():
 def home():
     return render_template('home.html', name=app.config['SCOUT_FORM'].name)
 
+# Test
+@app.route('/test.html')
+def test():
+    return render_template('test.html')
+
 def changeValue(inputString="", val=""):
     print("input: " + inputString + " | val: " + val)
 

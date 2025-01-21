@@ -1,0 +1,149 @@
+<!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1"> -->
+<link rel="stylesheet" href="static/reefscape.css">
+<div id = "actions">
+    <ol id ="actionsList">
+
+    </ol>
+</div>
+<center><img id="autoIMG" src = "/static/crescendoUITest.png"></center>
+
+<button id="algae" onclick="removeAlgae()">Algae</button>
+<button id="deep" onclick="deepClimb()">Deep</button>
+<button id="shallow" onclick="shallowClimb()">Shallow</button>
+<button id="park" onclick="park()">Park</button>
+<button id="source1" onclick="intake()"></button>
+<button id="source2" onclick="intake()"></button>
+<button id="algae1" onclick="processorAlgae()">Algae</button>
+<button id="algae2" onclick="bargeAlgae()">Algae</button>
+<button id="L4" onclick="l4()">L4</button>
+<button id="L3" onclick="l3()">L3</button>
+<button id="L2" onclick="l2()">L2</button>
+<button id="trough" onclick="trough()">Trough</button>
+<!-- </meta> -->
+
+<script>
+    arr = [0,0,0,0,0,0,0,0,0,0,0]
+    function removeAlgae(){
+        arr[0] = arr[0]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "remove" + (arr[0])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "REMOVE ALGAE";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[0]=arr[0]-1;");
+        numberList.appendChild(listItem);
+    }
+    function deepClimb(){
+        arr[1] = arr[1]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "deep" + (arr[1])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "DEEP CLIMB (12pts)";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[1]=arr[1]-1;");
+        numberList.appendChild(listItem);
+    }
+    function shallowClimb(){
+        arr[2] = arr[2]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "shallow" + (arr[2])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "SHALLOW CLIMB (6pts)";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[2]=arr[2]-1;");
+        numberList.appendChild(listItem);
+    }
+    function park(){
+        arr[3] = arr[3]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "park" + (arr[3])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "PARK (2pts)";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[3]=arr[3]-1;");
+        numberList.appendChild(listItem);
+
+    }
+    function intake(){
+        arr[4] = arr[4]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "intake" + (arr[4])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "INTAKE CORAL";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[4]=arr[4]-1;");
+        numberList.appendChild(listItem);
+
+    }
+    function processorAlgae(){
+        arr[5] = arr[5]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "processor" + (arr[5])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "ALGAE PROCESSOR";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[5]=arr[5]-1;");
+        numberList.appendChild(listItem);
+    }
+    function bargeAlgae(){
+        arr[6] = arr[6]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "barge" + (arr[6])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "ALGAE BARGE";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[6]=arr[6]-1;");
+        numberList.appendChild(listItem);
+
+    }
+    function l4(){
+        arr[7] = arr[7]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "l4" + (arr[7])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "L4 CORAL";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[7]=arr[7]-1;");
+        numberList.appendChild(listItem);
+
+
+    }
+    function l3(){
+        arr[8] = arr[8]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "l3" + (arr[8])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "L3 CORAL";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[8]=arr[8]-1;");
+        numberList.appendChild(listItem);
+
+    }
+    function l2(){
+        arr[9] = arr[9]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "l2" + (arr[9])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "L2 CORAL";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[9]=arr[9]-1;");
+        numberList.appendChild(listItem);
+
+    }
+    function trough(){
+        arr[10] = arr[10]+1
+        numberList = document.getElementById("actionsList")
+        const listItem = document.createElement('li');
+        id = "trough" + (arr[10])
+        listItem.setAttribute("id", id);
+        listItem.textContent = "TROUGH CORAL";
+        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[10]=arr[10]-1;");
+        numberList.appendChild(listItem);
+
+    }
+
+    function remove(){
+
+    }
+</script>
+
