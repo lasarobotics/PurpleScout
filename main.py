@@ -102,7 +102,7 @@ def scout():
 def superScout():
     form = app.config['SUPER_FORM']()
     # Tell the scouts that the super scout is ready 
-    socketio.emit('superScoutConnect')
+    #socketio.emit('matchReset')
 
     print(vars(CrescendoSuperScoutForm()))
     
@@ -229,6 +229,10 @@ def favicon():
         r.content_type = "image/png"
         return r
 
+@app.route('/teapot')
+def teapot():
+    return "<img src='static/teapot.jpg'/>", 418
+
 
 #### Socket routes ####
 @socketio.on('echo') # test route
@@ -263,6 +267,11 @@ def handle_scoutSelect(data):
 def handle_scoutAssign(data):
     print(f"received scoutAssign: {data}")
     emit('scoutAssign', data, broadcast=True)
+
+@socketio.on('matchReset') # activated when the mega scout clicks the button to reset the match
+def handle_matchReset():
+    print('matchReset triggered')
+    emit('matchReset', broadcast=True)
 
 @socketio.on('message')
 def handle_message(data):

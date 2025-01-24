@@ -168,6 +168,51 @@ class CrescendoSuperScoutForm(FlaskForm):
     redAmps = IntegerField('redAmps', validators=[DataRequired()], default=0)
     blueAmps = IntegerField('blueAmps', validators=[DataRequired()], default=0)
 
+class ReefscapeForm(FlaskForm):
+    name = "Reefscape 2025"
 
+    matchNum = IntegerField('matchNumber', validators=[DataRequired()])
+    teamNum = IntegerField('teamNumber', validators=[DataRequired()])
+    scoutID = StringField('scoutID', validators=[DataRequired()])
 
+    # Autonomous fields
+    autoMobility = BooleanField('autoMobility', default=False)
+    autoL1 = IntegerField('autoL1', validators=[DataRequired()], default=0)
+    autoL2 = IntegerField('autoL2', validators=[DataRequired()], default=0)
+    autoL3 = IntegerField('autoL3', validators=[DataRequired()], default=0)
+    autoL4 = IntegerField('autoL4', validators=[DataRequired()], default=0)
 
+    autoAlgaeRemoved = IntegerField('autoAlgaeRemoved', validators=[DataRequired()], default=0)
+    autoProcessor = IntegerField('autoProcessor', validators=[DataRequired()], default=0)
+    autoBarge = IntegerField('autoBarge', validators=[DataRequired()], default=0)
+
+    # Teleoperated fields
+    teleopL1 = IntegerField('teleopL1', validators=[DataRequired()], default=0)
+    teleopL2 = IntegerField('teleopL2', validators=[DataRequired()], default=0)
+    teleopL3 = IntegerField('teleopL3', validators=[DataRequired()], default=0)
+    teleopL4 = IntegerField('teleopL4', validators=[DataRequired()], default=0)
+
+    teleopAlgaeRemoved = IntegerField('teleopAlgaeRemoved', validators=[DataRequired()], default=0)
+    teleopProcessor = IntegerField('teleopProcessor', validators=[DataRequired()], default=0)
+    teleopBarge = IntegerField('teleopBarge', validators=[DataRequired()], default=0)
+    
+    # Endgame fields
+    climb = SelectField('climb', validators=[DataRequired()], choices=[
+        ('park', 'Park'),
+        ('shallow', 'Shallow'),
+        ('deep', 'Deep'),
+        ('none', 'None')
+    ])
+
+    climbSpeed = IntegerField('climbSpeed', validators=[DataRequired()], default=0)
+
+    # Other fields
+    defense = BooleanField('defense', default=False)
+    droppedPieces = IntegerField('droppedPieces', validators=[DataRequired()], default=0)
+    fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
+    failure = BooleanField('failure', default=False)
+
+    info = TextAreaField('info', validators=[DataRequired()])
+
+class ReefscapeSuperScoutForm(FlaskForm):
+    pass

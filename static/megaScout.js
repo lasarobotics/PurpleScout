@@ -84,6 +84,11 @@ $('button#sendInfo').click(function() {
     $('#blueSuperStatus').text('Scouting');
 });
 
+$('button#matchReset').click(function() {
+    console.log('resetting match');
+    socket.emit('matchReset');
+});
+
 // let the super scout know that the scouts have submitted (feature in testing)
 socket.on('scoutSubmit', function(data) {
     console.log(data);
