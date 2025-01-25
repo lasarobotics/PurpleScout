@@ -3,19 +3,20 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 from game import *
 from flask_socketio import SocketIO, emit
 import csv, secrets, json, sqlite3
-from blueprints.PitScout.pitScout import pitScout_bp
+#from blueprints.PitScout.pitScout import pitScout_bp
 from datetime import datetime
+import os
 
 # Create app
 app = Flask(__name__)
-app.register_blueprint(pitScout_bp)
+#app.register_blueprint(pitScout_bp)
 socketio = SocketIO(app)
 
 # Configure app
-app.config['SCOUT_FORM'] = CrescendoForm # Change this to the form you want to use
+app.config['SCOUT_FORM'] = CrescendoForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = CrescendoSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = 'data/scoutState.db'
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutState.db')
 
 # Create scoutData and superScoutData tables in sqlite database
 conn = sqlite3.connect(app.config['DB_PATH'])
@@ -52,7 +53,15 @@ def home():
 # Test
 @app.route('/test.html')
 def test():
-    return render_template('test.html')
+    # Instantiate your SCOUT_FORM
+    form = app.config['SCOUT_FORM']()
+
+    # Optionally retrieve cookies
+    account_info = request.cookies.get("acc_info")
+    cookie_values = account_info if account_info else None
+
+    # Pass 'form' and 'cookie_values' to test.html
+    return render_template('test.html', form=form, cookie_values=cookie_values)
 
 def changeValue(inputString="", val=""):
     print("input: " + inputString + " | val: " + val)
@@ -64,7 +73,6 @@ def changeValue(inputString="", val=""):
     print("right: " + str(inputString[val_index:]))
     inputString = inputString[:val_index] + val + inputString[val_index:]
 
-    
     print("input: " + inputString)
     return inputString
 
@@ -76,34 +84,19 @@ def scout():
     account_info = request.cookies.get("acc_info")
     if account_info is not None:
         cookie_values = account_info
-        # scoutID = account_info[
-        #     account_info.find(":") + 1:
-        #     account_info.find(",")
-        # ]
-        # matchNum_startIndex = account_info.find("matchNum:")
-        # matchNum = account_info[
-        #     account_info.find(":", matchNum_startIndex) + 1:
-        #     account_info.find(",", matchNum_startIndex)
-        # ]
-        # allianceNum_startIndex = account_info.find("allianceNum:", 2)
-        # allianceNum = account_info[
-        #     account_info.find(":", allianceNum_startIndex) + 1:
-        #     #End of string
-        # ]
-        # cookie_values = (scoutID, matchNum, allianceNum)
-        # print("account_info: " + str(cookie_values))
     else:
         cookie_values = None
 
-    return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html', form=form, cookie_values=cookie_values)
+    return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html',
+                           form=form, 
+                           cookie_values=cookie_values)
 
 # Super scout
 @app.route('/superScout.html')
 def superScout():
     form = app.config['SUPER_FORM']()
     # Tell the scouts that the super scout is ready 
-    #socketio.emit('matchReset')
-
+    socketio.emit('superScoutConnect')
     print(vars(CrescendoSuperScoutForm()))
     
     return render_template('superForms/' + app.config['SUPER_FORM'].__name__ + '.html', form=form)
@@ -116,13 +109,12 @@ def megaScout():
     data = cursor.execute('select data from scoutData')
     vals = cursor.fetchall()
     newArr = []
-    for i in range (len(vals)):
-        # newArr.append(json.loads(vals[i][0][0]))
+    for i in range(len(vals)):
         newArr.append(json.loads(vals[i][0]))
     print(newArr)
-    return render_template('megaScout.html', dat = newArr, len = len(newArr))
+    return render_template('megaScout.html', dat=newArr, len=len(newArr))
 
-# Normal scout submit   
+# Normal scout submit
 @app.route('/scoutSubmit.html', methods=['POST', 'GET'])
 def scoutSubmit():
     print(f"got request via {request.method}")
@@ -142,7 +134,6 @@ def scoutSubmit():
         with open('data/scout.csv', 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=list(data.keys()))
             writer.writerow(data)
-
             f.close()
 
         # append data to sqlite3 database
@@ -184,7 +175,6 @@ def scoutSubmit():
 def superScoutSubmit():
     print(f"got request via {request.method}")
     if request.method == 'POST':
-        # print the data recieved from the form
         for key, value in request.form.items():
             print(f"{key}: {value}")
 
@@ -197,15 +187,11 @@ def superScoutSubmit():
         scoutID = data['scoutID']
 
         # remove unneeded data
-        #del data['robot1-csrf_token'] # only include if you render the whole subjective robot form as `form.robot1`
-        #del data['robot2-csrf_token']
-        #del data['robot3-csrf_token']
         del data['matchNum']
         del data['alliance']
         del data['scoutID']
 
         # append data to sql database
-        # rachit is awesome
         conn = sqlite3.connect('data/scoutState.db')
         cursor = conn.cursor()
             
@@ -215,7 +201,6 @@ def superScoutSubmit():
         conn.close()
 
         print(data)
-
 
         return redirect(url_for('superScoutSubmit'))
 
@@ -229,59 +214,44 @@ def favicon():
         r.content_type = "image/png"
         return r
 
-@app.route('/teapot')
-def teapot():
-    return "<img src='static/teapot.jpg'/>", 418
-
-
 #### Socket routes ####
-@socketio.on('echo') # test route
+@socketio.on('echo')  # test route
 def handle_echo(data):
     print(f"received echo: {data}")
     emit('echo', data)
 
-@socketio.on('getTeams') # activated when the super scout clicks the button to fetch teams
+@socketio.on('getTeams')  # activated when the super scout clicks the button to fetch teams
 def handle_fetchTeams(data):
     print('getTeams')
-    # read data from data/teams.csv into a dictionary
     matchNum = data['matchNum']
-    # get line of matchNum
     with open('data/matchList.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             if row['matchNum'] == matchNum:
-                # send data to super scout
                 emit('sendTeams', row)
                 return
-            
     # if no matchNum found, send error
-    emit('sendTeams', {'red1': 'error', 'red2': 'error', 'red3': 'error', 'blue1': 'error', 'blue2': 'error', 'blue3': 'error'})
+    emit('sendTeams', {
+        'red1': 'error', 'red2': 'error', 'red3': 'error',
+        'blue1': 'error', 'blue2': 'error', 'blue3': 'error'
+    })
 
-# Both these routes bounce the data back to all the clients
-@socketio.on('scoutSelect') # activated when a scout chooses their team (red/blue and number)
+# Broadcast routes
+@socketio.on('scoutSelect')  # activated when a scout chooses their team
 def handle_scoutSelect(data):
     print(f"received scoutSelect: {data}")
     emit('scoutSelect', data, broadcast=True)
 
-@socketio.on('scoutAssign') # activated when the mega scout assigns the team# to scouts
+@socketio.on('scoutAssign')  # activated when the mega scout assigns the team#
 def handle_scoutAssign(data):
     print(f"received scoutAssign: {data}")
     emit('scoutAssign', data, broadcast=True)
-
-@socketio.on('matchReset') # activated when the mega scout clicks the button to reset the match
-def handle_matchReset():
-    print('matchReset triggered')
-    emit('matchReset', broadcast=True)
 
 @socketio.on('message')
 def handle_message(data):
     print('message: ' + data['msg'])
     emit('message', data, broadcast=True)
 
-
-
-# Run app  
+# Run app
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
-
-# Test changes

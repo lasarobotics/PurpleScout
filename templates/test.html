@@ -1,12 +1,16 @@
-<!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1"> -->
+{% extends "testScout.html" %}
+{% block form %}
+
+<!-- 1) Everything from your first file goes here: -->
 <link rel="stylesheet" href="static/reefscape.css">
-<div id = "actions">
-    <ol id ="actionsList">
 
-    </ol>
+<div id="actions">
+  <ol id="actionsList"></ol>
 </div>
-<center><img id="autoIMG" src = "/static/crescendoUITest.png"></center>
 
+<center><img id="autoIMG" src="/static/crescendoUITest.png"></center>
+
+<!-- Buttons -->
 <button id="algae" onclick="removeAlgae()">Algae</button>
 <button id="deep" onclick="deepClimb()">Deep</button>
 <button id="shallow" onclick="shallowClimb()">Shallow</button>
@@ -19,131 +23,402 @@
 <button id="L3" onclick="l3()">L3</button>
 <button id="L2" onclick="l2()">L2</button>
 <button id="trough" onclick="trough()">Trough</button>
-<!-- </meta> -->
 
 <script>
-    arr = [0,0,0,0,0,0,0,0,0,0,0]
-    function removeAlgae(){
-        arr[0] = arr[0]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "remove" + (arr[0])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "REMOVE ALGAE";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[0]=arr[0]-1;");
-        numberList.appendChild(listItem);
-    }
-    function deepClimb(){
-        arr[1] = arr[1]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "deep" + (arr[1])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "DEEP CLIMB (12pts)";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[1]=arr[1]-1;");
-        numberList.appendChild(listItem);
-    }
-    function shallowClimb(){
-        arr[2] = arr[2]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "shallow" + (arr[2])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "SHALLOW CLIMB (6pts)";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[2]=arr[2]-1;");
-        numberList.appendChild(listItem);
-    }
-    function park(){
-        arr[3] = arr[3]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "park" + (arr[3])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "PARK (2pts)";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[3]=arr[3]-1;");
-        numberList.appendChild(listItem);
+  // The same JavaScript array and functions from your first file
+  let arr = [0,0,0,0,0,0,0,0,0,0,0];
 
-    }
-    function intake(){
-        arr[4] = arr[4]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "intake" + (arr[4])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "INTAKE CORAL";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[4]=arr[4]-1;");
-        numberList.appendChild(listItem);
+  function removeAlgae() {
+    arr[0] += 1;
+    const numberList = document.getElementById("actionsList");
+    const listItem = document.createElement("li");
+    let id = "remove" + arr[0];
+    listItem.setAttribute("id", id);
+    listItem.textContent = "REMOVE ALGAE";
+    listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[0]=arr[0]-1;"
+    );
+    numberList.appendChild(listItem);
 
+    // Also increment the corresponding <input> in the first UI
+    increase("autoAmp");
+    increase("teleopAmp");
     }
-    function processorAlgae(){
-        arr[5] = arr[5]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "processor" + (arr[5])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "ALGAE PROCESSOR";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[5]=arr[5]-1;");
-        numberList.appendChild(listItem);
-    }
-    function bargeAlgae(){
-        arr[6] = arr[6]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "barge" + (arr[6])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "ALGAE BARGE";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[6]=arr[6]-1;");
-        numberList.appendChild(listItem);
 
+  function deepClimb(){
+      arr[1] += 1;
+      const numberList = document.getElementById("actionsList");
+      const listItem = document.createElement('li');
+      let id = "deep" + arr[1];
+      listItem.setAttribute("id", id);
+      listItem.textContent = "DEEP CLIMB (12pts)";
+      listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[1]=arr[1]-1;"
+      );
+      numberList.appendChild(listItem);
+  }
+
+  function shallowClimb(){
+      arr[2] += 1;
+      const numberList = document.getElementById("actionsList");
+      const listItem = document.createElement('li');
+      let id = "shallow" + arr[2];
+      listItem.setAttribute("id", id);
+      listItem.textContent = "SHALLOW CLIMB (6pts)";
+      listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[2]=arr[2]-1;"
+      );
+      numberList.appendChild(listItem);
+  }
+
+  function park(){
+      arr[3] += 1;
+      const numberList = document.getElementById("actionsList");
+      const listItem = document.createElement('li');
+      let id = "park" + arr[3];
+      listItem.setAttribute("id", id);
+      listItem.textContent = "PARK (2pts)";
+      listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[3]=arr[3]-1;"
+      );
+      numberList.appendChild(listItem);
+  }
+
+  function intake(){
+      arr[4] += 1;
+      const numberList = document.getElementById("actionsList");
+      const listItem = document.createElement('li');
+      let id = "intake" + arr[4];
+      listItem.setAttribute("id", id);
+      listItem.textContent = "INTAKE CORAL";
+      listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[4]=arr[4]-1;"
+      );
+      numberList.appendChild(listItem);
+  }
+
+  function processorAlgae(){
+    arr[5] += 1;
+    const numberList = document.getElementById("actionsList");
+    const listItem = document.createElement("li");
+    let id = "processor" + arr[5];
+    listItem.setAttribute("id", id);
+    listItem.textContent = "ALGAE PROCESSOR";
+    listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[5]=arr[5]-1;"
+    );
+    numberList.appendChild(listItem);
+
+    // increment passedNotes
+    increase("autoAmp");
+    increase("teleopAmp");
+  }
+
+  function bargeAlgae() {
+    arr[6] += 1;
+    const numberList = document.getElementById("actionsList");
+    const listItem = document.createElement("li");
+    let id = "barge" + arr[6];
+    listItem.setAttribute("id", id);
+    listItem.textContent = "ALGAE BARGE";
+    listItem.setAttribute(
+        "onclick",
+        "this.parentNode.removeChild(this);arr[6]=arr[6]-1;"
+    );
+    numberList.appendChild(listItem);
+
+    // increment trap
+    increase("autoAmp");
+    increase("teleopAmp");
     }
-    function l4(){
-        arr[7] = arr[7]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "l4" + (arr[7])
+    function l4() {
+        arr[7] += 1;
+        const numberList = document.getElementById("actionsList");
+        const listItem = document.createElement("li");
+        let id = "l4" + arr[7];
         listItem.setAttribute("id", id);
         listItem.textContent = "L4 CORAL";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[7]=arr[7]-1;");
+        listItem.setAttribute(
+            "onclick",
+            "this.parentNode.removeChild(this);arr[7]=arr[7]-1;"
+        );
         numberList.appendChild(listItem);
 
-
+        // increment climb
+        increase("passedNotes");
     }
-    function l3(){
-        arr[8] = arr[8]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "l3" + (arr[8])
+
+
+    function l3() {
+        arr[8] += 1;
+        const numberList = document.getElementById("actionsList");
+        const listItem = document.createElement("li");
+        let id = "l3" + arr[8];
         listItem.setAttribute("id", id);
         listItem.textContent = "L3 CORAL";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[8]=arr[8]-1;");
+        listItem.setAttribute(
+            "onclick",
+            "this.parentNode.removeChild(this);arr[8]=arr[8]-1;"
+        );
         numberList.appendChild(listItem);
 
-    }
-    function l2(){
-        arr[9] = arr[9]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "l2" + (arr[9])
-        listItem.setAttribute("id", id);
-        listItem.textContent = "L2 CORAL";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[9]=arr[9]-1;");
-        numberList.appendChild(listItem);
+        // for demonstration, also call teleopAmp or whatever input
+        increase("droppedPieces");
+        }
 
-    }
-    function trough(){
-        arr[10] = arr[10]+1
-        numberList = document.getElementById("actionsList")
-        const listItem = document.createElement('li');
-        id = "trough" + (arr[10])
+
+        function l2() {
+            arr[9] += 1;
+            const numberList = document.getElementById("actionsList");
+            const listItem = document.createElement("li");
+            let id = "l2" + arr[9];
+            listItem.setAttribute("id", id);
+            listItem.textContent = "L2 CORAL";
+            listItem.setAttribute(
+                "onclick",
+                "this.parentNode.removeChild(this);arr[9]=arr[9]-1;"
+            );
+            numberList.appendChild(listItem);
+
+            // increment teleopSpeaker
+            increase("teleopAmplified");
+            }
+
+    function trough() {
+        arr[10] += 1;
+        const numberList = document.getElementById("actionsList");
+        const listItem = document.createElement("li");
+        let id = "trough" + arr[10];
         listItem.setAttribute("id", id);
         listItem.textContent = "TROUGH CORAL";
-        listItem.setAttribute("onclick", "this.parentNode.removeChild(this);arr[10]=arr[10]-1;");
+        listItem.setAttribute(
+            "onclick",
+            "this.parentNode.removeChild(this);arr[10]=arr[10]-1;"
+        );
         numberList.appendChild(listItem);
 
-    }
-
-    function remove(){
-
-    }
+        // again, for demonstration, call teleopAmp
+        increase("autoSpeaker");
+        increase("teleopSpeaker");
+        }
 </script>
 
+
+<!-- 2) Follow it immediately with the content from your second file (the scouting form): -->
+<div class="horizontalBlock">
+    <!-- Autonomous Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>AUTONOMOUS</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>MOBILITY</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>ALGAE</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>TROUGH</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>{{ form.autoMobility(class="inp check") }}</td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.autoAmp(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.autoSpeaker(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Teleop Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>TELEOP</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>ALGAE</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>TROUGH</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>L2</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.teleopAmp(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.teleopSpeaker(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.teleopAmplified(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>L3</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>L4</center>
+                </th>
+                <th></th>
+            </tr>
+            <tr class="active">
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.droppedPieces(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.passedNotes(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </center>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Endgame Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">
+                    <center>ENDGAME</center>
+                </th>
+            </tr>
+            <tr>
+                <th style="font-size: 25px;">
+                    <center>PARK/CLIMB</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>TRAP</center>
+                </th>
+                <th style="font-size: 25px;">
+                    <center>SPOTLIGHT</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>{{ form.climb(class="inp select") }}</td>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.trap(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+                <td>{{ form.spotlight(class="inp check") }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="questionaireGrouping">
+    <div class="question">
+        <div class="questionHeader">
+            <p>FOULS</p>
+        </div>
+        <div class="quest">
+            <div class="inner">
+                {{ form.fouls }}
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="questionHeader">
+            <p>INTAKE TYPE</p>
+        </div>
+        <div class="quest">
+            <div class="inner">
+                {{ form.intake }}
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="questionHeader">
+            <p>FAILURES</p>
+        </div>
+        <p>Did the robot freeze during the match?</p>
+        <div class="quest">
+            <div class="inner">
+                {{ form.freeze }}
+            </div>
+        </div>
+        <p>Did a part on the robot break?</p>
+        <div class="quest">
+            <div class="inner">
+                {{ form.broken }}
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<!-- Rachit is awesome-->
+
+{% endblock %}
