@@ -182,10 +182,13 @@ select.inp.select {
   text-align: center;
   bottom: -3px;
   position: relative;
+  cursor: pointer;
 }
 
 button.subtractButton {color: red;}
 button.addButton {color: green;}
+button.subtractButton:hover {background-color: red; color: white;}
+button.addButton:hover {background-color: rgb(0, 204, 0); color: white;}
 
 
 .tbl {
@@ -195,7 +198,11 @@ button.addButton {color: green;}
   border-collapse: collapse;
   font-family: 'Trebuchet MS', sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
 
+.tbl-container {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .a {
@@ -248,10 +255,16 @@ button.addButton {color: green;}
   display: none;
 }
 
+.comments {
+  margin: auto;
+  padding-top: 50px;
+  width: 500px;
+  height: 200px;
+}
+
 .info {
-  font-family: 'Trebuchet MS', sans-serif;
-  width: 300px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 }
 
 #infoSuper {

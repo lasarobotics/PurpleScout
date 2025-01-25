@@ -1,0 +1,259 @@
+{% extends "scout.html" %}
+{% block form %}
+
+<div class="horizontalBlock">
+    <!-- Autonomous Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">AUTO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <th>Mobility</th>
+                <td>
+                    {{ form.autoMobility(class="inp check") }}
+                </td>
+            </tr>
+            <tr>
+                <th>Coral</th>
+                <th>L4</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL4(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L3</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL3(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L2</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL2(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L1</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL1(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Algae</th>
+                <th>Removed</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoAlgaeRemoved(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Processor</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoProcessor(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Net</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoNet(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Teleop Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a" colspan="3">TELEOP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="2">Played Defense</th>
+                <td>
+                    {{ form.defense(class="inp check") }}
+                </td>
+            </tr>
+            <tr>
+                <th>Coral</th>
+                <th>L4</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopL4(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L3</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopL3(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L2</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopL2(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L1</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopL1(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Algae</th>
+                <th>Removed</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopAlgaeRemoved(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Processor</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopProcessor(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Net</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopNet(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tbl-container">
+        <!-- Endgame Section -->
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a" colspan="2">ENDGAME</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Climb</th>
+                    <td>{{ form.climb(class="inp select") }}</td>
+                </tr>
+                <tr>
+                    <th>Climb Speed</th>
+                    <td>{{ form.climbSpeed(class="inp select") }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Endgame Section -->
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a" colspan="2">ERRORS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Fumbles</th>
+                    <td>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.droppedPieces(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fouls</th>
+                    <td>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.fouls(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Broken</th>
+                    <td>{{ form.failure(class="inp check") }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+
+</div>
+
+<div class="comments">
+    <h2>Comments</h2>
+    {{ form.info(class="info") }}
+</div>
+
+
+
+{% endblock %}

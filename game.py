@@ -184,7 +184,7 @@ class ReefscapeForm(FlaskForm):
 
     autoAlgaeRemoved = IntegerField('autoAlgaeRemoved', validators=[DataRequired()], default=0)
     autoProcessor = IntegerField('autoProcessor', validators=[DataRequired()], default=0)
-    autoBarge = IntegerField('autoBarge', validators=[DataRequired()], default=0)
+    autoNet = IntegerField('autoNet', validators=[DataRequired()], default=0)
 
     # Teleoperated fields
     teleopL1 = IntegerField('teleopL1', validators=[DataRequired()], default=0)
@@ -194,17 +194,23 @@ class ReefscapeForm(FlaskForm):
 
     teleopAlgaeRemoved = IntegerField('teleopAlgaeRemoved', validators=[DataRequired()], default=0)
     teleopProcessor = IntegerField('teleopProcessor', validators=[DataRequired()], default=0)
-    teleopBarge = IntegerField('teleopBarge', validators=[DataRequired()], default=0)
+    teleopNet = IntegerField('teleopNet', validators=[DataRequired()], default=0)
     
     # Endgame fields
     climb = SelectField('climb', validators=[DataRequired()], choices=[
+        ('none', 'None'),
         ('park', 'Park'),
         ('shallow', 'Shallow'),
-        ('deep', 'Deep'),
-        ('none', 'None')
+        ('deep', 'Deep')
     ])
 
-    climbSpeed = IntegerField('climbSpeed', validators=[DataRequired()], default=0)
+    climbSpeed = SelectField('climbSpeed', validators=[DataRequired()], choices=[
+        (0, '0-5s'),
+        (1, '5-10s'),
+        (2, '10-15s'),
+        (3, '15-20s'),
+        (4, '20+ seconds')
+    ])
 
     # Other fields
     defense = BooleanField('defense', default=False)

@@ -13,7 +13,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 # Configure app
-app.config['SCOUT_FORM'] = CrescendoForm  # Change this to the form you want to use
+app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = CrescendoSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutState.db')
@@ -61,7 +61,7 @@ def test():
     cookie_values = account_info if account_info else None
 
     # Pass 'form' and 'cookie_values' to test.html
-    return render_template('test.html', form=form, cookie_values=cookie_values)
+    return render_template('test2.html', form=form, cookie_values=cookie_values)
 
 def changeValue(inputString="", val=""):
     print("input: " + inputString + " | val: " + val)
