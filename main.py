@@ -213,6 +213,11 @@ def favicon():
         r = Response(f.read())
         r.content_type = "image/png"
         return r
+    
+# Teapot
+@app.route('/teapot')
+def teapot():
+    return "<img src='static/teapot.jpg'/>", 418
 
 #### Socket routes ####
 @socketio.on('echo')  # test route

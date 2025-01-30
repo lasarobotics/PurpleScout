@@ -10,8 +10,6 @@ const form = document.getElementById('scoutForm');
 const team_text = $('#waiting b span');
 
 var selectedTeam = null;
-
-
 // Team select handler
 $('button.teamSelect').click(function() {
     //assign.style.display = 'none';
@@ -23,16 +21,24 @@ $('button.teamSelect').click(function() {
         // deselect the current one, and select the new one
         socket.emit('scoutSelect', {type: selectedTeam, action: 'deselect'})
         socket.emit('scoutSelect', {type: this.id, scoutID: $('#scoutID').val(), action: 'select'});
-
         // show the waiting message
         waiting.style.display = 'block';
         team_text.text(this.id);
         selectedTeam = this.id;
-        console.log(selectedTeam)
+        console.log(selectedTeam);
 
+        if (this.id.includes('red')) {
+            $('.color-fade').css('background-color', '#c93434');
+            $('tbody tr:last-of-type').css('border-bottom-color', '#c93434');
+        } else {
+            $('.color-fade').css('background-color', '#333399');
+            $('tbody tr:last-of-type').css('border-bottom-color', '#333399');
+        }
     } else {
-        // hide the waiting message
+        // deselect: reset all values to default
         team_text.text('None');
+        $('.color-fade').css('background-color', '#663399');
+        $('tbody tr:last-of-type').css('border-bottom-color', '#663399');
         socket.emit('scoutSelect', {type: selectedTeam, action: 'deselect'});
     }
 });
