@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %}
 
 {% block title %}🕵️ Super Scout 🕵️{% endblock %}
 
@@ -12,4 +12,33 @@
     <p><a id="scoutAnotherMatch" href="superScout.html">Scout another match</a></p>
 </div>
 {% endblock %}
+ -->
+ {% extends "base.html" %}
 
+ {% block title %}🔎 Scouter 🔎{% endblock %}
+ 
+ {% block head %}
+ <link rel="stylesheet" href="static/style2.css">
+ {% endblock %}
+ 
+ {% block body %}
+ 
+ <div id="submitBlock">
+     <p>Submitted! Thanks for scouting!</p>
+     <!--<p><a id="scoutAnotherMatch" href="scout.html">Scout another match</a></p>-->
+     <img src="static/pineapple.gif"/>
+     <p style="font-size: 20px;">Waiting for super scout...</p>
+     <a href="scout.html" style="font-size: 15px;">Override</a>
+     
+ 
+ </div>
+ 
+ <script>
+     var socket = io();
+     socket.on('matchReset', function() {
+         // Navigate to scout.html
+         window.location.href = '/superScout.html';
+     });
+ </script>
+ 
+ {% endblock %}

@@ -6,6 +6,9 @@ import csv, secrets, json, sqlite3
 #from blueprints.PitScout.pitScout import pitScout_bp
 from datetime import datetime
 import os
+from zeroconf import Zeroconf, ServiceInfo
+import socket
+
 
 # Create app
 app = Flask(__name__)
@@ -170,6 +173,12 @@ def scoutSubmit():
 
     return site
 
+
+# Pit Scout
+@app.route('/pitScout.html')
+def pitScout():
+    return render_template('pitScout.html')
+
 # Super scout submit
 @app.route('/superScoutSubmit.html', methods=['GET', 'POST'])
 def superScoutSubmit():
@@ -204,7 +213,7 @@ def superScoutSubmit():
 
         return redirect(url_for('superScoutSubmit'))
 
-    return render_template('superScoutSubmit.html')
+    return render_template('scoutSubmit.html')
 
 # Favicon
 @app.route('/favicon.ico')
@@ -252,11 +261,45 @@ def handle_scoutAssign(data):
     print(f"received scoutAssign: {data}")
     emit('scoutAssign', data, broadcast=True)
 
+
+@socketio.on('matchReset')
+def handle_matchReset():
+    print('received matchReset')
+    emit('matchReset', broadcast=True)
+
 @socketio.on('message')
 def handle_message(data):
     print('message: ' + data['msg'])
     emit('message', data, broadcast=True)
 
-# Run app
+# Run app 
+
 if __name__ == '__main__':
+    # Get the local IP address of your server
+    ip_address = socket.gethostbyname(socket.gethostname())
+
+    # Define the service type and the local domain (._http._tcp.local)
+    service_type = "_http._tcp.local."
+    service_name = "purplescout._http._tcp.local."
+    port = 5000  # or whatever port your Flask app is running on
+
+    # Create the service info
+    info = ServiceInfo(
+        service_type,
+        service_name,
+        addresses=[socket.inet_aton(ip_address)],
+        port=port,
+        properties={},
+        server="purplescout.local."
+    )
+
+    # Register the service with Zeroconf
+    zeroconf = Zeroconf()
+    zeroconf.register_service(info)
+
+    # Start the Flask app
     socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
+
+    # After Flask app stops, unregister the service
+    zeroconf.unregister_service(info)
+    zeroconf.close()

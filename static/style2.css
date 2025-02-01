@@ -547,7 +547,7 @@ th, th>select {
 /* specific to super scouting */
 #sqlTblDiv{
   margin:auto;
-  width:50%;
+  width:80%;
   height:200px;
 
 }
@@ -560,7 +560,7 @@ border: 1px solid #663399;
 
 #sqlTh, #sqlTd {
 text-align: left;
-padding: 8px;
+/* padding: 8px; */
 font-size:15px;
 border: 1px solid #663399;
 }

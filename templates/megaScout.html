@@ -154,7 +154,7 @@
 <div id = "sqlTblDiv" style="overflow-x:auto;">
     <table id = "sqlTbl">
     {%for i in range(0, len)%}
-    <tr id = "sqlTr">
+    <tr id = "sqlTr{{i}}">
         {% for key, segment in dat[i].items() %}
           
             <th id = "sqlTh">{{ key }}</th>

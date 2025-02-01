@@ -3,6 +3,7 @@ __pycache__/
 sqlite3.exe
 data/scout.csv
 data/superScout.csv
+data/scoutState.db
 env/
 __pycache__/main.cpython-311.pyc
 tbapyAPI.txt
