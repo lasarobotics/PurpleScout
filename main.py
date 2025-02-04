@@ -175,9 +175,9 @@ def scoutSubmit():
 
 
 # Pit Scout
-@app.route('/pitScout.html')
+@app.route('/pitScout.html', methods=['POST', 'GET'])
 def pitScout():
-    return render_template('pitScout.html')
+    return render_template('/pitScout.html')
 
 # Super scout submit
 @app.route('/superScoutSubmit.html', methods=['GET', 'POST'])
