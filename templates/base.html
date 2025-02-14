@@ -4,10 +4,11 @@
         <title>{% block title %}{% endblock %}</title>
         <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1" />
         <!--<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css"> -->
-        {% block head %}{% endblock %}
+
+        <!-- Load jQuery and socketIO, then any custom libraries -->
         <script src="static/jquery.min.js"></script>
         <script src="static/socketio.min.js"></script>
-        <!-- <script src="static/boostrap.min.js"></script> -->
+        {% block head %}{% endblock %}
     </head>
     <body>
         <!-- <div class="topnav mb-3">

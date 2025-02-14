@@ -62,4 +62,36 @@ socket.on('scoutAssign', function(data) {
     // update ui
     $('#teamNum').val(data[selectedTeam]);
     $('#matchNum').val(data.matchNum);
+
+    // scroll down to form
+    $('div.horizontalBlock')[0].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+    });
+});
+
+// Tooltip below 'Broken' field
+tippy('#phumbleTr', {
+    content: 'Did the robot drop a piece while carrying or attempting to score? Explain in comments.',
+    placement: 'left',
+    animation: 'fade',
+});
+tippy('#foulTr', {
+    content: 'Did the ref point at your robot and wave a flag? Explain in comments.',
+    placement: 'left',
+});
+tippy('#brokenTr', {
+    content: 'Did the robot break or freeze at any time? Explain in comments.',
+    placement: 'left',
+});
+tippy('#defenseTr', {
+    content: 'Did the robot cross over to the opposite side of the field and actively play contact defense? Explain in comments.',
+    placement: 'top',
+});
+tippy('#info', {
+    content: document.getElementById('infoTooltip').innerHTML,
+    placement: 'top',
+    allowHTML: true,
+    trigger: 'click',
+    maxWidth: 'none',
 });

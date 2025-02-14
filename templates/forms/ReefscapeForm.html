@@ -105,7 +105,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr id="defenseTr">
                 <th colspan="2">Played Defense</th>
                 <td>
                     {{ form.defense(class="inp check") }}
@@ -204,10 +204,6 @@
                     <th>Climb</th>
                     <td>{{ form.climb(class="inp select") }}</td>
                 </tr>
-                <tr>
-                    <th>Climb Speed</th>
-                    <td>{{ form.climbSpeed(class="inp select") }}</td>
-                </tr>
             </tbody>
         </table>
 
@@ -219,7 +215,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr id="phumbleTr">
                     <th>PHumbles</th>
                     <td>
                         <div class="addsubInput">
@@ -229,7 +225,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr id="foulTr">
                     <th>PHouls</th>
                     <td>
                         <div class="addsubInput">
@@ -239,7 +235,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr id="brokenTr">
                     <th>Broken</th>
                     <td>{{ form.failure(class="inp check") }}</td>
                 </tr>
@@ -252,6 +248,16 @@
 <div class="comments">
     <h2>Comments</h2>
     {{ form.info(class="info") }}
+    <div id="infoTooltip" style="display: none;">
+        Take notes on anything that can't be recorded in the form above.
+        <ul>
+            <li>— How effective was their defense?</li>
+            <li>— What kind of fouls did they commit?</li>
+            <li>— How did the robot break? Did it revive?</li>
+            <li>— How skilled is their driver?</li>
+            <li>— Any other interesting notes?</li>
+        </ul>
+    </div>
 </div>
 
 

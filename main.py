@@ -19,7 +19,7 @@ socketio = SocketIO(app)
 app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = CrescendoSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutState.db')
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWaco2025.db')
 
 # Create scoutData and superScoutData tables in sqlite database
 conn = sqlite3.connect(app.config['DB_PATH'])
@@ -107,7 +107,7 @@ def superScout():
 # Admin
 @app.route('/megaScout.html')
 def megaScout():
-    conn = sqlite3.connect('data/scoutState.db')
+    conn = sqlite3.connect(app.config['DB_PATH'])
     cursor = conn.cursor()
     data = cursor.execute('select data from scoutData')
     vals = cursor.fetchall()
@@ -140,7 +140,7 @@ def scoutSubmit():
             f.close()
 
         # append data to sqlite3 database
-        conn = sqlite3.connect('data/scoutState.db')
+        conn = sqlite3.connect(app.config['DB_PATH'])
         cursor = conn.cursor()
         
         scoutID = data['scoutID']
@@ -175,7 +175,7 @@ def scoutSubmit():
 
 
 # Pit Scout
-@app.route('/pitScout.html', methods=['POST', 'GET'])
+@app.route('/a.html', methods=['POST', 'GET'])
 def pitScout():
     return render_template('/pitScout.html')
 
@@ -195,13 +195,17 @@ def superScoutSubmit():
         alliance = data['alliance']
         scoutID = data['scoutID']
 
+        socketio.emit('scoutSubmit', data)
+
         # remove unneeded data
         del data['matchNum']
         del data['alliance']
         del data['scoutID']
 
+       
+
         # append data to sql database
-        conn = sqlite3.connect('data/scoutState.db')
+        conn = sqlite3.connect(app.config['DB_PATH'])
         cursor = conn.cursor()
             
         cursor.execute('INSERT INTO superScoutData2 (timestamp, matchNum, alliance, scoutID, data) VALUES (?, ?, ?, ?, ?)',
@@ -278,17 +282,12 @@ if __name__ == '__main__':
     # Get the local IP address of your server
     ip_address = socket.gethostbyname(socket.gethostname())
 
-    # Define the service type and the local domain (._http._tcp.local)
-    service_type = "_http._tcp.local."
-    service_name = "purplescout._http._tcp.local."
-    port = 5000  # or whatever port your Flask app is running on
-
     # Create the service info
     info = ServiceInfo(
-        service_type,
-        service_name,
+        "_http._tcp.local.",
+        "purplescout._http._tcp.local.",
         addresses=[socket.inet_aton(ip_address)],
-        port=port,
+        port=5000,
         properties={},
         server="purplescout.local."
     )

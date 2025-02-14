@@ -94,8 +94,15 @@ socket.on('scoutSubmit', function(data) {
     console.log(data);
     // Lookup the row in the table where data.teamNum is, and update the state of the scout to be 'done'
     $('#scouterStatus tr').each(function() {
+        // Normal scouts
         if ($(this).find('td:first').next().text() == data.teamNum) {
-            $(this).find('td:last').text('Done');
+            $(this).find('td:last > span:first').text('Done');
         }
     });
+    // Super scouts
+    if (data.alliance == "red") {
+        $("#redSuperStatus").text('Done');
+    } else if (data.alliance == "blue") {
+        $('#blueSuperStatus').text('Done');
+    }
 });

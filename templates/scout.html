@@ -1,9 +1,13 @@
+<!-- scout.html: base form for scouting templates -->
+
 {% extends "base.html" %}
 {% block title %}🔎 Scouter 🔎{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="static/style2.css">
-<script defer href="/static/scout.js"></script>
+<script src="/static/popper.min.js"></script>
+<script src="/static/tippy.js"></script>
+
 {% endblock %}
 
 {% block body %}
@@ -105,6 +109,6 @@
     </div>
 </form>
 
+<script src="/static/scout.js"></script>
 <script src="static/script.js"></script>
-<script src="static/scout.js"></script>
 {% endblock %}
