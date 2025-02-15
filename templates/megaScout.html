@@ -24,11 +24,30 @@
     <table class="tbl">
         <thead>
             <tr>
-                <td>Match number: <input class="inp" type="number" id="matchNum" min="0" max="999" required></td>
-                <td><button type="button" id="fetchTeams">Fetch Teams</button></td>
-                <td><button type="button" id="sendInfo">Send Info</button></td>
+                <td>Match number:</td>
+                <td>
+                    <div class="addsubInput">
+                    <button type="button" class="subtractButton">-</button>
+                    <input class="inp" type="number" id="matchNum" min="0" max="999" required>
+                    <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+                
+                
+                
+                <td><span id="postDataStatus"></span></td>
             </tr>
         </thead>
+        <tr>
+            <td>Pre-Match</td>
+            <td><button type="button" id="fetchTeams">Fetch Teams</button></td>
+            <td><button type="button" id="sendInfo">Send Info</button></td>
+        </tr>
+        <tr>
+            <td>Post-Match</td>
+            <td><button type="button" id="postData">Post Match Data</button></td>
+            <td><button type="button" id="matchReset">Reset Match</button></td>
+        </tr>
     </table>
 
     <br>
@@ -88,7 +107,7 @@
     </table>
     <br>
 
-    <button type="button" id="matchReset">Start New Match</button>
+    
 
     <!--
     <table class="tbl">

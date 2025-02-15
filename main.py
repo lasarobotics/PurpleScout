@@ -8,6 +8,7 @@ from datetime import datetime
 import os
 from zeroconf import Zeroconf, ServiceInfo
 import socket
+import updateSheet
 
 
 # Create app
@@ -127,12 +128,6 @@ def scoutSubmit():
         data = request.form.to_dict()
         print("DATA: " + str(data))
 
-        if 'autoMobility' not in data.keys():
-            data['autoMobility'] = 'n'
-
-        if 'spotlight' not in data.keys():
-            data['spotlight'] = 'n'
-
         # append data to data/scout.csv
         with open('data/scout.csv', 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=list(data.keys()))
@@ -156,11 +151,17 @@ def scoutSubmit():
         del data['teamNum']
         del data['scoutID']
 
-        # make sure checkboxes appear
+        # # make sure checkboxes appear
         if 'autoMobility' not in data:
-            data['autoMobility'] = 'n'
-        if 'spotlight' not in data:
-            data['spotlight'] = 'n'
+            data['autoMobility'] = False
+        if 'defense' not in data:
+            data['defense'] = False
+        if 'failure' not in data:
+            data['failure'] = False
+
+        data['autoMobility'] = True if data['autoMobility'] == 'y' else False
+        data['defense'] = True if data['defense'] == 'y' else False
+        data['failure'] = True if data['failure'] == 'y' else False
 
         current_time = str(datetime.now())
             
@@ -172,7 +173,6 @@ def scoutSubmit():
         print(data)
 
     return site
-
 
 # Pit Scout
 @app.route('/a.html', methods=['POST', 'GET'])
@@ -264,6 +264,12 @@ def handle_scoutSelect(data):
 def handle_scoutAssign(data):
     print(f"received scoutAssign: {data}")
     emit('scoutAssign', data, broadcast=True)
+
+@socketio.on('postData')
+def handle_postData(data):
+    status = updateSheet.send_match(int(data['matchNum']))
+    print(status)
+    emit('postDataStatus', {'status': status})
 
 
 @socketio.on('matchReset')

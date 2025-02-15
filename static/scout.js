@@ -57,22 +57,22 @@ socket.on('scoutSelect', function(data) {
 // When the super scout gives the go ahead, start the match
 socket.on('scoutAssign', function(data) {
     console.log('Scouter ' + selectedTeam + ' is assigned to team ' + data[selectedTeam]);
-    alert("The super scout has started match #" + data.matchNum + "! You are scouting " + selectedTeam + " and have been assigned to team #" + data[selectedTeam] + ".");
+    alert("The mega scout has started Match #" + data.matchNum + "! You are scouting " + selectedTeam + " and have been assigned to team " + data[selectedTeam] + ".");
 
     // update ui
     $('#teamNum').val(data[selectedTeam]);
     $('#matchNum').val(data.matchNum);
 
     // scroll down to form
-    $('div.horizontalBlock')[0].scrollIntoView({
+    document.querySelector('div.horizontalBlock').scrollIntoView({
         behavior: 'smooth',
         block: 'center',
     });
 });
 
 // Tooltip below 'Broken' field
-tippy('#phumbleTr', {
-    content: 'Did the robot drop a piece while carrying or attempting to score? Explain in comments.',
+tippy('#fumbleTr', {
+    content: 'Did the robot drop a piece while intaking, carrying, or attempting to score? Explain in comments.',
     placement: 'left',
     animation: 'fade',
 });
@@ -81,8 +81,13 @@ tippy('#foulTr', {
     placement: 'left',
 });
 tippy('#brokenTr', {
-    content: 'Did the robot break or freeze at any time? Explain in comments.',
+    content: 'Check if there was a <b>critical failure</b> (ex. broken part, frozen, or stuck piece) that rendered the robot basically useless. Explain in comments.',
     placement: 'left',
+    allowHTML: true,
+});
+tippy('#mobilityTr', {
+    content: 'Are the robot\'s bumpers completely across the starting line at the end of AUTO?',
+    placement: 'top',
 });
 tippy('#defenseTr', {
     content: 'Did the robot cross over to the opposite side of the field and actively play contact defense? Explain in comments.',

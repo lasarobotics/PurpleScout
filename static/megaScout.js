@@ -89,6 +89,18 @@ $('button#matchReset').click(function() {
     socket.emit('matchReset');
 });
 
+$('button#postData').click(function() {
+    socket.emit('postData', {matchNum: $('#matchNum').val()});
+    $('button#postData').prop('disabled', true);
+    $('#postDataStatus').text('Waiting...')
+});
+
+socket.on('postDataStatus', function(data) {
+    console.log(data);
+    $('#postDataStatus').text(data.status);
+    $('button#postData').prop('disabled', false);
+});
+
 // let the super scout know that the scouts have submitted (feature in testing)
 socket.on('scoutSubmit', function(data) {
     console.log(data);
