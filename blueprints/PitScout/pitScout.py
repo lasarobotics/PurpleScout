@@ -6,7 +6,7 @@ import io
 import os
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseUpload
+from googleapiclient.http import MediaIoBaseUpload  
 import time
 
 pitScout_bp = Blueprint('pitScout', __name__, template_folder="templates", url_prefix='/pitScout.html')
@@ -16,7 +16,7 @@ openedSheets = False
 
 #File directory to SQL Table
 #db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../data/Pit Scouting/RobotInfo.db')
-db_path = "data/pitScout.db"
+db_path = "data/pitScoutData.db"
 
 #Only needs to be called when remaking SQL Table NOT every time you reload the page
 def InitSQL():
@@ -31,11 +31,13 @@ def InitSQL():
     CREATE TABLE IF NOT EXISTS Robots (
       Team INT PRIMARY KEY,
       Intake TEXT NOT NULL,
-      Scoring TEXT NOT NULL,
+      Archetype TEXT NOT NULL,
       Drive TEXT NOT NULL,      
       Auto TEXT NOT NULL,
-      Can_Climb BOOLEAN,
-      Can_Trap BOOLEAN,
+      Can_Shallow BOOLEAN,
+      Can_Deep BOOLEAN,
+      Weight TEXT NOT NULL,
+      DriveT TEXT NOT NULL,
       Image_FileType TEXT NOT NULL,
       Image LONGBLOB,
       Additional_Info TEXT
@@ -49,6 +51,7 @@ def InitSQL():
   )
 
   conn.commit()
+  conn.close()
 
 #Is called every time you are publishing to Google Sheets. Requires Internet
 def initSheets():
@@ -63,8 +66,8 @@ def initSheets():
   client = gspread.authorize(creds)
 
   # Open the Google Sheets spreadsheet
-  spreadsheet = client.open('Fort Worth SCOUTING')  #Title on google sheet
-  worksheet = spreadsheet.get_worksheet_by_id(784319976)  # Assuming you want to use the first worksheet
+  spreadsheet = client.open('Waco Scouting 2025')  #Title on google sheet
+  worksheet = spreadsheet.get_worksheet_by_id(1991768468)  # Assuming you want to use the first worksheet
   openedSheets = True 
 
 @pitScout_bp.route('/initSQL')
@@ -148,45 +151,49 @@ def ClearPostedIds():
 
 
 #Adds current HTML inputs into SQL table
-@pitScout_bp.route('/pitScoutSubmit', methods=['POST'])
+@pitScout_bp.route('/pitScoutSubmit', methods=['GET','POST'])
 def UpdateSQL():
   conn = sqlite3.connect(db_path)
   cursor = conn.cursor()
 
-  can_climb = request.form.get("climb")
-  can_climb = 'True' if can_climb == 'on' else 'False'
+  can_deep = request.form.get("climb")
+  can_deep = 'True' if can_deep == 'on' else 'False'
 
-  can_trap = request.form.get("trap")
-  can_trap = 'True' if can_trap == 'on' else 'False'
+  can_shallow = request.form.get("shallow")
+  can_shallow = 'True' if can_shallow == 'on' else 'False'
   
-  print("climb: " + str(can_climb))
+  
   img = request.files["image"]
 
   
   cursor.execute(
     '''INSERT INTO Robots (
-      Team, 
+      Team,
       Intake,
-      Scoring, 
-      Drive, 
-      Auto, 
-      Can_Climb, 
-      Can_Trap,
-      Image, 
-      Additional_Info,
-      Image_FileType
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''',
+      Archetype,
+      Drive,      
+      Auto,
+      Can_Shallow,
+      Can_Deep,
+      Weight,
+      DriveT,
+      Image_FileType,
+      Image,
+      Additional_Info
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''',
     (
       request.form["team"],
       request.form["intake"],
       request.form["scoring"],
       request.form["drive"],
       request.form["auto"],
-      can_climb,
-      can_trap,
-      sqlite3.Binary(img.read()),
-      request.form["info"],
+      can_shallow,
+      can_deep,
+      request.form["weight"],
+      request.form["driver"],
       os.path.splitext(str(img.filename))[1].lower()[1:],
+      sqlite3.Binary(img.read()),
+      request.form["info"]
       # ^ Takes the file directory, and splits at the . (inclusive), then converts to lowercase and then removes dot
     )
   )
@@ -250,25 +257,28 @@ def UpdateSheets():
   row_index = len(worksheet.col_values(1))  #Column A
   for datum in form_data:
     team = datum[0]
-    image = datum[8]
+    image = io.BytesIO(datum[10])
+    print("datum",datum)
     url = drive_url(image, filename=f"Team_{team}")
     image = f'=IMAGE({url}, 1)'
 
     column_index = 1
     for i in range(len(datum)):
-      if (i == 7): continue #Odd case: skipping image type
+      if (i == 9): continue #Odd case: skipping image type
       
       worksheet.update_cell(
         row_index + 1, 
         column_index, 
-        datum[i] if i != 8 else image
+        datum[i] if i != 10 else image
       )
       column_index += 1
+    print("works?")
 
     cursor.execute(
       '''INSERT INTO Robots_Posted (Team) VALUES (?);''',
       (team,)
     )
+    print("works?")
     row_index += 1
     conn.commit()
     time.sleep(10)
@@ -282,10 +292,12 @@ def UpdateSheets():
 
 #Takes in image bytes and intended file name. Returns google drive link of image. Requires Internet
 def drive_url(image_bytes, filename=""):
+  print("in this function")
   # Upload the image to Google Drive
-  media = MediaIoBaseUpload(io.BytesIO(image_bytes),
+  media = MediaIoBaseUpload((image_bytes),
                             mimetype="image/*",
                             resumable=True)
+  print(media)
   
   file_metadata = {
       'name': filename,
@@ -300,6 +312,7 @@ def drive_url(image_bytes, filename=""):
   # Create the Google Drive API service
   drive_service = build('drive', 'v3', credentials=credentials)
   file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+  print("failed")
 
   return f'"https://drive.google.com/uc?id={file["id"]}"'
 

@@ -1,9 +1,10 @@
 # Import Flask application
 from flask import Flask, render_template, request, redirect, url_for, make_response, Response
+# from pitScout_bp import my_blueprint 
 from game import *
 from flask_socketio import SocketIO, emit
 import csv, secrets, json, sqlite3
-#from blueprints.PitScout.pitScout import pitScout_bp
+from blueprints.PitScout.pitScout import pitScout_bp
 from datetime import datetime
 import os
 from zeroconf import Zeroconf, ServiceInfo
@@ -13,7 +14,7 @@ import updateSheet
 
 # Create app
 app = Flask(__name__)
-#app.register_blueprint(pitScout_bp)
+app.register_blueprint(pitScout_bp,url_prefix='/pitScout.html')
 socketio = SocketIO(app)
 
 # Configure app
@@ -174,14 +175,19 @@ def scoutSubmit():
 
     return site
 
-# Pit Scout
-@app.route('/a.html', methods=['POST', 'GET'])
-def pitScout():
-    return render_template('/pitScout.html')
+
+# # Pit Scout
+# @app.route('/pitScout.html', methods=['POST', 'GET'])
+# def pitScout():
+#     return render_template('/pitScout.html')
+
+# @app.route('/pitScoutSubmit.html', methods=['POST', 'GET'])
+# def pitScoutS():
+#     return render_template('/pitScoutSubmit.html')
 
 # Super scout submit
 @app.route('/superScoutSubmit.html', methods=['GET', 'POST'])
-def superScoutSubmit():
+def superScoutSubmitSubmit():
     print(f"got request via {request.method}")
     if request.method == 'POST':
         for key, value in request.form.items():

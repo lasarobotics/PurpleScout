@@ -19,31 +19,39 @@
   <p>Developed by Soumik Chemudupati and Miles Fritzmather of Team 418 (Purple Haze)</p>
   <hr>
   <div id="submissionGroup">
-    <form action="/pitScout.html/pitScoutSubmit" method="post" enctype="multipart/form-data">
+    <form action="{{ url_for('pitScout.UpdateSQL') }}" method="post" enctype="multipart/form-data">
     <label>TEAM NUMBER</label><br>
     <input type="number" id="team" placeholder="Enter info..." name="team" required><br><br>
 
     <label>Intake Type</label>
-    <textarea placeholder="Enter info..." name="intake" required></textarea><br>
+    <textarea placeholder="Enter info(Source, Ground etc.)..." name="intake" required></textarea><br>
 
-    <label>Scoring Location</label>
+    <label>Archetype</label>
     <textarea placeholder="Enter info..." name="scoring" required></textarea><br>
 
     <label>Drive Train</label>
     <textarea placeholder="Enter info..." name="drive" required></textarea><br>
 
-    <label>Auto Capabilities</label>
+    <label>Most Common Auto</label>
     <textarea placeholder="Enter info..." name="auto" required></textarea><br>
 
-    <label>Can Climb (Yes / No)</label><br>
-    <input type="checkbox" name="climb"><br><br>
+    <label>Deep Climb</label><br>
+    <input type="checkbox" name="deep"><br><br>
+    
+    <label>Shallow Climb</label><br>
+    <input type="checkbox" name="shallow"><br><br>
 
-    <label>Can Trap (Yes / No)</label><br>
-    <input type="checkbox" name="trap"><br><br>
+
+    <label>Weight</label><br>
+    <textarea placeholder="Enter info..." name="weight" required></textarea><br>
     
-    <label>Image</label><br>
+
+    <label>Driver Experience</label><br>
+    <textarea placeholder="Enter info..." name="driver" required></textarea><br>
+    
+    <label>Image(MUST BE FROM THE FRONT)</label><br>
     <input type="file" placeholder="Enter Image..." name="image"><br><br>
-    
+
     <label>Additional Info</label>
     <textarea placeholder="Enter info..." name="info" required></textarea><br>
 
@@ -102,22 +110,31 @@
               <strong> Intake: </strong> {{robot[1]}}
             </p>
             <p>
-              <strong> Drive: </strong> {{robot[2]}}
+              <strong> Archetype: </strong> {{robot[2]}}
             </p>
             <p>
-              <strong> Auto: </strong> {{robot[3]}}
+              <strong> Drive Train: </strong> {{robot[3]}}
             </p>
             <p>
-              <strong>Can Climb: </strong> {{robot[4]}}
+              <strong> Auto: </strong> {{robot[4]}}
             </p>
             <p>
-              <strong>Can Trap: </strong> {{robot[5]}}
+              <strong>Can Deep Climb: </strong> {{robot[5]}}
             </p>
             <p>
-              <strong>Image: </strong> Team_{{robot[0]}}.{{robot[7]}}
+              <strong>Can Shallow Climb: </strong> {{robot[6]}}
             </p>
             <p>
-              <strong>Additional Info: </strong> {{robot[9]}}
+              <strong> Weight: </strong> {{robot[7]}}
+            </p>
+            <p>
+              <strong> Driver Experience: </strong> {{robot[8]}}
+            </p>
+            <p>
+              <strong>Image: </strong> Team_{{robot[0]}}.{{robot[9]}}
+            </p>
+            <p>
+              <strong>Additional Info: </strong> {{robot[11]}}
             </p>
           </div>
         {% endfor %}
@@ -136,19 +153,31 @@
               <strong> Intake: </strong> {{robot[1]}}
             </p>
             <p>
-              <strong> Drive: </strong> {{robot[2]}}
+              <strong> Archetype: </strong> {{robot[2]}}
             </p>
             <p>
-              <strong> Auto: </strong> {{robot[3]}}
+              <strong> Drive Train: </strong> {{robot[3]}}
             </p>
             <p>
-              <strong>Can Climb: </strong> {{robot[4]}}
+              <strong> Auto: </strong> {{robot[4]}}
             </p>
             <p>
-              <strong>Image: </strong> Team_{{robot[0]}}.{{robot[5]}}
+              <strong>Can Deep Climb: </strong> {{robot[5]}}
             </p>
             <p>
-              <strong>Additional Info: </strong> {{robot[7]}}
+              <strong>Can Shallow Climb: </strong> {{robot[6]}}
+            </p>
+            <p>
+              <strong> Weight: </strong> {{robot[7]}}
+            </p>
+            <p>
+              <strong> Driver Experience: </strong> {{robot[8]}}
+            </p>
+            <p>
+              <strong>Image: </strong> Team_{{robot[0]}}.{{robot[9]}}
+            </p>
+            <p>
+              <strong>Additional Info: </strong> {{robot[11]}}
             </p>
           </div>
         {% endfor %}
