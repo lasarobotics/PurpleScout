@@ -11,7 +11,7 @@ tba = tbapy.TBA(os.getenv('TBA'))
 # team = tba.team(418)
 
 # Current event
-EVENT = '2025week0'
+EVENT = '2025txwac'
 
 # Get the teams at the event
 teams = sorted([team.team_number for team in tba.event_teams(EVENT)])

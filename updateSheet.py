@@ -11,8 +11,6 @@ def get_data(min, max):
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
-    c.execute('SELECT * FROM superScoutData2 WHERE matchNum BETWEEN ? AND ?;', (min, max))
-    rows.extend(c.fetchall())
     conn.close()
 
     # Format data
@@ -29,7 +27,7 @@ def get_data(min, max):
     # Super Scout
     conn = sqlite3.connect('data/scoutWaco2025.db')
     c = conn.cursor()
-    c.execute('SELECT * FROM superScoutData2 WHERE matchNum BETWEEN ? AND ?;', (min, max))
+    c.execute('SELECT * FROM superScoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
     conn.close()
 

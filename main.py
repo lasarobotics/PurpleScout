@@ -23,12 +23,12 @@ app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWaco2025.db')
 app.config['SCOUT_TABLE'] = "scoutData"
-app.config['SUPER_SCOUT_TABLE'] = "superScoutData2"
+app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 
 # Create scoutData and superScoutData tables in sqlite database
 conn = sqlite3.connect(app.config['DB_PATH'])
 cursor = conn.cursor()
-cursor.execute('''CREATE TABLE IF NOT EXISTS scoutData (
+cursor.execute(f'''CREATE TABLE IF NOT EXISTS {app.config['SCOUT_TABLE']} (
     timestamp STRING PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
     matchNum INTEGER,
     teamNum INTEGER,
@@ -36,7 +36,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS scoutData (
     data TEXT
 )
 ''')
-cursor.execute('''CREATE TABLE IF NOT EXISTS superScoutData2 (
+cursor.execute(f'''CREATE TABLE IF NOT EXISTS {app.config['SUPER_SCOUT_TABLE']} (
     timestamp STRING PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
     matchNum INTEGER,
     alliance STRING,
@@ -113,7 +113,7 @@ def superScout():
 def megaScout():
     conn = sqlite3.connect(app.config['DB_PATH'])
     cursor = conn.cursor()
-    data = cursor.execute('select data from scoutData')
+    data = cursor.execute(f"select data from {app.config['SCOUT_TABLE']}")
     vals = cursor.fetchall()
     newArr = []
     for i in range(len(vals)):
