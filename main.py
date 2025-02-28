@@ -19,9 +19,11 @@ socketio = SocketIO(app)
 
 # Configure app
 app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
-app.config['SUPER_FORM'] = CrescendoSuperScoutForm
+app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWaco2025.db')
+app.config['SCOUT_TABLE'] = "scoutData"
+app.config['SUPER_SCOUT_TABLE'] = "superScoutData2"
 
 # Create scoutData and superScoutData tables in sqlite database
 conn = sqlite3.connect(app.config['DB_PATH'])
@@ -166,7 +168,7 @@ def scoutSubmit():
 
         current_time = str(datetime.now())
             
-        cursor.execute('INSERT INTO scoutData (timestamp, matchNum, teamNum, scoutID, data) VALUES (?, ?, ?, ?, ?)', 
+        cursor.execute(f"INSERT INTO {app.config['SCOUT_TABLE']} (timestamp, matchNum, teamNum, scoutID, data) VALUES (?, ?, ?, ?, ?)", 
                        (current_time, matchNum, teamNum, scoutID, json.dumps(data)))
         conn.commit()
         conn.close()
@@ -187,8 +189,8 @@ def scoutSubmit():
 
 # Super scout submit
 @app.route('/superScoutSubmit.html', methods=['GET', 'POST'])
-def superScoutSubmitSubmit():
-    print(f"got request via {request.method}")
+def superScoutSubmit():
+    print(f"Received Super Scout {request.method} request:")
     if request.method == 'POST':
         for key, value in request.form.items():
             print(f"{key}: {value}")
@@ -214,7 +216,7 @@ def superScoutSubmitSubmit():
         conn = sqlite3.connect(app.config['DB_PATH'])
         cursor = conn.cursor()
             
-        cursor.execute('INSERT INTO superScoutData2 (timestamp, matchNum, alliance, scoutID, data) VALUES (?, ?, ?, ?, ?)',
+        cursor.execute(f"INSERT INTO {app.config['SUPER_SCOUT_TABLE']} (timestamp, matchNum, alliance, scoutID, data) VALUES (?, ?, ?, ?, ?)",
                        (str(datetime.now()), matchNum, alliance, scoutID, json.dumps(data)))
         conn.commit()
         conn.close()
@@ -223,7 +225,7 @@ def superScoutSubmitSubmit():
 
         # return redirect(url_for('superScoutSubmit'))
 
-    return render_template('scoutSubmit.html')
+    return render_template('superScoutSubmit.html')
 
 # Favicon
 @app.route('/favicon.ico')

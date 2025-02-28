@@ -1,7 +1,7 @@
 import sqlite3, requests, json
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbwurLGj89lEMpKKJFCHVNEcqXdqzPtMoqnzfAJU3lcWHS6VK2DwQv0Tiz1hpY8_DDjG/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbzrncsnBRsMoFHOKqJr1Lv6JjQq8t3ITnWOetCi7RytMxugqBrdkJvPkxIe4BnJxix_/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -11,6 +11,8 @@ def get_data(min, max):
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
+    c.execute('SELECT * FROM superScoutData2 WHERE matchNum BETWEEN ? AND ?;', (min, max))
+    rows.extend(c.fetchall())
     conn.close()
 
     # Format data
@@ -52,7 +54,7 @@ def manual_send():
 
     data = get_data(min, max)
 
-    if input(f"Sending {len(data)} lines. Confirm? (y/n) ") == "y":
+    if input(f"Sending {len(data)} lines (this should be 8). Confirm? (y/n) ") == "y":
 
         resp = requests.post(SCRIPT, data=json.dumps(data).encode())
         print(data)

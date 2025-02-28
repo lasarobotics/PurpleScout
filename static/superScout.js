@@ -74,13 +74,13 @@ socket.on('scoutAssign', function(data) {
 
     // set the table headers to update correct team numbers
     if (selectedTeam === "redSuper") {
-        $('#robot1-num').text(' (' + data['red1'].toString() + ')');
-        $('#robot2-num').text(' (' + data.red2.toString() + ')');
-        $('#robot3-num').text(' (' + data.red3.toString() + ')');
+        $('#robot1Num').val(data.red1.toString());
+        $('#robot2Num').val(data.red2.toString());
+        $('#robot3Num').val(data.red3.toString());
     } else if (selectedTeam === "blueSuper") {
-        $('#robot1-num').text(' (' + data.blue1.toString() + ')');
-        $('#robot2-num').text(' (' + data.blue2.toString() + ')');
-        $('#robot3-num').text(' (' + data.blue3.toString() + ')');
+        $('#robot1Num').val(data.blue1.toString());
+        $('#robot2Num').val(data.blue2.toString());
+        $('#robot3Num').val(data.blue3.toString());
     }
 
 });

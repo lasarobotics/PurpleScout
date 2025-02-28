@@ -221,4 +221,16 @@ class ReefscapeForm(FlaskForm):
     info = TextAreaField('info', validators=[DataRequired()])
 
 class ReefscapeSuperScoutForm(FlaskForm):
-    pass
+    # Basic match and team information
+    matchNum = IntegerField('matchNumber', validators=[DataRequired()])
+    scoutID = StringField('scoutID', validators=[DataRequired()])
+
+    # Team numbers for each robot
+    robot1Num = IntegerField('robot1Num', validators=[DataRequired()])
+    robot2Num = IntegerField('robot2Num', validators=[DataRequired()])
+    robot3Num = IntegerField('robot3Num', validators=[DataRequired()])
+
+    # Textarea boxes for each robot
+    robot1Info = TextAreaField('robot1Info', validators=[DataRequired(), Length(min=10)])
+    robot2Info = TextAreaField('robot2Info', validators=[DataRequired(), Length(min=10)])
+    robot3Info = TextAreaField('robot3Info', validators=[DataRequired(), Length(min=10)])
