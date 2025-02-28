@@ -221,7 +221,7 @@ def superScoutSubmitSubmit():
 
         print(data)
 
-        return redirect(url_for('superScoutSubmit'))
+        # return redirect(url_for('superScoutSubmit'))
 
     return render_template('scoutSubmit.html')
 
