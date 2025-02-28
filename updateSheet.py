@@ -1,7 +1,7 @@
 import sqlite3, requests, json
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbxK9nzlsLCuGnfDL085eoryIZH167zWHtCTICSsW9Oe8N52Vb_W_Qbft5oKfqCni5V3/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbzrncsnBRsMoFHOKqJr1Lv6JjQq8t3ITnWOetCi7RytMxugqBrdkJvPkxIe4BnJxix_/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -11,15 +11,9 @@ def get_data(min, max):
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
+    c.execute('SELECT * FROM superScoutData2 WHERE matchNum BETWEEN ? AND ?;', (min, max))
+    rows.extend(c.fetchall())
     conn.close()
-
-    # do we need to merge two sql databases? ####################
-    # conn = sqlite3.connect('data/scoutFortWorth.db')
-    # c = conn.cursor()
-    # # select from scoutData where matchNum is within the range
-    # c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
-    # rows.extend(c.fetchall())
-    # conn.close()
 
     # Format data
     to_send = []
@@ -44,7 +38,7 @@ def manual_send():
 
     data = get_data(min, max)
 
-    if input(f"Sending {len(data)} lines. Confirm? (y/n) ") == "y":
+    if input(f"Sending {len(data)} lines (this should be 8). Confirm? (y/n) ") == "y":
 
         resp = requests.post(SCRIPT, data=json.dumps(data).encode())
         print(f"Done.\nResponse code: {resp.status_code} {resp.reason}")
@@ -75,4 +69,4 @@ def send_match(matchNum):
 
 
 if __name__ == "__main__":
-    send_match(5)
+    manual_send()

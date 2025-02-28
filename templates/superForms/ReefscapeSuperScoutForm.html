@@ -1,8 +1,10 @@
+<html>
 {% extends "superScout.html" %}
 
 {% block form %}
+<link rel="stylesheet" href="static/style3.css">
 
-<table>
+<table class="tbl" style="margin: 1%;">
     <thead>
         <tr>
             <th style="font-size: 20px;" class="a color-fade" colspan="3">
@@ -10,43 +12,20 @@
             </th>
         </tr>
         <tr>
-            <th style="font-size: 25px;"><span class="alliance-color">Robot</span> 1 <span id="robot1-num"></span></th>
-            <th style="font-size: 25px;"><span class="alliance-color">Robot</span> 2 <span id="robot2-num"></span></th>
-            <th style="font-size: 25px;"><span class="alliance-color">Robot</span> 3 <span id="robot3-num"></span></th>
+            <th style="font-size: 25px; width:3%;"><span class="alliance-color">Robot</span> 1 {{ form.robot1Num(class="inp wide") }}</th>
+            <th style="font-size: 25px;width:3%;"><span class="alliance-color">Robot</span> 2 {{ form.robot2Num(class="inp wide") }}</th>
+            <th style="font-size: 25px;width:3%;"><span class="alliance-color">Robot</span> 3 {{ form.robot3Num(class="inp wide") }}</th>
         </tr>
     </thead>
-    <tr><td>Role</td><td>Role</td><td>Role</td></tr>
     <tr>
-        <td>{{ form.robot1.role }}</td>
-        <td>{{ form.robot2.role }}</td>
-        <td>{{ form.robot3.role }}</td>
-    </tr>
-    <br>
-    <tr><td>Defense</td><td>Defense</td><td>Defense</td></tr>
-    <tr>
-        <td>{{ form.robot1.defense }}</td>
-        <td>{{ form.robot2.defense }}</td>
-        <td>{{ form.robot3.defense }}</td>
-    </tr>
-    <br>
-    <tr><td>Driving</td><td>Driving</td><td>Driving</td></tr>
-    <tr>
-        <td>{{ form.robot1.driving }}</td>
-        <td>{{ form.robot2.driving }}</td>
-        <td>{{ form.robot3.driving }}</td>
-    </tr>
-    <br>
-    <tr><td>Info</td><td>Info</td><td>Info</td></tr>
-    <tr>
-        <td>{{ form.robot1.info }}</td>
-        <td>{{ form.robot2.info }}</td>
-        <td>{{ form.robot3.info }}</td>
-    </tr>
-    <br>    
-    <tr>
-        <td>Red Amps {{ form.redAmps }}</td>
-        <td>Blue Amps {{ form.blueAmps }}</td>
+        <td>{{ form.robot1Info }}</td>
+        <td>{{ form.robot2Info }}</td>
+        <td>{{ form.robot3Info }}</td>
     </tr>
 </table>
 
 {% endblock %}
+
+</html>
+<style>
+</style>
