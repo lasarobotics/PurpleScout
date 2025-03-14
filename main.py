@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 from game import *
 from flask_socketio import SocketIO, emit
 import csv, secrets, json, sqlite3
-from blueprints.PitScout.pitScout import pitScout_bp
+#from blueprints.PitScout.pitScout import pitScout_bp
 from datetime import datetime
 import os
 from zeroconf import Zeroconf, ServiceInfo
@@ -14,7 +14,7 @@ import updateSheet
 
 # Create app
 app = Flask(__name__)
-app.register_blueprint(pitScout_bp,url_prefix='/pitScout.html')
+#app.register_blueprint(pitScout_bp,url_prefix='/pitScout.html')
 socketio = SocketIO(app)
 
 # Configure app

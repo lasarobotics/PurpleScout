@@ -1,7 +1,8 @@
 import sqlite3, requests, json
+import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbzrncsnBRsMoFHOKqJr1Lv6JjQq8t3ITnWOetCi7RytMxugqBrdkJvPkxIe4BnJxix_/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycby8EKHTg0lxHQKgGagCh9IQIRpG7vQA-Vv3_ubeSNSJiZBMxL7dGaxCVXjw2jKs_ZEH/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -55,7 +56,7 @@ def manual_send():
     if input(f"Sending {len(data)} lines (this should be 8). Confirm? (y/n) ") == "y":
 
         resp = requests.post(SCRIPT, data=json.dumps(data).encode())
-        print(data)
+        # print(data)
         print(f"Done.\nResponse code: {resp.status_code} {resp.reason}")
 
     else:
@@ -68,13 +69,96 @@ def send_match(matchNum):
     print(f"Uploading data from match {matchNum}... ", end="")
 
     data = get_data(matchNum, matchNum)
+    dataColor = pd.read_csv('data\\matchList.csv')
+    teamsColors = []
 
-    if len(data) == 0:
+    for index, row in dataColor.iterrows():
+        teamsColor = []
+        rd1 = (index, row['red1'])
+        rd2 = (index, row['red2'])
+        rd3 = (index, row['red3'])
+        bl1 = (index, row['blue1'])
+        bl2 = (index, row['blue2'])
+        bl3 = (index, row['blue3'])
+        teamsColor.append(rd1[1])
+        teamsColor.append(rd2[1])
+        teamsColor.append(rd3[1])
+        teamsColor.append(bl1[1])
+        teamsColor.append(bl2[1])
+        teamsColor.append(bl3[1])
+        teamsColors.append(teamsColor)
+
+    redDATA = []
+    blueDATA = []
+
+    for i in data:
+        tNum = (i.get("teamNum"))
+        # if (tNum == teamsColors[matchNum-1][0] or tNum == teamsColors[matchNum-1][1] or tNum == teamsColors[matchNum-1][2]):
+        if (tNum == 1 or tNum ==2 or tNum == 3):
+            redDATA.append(i)
+        else:
+            blueDATA.append(i)
+
+    # print(redDATA)
+    # print("\n")
+    # print(blueDATA)
+
+    redCheckTeams = []
+    blueCheckTeams = []
+
+    for i in redDATA:
+        if (i.get("defenseExperienced") != " "):
+            teams = i.get("defenseExperienced")
+            redCheckTeams = teams.split(",")
+     
+    for i in blueDATA:
+        if (i.get("defenseExperienced") != " "):
+            teams = i.get("defenseExperienced")
+            blueCheckTeams = teams.split(",")
+    
+    print(redCheckTeams)
+    print('\n')
+    print(blueCheckTeams)
+
+    for i in redDATA:
+        print(i)
+        for j in blueCheckTeams:
+            if (int(j) == int(i.get('teamNum'))):
+                print(" lol its TRUE")
+                i["defense_Experienced"]="TRUE"
+                i["defense_NO"]="FALSE"
+                break
+            else:
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
+
+    for i in blueDATA:
+        print(i)
+        for j in redCheckTeams:
+            if (int(j) == int(i.get('teamNum'))):
+                print(" lol its TRUE")
+                i["defense_Experienced"]="TRUE"
+                i["defense_NO"]="FALSE"
+                break
+            else:
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
+    
+    dataNew = []
+    for i in redDATA:
+        print(i)
+        dataNew.append(i)
+    for i in blueDATA:
+        print(i)
+        dataNew.append(i)
+
+
+    if len(dataNew) == 0:
         print("Failed")
         return f"Error: No data found"
 
     try: 
-        resp = requests.post(SCRIPT, data=json.dumps(data).encode())
+        resp = requests.post(SCRIPT, data=json.dumps(dataNew).encode())
     except:
         print("Failed")
         return "Error: POST request failed"
