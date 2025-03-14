@@ -21,7 +21,7 @@ socketio = SocketIO(app)
 app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWaco2025.db')
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutManor2025.db')
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 

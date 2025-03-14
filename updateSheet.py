@@ -2,13 +2,13 @@ import sqlite3, requests, json
 import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycby8EKHTg0lxHQKgGagCh9IQIRpG7vQA-Vv3_ubeSNSJiZBMxL7dGaxCVXjw2jKs_ZEH/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbxsabVlBc1M0CoAF0Qcb-vLDa9jOiOSs-gP0DCVVvcIqp08R5RfmhCAbFLOUU99eXaBDg/exec"
 #################################################################################
 
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 
-    conn = sqlite3.connect('data/scoutWaco2025.db')
+    conn = sqlite3.connect('data/scoutManor2025.db')
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
@@ -26,7 +26,7 @@ def get_data(min, max):
         to_send[-1]["type"] = "scout"
     
     # Super Scout
-    conn = sqlite3.connect('data/scoutWaco2025.db')
+    conn = sqlite3.connect('data/scoutManor2025.db')
     c = conn.cursor()
     c.execute('SELECT * FROM superScoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
@@ -93,8 +93,8 @@ def send_match(matchNum):
 
     for i in data:
         tNum = (i.get("teamNum"))
-        # if (tNum == teamsColors[matchNum-1][0] or tNum == teamsColors[matchNum-1][1] or tNum == teamsColors[matchNum-1][2]):
-        if (tNum == 1 or tNum ==2 or tNum == 3):
+        if (tNum == teamsColors[matchNum-1][0] or tNum == teamsColors[matchNum-1][1] or tNum == teamsColors[matchNum-1][2]):
+        # if (tNum == 1 or tNum ==2 or tNum == 3):
             redDATA.append(i)
         else:
             blueDATA.append(i)
@@ -109,12 +109,19 @@ def send_match(matchNum):
     for i in redDATA:
         if (i.get("defenseExperienced") != " "):
             teams = i.get("defenseExperienced")
-            redCheckTeams = teams.split(",")
+            print(teams)
+            try:
+                redCheckTeams = teams.split(",")
+            except:
+                redcheckTeams = []
      
     for i in blueDATA:
         if (i.get("defenseExperienced") != " "):
             teams = i.get("defenseExperienced")
-            blueCheckTeams = teams.split(",")
+            try:
+                blueCheckTeams = teams.split(",")
+            except:
+                blueCheckTeams = []
     
     print(redCheckTeams)
     print('\n')
@@ -123,6 +130,9 @@ def send_match(matchNum):
     for i in redDATA:
         print(i)
         for j in blueCheckTeams:
+            if (j == ""):
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
             if (int(j) == int(i.get('teamNum'))):
                 print(" lol its TRUE")
                 i["defense_Experienced"]="TRUE"
@@ -135,6 +145,9 @@ def send_match(matchNum):
     for i in blueDATA:
         print(i)
         for j in redCheckTeams:
+            if (j == ""):
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
             if (int(j) == int(i.get('teamNum'))):
                 print(" lol its TRUE")
                 i["defense_Experienced"]="TRUE"

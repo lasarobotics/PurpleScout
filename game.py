@@ -153,6 +153,7 @@ class SubjectiveRobotData(FlaskForm):
         ('average', 'Average'),
         ('excellent', 'Smooth/Skilled')
     ])
+    
     info = TextAreaField('info', validators=[DataRequired(), Length(min=10)])
 
 class CrescendoSuperScoutForm(FlaskForm):
