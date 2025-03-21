@@ -16,7 +16,7 @@ openedSheets = False
 
 #File directory to SQL Table
 #db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../data/Pit Scouting/RobotInfo.db')
-db_path = "data/pitScoutData.db"
+db_path = "data/pitScoutData2.db"
 
 #Only needs to be called when remaking SQL Table NOT every time you reload the page
 def InitSQL():
@@ -66,7 +66,7 @@ def initSheets():
   client = gspread.authorize(creds)
 
   # Open the Google Sheets spreadsheet
-  spreadsheet = client.open('Waco Scouting 2025')  #Title on google sheet
+  spreadsheet = client.open('Manor Scouting 2025')  #Title on google sheet
   worksheet = spreadsheet.get_worksheet_by_id(1991768468)  # Assuming you want to use the first worksheet
   openedSheets = True 
 

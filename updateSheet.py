@@ -2,7 +2,7 @@ import sqlite3, requests, json
 import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbxsabVlBc1M0CoAF0Qcb-vLDa9jOiOSs-gP0DCVVvcIqp08R5RfmhCAbFLOUU99eXaBDg/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbw_lazXqfEjDCiMvwd3ebWnjZ3mRs0S7OnGeU56mvFFAZIW49VilQbUfjz_ZJcc81Q/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -99,9 +99,6 @@ def send_match(matchNum):
         else:
             blueDATA.append(i)
 
-    # print(redDATA)
-    # print("\n")
-    # print(blueDATA)
 
     redCheckTeams = []
     blueCheckTeams = []
@@ -110,59 +107,88 @@ def send_match(matchNum):
         if (i.get("defenseExperienced") != " "):
             teams = i.get("defenseExperienced")
             print(teams)
+            # teamsQuotes = "\""+teams+"\""
+            # i["defenseExperiencedQuotes"]=teamsQuotes
+
             try:
                 redCheckTeams = teams.split(",")
             except:
-                redcheckTeams = []
+                redCheckTeams = [""]
+            teamsQuotes = "\""
+            for j in range(0,len(redCheckTeams)):  
+                if (j == len(redCheckTeams)-1):
+                    teamsQuotes+=redCheckTeams[j]
+                else:      
+                    teamsQuotes += redCheckTeams[j]+","
+            teamsQuotes += "\""
+            i["defenseExperiencedQuotes"]=teamsQuotes
      
     for i in blueDATA:
+        print(i)
+        print("\n")
         if (i.get("defenseExperienced") != " "):
             teams = i.get("defenseExperienced")
+            print(teams)
             try:
                 blueCheckTeams = teams.split(",")
             except:
-                blueCheckTeams = []
+                blueCheckTeams = [""]   
+            teamsQuotes = "\""
+            for j in range(0,len(blueCheckTeams)):  
+                if (j == len(blueCheckTeams)-1):
+                    teamsQuotes+=blueCheckTeams[j]
+                else:      
+                    teamsQuotes += blueCheckTeams[j]+","
+            teamsQuotes += "\""
+            i["defenseExperiencedQuotes"]=teamsQuotes
     
-    print(redCheckTeams)
-    print('\n')
-    print(blueCheckTeams)
 
     for i in redDATA:
-        print(i)
+        if (i.get("type")=="superScout"):
+            continue
+        print(blueCheckTeams)
         for j in blueCheckTeams:
-            if (j == ""):
-                i["defense_Experienced"]="FALSE"
-                i["defense_NO"]="TRUE"
+            print(j)
+            print(i)
+            print(i.get('teamNum'))
+            if (j == "  " or j == "" or j =="N/A" or j=="-" or j=="no" or j==" no"):
+                i["defense_Experienced"]="false"
+                i["defense_NO"]="true"
+                break
             if (int(j) == int(i.get('teamNum'))):
-                print(" lol its TRUE")
-                i["defense_Experienced"]="TRUE"
-                i["defense_NO"]="FALSE"
+                i["defense_Experienced"]="false"
+                i["defense_NO"]="true"
                 break
             else:
-                i["defense_Experienced"]="FALSE"
-                i["defense_NO"]="TRUE"
+                i["defense_Experienced"]="false"
+                i["defense_NO"]="true"
 
     for i in blueDATA:
-        print(i)
+        if (i.get("type")=="superScout"):
+            continue
+        print(redCheckTeams)
         for j in redCheckTeams:
-            if (j == ""):
-                i["defense_Experienced"]="FALSE"
-                i["defense_NO"]="TRUE"
+            if (j == "  " or j == "" or j =="N/A" or j=="-" or j=="no" or j==" no"):
+                i["defense_Experienced"]="false"
+                i["defense_NO"]="true"
+                break
             if (int(j) == int(i.get('teamNum'))):
                 print(" lol its TRUE")
-                i["defense_Experienced"]="TRUE"
-                i["defense_NO"]="FALSE"
+                i["defense_Experienced"]="true"
+                i["defense_NO"]="false"
                 break
             else:
-                i["defense_Experienced"]="FALSE"
-                i["defense_NO"]="TRUE"
+                i["defense_Experienced"]="false"
+                i["defense_NO"]="true"
     
     dataNew = []
     for i in redDATA:
         print(i)
+        print("\n")
         dataNew.append(i)
     for i in blueDATA:
         print(i)
+        print("\n")
         dataNew.append(i)
 
 
