@@ -2,7 +2,7 @@ import sqlite3, requests, json
 import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbw_lazXqfEjDCiMvwd3ebWnjZ3mRs0S7OnGeU56mvFFAZIW49VilQbUfjz_ZJcc81Q/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbwhadnD06lh5f_p94vrUTJx6XOJbzkI8NNBZS0smO3oSzey0NsY_v8vym35F5UdYXU/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -91,10 +91,11 @@ def send_match(matchNum):
     redDATA = []
     blueDATA = []
 
+    #Goes through and splits all the data into a redteam array and blueteam array
+
     for i in data:
         tNum = (i.get("teamNum"))
         if (tNum == teamsColors[matchNum-1][0] or tNum == teamsColors[matchNum-1][1] or tNum == teamsColors[matchNum-1][2]):
-        # if (tNum == 1 or tNum ==2 or tNum == 3):
             redDATA.append(i)
         else:
             blueDATA.append(i)
@@ -103,13 +104,11 @@ def send_match(matchNum):
     redCheckTeams = []
     blueCheckTeams = []
 
+    #creates a redTeamCheck for robots that the red team played defense on.
+
     for i in redDATA:
         if (i.get("defenseExperienced") != " "):
             teams = i.get("defenseExperienced")
-            print(teams)
-            # teamsQuotes = "\""+teams+"\""
-            # i["defenseExperiencedQuotes"]=teamsQuotes
-
             try:
                 redCheckTeams = teams.split(",")
             except:
@@ -122,13 +121,13 @@ def send_match(matchNum):
                     teamsQuotes += redCheckTeams[j]+","
             teamsQuotes += "\""
             i["defenseExperiencedQuotes"]=teamsQuotes
+
+
+    #creates a blueTeamCheck for robots that the blue team played defense on.
      
     for i in blueDATA:
-        print(i)
-        print("\n")
         if (i.get("defenseExperienced") != " "):
             teams = i.get("defenseExperienced")
-            print(teams)
             try:
                 blueCheckTeams = teams.split(",")
             except:
@@ -141,45 +140,49 @@ def send_match(matchNum):
                     teamsQuotes += blueCheckTeams[j]+","
             teamsQuotes += "\""
             i["defenseExperiencedQuotes"]=teamsQuotes
+
+    #compares to blueCheckTeams to see if any redteam robots experienced defense.
     
 
     for i in redDATA:
         if (i.get("type")=="superScout"):
             continue
-        print(blueCheckTeams)
         for j in blueCheckTeams:
-            print(j)
-            print(i)
-            print(i.get('teamNum'))
             if (j == "  " or j == "" or j =="N/A" or j=="-" or j=="no" or j==" no"):
-                i["defense_Experienced"]="false"
-                i["defense_NO"]="true"
-                break
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
+                continue
             if (int(j) == int(i.get('teamNum'))):
-                i["defense_Experienced"]="false"
-                i["defense_NO"]="true"
-                break
+                i["defense_Experienced"]="TRUE"
+                i["defense_NO"]="FALSE"
+                continue
             else:
-                i["defense_Experienced"]="false"
-                i["defense_NO"]="true"
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
+
+    #compares to redCheckTeams to see if any blueteam robots experienced defense.
 
     for i in blueDATA:
         if (i.get("type")=="superScout"):
             continue
-        print(redCheckTeams)
+        if (len(redCheckTeams)==0):
+            i["defense_Experienced"]="FALSE"
+            i["defense_NO"]="TRUE"
+            continue
         for j in redCheckTeams:
             if (j == "  " or j == "" or j =="N/A" or j=="-" or j=="no" or j==" no"):
-                i["defense_Experienced"]="false"
-                i["defense_NO"]="true"
-                break
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
+                continue
             if (int(j) == int(i.get('teamNum'))):
-                print(" lol its TRUE")
-                i["defense_Experienced"]="true"
-                i["defense_NO"]="false"
-                break
+                i["defense_Experienced"]="TRUE"
+                i["defense_NO"]="FALSE"
+                continue
             else:
-                i["defense_Experienced"]="false"
-                i["defense_NO"]="true"
+                i["defense_Experienced"]="FALSE"
+                i["defense_NO"]="TRUE"
+
+    #Fully proccessed data entries for each team. Ready to upload!
     
     dataNew = []
     for i in redDATA:

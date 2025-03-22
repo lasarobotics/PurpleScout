@@ -215,7 +215,7 @@ class ReefscapeForm(FlaskForm):
 
     # Other fields
     defense = BooleanField('defense', default=False)
-    defenseExperienced = StringField('defenseExperienced', validators=[DataRequired()])
+    defenseExperienced = StringField('defenseExperienced')
     droppedPieces = IntegerField('droppedPieces', validators=[DataRequired()], default=0)
     fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
     failure = BooleanField('failure', default=False)

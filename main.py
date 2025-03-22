@@ -130,12 +130,17 @@ def scoutSubmit():
         print("working")
         data = request.form.to_dict()
         print("DATA: " + str(data))
+        print("hasn't failed yet")
 
         # append data to data/scout.csv
         with open('data/scout.csv', 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=list(data.keys()))
+            data['info'] = data.get('info').encode("utf-8")
             writer.writerow(data)
             f.close()
+        print("hasn't failed yet")
+        data['info'] = data.get('info').decode("utf-8")
+        print(data)
 
         # append data to sqlite3 database
         conn = sqlite3.connect(app.config['DB_PATH'])
@@ -167,9 +172,12 @@ def scoutSubmit():
         data['failure'] = True if data['failure'] == 'y' else False
 
         current_time = str(datetime.now())
+
+        print("still working")
             
         cursor.execute(f"INSERT INTO {app.config['SCOUT_TABLE']} (timestamp, matchNum, teamNum, scoutID, data) VALUES (?, ?, ?, ?, ?)", 
                        (current_time, matchNum, teamNum, scoutID, json.dumps(data)))
+        print("failed now")
         conn.commit()
         conn.close()
 
