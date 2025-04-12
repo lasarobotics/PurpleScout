@@ -11,6 +11,8 @@ from zeroconf import Zeroconf, ServiceInfo
 import socket
 import updateSheet
 
+import psutil
+
 
 # Create app
 app = Flask(__name__)
@@ -21,7 +23,7 @@ socketio = SocketIO(app)
 app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutManor2025.db')
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutMercury2025.db')
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 
@@ -252,6 +254,10 @@ def teapot():
 @socketio.on('echo')  # test route
 def handle_echo(data):
     print(f"received echo: {data}")
+    # plugged = battery.power_plugged
+    # percent = str(battery.percent)
+    # plugged = "Plugged In" if plugged else "Not Plugged In"
+    # print(percent+'% | '+plugged)
     emit('echo', data)
 
 @socketio.on('getTeams')  # activated when the super scout clicks the button to fetch teams
@@ -270,10 +276,18 @@ def handle_fetchTeams(data):
         'blue1': 'error', 'blue2': 'error', 'blue3': 'error'
     })
 
+@socketio.on('battery_info')
+def handle_battery_info(data):
+    print(f"Received battery info: {data}")
+    # You can process the battery info here or store it in a database
+    emit('battery_response', {'status': 'success', 'message': 'Battery info received'})
+
 # Broadcast routes
 @socketio.on('scoutSelect')  # activated when a scout chooses their team
 def handle_scoutSelect(data):
     print(f"received scoutSelect: {data}")
+    battery = psutil.sensors_battery()
+    emit('battery',battery)
     emit('scoutSelect', data, broadcast=True)
 
 @socketio.on('scoutAssign')  # activated when the mega scout assigns the team#

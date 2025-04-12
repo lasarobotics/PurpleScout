@@ -10,10 +10,35 @@ const form = document.getElementById('scoutForm');
 const team_text = $('#waiting b span');
 
 var selectedTeam = null;
+
+async function getBatteryInfo() {
+    try {
+        const battery = await navigator.getBattery();
+        const batteryInfo = {
+            percent: battery.level * 100,
+            plugged: battery.charging,
+            chargingTime: battery.chargingTime,
+            dischargingTime: battery.dischargingTime
+        };
+        console.log("Battery Info:", batteryInfo);
+        
+        // Send battery info as a JSON string via WebSocket
+        socket.emit((batteryInfo.percent));
+    } catch (error) {
+        console.error("Error getting battery info:", error);
+    
+    }
+}
+
+// Call the function to get battery info
+
+
 // Team select handler
 $('button.teamSelect').click(function() {
     //assign.style.display = 'none';
     //waiting.style.display = 'block';
+    console.log("aaah");
+    getBatteryInfo();
     
     // emit scoutSelect event with the id of the button clicked
     if (this.id != 'deselect') {

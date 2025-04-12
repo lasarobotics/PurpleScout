@@ -8,7 +8,7 @@ SCRIPT = "https://script.google.com/macros/s/AKfycbwhadnD06lh5f_p94vrUTJx6XOJbzk
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 
-    conn = sqlite3.connect('data/scoutManor2025.db')
+    conn = sqlite3.connect('data/scoutMercury2025.db')
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
@@ -152,13 +152,18 @@ def send_match(matchNum):
                 i["defense_Experienced"]="FALSE"
                 i["defense_NO"]="TRUE"
                 continue
-            if (int(j) == int(i.get('teamNum'))):
-                i["defense_Experienced"]="TRUE"
-                i["defense_NO"]="FALSE"
-                continue
-            else:
+            try:
+                if (int(j) == int(i.get('teamNum'))):
+                    i["defense_Experienced"]="TRUE"
+                    i["defense_NO"]="FALSE"
+                    continue
+                else:
+                    i["defense_Experienced"]="FALSE"
+                    i["defense_NO"]="TRUE"
+            except:
                 i["defense_Experienced"]="FALSE"
                 i["defense_NO"]="TRUE"
+
 
     #compares to redCheckTeams to see if any blueteam robots experienced defense.
 
@@ -174,11 +179,15 @@ def send_match(matchNum):
                 i["defense_Experienced"]="FALSE"
                 i["defense_NO"]="TRUE"
                 continue
-            if (int(j) == int(i.get('teamNum'))):
-                i["defense_Experienced"]="TRUE"
-                i["defense_NO"]="FALSE"
-                continue
-            else:
+            try:
+                if (int(j) == int(i.get('teamNum'))):
+                    i["defense_Experienced"]="TRUE"
+                    i["defense_NO"]="FALSE"
+                    continue
+                else:
+                    i["defense_Experienced"]="FALSE"
+                    i["defense_NO"]="TRUE"
+            except:
                 i["defense_Experienced"]="FALSE"
                 i["defense_NO"]="TRUE"
 
