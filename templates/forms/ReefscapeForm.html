@@ -109,7 +109,11 @@
                 <th colspan="2">Played Defense</th>
                 <td>
                     {{ form.defense(class="inp") }}
+                    
                 </td>
+            </tr>
+            <tr>
+                <th colspan="2">Who was defended?</th>
                 <td>
                     {{ form.defenseExperienced(class="inp wide")}}
                 </td>
@@ -119,9 +123,9 @@
                 <th>L4</th>
                 <td>
                     <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
+                        <button type="button" class="subtractButton" id="coralL4Dec">-</button>
                         {{ form.teleopL4(class="inp") }}
-                        <button type="button" class="addButton">+</button>
+                        <button type="button" class="addButton" id="coralL4Inc">+</button>
                     </div>
                 </td>
             </tr>
@@ -130,9 +134,9 @@
                 <th>L3</th>
                 <td>
                     <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
+                        <button type="button" class="subtractButton" id="coralL3Dec">-</button>
                         {{ form.teleopL3(class="inp") }}
-                        <button type="button" class="addButton">+</button>
+                        <button type="button" class="addButton" id="coralL3Inc">+</button>
                     </div>
                 </td>
             </tr>
@@ -141,9 +145,9 @@
                 <th>L2</th>
                 <td>
                     <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
+                        <button type="button" class="subtractButton" id="coralL2Dec">-</button>
                         {{ form.teleopL2(class="inp") }}
-                        <button type="button" class="addButton">+</button>
+                        <button type="button" class="addButton" id="coralL2Inc">+</button>
                     </div>
                 </td>
             </tr>
@@ -152,9 +156,9 @@
                 <th>L1</th>
                 <td>
                     <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
+                        <button type="button" class="subtractButton" id="coralL1Dec">-</button>
                         {{ form.teleopL1(class="inp") }}
-                        <button type="button" class="addButton">+</button>
+                        <button type="button" class="addButton" id="coralL1Inc">+</button>
                     </div>
                 </td>
             </tr>

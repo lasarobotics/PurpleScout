@@ -52,12 +52,30 @@ socket.on('sendTeams', function(data) {
 // receive status updates from scouts
 socket.on('scoutSelect', function(data) {
     console.log(data);
+    pluggedIn=""
+    if (data.batteryPlug){
+        pluggedIn="🔌"
+    } else if (!(data.batteryPlug)&& data.batteryP<20) {
+        pluggedIn="😭"
+    } else {
+        pluggedIn="😎"
+    }
     if (data.action == 'select') {
         $('#' + data.type + 'Status').text('Ready');
-        $('#' + data.type + 'ScoutID').text(' (' + data.scoutID + ')');
+        $('#' + data.type + 'ScoutID').text(' (' + data.scoutID + ")" + " ["+ data.batteryP+ "%"+pluggedIn+"]");
     } else {
         $('#' + data.type + 'Status').text('...');
         $('#' + data.type + 'ScoutID').text('');
+    }
+    if (data.batteryP<20 && (!data.batteryPlug)){
+        $('#' + data.type + 'Status').css("color", "red")
+        $('#' + data.type + 'ScoutID').css("color", "red")
+    } else if ((data.batteryPlug)){
+        $('#' + data.type + 'Status').css("color", "green")
+        $('#' + data.type + 'ScoutID').css("color", "green")
+    }else{
+        $('#' + data.type + 'Status').css("color", "white")
+        $('#' + data.type + 'ScoutID').css("color", "white")
     }
 });
 

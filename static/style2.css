@@ -140,7 +140,7 @@ ul {
 
 .inp {
   width: 40px;
-  height: 30px;
+  height: 40px;
   font-size: 25px;
   text-align: center;
   accent-color: #663399;
@@ -405,11 +405,16 @@ th, th>select {
   border: none;
 }
 
+.addsubInput {
+  height: 40px;
+}
+
 .addsubInput :nth-child(1), .addsubInput :nth-child(3) {
   color: white;
   font-weight: bolder;
+  /*font-size: 40px;*/
   border-radius: 5px;
-  width: 25px;
+  width: 40px;
   top: 0;
 }
 
@@ -572,4 +577,12 @@ border: 1px solid #663399;
 #sqlTblDiv {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
+}
+
+.shortcut-button {
+  display:inline-block;
+  margin-left: 40px;
+  height: 30px;
+  width: 30px;
+  border: 1px solid white;
 }

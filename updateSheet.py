@@ -2,13 +2,13 @@ import sqlite3, requests, json
 import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbwhadnD06lh5f_p94vrUTJx6XOJbzkI8NNBZS0smO3oSzey0NsY_v8vym35F5UdYXU/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbyFWSAVL4ubii6sGGC8UQV72jN50DIoaAPNiBu6jSZQ05NdOtjyAbUAH9zu4CfAvfVbNQ/exec"
 #################################################################################
 
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 
-    conn = sqlite3.connect('data/scoutMercury2025.db')
+    conn = sqlite3.connect('data/scoutWorlds2025.db')
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()

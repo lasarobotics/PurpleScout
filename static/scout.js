@@ -1,3 +1,6 @@
+$(document).ready(function () {
+
+
 var socket = io();
 
 // Tell the server that this scouter is ready
@@ -20,12 +23,13 @@ async function getBatteryInfo() {
             chargingTime: battery.chargingTime,
             dischargingTime: battery.dischargingTime
         };
-        console.log("Battery Info:", batteryInfo);
+        console.log("Battery Info:", batteryInfo.percent, batteryInfo.plugged);
+        percentage = batteryInfo.percent;
+        pluggedIn = batteryInfo.plugged;
         
-        // Send battery info as a JSON string via WebSocket
-        socket.emit((batteryInfo.percent));
+        return {percent:percentage, pluggedIn:pluggedIn};
     } catch (error) {
-        console.error("Error getting battery info:", error);
+        return "error";
     
     }
 }
@@ -34,18 +38,35 @@ async function getBatteryInfo() {
 
 
 // Team select handler
-$('button.teamSelect').click(function() {
+$('button.teamSelect').click(async function() {
     //assign.style.display = 'none';
     //waiting.style.display = 'block';
     console.log("aaah");
-    getBatteryInfo();
+    percentage=0;
+    pluggedIn=false;
+    try {
+        const battery = await navigator.getBattery();
+        const batteryInfo = {
+            percent: battery.level * 100,
+            plugged: battery.charging,
+            chargingTime: battery.chargingTime,
+            dischargingTime: battery.dischargingTime
+        };
+        console.log("Battery Info:", batteryInfo.percent, batteryInfo.plugged);
+        percentage = batteryInfo.percent;
+        pluggedIn = batteryInfo.plugged;
+    } catch (error) {
+        return "error";
+    
+    }
     
     // emit scoutSelect event with the id of the button clicked
     if (this.id != 'deselect') {
+  
 
         // deselect the current one, and select the new one
         socket.emit('scoutSelect', {type: selectedTeam, action: 'deselect'})
-        socket.emit('scoutSelect', {type: this.id, scoutID: $('#scoutID').val(), action: 'select'});
+        socket.emit('scoutSelect', {type: this.id, scoutID: $('#scoutID').val(), action: 'select', batteryP:percentage,batteryPlug:pluggedIn});
         // show the waiting message
         waiting.style.display = 'block';
         team_text.text(this.id);
@@ -124,4 +145,41 @@ tippy('#info', {
     allowHTML: true,
     trigger: 'click',
     maxWidth: 'none',
+});
+
+
+/*
+const keysPressed = {};
+// Keyboard shortcuts
+$(document).on('keydown', function(e) {
+    // Skip if the focus is in a text input, textarea, or contenteditable element
+    if ($(e.target).is('input, textarea, [contenteditable="true"]')) {
+        return;
+    }
+    console.log(e.which);
+
+    if (!keysPressed[e.which]) {
+        keysPressed[e.which] = true;
+        switch (e.key) {
+            case '4':
+                $('#coralL4Inc').click();
+                break;
+            case '3':
+                $('#coralL3Inc').click();
+                break;
+            case '2':
+                $('#coralL2Inc').click();
+                break;
+            case '1':
+                $('#coralL1Inc').click();
+                break;
+        }
+    }
+});
+
+$(document).on('keyup', function (e) {
+    keysPressed[e.which] = false;
+});
+*/
+
 });
