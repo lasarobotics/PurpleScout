@@ -22,3 +22,16 @@ scoutManor2025.db
 scoutMercury2025.db
 scoutWaco2025.db
 backup.db
+
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+

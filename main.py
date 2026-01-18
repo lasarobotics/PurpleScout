@@ -19,11 +19,11 @@ app = Flask(__name__)
 app.register_blueprint(pitScout_bp,url_prefix='/pitScout.html')
 socketio = SocketIO(app)
 
-# Configure app
-app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
-app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
+# Configure app -- this is all of the constants used throughout the app
+app.config['SCOUT_FORM'] = RebuiltForm  # Change this to the form you want to use
+app.config['SUPER_FORM'] = ReefscapeSuperScoutForm 
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWorlds2025.db')
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWorlds2025.db') # change to your database path in /data
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 
@@ -52,7 +52,7 @@ conn.close()
 # Index
 @app.route('/')
 def index():
-    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name) # creates home page with form name
 
 # Home
 @app.route('/home.html')
@@ -331,11 +331,19 @@ if __name__ == '__main__':
 
     # Register the service with Zeroconf
     zeroconf = Zeroconf()
-    zeroconf.register_service(info)
+    try:
+        zeroconf.register_service(info)
+        print(f"Service registered successfully at {ip_address}:5000")
+    except Exception as e:
+        print(f"Warning: Could not register zeroconf service: {e}")
+        print("The app will continue running without mDNS discovery")
 
     # Start the Flask app
     socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
 
     # After Flask app stops, unregister the service
-    zeroconf.unregister_service(info)
+    try:
+        zeroconf.unregister_service(info)
+    except:
+        pass
     zeroconf.close()

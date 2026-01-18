@@ -1,0 +1,322 @@
+{% extends "scout.html" %}
+{% block form %}
+
+<div class="horizontalBlock">
+    <!-- Auto -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a color-fade" colspan="3">AUTO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="mobilityTr">
+                <td></td>
+                <th>Mobility</th>
+                <td>
+                    {{ form.autoMobility(class="inp check") }}
+                </td>
+            </tr>
+            <tr>
+                <th>Shots</th>
+                <th>Attempted</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoShots(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Accuracy</th>
+                <td>
+                    <input type="range" min="0" max="100" class="slider" id="autoAccuracySlider">
+                    {{ form.autoShotAccuracy(class="inp hidden") }}
+                    <span id="autoAccuracyValue">0%</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Teleop -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a color-fade" colspan="3">TELEOP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Shots</th>
+                <th>Attempted</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopShots(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Accuracy</th>
+                <td>
+                    <input type="range" min="0" max="100" class="slider" id="teleopAccuracySlider">
+                    {{ form.teleopShotAccuracy(class="inp hidden") }}
+                    <span id="teleopAccuracyValue">50%</span>
+                </td>
+            </tr>
+            <tr id="passTr">
+                <th colspan="2">Passed?</th>
+                <td>
+                    {{ form.teleopPassed(class="inp check") }}
+                </td>
+            </tr>
+            <tr id="defenseTr">
+                <th colspan="2">Played Defense</th>
+                <td>
+                    {{ form.teleopDefense(class="inp check") }}
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Who was defended?</th>
+                <td>
+                    {{ form.defenseExperienced(class="inp wide")}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tbl-container inline-block">
+        <!-- Endgame -->
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a color-fade" colspan="3">ENDGAME</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="3">Climb Location</th>
+                </tr>
+                <tr>
+                    <td colspan="3" style="padding: 10px;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 200px;">
+                            <button type="button" class="climbGridBtn" data-level="none" data-position="1">1</button>
+                            <button type="button" class="climbGridBtn" data-level="none" data-position="2">2</button>
+                            <button type="button" class="climbGridBtn" data-level="none" data-position="3">3</button>
+                            <button type="button" class="climbGridBtn" data-level="level1" data-position="4">L1</button>
+                            <button type="button" class="climbGridBtn" data-level="level1" data-position="5">L1</button>
+                            <button type="button" class="climbGridBtn" data-level="level1" data-position="6">L1</button>
+                            <button type="button" class="climbGridBtn" data-level="level2" data-position="7">L2</button>
+                            <button type="button" class="climbGridBtn" data-level="level2" data-position="8">L2</button>
+                            <button type="button" class="climbGridBtn" data-level="level2" data-position="9">L3</button>
+                        </div>
+                        {{ form.climb(class="inp hidden") }}
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="3">Climb Timer</th>
+                </tr>
+                <tr>
+                    <td colspan="3" style="padding: 10px; text-align: center;">
+                        <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
+                        <span id="climbTimer" style="font-size: 20px; font-weight: bold; margin: 0 15px;">0.0s</span>
+                        <label style="margin-left: 15px;">
+                            {{ form.climbFailed(class="inp check") }}
+                            Failed
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Errors -->
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a color-fade" colspan="2">ERRORS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="foulTr">
+                    <th>Fouls</th>
+                    <td>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.fouls(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="brokenTr">
+                    <th>Failure</th>
+                    <td>{{ form.failure(class="inp check") }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+
+</div>
+
+<div class="comments">
+    <h2>Comments</h2>
+    {{ form.info(class="info") }}
+    <div id="infoTooltip" style="display: none;">
+        Take notes on anything that can't be recorded in the form above.
+        <ul>
+            <li>— How effective was their defense?</li>
+            <li>— What kind of fouls did they commit?</li>
+            <li>— How did the robot break? Did it revive?</li>
+            <li>— How skilled is their driver?</li>
+            <li>— Any other interesting notes?</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+.hidden {
+    display: none;
+}
+
+.slider {
+    width: 150px;
+    vertical-align: middle;
+}
+
+.climbGridBtn {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.climbGridBtn:hover {
+    border-color: #999;
+    background-color: #e0e0e0;
+}
+
+.climbGridBtn.selected {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #45a049;
+}
+
+.timerBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.timerBtn.active {
+    background-color: #ff9800;
+}
+
+.timerBtn:hover {
+    background-color: #45a049;
+}
+
+.timerBtn.active:hover {
+    background-color: #e68900;
+}
+</style>
+
+<script>
+// Accuracy sliders
+document.getElementById('autoAccuracySlider').addEventListener('input', function() {
+    document.getElementById('autoShotAccuracy').value = this.value;
+    document.getElementById('autoAccuracyValue').textContent = this.value + '%';
+});
+
+document.getElementById('teleopAccuracySlider').addEventListener('input', function() {
+    document.getElementById('teleopShotAccuracy').value = this.value;
+    document.getElementById('teleopAccuracyValue').textContent = this.value + '%';
+});
+
+// Climb grid selector
+let selectedClimbLevel = null;
+document.querySelectorAll('.climbGridBtn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.climbGridBtn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedClimbLevel = this.dataset.level;
+        document.getElementById('climb').value = selectedClimbLevel;
+        stopClimbTimer();
+    });
+});
+
+// Climb timer
+let timerInterval = null;
+let timerStartTime = null;
+const climbStartBtn = document.getElementById('climbStartBtn');
+const climbTimer = document.getElementById('climbTimer');
+const climbFailedCheckbox = document.querySelector('input[name="climbFailed"]');
+
+climbStartBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (timerInterval === null) {
+        timerStartTime = Date.now();
+        timerInterval = setInterval(updateClimbTimer, 100);
+        climbStartBtn.textContent = 'Stop Timer';
+        climbStartBtn.classList.add('active');
+    } else {
+        stopClimbTimer();
+    }
+});
+
+function updateClimbTimer() {
+    const elapsed = (Date.now() - timerStartTime) / 1000;
+    climbTimer.textContent = elapsed.toFixed(1) + 's';
+}
+
+function stopClimbTimer() {
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    climbStartBtn.textContent = 'Start Timer';
+    climbStartBtn.classList.remove('active');
+}
+
+// Climb failed checkbox
+climbFailedCheckbox.addEventListener('change', function(e) {
+    if (this.checked) {
+        stopClimbTimer();
+        climbTimer.textContent = '0.0s';
+        document.querySelectorAll('.climbGridBtn').forEach(b => b.classList.remove('selected'));
+        selectedClimbLevel = null;
+        document.getElementById('climb').value = 'none';
+    }
+});
+
+// Add/subtract button handlers
+document.querySelectorAll('.addButton').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const input = this.previousElementSibling;
+        input.value = parseInt(input.value) + 1;
+    });
+});
+
+document.querySelectorAll('.subtractButton').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const input = this.nextElementSibling;
+        const currentVal = parseInt(input.value);
+        input.value = currentVal > 0 ? currentVal - 1 : 0;
+    });
+});
+</script>
+
+{% endblock %}
