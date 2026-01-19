@@ -161,17 +161,20 @@ def scoutSubmit():
         del data['teamNum']
         del data['scoutID']
 
-        # # make sure checkboxes appear
-        if 'autoMobility' not in data:
-            data['autoMobility'] = False
-        if 'defense' not in data:
-            data['defense'] = False
-        if 'failure' not in data:
-            data['failure'] = False
+        # Ensure checkbox and optional fields always exist and are normalized
+        bool_fields = ['autoMobility', 'teleopPassed', 'teleopDefense', 'climbFailed', 'failure']
 
-        data['autoMobility'] = True if data['autoMobility'] == 'y' else False
-        data['defense'] = True if data['defense'] == 'y' else False
-        data['failure'] = True if data['failure'] == 'y' else False
+        for k in bool_fields:
+            if k not in data:
+                data[k] = False
+            else:
+                v = str(data[k]).lower()
+                data[k] = (v in ['y', 'on', 'true', '1'])
+
+        # Field-map clicks (CSV string
+        if 'teleopScoreLocation' not in data or not str(data['teleopScoreLocation']).strip():
+            data['teleopScoreLocation'] = 'none'
+
 
         current_time = str(datetime.now())
 
