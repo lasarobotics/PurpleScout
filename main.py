@@ -10,7 +10,6 @@ import os
 from zeroconf import Zeroconf, ServiceInfo
 import socket
 import updateSheet
-
 import psutil
 
 
@@ -20,7 +19,7 @@ app.register_blueprint(pitScout_bp,url_prefix='/pitScout.html')
 socketio = SocketIO(app)
 
 # Configure app
-app.config['SCOUT_FORM'] = ReefscapeForm  # Change this to the form you want to use
+app.config['SCOUT_FORM'] = RebuiltForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWorlds2025.db')
@@ -183,6 +182,31 @@ def scoutSubmit():
         conn.commit()
         conn.close()
 
+        if 'heatmap_data' in data and data['heatmap_data']:
+            try:
+                heatmap_svg = data['heatmap_data']
+                
+                # Create directory if it doesn't exist
+                heatmap_dir = os.path.join(app.root_path, 'data', 'heatmap_captures')
+                if not os.path.exists(heatmap_dir):
+                    os.makedirs(heatmap_dir)
+                
+                # Generate filename
+                filename = f"match{matchNum}_team{teamNum}_{scoutID}_{int(datetime.now().timestamp())}.svg"
+                filepath = os.path.join(heatmap_dir, filename)
+                
+                # Write SVG string to file
+                with open(filepath, 'w') as f:
+                    f.write(heatmap_svg)
+                
+                print(f"Saved heatmap to {filepath}")
+                
+                # Remove huge SVG string from data before saving to CSV/DB to keep them clean
+                del data['heatmap_data']
+                
+            except Exception as e:
+                print(f"Error saving heatmap: {e}")
+
         print(data)
 
     return site
@@ -316,26 +340,45 @@ def handle_message(data):
 # Run app 
 
 if __name__ == '__main__':
-    # Get the local IP address of your server
-    ip_address = socket.gethostbyname(socket.gethostname())
+    # Only register Zeroconf in the reloader process (not the main process)
+    # This prevents duplicate registration when debug=True
+    if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+        zeroconf = None
+        try:
+            # Get the local IP address of your server
+            ip_address = socket.gethostbyname(socket.gethostname())
 
-    # Create the service info
-    info = ServiceInfo(
-        "_http._tcp.local.",
-        "purplescout._http._tcp.local.",
-        addresses=[socket.inet_aton(ip_address)],
-        port=5000,
-        properties={},
-        server="purplescout.local."
-    )
+            # Create the service info
+            info = ServiceInfo(
+                "_http._tcp.local.",
+                "purplescout._http._tcp.local.",
+                addresses=[socket.inet_aton(ip_address)],
+                port=5000,
+                properties={},
+                server="purplescout.local."
+            )
 
-    # Register the service with Zeroconf
-    zeroconf = Zeroconf()
-    zeroconf.register_service(info)
-
-    # Start the Flask app
-    socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
-
-    # After Flask app stops, unregister the service
-    zeroconf.unregister_service(info)
-    zeroconf.close()
+            # Register the service with Zeroconf
+            zeroconf = Zeroconf()
+            zeroconf.register_service(info)
+            print(f"✓ Zeroconf service registered: purplescout._http._tcp.local. at {ip_address}:5000")
+        
+        except Exception as e:
+            print(f"⚠ Warning: Could not register Zeroconf service: {e}")
+            print("  The app will continue running, but may not be discoverable via mDNS.")
+        
+        try:
+            # Start the Flask app
+            socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
+        finally:
+            # After Flask app stops, unregister the service
+            if zeroconf is not None:
+                try:
+                    zeroconf.unregister_service(info)
+                    zeroconf.close()
+                    print("✓ Zeroconf service unregistered")
+                except Exception as e:
+                    print(f"⚠ Warning: Could not unregister Zeroconf service: {e}")
+    else:
+        # In the main process, just start the Flask app
+        socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)

@@ -236,3 +236,61 @@ class ReefscapeSuperScoutForm(FlaskForm):
     robot1Info = TextAreaField('robot1Info', validators=[DataRequired(), Length(min=10)])
     robot2Info = TextAreaField('robot2Info', validators=[DataRequired(), Length(min=10)])
     robot3Info = TextAreaField('robot3Info', validators=[DataRequired(), Length(min=10)])
+
+
+class RebuiltForm(FlaskForm):
+    name = "Rebuilt 2026"
+
+    matchNum = IntegerField('matchNumber', validators=[DataRequired()])
+    teamNum = IntegerField('teamNumber', validators=[DataRequired()])
+    scoutID = StringField('scoutID', validators=[DataRequired()])
+
+    # Autonomous fields
+    autoMobility = BooleanField('autoMobility', default=False)
+    autoL1 = IntegerField('autoL1', validators=[DataRequired()], default=0)
+    autoL2 = IntegerField('autoL2', validators=[DataRequired()], default=0)
+    autoL3 = IntegerField('autoL3', validators=[DataRequired()], default=0)
+    autoL4 = IntegerField('autoL4', validators=[DataRequired()], default=0)
+
+    autoAlgaeRemoved = IntegerField('autoAlgaeRemoved', validators=[DataRequired()], default=0)
+    autoProcessor = IntegerField('autoProcessor', validators=[DataRequired()], default=0)
+    autoNet = IntegerField('autoNet', validators=[DataRequired()], default=0)
+
+    # Teleoperated fields
+    teleopL1 = IntegerField('teleopL1', validators=[DataRequired()], default=0)
+    teleopL2 = IntegerField('teleopL2', validators=[DataRequired()], default=0)
+    teleopL3 = IntegerField('teleopL3', validators=[DataRequired()], default=0)
+    teleopL4 = IntegerField('teleopL4', validators=[DataRequired()], default=0)
+
+    teleopAlgaeRemoved = IntegerField('teleopAlgaeRemoved', validators=[DataRequired()], default=0)
+    teleopProcessor = IntegerField('teleopProcessor', validators=[DataRequired()], default=0)
+    teleopNet = IntegerField('teleopNet', validators=[DataRequired()], default=0)
+    
+    # Endgame fields
+    climb = SelectField('climb', validators=[DataRequired()], choices=[
+        ('none', 'None'),
+        ('park', 'Park'),
+        ('shallow', 'Shallow'),
+        ('deep', 'Deep')
+    ])
+
+    climbSpeed = SelectField('climbSpeed', validators=[DataRequired()], choices=[
+        (0, '0-5s'),
+        (1, '5-10s'),
+        (2, '10-15s'),
+        (3, '15-20s'),
+        (4, '20+ seconds')
+    ])
+
+    # Other fields
+    defense = BooleanField('defense', default=False)
+    defenseExperienced = StringField('defenseExperienced')
+    droppedPieces = IntegerField('droppedPieces', validators=[DataRequired()], default=0)
+    fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
+    failure = BooleanField('failure', default=False)
+
+    info = TextAreaField('info', validators=[DataRequired()])
+
+
+class heatmap(FlaskForm):
+    name = "Rebuilt heatmap test"

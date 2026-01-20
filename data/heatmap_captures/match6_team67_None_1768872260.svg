@@ -1,0 +1,9 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><image href="https://purplescout.local/static/rebuilt.png" width="800" height="400"/>
+            <defs>
+                <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:0.9"></stop>
+                    <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:0"></stop>
+                </radialGradient>
+            </defs>
+            <!-- Existing points will be added here -->
+        <circle cx="724.75" cy="175.1953125" r="20" fill="url(#grad1)"></circle><circle cx="768.25" cy="202.1953125" r="20" fill="url(#grad1)"></circle><circle cx="777.25" cy="265.1953125" r="20" fill="url(#grad1)"></circle><circle cx="777.25" cy="265.1953125" r="20" fill="url(#grad1)"></circle><circle cx="777.25" cy="265.1953125" r="20" fill="url(#grad1)"></circle><circle cx="777.25" cy="265.1953125" r="20" fill="url(#grad1)"></circle><circle cx="777.25" cy="265.1953125" r="20" fill="url(#grad1)"></circle><circle cx="732.25" cy="352.1953125" r="20" fill="url(#grad1)"></circle><circle cx="732.25" cy="352.1953125" r="20" fill="url(#grad1)"></circle><circle cx="732.25" cy="352.1953125" r="20" fill="url(#grad1)"></circle><circle cx="841.75" cy="370.1953125" r="20" fill="url(#grad1)"></circle><circle cx="841.75" cy="370.1953125" r="20" fill="url(#grad1)"></circle><circle cx="841.75" cy="370.1953125" r="20" fill="url(#grad1)"></circle><circle cx="771.25" cy="455.6953125" r="20" fill="url(#grad1)"></circle><circle cx="771.25" cy="455.6953125" r="20" fill="url(#grad1)"></circle><circle cx="771.25" cy="455.6953125" r="20" fill="url(#grad1)"></circle><circle cx="771.25" cy="455.6953125" r="20" fill="url(#grad1)"></circle></svg>

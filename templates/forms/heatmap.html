@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>heatmap.js Example</title>
+    <!-- 1. Include the heatmap.js library from node_modules -->
+    <script src="/static/node_modules/heatmap.js/build/heatmap.js"></script>
+    <style>
+        /* 2. Define the container style */
+        body,
+        html {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: sans-serif;
+        }
+
+        #heatmapContainer {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            margin: 20px auto;
+            background-image: url('/static/rebuilt.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 2px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Click on the field to add data points!</h1>
+    <!-- 3. Create the div element to hold the heatmap -->
+    <div id="heatmapContainer"></div>
+
+    <script>
+        window.onload = function () {
+            // 4. Create a heatmap instance
+            // The container is the HTML element where the heatmap will be drawn
+            var heatmapInstance = h337.create({
+                container: document.getElementById('heatmapContainer'),
+                maxOpacity: .9,
+                minOpacity: .3, // Ensure points are always at least partially visible
+                radius: 15,
+                blur: 0.7
+            });
+
+            // Debounce variables to prevent too-fast clicking
+            var lastClickTime = 0;
+            var clickDelay = 0; // milliseconds between clicks
+
+            // Initialize with a fixed max to prevent immediate autoscaling
+            // This ensures the first few points share a consistent color scale
+            heatmapInstance.setData({
+                max: 5,
+                data: []
+            });
+
+            // 5. Add data dynamically on mouse click
+            document.getElementById('heatmapContainer').onclick = function (ev) {
+                // Use offsetX and offsetY for accurate coordinates relative to the container
+                var x = ev.offsetX;
+                var y = ev.offsetY;
+
+                // Add a data point at the clicked coordinates
+                // Using a value of 5 ensures it shows up clearly against a max of 10
+                heatmapInstance.addData({
+                    x: x,
+                    y: y,
+                    value: 5
+                });
+            };
+        };
+    </script>
+</body>
+
+</html>

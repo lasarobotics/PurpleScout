@@ -1,0 +1,383 @@
+{% extends "scout.html" %}
+{% block form %}
+
+<div class="horizontalBlock">
+    <!-- Autonomous Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a  color-fade" colspan="3">AUTO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="mobilityTr">
+                <td></td>
+                <th>Mobility</th>
+                <td>
+                    {{ form.autoMobility(class="inp check") }}
+                </td>
+            </tr>
+            <tr>
+                <th>Coral</th>
+                <th>L4</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL4(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L3</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL3(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L2</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL2(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L1</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoL1(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Algae</th>
+                <th>Removed</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoAlgaeRemoved(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Processor</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoProcessor(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Net</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.autoNet(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Teleop Section -->
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th style="font-size: 20px;" class="a  color-fade" colspan="4">TELEOP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="defenseTr">
+                <th colspan="2">Played Defense</th>
+                <td>
+
+                    {{ form.defense(class="inp") }}
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Who was defended?</th>
+                <td>
+                    {{ form.defenseExperienced(class="inp wide")}}
+                </td>
+            </tr>
+            <tr>
+                <th>Coral</th>
+                <th>L4</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton" id="coralL4Dec">-</button>
+                        {{ form.teleopL4(class="inp") }}
+                        <button type="button" class="addButton" id="coralL4Inc">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L3</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton" id="coralL3Dec">-</button>
+                        {{ form.teleopL3(class="inp") }}
+                        <button type="button" class="addButton" id="coralL3Inc">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L2</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton" id="coralL2Dec">-</button>
+                        {{ form.teleopL2(class="inp") }}
+                        <button type="button" class="addButton" id="coralL2Inc">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>L1</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton" id="coralL1Dec">-</button>
+                        {{ form.teleopL1(class="inp") }}
+                        <button type="button" class="addButton" id="coralL1Inc">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Algae</th>
+                <th>Removed</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopAlgaeRemoved(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Processor</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopProcessor(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Net</th>
+                <td>
+                    <div class="addsubInput">
+                        <button type="button" class="subtractButton">-</button>
+                        {{ form.teleopNet(class="inp") }}
+                        <button type="button" class="addButton">+</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tbl-container inline-block">
+        <!-- Endgame Section -->
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a color-fade" colspan="2">ENDGAME</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Climb</th>
+                    <td>{{ form.climb(class="inp select") }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Endgame Section -->
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a color-fade" colspan="2">ERRORS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="fumbleTr">
+                    <th>PHumbles</th>
+                    <td>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.droppedPieces(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="foulTr">
+                    <th>PHouls</th>
+                    <td>
+                        <div class="addsubInput">
+                            <button type="button" class="subtractButton">-</button>
+                            {{ form.fouls(class="inp") }}
+                            <button type="button" class="addButton">+</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="brokenTr">
+                    <th>PHailure</th>
+                    <td>{{ form.failure(class="inp check") }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="comments">
+    <h2>Comments</h2>
+    {{ form.info(class="info") }}
+    <div id="infoTooltip" style="display: none;">
+        Take notes on anything that can't be recorded in the form above.
+        <ul>
+            <li>— How effective was their defense?</li>
+            <li>— What kind of fouls did they commit?</li>
+            <li>— How did the robot break? Did it revive?</li>
+            <li>— How skilled is their driver?</li>
+            <li>— Any other interesting notes?</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+</div>
+
+
+
+<!-- Heatmap Section -->
+<div>
+    <style>
+        #heatmapContainer {
+            width: 800px;
+            height: 400px;
+            position: relative;
+            margin: 20px auto;
+            background-image: url('/static/rebuilt.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 2px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #heatmapHeader {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <h1 id="heatmapHeader">Click on the field to add data points!</h1>
+
+    <!-- SVG Container for Heatmap -->
+    <div id="heatmapContainer">
+        <svg id="heatmapSvg" width="100%" height="100%" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Restored "Heat" Gradient: Red center fading to transparent -->
+                <!-- Lower opacity allows overlapping points to "average" (build up intensity) -->
+                <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:0.6" />
+                    <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:0" />
+                </radialGradient>
+            </defs>
+            <!-- Existing points will be added here -->
+        </svg>
+    </div>
+
+    <!-- Hidden input to store heatmap SVG data -->
+    <input type="hidden" name="heatmap_data" id="heatmap_data">
+
+    <script>
+        window.addEventListener('load', function () {
+            var svg = document.getElementById('heatmapSvg');
+            var bgDataURL = "";
+
+            // Pre-load the background image as Base64 to embed in the SVG
+            var img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.onload = function () {
+                var canvas = document.createElement("canvas");
+                canvas.width = img.width;
+                canvas.height = img.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+                // This data URL will be used in the SVG href
+                bgDataURL = canvas.toDataURL("image/png");
+                console.log("Background image loaded and encoded.");
+            };
+            // Use the same path as the CSS background
+            img.src = "/static/rebuilt.png";
+
+            // Click handler to add SVG circles
+            svg.addEventListener('click', function (ev) {
+                // Use offsetX/offsetY for simplicity and reliability
+                // distinct from the complex matrixTransform which seemed to fail
+                var x = ev.offsetX;
+                var y = ev.offsetY;
+
+                // Create circle element
+                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", x);
+                circle.setAttribute("cy", y);
+                circle.setAttribute("r", 25); // Slightly larger for better coverage
+                circle.setAttribute("fill", "url(#grad1)");
+                circle.setAttribute("pointer-events", "none");
+
+                svg.appendChild(circle);
+            });
+
+            // Simplify submission: Sync capture on submit
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function () {
+                var points = svg.innerHTML;
+
+                // Use the pre-loaded data URL if available, otherwise fallback (which likely won't work offline)
+                var imageHref = bgDataURL || "/static/rebuilt.png";
+
+                // Construct full SVG string
+                // preserveAspectRatio="xMidYMid meet" matches CSS background-size: contain
+                var finalSvg = '<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">' +
+                    '<image href="' + imageHref + '" width="800" height="400" preserveAspectRatio="xMidYMid meet"/>' +
+                    points +
+                    '</svg>';
+
+                document.getElementById('heatmap_data').value = finalSvg;
+            });
+        });
+    </script>
+</div>
+
+
+
+
+{% endblock %}
