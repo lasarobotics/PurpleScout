@@ -11,35 +11,7 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <!-- <div class="topnav mb-3">
-            <a href="home.html"><img width="100px" height="auto" src="static/lasa_robotics_logo.png"></a>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="scout.html">Scout</a></li>
-                <li><a href="superScout.html"><b>Super</b>Scout</a></li>
-                <li><a href="megaScout.html"><b>Mega</b>Scout</a></li>
-                <li><a href="pitScout.html"><b>Pit</b>Scout</a></li>
-            </ul>
-        </div> -->
         <button id="home_button" class="color-fade" onclick="window.location.href='home.html'"></button>
         {% block body %}{% endblock %}
-
-        <!--
-        <div id="chatDiv">
-            <textarea disabled id="chat" cols="25" rows="20"></textarea><br><br>
-            <input id="text" size="25" placeholder="Enter your message here">
-        </div>
-
-        <style>
-            #chat, #text {
-                background-color: white;
-                color: black;
-                font-size: 15px;
-                font-family: monospace;
-            }
-        </style>
-
-        <script src="static/chat.js"></script>
-    -->
     </body>
 </html>
