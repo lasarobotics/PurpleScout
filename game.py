@@ -236,3 +236,46 @@ class ReefscapeSuperScoutForm(FlaskForm):
     robot1Info = TextAreaField('robot1Info', validators=[DataRequired(), Length(min=10)])
     robot2Info = TextAreaField('robot2Info', validators=[DataRequired(), Length(min=10)])
     robot3Info = TextAreaField('robot3Info', validators=[DataRequired(), Length(min=10)])
+
+
+class RebuiltForm(FlaskForm):
+    name = "Rebuilt 2026"
+
+    matchNum = IntegerField('matchNumber', validators=[DataRequired()])
+    teamNum = IntegerField('teamNumber', validators=[DataRequired()])
+    scoutID = StringField('scoutID', validators=[DataRequired()])
+
+    # Autonomous fields
+    autoMobility = BooleanField('autoMobility', default=False)
+    autoL1 = BooleanField('autoL1', default=False) # Climb checkbox
+    
+
+    autoShots = IntegerField('autoShots', validators=[DataRequired()], default=0)
+
+    autoShotAccuracy = IntegerField('autoShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
+
+    # Teleoperated fields
+
+
+    teleopShots = IntegerField('teleopShots', validators=[DataRequired()], default=0)
+
+    teleopShotAccuracy = IntegerField('teleopShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
+    teleopPassed = BooleanField('teleopPassed', default=False) #did they pass?
+    teleopDefense = BooleanField('teleopDefense', default=False)  # did they play defense?
+    teleopScoreLocation = StringField('teleopScoreLocation', default='none')  # CSV list from field map
+    # Endgame fields
+    climb = SelectField('climb', validators=[DataRequired()], choices=[
+        ('none', 'None'),
+        ('level1', 'L1'),
+        ('level2', 'L2'),
+        ('level3', 'L3')
+    ])
+    
+    climbFailed = BooleanField('climbFailed', default=False)
+
+    # Other fields
+    defenseExperienced = StringField('defenseExperienced')
+    fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
+    failure = BooleanField('failure', default=False)
+
+    info = TextAreaField('info', validators=[DataRequired()])

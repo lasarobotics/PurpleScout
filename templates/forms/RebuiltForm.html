@@ -1,0 +1,607 @@
+{% extends "scout.html" %}
+{% block form %}
+
+
+
+<div class="container-fluid px-2 rebuiltShell">
+  <div class="rebuiltGrid">
+
+    <!-- AUTO (left aligned to keep current stp) -->
+    <div class="rebuiltCol">
+      <table class="tbl rebuiltCard">
+        <thead>
+          <tr>
+            <th class="a color-fade rebuiltHeader" colspan="3">AUTO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="mobilityTr">
+            <td></td>
+            <th>Mobility</th>
+            <td>{{ form.autoMobility(class="inp check") }}</td>
+          </tr>
+
+          <tr>
+            <th>Shots</th>
+            <th>Attempted</th>
+            <td>
+              <div class="stepper" data-target="autoShots">
+                <button type="button" class="stepBtn stepBtn--neg" data-delta="-1" aria-label="Auto shots minus one">-</button>
+                {{ form.autoShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
+                <div class="stepBtnGroup" role="group" aria-label="Auto shots increment">
+                  <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
+                  <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
+                  <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th></th>
+            <th>Accuracy</th>
+            <td>
+              <div class="sliderRow">
+                <input type="range" min="0" max="100" class="slider" id="autoAccuracySlider" aria-label="Auto shot accuracy">
+                {{ form.autoShotAccuracy(class="inp hidden") }}
+                <span id="autoAccuracyValue" class="pct">0%</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TELEOP (cnter aligned)-->
+    <div class="rebuiltCol rebuiltColTele">
+      <table class="tbl rebuiltCard">
+        <thead>
+          <tr>
+            <th class="a color-fade rebuiltHeader" colspan="3">TELEOP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Shots</th>
+            <th>Attempted</th>
+            <td>
+              <div class="stepper" data-target="teleopShots">
+                <button type="button" class="stepBtn stepBtn--neg" data-delta="-1" aria-label="Teleop shots minus one">-</button>
+                {{ form.teleopShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
+                <div class="stepBtnGroup" role="group" aria-label="Teleop shots increment">
+                  <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
+                  <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
+                  <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th></th>
+            <th>Accuracy</th>
+            <td>
+              <div class="sliderRow">
+                <input type="range" min="0" max="100" class="slider" id="teleopAccuracySlider" aria-label="Teleop shot accuracy">
+                {{ form.teleopShotAccuracy(class="inp hidden") }}
+                <span id="teleopAccuracyValue" class="pct">0%</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr id="passTr">
+            <th colspan="2">Passed?</th>
+            <td>{{ form.teleopPassed(class="inp check") }}</td>
+          </tr>
+
+          <tr id="defenseTr">
+            <th colspan="2">Played Defense</th>
+            <td>{{ form.teleopDefense(class="inp check") }}</td>
+          </tr>
+
+          <!--  HeatMap (changed to have multiple scoring locations tracked, "bootstrap" (its not actually bootstrap lol) to ensure the image isnt too big) -->
+          <tr>
+            <th colspan="3">Scoring Locations</th>
+          </tr>
+          <tr>
+            <td colspan="3" class="pad10">
+              <div class="fieldMapCard">
+                <div class="fieldMapTop">
+                  <div class="fieldMapTopLeft">
+                    <span class="fieldMapHint">Tap/click each scoring position (10+ clicks supported).</span>
+                    <div class="fieldMapMeta">
+                      <span class="fieldMapPill">Count: <span id="fieldMapCount">0</span></span>
+                      <span class="fieldMapPill">Last: <span id="fieldMapLast">none</span></span>
+                    </div>
+                  </div>
+                  <div class="fieldMapActions" role="group" aria-label="Field map actions"> <!-- ensure all fields have a delete/undo-->
+                    <button type="button" id="fieldUndoBtn" class="miniBtn" title="Undo last click">Undo</button> 
+                    <button type="button" id="fieldClearBtn" class="miniBtn miniBtn--danger" title="Clear all clicks">Clear</button> <!-- slightly buggy rn, but allows for complete clearing of the map-->
+                  </div>
+                </div>
+
+                <div class="fieldMapWrap" aria-label="Field map">
+                  <img
+                    id="rebuiltFieldImg"
+                    class="fieldMapImg"
+                    src="{{ url_for('static', filename='2026-field.png') }}"
+                    alt="2026 REBUILT field map">
+                  <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
+                </div>
+
+                <!-- stored as CSV, scoring loctions are based on the x,y coords-->
+                {{ form.teleopScoreLocation(class="inp hidden") }}
+                <div class="fieldMapNote">
+                  <span class="muted">Clicks outside the trench scoring bands (including center/neutral) are ignored.</span> <!-- error catching, no scouts should be clicking in the netural zone-->
+                </div>
+              </div>
+            </td>
+          </tr>
+<!-- probably need to figure out a better way to stop scouters from clicking red zonze when scouting blue etc.-->
+          <tr>
+            <th colspan="2">Who was defended?</th>
+            <td>{{ form.defenseExperienced(class="inp wide")}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3rd col with endgame, fouls etc. no tower map yet-->
+    <div class="rebuiltCol rebuiltColRight">
+
+      <!-- ENDGAME -->
+      <table class="tbl rebuiltCard">
+        <thead>
+          <tr>
+            <th class="a color-fade rebuiltHeader" colspan="3">ENDGAME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="3">Climb Location</th>
+          </tr>
+          <tr>
+            <td colspan="3" class="pad10">
+              <div class="climbGrid">
+                <button type="button" class="climbGridBtn" data-level="none" data-position="1">1</button>
+                <button type="button" class="climbGridBtn" data-level="none" data-position="2">2</button>
+                <button type="button" class="climbGridBtn" data-level="none" data-position="3">3</button>
+                <button type="button" class="climbGridBtn" data-level="level1" data-position="4">L1</button>
+                <button type="button" class="climbGridBtn" data-level="level1" data-position="5">L1</button>
+                <button type="button" class="climbGridBtn" data-level="level1" data-position="6">L1</button>
+                <button type="button" class="climbGridBtn" data-level="level2" data-position="7">L2</button>
+                <button type="button" class="climbGridBtn" data-level="level2" data-position="8">L2</button>
+                <button type="button" class="climbGridBtn" data-level="level3" data-position="9">L3</button>
+              </div>
+              {{ form.climb(class="inp hidden") }}
+            </td>
+          </tr>
+
+          <tr>
+            <th colspan="3">Climb Timer</th>
+          </tr>
+          <tr>
+            <td colspan="3" class="pad10 center">
+              <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
+              <span id="climbTimer" class="timerReadout">0.0s</span>
+              <label class="inlineCheck">
+                {{ form.climbFailed(class="inp check") }}
+                Failed
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- phouls -->
+      <table class="tbl rebuiltCard">
+        <thead>
+          <tr>
+            <th class="a color-fade rebuiltHeader" colspan="2">ERRORS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="foulTr">
+            <th>Fouls</th>
+            <td>
+              <!-- do NOT use .addButton/.subtractButton, will double count for some reason -->
+              <div class="miniStepper" data-target="fouls">
+                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1" aria-label="Fouls minus one">-</button>
+                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1" aria-label="Fouls plus one">+</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr id="brokenTr">
+            <th>Failure</th>
+            <td>{{ form.failure(class="inp check") }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- can make this below, just tried to compact it all into one screen, looks bad rn.... -->
+      <table class="tbl rebuiltCard">
+        <thead>
+          <tr>
+            <th class="a color-fade rebuiltHeader" colspan="1">COMMENTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pad10">
+              {{ form.info(class="info compactInfo", placeholder="Notes: fouls, breakdowns, defense quality, driver skill, etc.") }}
+              <div class="muted" style="margin-top:6px; font-size:12px;">
+                Tip: keep this short during match; expand later if needed.
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .hidden{display:none;}
+
+  /* 3 columns, stack on small screens, lwk might not work on chromebooks */
+  .rebuiltShell{max-width: 1600px; margin: 0 auto;}
+  .rebuiltGrid{display:grid; grid-template-columns: 360px minmax(420px, 1fr) 360px; gap:14px; align-items:start;}
+  .rebuiltCol{min-width:0;}
+  .rebuiltColTele{min-width:0;}
+  .rebuiltColRight{min-width:0;}
+
+  @media (max-width: 1200px){
+    .rebuiltGrid{grid-template-columns: 1fr;}
+  }
+
+
+
+
+
+  /* ALL STEPPERS ARE FROM TEMPLATE LINKED IN THE COMMENTS */  
+  
+  
+  
+  /* polish */
+  .rebuiltCard{box-shadow: 0 6px 18px rgba(0,0,0,0.25); border-radius: 10px; overflow:hidden;}
+  .rebuiltHeader{font-size:20px; letter-spacing:0.5px;}
+  .pad10{padding:10px !important;}
+  .center{text-align:center;}
+  .muted{opacity:0.75;}
+
+  /* shots stepper */
+  .stepper{display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-start;}
+  .stepInput{width:64px; text-align:center; font-weight:800;}
+  .stepBtnGroup{display:inline-flex; gap:6px; flex-wrap:wrap;}
+  .stepBtn{border:1px solid rgba(255,255,255,0.12); background: rgba(124,58,237,0.12); color:#f3f4f6; font-weight:900; border-radius:8px; padding:8px 10px; line-height:1; cursor:pointer; transition: transform 0.06s ease, background 0.12s ease, border-color 0.12s ease;}
+  .stepBtn--neg{background: rgba(239,68,68,0.14);}
+  .stepBtn:hover{border-color: rgba(124,58,237,0.35); background: rgba(124,58,237,0.22);}
+  .stepBtn--neg:hover{border-color: rgba(239,68,68,0.45); background: rgba(239,68,68,0.24);}
+  .stepBtn:active{transform: translateY(1px);}
+
+  /* accuracy slider NEED TO CHANGE TO INCREMENTS OF 5 NOT 1 */
+  .sliderRow{display:flex; align-items:center; gap:10px;}
+  .slider{width:170px; max-width: 100%;}
+  .pct{font-weight:900; min-width:44px; display:inline-block; text-align:right;}
+
+  /* FIELD MAP WITH WRAPPING SO NO SIZING ERRORZ */
+  .fieldMapCard{border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.15); border-radius:12px; padding:10px;}
+  .fieldMapTop{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;}
+  .fieldMapHint{font-size:12px; opacity:0.85; display:block; margin-bottom:6px;}
+  .fieldMapMeta{display:flex; gap:8px; flex-wrap:wrap;}
+  .fieldMapPill{font-size:12px; font-weight:800; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,0.10); background: rgba(124,58,237,0.12);}
+  .fieldMapActions{display:flex; gap:8px;}
+  .miniBtn{border:1px solid rgba(255,255,255,0.12); background: rgba(124,58,237,0.20); color:#f3f4f6; font-weight:900; border-radius:10px; padding:7px 10px; cursor:pointer; line-height:1;}
+  .miniBtn:hover{background: rgba(124,58,237,0.28);}
+  .miniBtn--danger{background: rgba(239,68,68,0.18);} 
+  .miniBtn--danger:hover{background: rgba(239,68,68,0.28);} 
+
+  .fieldMapWrap{position:relative; width:100%; max-width: 520px; margin: 0 auto; overflow:hidden; border-radius:12px; border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.25);}
+  .fieldMapImg{display:block; width:100%; height:auto; max-height: 240px; object-fit: contain; touch-action: none; user-select:none; -webkit-user-drag:none;}
+  @media (max-width: 1200px){
+    .fieldMapImg{max-height: 280px;}
+  }
+  .fieldMapOverlay{position:absolute; inset:0; pointer-events:none;}
+  .fieldMapDot{position:absolute; width:12px; height:12px; border-radius:999px; border:2px solid rgba(255,255,255,0.92); background: rgba(124,58,237,0.92); transform: translate(-50%,-50%); box-shadow: 0 0 0 6px rgba(124,58,237,0.22);}
+  .fieldMapDot--blue{background: rgba(59,130,246,0.95); box-shadow: 0 0 0 6px rgba(59,130,246,0.22);} 
+  .fieldMapDot--red{background: rgba(239,68,68,0.95); box-shadow: 0 0 0 6px rgba(239,68,68,0.22);} 
+  .fieldMapNote{margin-top:8px; font-size:12px;}
+
+  /* css for tower, need to change when implementing image for climb */
+  .climbGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; max-width: 220px; margin: 0 auto;}
+  .climbGridBtn{padding:14px 10px; font-size:14px; font-weight:900; border:2px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.90); cursor:pointer; border-radius:8px; transition: all 0.15s;}
+  .climbGridBtn:hover{border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.97);} 
+  .climbGridBtn.selected{background: rgba(124,58,237,0.95); color:#fff; border-color: rgba(124,58,237,0.95);} 
+
+  .timerBtn{padding:10px 16px; font-size:15px; cursor:pointer; background: rgba(124,58,237,0.95); color:#fff; border:none; border-radius:8px; font-weight:900;}
+  .timerBtn.active{background: rgba(245,158,11,0.95);} 
+  .timerReadout{font-size:18px; font-weight:900; margin: 0 12px; display:inline-block; min-width:64px;}
+  .inlineCheck{margin-left:10px; font-weight:800;}
+
+  /* steppers for fouls */
+  .miniStepper{display:flex; align-items:center; gap:8px; justify-content:flex-end;}
+  .miniStepInput{width:64px; text-align:center; font-weight:900;}
+  .miniStepBtn{border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:8px 12px; font-weight:900; cursor:pointer; line-height:1; color:#f3f4f6;}
+  .miniStepBtn--neg{background: rgba(239,68,68,0.20);} 
+  .miniStepBtn--pos{background: rgba(34,197,94,0.20);} 
+  .miniStepBtn--neg:hover{background: rgba(239,68,68,0.30);} 
+  .miniStepBtn--pos:hover{background: rgba(34,197,94,0.30);} 
+
+  /* comments section */
+  .compactInfo{width:100%; min-height: 120px; max-height: 140px; resize: vertical;}
+</style>
+
+<script>
+  // you need this to make sure the scoring locations arent null
+  function safeParseInt(v){
+    const n = parseInt(v, 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  // ---------- accuracy sliders you HAVE TO SYNC hidden WTForms fields (VERY IMPORTANT, WILL BREAK APP W/O)----------
+  function initSlider(sliderId, hiddenId, labelId){
+    const slider = document.getElementById(sliderId);
+    const hidden = document.getElementById(hiddenId);
+    const label = document.getElementById(labelId);
+    if(!slider || !hidden || !label) return;
+
+    const start = (hidden.value !== '' ? safeParseInt(hidden.value) : 0);
+    const safe = Math.max(0, Math.min(100, start));
+    slider.value = safe;
+    hidden.value = safe;
+    label.textContent = safe + '%';
+
+    slider.addEventListener('input', function(){
+      hidden.value = this.value;
+      label.textContent = this.value + '%';
+    });
+  }
+  initSlider('autoAccuracySlider', 'autoShotAccuracy', 'autoAccuracyValue');
+  initSlider('teleopAccuracySlider', 'teleopShotAccuracy', 'teleopAccuracyValue');
+
+  // ---------- increment for shooting esti with error catching (-1) ----------
+  document.querySelectorAll('.stepper').forEach(stepper => {
+    const targetName = stepper.dataset.target;
+    const input = document.getElementById(targetName);
+    if(!input) return;
+
+    stepper.querySelectorAll('.stepBtn').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        const delta = safeParseInt(this.dataset.delta);
+        const cur = safeParseInt(input.value);
+        input.value = Math.max(0, cur + delta);
+      });
+    });
+  });
+
+  // ---------- i removed addbutton, fixed the double counting fouls erorr ----------
+  document.querySelectorAll('.miniStepper').forEach(stepper => {
+    const targetName = stepper.dataset.target;
+    const input = document.getElementById(targetName);
+    if(!input) return;
+
+    stepper.querySelectorAll('.miniStepBtn').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        const delta = safeParseInt(this.dataset.delta);
+        const cur = safeParseInt(input.value);
+        input.value = Math.max(0, cur + delta);
+      });
+    });
+  });
+
+  // ---------- climb grid (from samarth) ----------
+  (function initClimb(){
+    const climbInput = document.getElementById('climb');
+    if(!climbInput) return;
+
+    document.querySelectorAll('.climbGridBtn').forEach(btn => {
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelectorAll('.climbGridBtn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        climbInput.value = this.dataset.level;
+        stopClimbTimer();
+      });
+    });
+  })();
+
+  // ----------  timer for climb, can extrapolate to overall timer etc. (from samarth) ----------
+  let timerInterval = null;
+  let timerStartTime = null;
+  const climbStartBtn = document.getElementById('climbStartBtn');
+  const climbTimer = document.getElementById('climbTimer');
+  const climbFailedCheckbox = document.querySelector('input[name="climbFailed"]');
+
+  function updateClimbTimer(){
+    const elapsed = (Date.now() - timerStartTime) / 1000;
+    climbTimer.textContent = elapsed.toFixed(1) + 's';
+  }
+
+  function stopClimbTimer(){ //from samarth
+    if(timerInterval !== null){
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+    if(climbStartBtn){
+      climbStartBtn.textContent = 'Start Timer';
+      climbStartBtn.classList.remove('active');
+    }
+  }
+
+  if(climbStartBtn){ //from samarth
+    climbStartBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      if(timerInterval === null){
+        timerStartTime = Date.now();
+        timerInterval = setInterval(updateClimbTimer, 100);
+        climbStartBtn.textContent = 'Stop Timer';
+        climbStartBtn.classList.add('active');
+      } else {
+        stopClimbTimer();
+      }
+    });
+  }
+
+  if(climbFailedCheckbox){ //from samarth
+    climbFailedCheckbox.addEventListener('change', function(){
+      if(this.checked){
+        stopClimbTimer();
+        if(climbTimer) climbTimer.textContent = '0.0s';
+        document.querySelectorAll('.climbGridBtn').forEach(b => b.classList.remove('selected'));
+        const climbInput = document.getElementById('climb');
+        if(climbInput) climbInput.value = 'none';
+      }
+    });
+  }
+
+  // ---------- multi-click + filtering of incorrect clicks ----------
+  (function initFieldMap(){
+    const img = document.getElementById('rebuiltFieldImg');
+    const overlay = document.getElementById('fieldMapOverlay');
+    const hidden = document.getElementById('teleopScoreLocation');
+    const countEl = document.getElementById('fieldMapCount');
+    const lastEl = document.getElementById('fieldMapLast');
+    const undoBtn = document.getElementById('fieldUndoBtn');
+    const clearBtn = document.getElementById('fieldClearBtn');
+    if(!img || !overlay || !hidden || !countEl || !lastEl || !undoBtn || !clearBtn) return;
+
+    // store clicks as [{label:'red_back_right', x:0.91, y:0.62}]
+    const clicks = [];
+
+    // right-of-trench for red, left-of-trench for blue
+    // ALL OTHER VALUES/CLICKS ARE IGNORED
+    const BLUE_BAND_MAX_X = 0.18;  // left band
+    const RED_BAND_MIN_X  = 0.82;  // right band
+
+    function classifyAllowed(xNorm, yNorm){
+      // ignore everything except trench-separated scoring bands -> const value, can change later if needed
+      if(xNorm <= BLUE_BAND_MAX_X){
+        // blue side (left band), i split by front/back via vertical position
+        const fb = (yNorm < 0.5) ? 'front' : 'back';
+        return { label: `blue_${fb}_left`, dotClass: 'fieldMapDot--blue' };
+      }
+      if(xNorm >= RED_BAND_MIN_X){
+        // red side (right band), const value baseed on the 2026-field.png
+        const fb = (yNorm < 0.5) ? 'front' : 'back';
+        return { label: `red_${fb}_right`, dotClass: 'fieldMapDot--red' };
+      }
+      return null; // ignore wrong values
+    }
+
+    function renderDots(){ //this is how you show all dots on the map at once, instead of only 1 at a time
+      overlay.innerHTML = '';
+      for(const c of clicks){
+        const dot = document.createElement('div');
+        dot.className = 'fieldMapDot ' + (c.dotClass || '');
+        dot.style.left = (c.x * 100).toFixed(2) + '%';
+        dot.style.top  = (c.y * 100).toFixed(2) + '%';
+        overlay.appendChild(dot);
+      }
+    }
+
+    function syncHidden(){
+      const labels = clicks.map(c => c.label);
+      hidden.value = labels.length ? labels.join(',') : 'none';
+      countEl.textContent = String(labels.length);
+      lastEl.textContent = labels.length ? labels[labels.length - 1] : 'none';
+    }
+
+    function addClick(xNorm, yNorm){
+      const cls = classifyAllowed(xNorm, yNorm);
+      if(!cls) return; // ignore invalid click
+
+      clicks.push({ label: cls.label, dotClass: cls.dotClass, x: xNorm, y: yNorm });
+      renderDots();
+      syncHidden();
+    }
+
+    function getNormalizedFromEvent(e){
+      const rect = img.getBoundingClientRect();
+      const clientX = (e.clientX !== undefined) ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : null);
+      const clientY = (e.clientY !== undefined) ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : null);
+      if(clientX === null || clientY === null) return null;
+
+      // correct by computing the actual rendered image box within the element, extraplote size to all comps
+      const naturalW = img.naturalWidth || rect.width;
+      const naturalH = img.naturalHeight || rect.height;
+      const rectRatio = rect.width / rect.height;
+      const imgRatio = naturalW / naturalH;
+
+      let drawW = rect.width;
+      let drawH = rect.height;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      if(imgRatio > rectRatio){
+        // image is wider = letterbox top/bottom
+        drawH = rect.width / imgRatio;
+        offsetY = (rect.height - drawH) / 2;
+      } else {
+        // image is taller = letterbox left/right
+        drawW = rect.height * imgRatio;
+        offsetX = (rect.width - drawW) / 2;
+      }
+
+      const x = (clientX - rect.left - offsetX) / drawW;
+      const y = (clientY - rect.top - offsetY) / drawH;
+
+      // if click is in the letterboxed area, ignore
+      if(x < 0 || x > 1 || y < 0 || y > 1) return null;
+
+      return { xNorm: Math.min(1, Math.max(0, x)), yNorm: Math.min(1, Math.max(0, y)) };
+    }
+
+    function onPointer(e){
+      e.preventDefault();
+      const norm = getNormalizedFromEvent(e);
+      if(!norm) return;
+      addClick(norm.xNorm, norm.yNorm);
+    }
+
+    img.addEventListener('pointerdown', onPointer);
+    img.addEventListener('click', onPointer);
+
+    undoBtn.addEventListener('click', function(e){ //undo last click, always keep error catching buttons (peons)
+      e.preventDefault();
+      if(clicks.length){
+        clicks.pop();
+        renderDots();
+        syncHidden();
+      }
+    });
+
+    clearBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      clicks.length = 0;
+      renderDots();
+      syncHidden();
+    });
+
+    // initialize from existing value (if any)
+    const existing = (hidden.value || '').trim();
+    if(existing && existing !== 'none'){
+      // only restore labels, not positions
+      // can also store points, but only labels for now. probably need to change this so the map is more accurate in sheets when data is transferred
+      const labels = existing.split(',').map(s => s.trim()).filter(Boolean);
+      for(const label of labels){
+        // place restored dots off-screen but preserve list
+        clicks.push({ label, dotClass: label.startsWith('blue_') ? 'fieldMapDot--blue' : 'fieldMapDot--red', x: -1, y: -1 });
+      }
+      // just sync hidden/count/last -> not actually render dots since we dont have positions. this is a limitation of only storing labels but can be changed. simplified bc i wanted to finish quickly.
+      syncHidden();
+      overlay.innerHTML = '';
+    } else {
+      hidden.value = 'none';
+      syncHidden();
+    }
+
+  })();
+</script>
+
+{% endblock %}
