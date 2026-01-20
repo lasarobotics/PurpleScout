@@ -1,13 +1,84 @@
-.logo {
-  float: left;
+/* ===== Design tokens ===== */
+:root{
+  --bg:#222;
+  --text:#fff;
+  --muted:#ddd;
+  --ink:#111;
+  --brand:#663399;           /* main purple */
+  --brand-veil:rgba(102,51,153,0.6);
+  --glass:rgba(0,0,0,0.2);
+  --radius-s:8px;
+  --radius-m:12px;
+  --radius-l:20px;
+  --radius-xl:30%;
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.25);
+  --shadow-md:0 6px 20px rgba(0,0,0,0.3);
+  --shadow-lg:0 0 50px var(--brand);
+  --speed:300ms;
+  --speed-slow:600ms;
 }
+
+/* Global tweaks */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
 body {
   font-family: 'Trebuchet MS', sans-serif;
-  background-color: #222;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Better default focus for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: var(--radius-s);
+}
+
+/* Images/links reset niceties */
+a { color: inherit; }
+
+/* ===== Header / Nav ===== */
+
+.logo { float: left; }
+
+.topnav {
+  overflow: hidden;
+  background-color: var(--brand);
+  border: 0;
+  padding: 0;
   margin: 0;
 }
+
+.topnav ul { list-style-type: none; margin: 0; padding: 0; }
+.topnav ul li { display: inline; }
+
+.topnav a {
+  float: left;
+  color: var(--muted);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: background-color var(--speed), color var(--speed);
+}
+
+.topnav a:hover,
+.topnav a:focus-visible {
+  background-color: var(--muted);
+  color: var(--brand);
+}
+
+.topnav a.active {
+  background-color: var(--muted);
+  color: var(--brand);
+}
+
+.color-fade { transition: 0.5s ease; }
 
 .questionHeader {
   margin-bottom: 25px;
@@ -15,23 +86,26 @@ body {
 }
 
 .questionHeader p {
-  font-family: 'Trebuchet MS', sans-serif;
   font-size: 25px;
   font-weight: bold;
   display: inline-block;
-  border-bottom: 5px solid #663399;
-  margin: 0; /* Remove default margin */
-  padding: 3px 0; /* Add padding for spacing */
+  border-bottom: 5px solid var(--brand);
+  margin: 0;
+  padding: 3px 0;
 }
 
-.quest {
+/* ===== Type scale ===== */
+.quest,
+.dropDown,
+#infoSuper,
+th, th>select {
   font-family: 'Trebuchet MS', sans-serif;
-  font-size: 20px;
 }
+
+.quest { font-size: 20px; }
 
 .dropDown {
   text-align: center;
-  font-family: 'Trebuchet MS', sans-serif;
   font-weight: bold;
   font-size: 25px;
 }
@@ -41,26 +115,30 @@ body {
   text-align: left;
 }
 
+/* ===== Buttons ===== */
+
 .but {
   padding-bottom: 200px;
   text-align: center;
-  color: white;
+  color: var(--text);
 }
 
 .button {
   width: 200px;
   height: 80px;
-  border-radius: 12px;
+  border-radius: var(--radius-m);
   background-color: transparent;
-  border: 2px solid #663399;
+  border: 2px solid var(--brand);
   text-decoration: none;
-  color: white;
+  color: var(--text);
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   overflow: hidden;
   position: relative;
   bottom: -200px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--speed), box-shadow var(--speed);
 }
 
 .button::before {
@@ -68,115 +146,22 @@ body {
   position: absolute;
   width: 0%;
   height: 100%;
-  background-color: #663399;
-  color: white;
-  top: 0;
-  left: 0;
+  background-color: var(--brand);
+  top: 0; left: 0;
   z-index: -1;
-  transition: all 1.0s;
+  transition: width var(--speed-slow) ease;
 }
 
-.button:hover::before {
-  color: white;
-  width: 100%
+.button:hover::before,
+.button:focus-visible::before { width: 100%; }
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #663399;
-  border: 0;
-  padding: 0;
-  margin: 0; 
-}
-
-.topnav a {
-  float: left;
-  color: #ddd;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  transition: all 1.0s;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: #663399;
-}
-
-.topnav a.active {
-  background-color: #ddd;
-  color: #663399;
-}
-
-.color-fade {
-  /*transition: background-color 0.5s ease;
-  transition: border-bottom-color 0.5s ease;*/
-  transition: 0.5s ease;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.topnav ul li {
-  display: inline;
-}
-
-.footer {
-  position: absolute;
-  top: 1700px;
-  width: 100%;
-  height: 50px;
-  font-size: 20px;
-  background-color: #663399;
-  color: white;
-  text-align: center;
-}
-
-/* Number inputs */
-
-.inp {
-  width: 40px;
-  height: 40px;
-  font-size: 25px;
-  text-align: center;
-  accent-color: #663399;
-}
-
-input.inp.wide {
-  width: 80px;
-}
-
-input.inp.check {
-  width: 100%;
-}
-
-select.inp.select {
-  width: 100%;
-  font-size: 20px;
-}
-
-
-
-/* Hide arrows on number input */
-
-/* Chrome, Safari, Edge, Opera */
-.inp::-webkit-outer-spin-button,
-.inp::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-.inp[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/* Buttons to left/right of numbers */
+/* Small add/sub buttons beside number inputs */
 .subtractButton, .addButton {
   width: 40px;
   height: 30px;
@@ -185,78 +170,141 @@ select.inp.select {
   bottom: -3px;
   position: relative;
   cursor: pointer;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--ink);
+  background: var(--glass);
+  transition: background-color var(--speed), color var(--speed), transform var(--speed);
 }
 
-button.subtractButton {color: red;}
-button.addButton {color: green;}
-button.subtractButton:hover {background-color: red; color: white;}
-button.addButton:hover {background-color: rgb(0, 204, 0); color: white;}
+button.subtractButton { color: red; }
+button.addButton { color: green; }
 
+button.subtractButton:hover { background-color: red; color: white; transform: translateY(-1px); }
+button.addButton:hover { background-color: rgb(0, 204, 0); color: white; transform: translateY(-1px); }
 
-.tbl {
+/* ===== Inputs / Selects ===== */
+
+.inp {
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  text-align: center;
+  accent-color: var(--brand);
+  color: var(--text);
+  background: rgba(0,0,0,0.25);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-s);
+  transition: border-color var(--speed), box-shadow var(--speed);
+}
+
+.inp:focus-visible {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(102,51,153,0.25);
+}
+
+input.inp.wide { width: 80px; }
+input.inp.check { width: 100%; }
+
+select.inp.select {
+  width: 100%;
+  font-size: 20px;
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-s);
+}
+
+/* Hide number spinners */
+.inp::-webkit-outer-spin-button,
+.inp::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.inp[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+/* Combined add/sub input group */
+.addsubInput { height: 40px; display: inline-flex; align-items: stretch; }
+.addsubInput>* {
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.addsubInput :nth-child(1),
+.addsubInput :nth-child(3) {
+  color: white;
+  font-weight: bolder;
+  border-radius: 5px;
+  width: 40px;
+}
+
+.addsubInput :nth-child(1) {
+  background-color: rgb(150, 0, 0);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.addsubInput :nth-child(2) { border-radius: 0; }
+
+.addsubInput :nth-child(3) {
+  background-color: rgb(0, 75, 0);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Text inputs in account table */
+#account_table input[type="text"] {
+  width: 200px;
+  text-align: left;
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-s);
+  padding: 6px 10px;
+}
+
+/* ===== Tables ===== */
+
+.tbl,
+.tbl2 {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
   font-family: 'Trebuchet MS', sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
+  background: rgba(0,0,0,0.15);
+  border-radius: var(--radius-m);
+  overflow: hidden; /* keep rounded corners */
 }
 
-.tbl-container {
-  margin-left: auto;
-  margin-right: auto;
+.tbl-container { margin-left: auto; margin-right: auto; }
+
+.a { background-color: var(--brand); color: var(--text); }
+
+.tbl th, .tbl td,
+.tbl2 th, .tbl2 td {
+  padding: 10px;
+  border-bottom: 2px solid var(--ink);
 }
 
-.a {
-  background-color: #663399;
-  color: #ffffff;
-}
+.tbl tbody tr,
+.tbl2 tbody tr { border-bottom: 2px solid var(--ink); }
 
-.tbl th,
-.tbl td {
-  padding: 10px 10px;
-  border-bottom: 2px solid #111;
-}
-
-.tbl tbody tr {
-  border-bottom: 2px solid #111;
-}
-
-.tbl tbody tr:last-of-type {
-  border-bottom: 10px solid #663399;
+.tbl tbody tr:last-of-type,
+.tbl2 tbody tr:last-of-type {
+  border-bottom: 10px solid var(--brand);
   padding-bottom: 100px;
   transition: 0.5s ease;
 }
 
-.tbl tbody tr.active-row {
-  font-weight: bold;
-  color: #663399;
-}
-
-
-.tbl2 th,
-.tbl2 td {
-  padding: 10px 10px;
-  border-bottom: 2px solid #111;
-}
-
-.tbl2 tbody tr {
-  border-bottom: 2px solid #111;
-}
-
-.tbl2 tbody tr:last-of-type {
-  border-bottom: 10px solid #663399;
-  padding-bottom: 100px;
-}
-
+.tbl tbody tr.active-row,
 .tbl2 tbody tr.active-row {
   font-weight: bold;
-  color: #663399;
+  color: var(--brand);
+  background: rgba(102,51,153,0.08);
 }
 
-.hidden {
-  display: none;
-}
+/* ===== Layout helpers ===== */
+
+.hidden { display: none !important; }
 
 .comments {
   margin: auto;
@@ -265,44 +313,27 @@ button.addButton:hover {background-color: rgb(0, 204, 0); color: white;}
   height: 200px;
 }
 
-.info {
-  width: 100%;
-  height: 100%;
-}
+.info { width: 100%; height: 100%; }
 
-#infoSuper {
-  font-family: 'Trebuchet MS', sans-serif;
-}
-
+#infoSuper { font-family: 'Trebuchet MS', sans-serif; }
 
 #selectTeamGrouping {
-  margin-left: auto;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  
-  margin-bottom:20px;
 }
 
 #teamSelect {
-  margin-left: auto;
-  margin-right: auto;
-  /* width: 100vw; */
+  margin: 0 auto 20px auto;
   display:flex;
   align-items: flex-start;
   justify-content: center;
-  /* margin :50vw; */
   left: 50vw;
-  margin-bottom:20px;
-  /* transform: translateX(10%); */ 
 }
 
-th, th>select {
-  font-size: 25px;
-}
+th, th>select { font-size: 25px; }
 
 #questionaireGrouping {
   display: flex;
@@ -310,6 +341,7 @@ th, th>select {
   align-items: center;
   flex-wrap: wrap;
   margin: 50px;
+  gap: 20px;
 }
 
 .question {
@@ -319,11 +351,11 @@ th, th>select {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 30px 10px;
-  
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 2px solid #663399;
+  border: 2px solid var(--brand);
+  box-shadow: var(--shadow-sm);
 }
 
 #additionalInfo {
@@ -336,48 +368,40 @@ th, th>select {
   width: 80vw;
   height: 20vh;
   border-radius: 10px;
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  border: 2px solid var(--ink);
+  padding: 10px;
 }
 
-.question textarea::placeholder {
-  text-indent: 10px;
-}
+.question textarea::placeholder { text-indent: 10px; }
 
-/* Rachit is awesome */
+/* ===== Home & Chat buttons ===== */
+
 #home_button {
   position: fixed;
   left: 3vmin;
   top: 3vmin;
-
   width: 80px;
   aspect-ratio: 1;
-
-  background: rgba(0, 0, 0, 0.2);
-  /* The 'important' is required for some reason so that the border actually shows up */
-  /* border: 10px solid #663399 !important; */
-  
-  background: rgba(102, 51, 153, 0.5);
+  background: var(--brand-veil);
   background-image: url("/static/home_icon.png");
   background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
-
-  border-radius: 30%;
+  border-radius: var(--radius-xl);
   padding: 20px !important;
-
-  /* box-shadow: 0 0 15px black; */
-
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
-  transition: 0.5s ease-in-out;
+  transition: opacity var(--speed), transform var(--speed), box-shadow var(--speed);
+  box-shadow: var(--shadow-sm);
 }
 
 #home_button:hover {
   cursor: pointer;
-  /* background-color: #aa88dd; */
   opacity: 0.9;
-  scale: 1.1;
+  transform: scale(1.1);
   box-shadow: 0 0 10px black;
 }
 
@@ -392,59 +416,18 @@ th, th>select {
 }
 
 .horizontalBlock {
-  /* background: rgba(255, 0, 0, 0.2); */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
 }
 
-.addsubInput>* {
-  height: 100%;
-  padding: 0;
-  border: none;
-}
-
-.addsubInput {
-  height: 40px;
-}
-
-.addsubInput :nth-child(1), .addsubInput :nth-child(3) {
-  color: white;
-  font-weight: bolder;
-  /*font-size: 40px;*/
-  border-radius: 5px;
-  width: 40px;
-  top: 0;
-}
-
-.addsubInput :nth-child(1) {
-  background-color: rgb(150, 0, 0);
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.addsubInput :nth-child(2) {
-  /* background-color: yellow; */
-  border-radius: 0;
-}
-
-.addsubInput :nth-child(3) {
-  background-color: rgb(0, 75, 0);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-#account_table input[type="text"] {
-  width: 200px;
-  text-align: left;
-}
+/* ===== Submit block ===== */
 
 #submitBlock {
   margin: auto;
   margin-top: 20vh;
   border-radius: 10px;
-
   font-weight: bolder;
   text-align: center;
   font-size: 3rem;
@@ -453,136 +436,256 @@ th, th>select {
 #submitBlock a#scoutAnotherMatch {
   width: 80%;
   margin: 0 auto;
-  background-color: #663399;
+  background-color: var(--brand);
   opacity: 0.8;
-  border-radius: 20px;
+  border-radius: var(--radius-l);
   padding: 20px;
   color: white;
   text-decoration: none;
-  box-shadow: 0 0 50px #663399;
-  transition: 0.5s ease-in-out;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--speed), box-shadow var(--speed), opacity var(--speed);
+  display: inline-block;
 }
 
+#submitBlock a#scoutAnotherMatch:hover,
+#submitBlock a#scoutAnotherMatch:focus-visible {
+  transform: translateY(-2px);
+  opacity: 1;
+  box-shadow: 0 0 60px var(--brand);
+}
+
+/* ===== Team Buttons Panel ===== */
+
 #teamButtons {
-  background: linear-gradient(90deg, rgb(99.608% 23.137% 23.137%) 0%, rgb(99.511% 23.144% 23.212%) 6.25%, rgb(98.83% 23.189% 23.738%) 12.5%, rgb(96.981% 23.313% 25.164%) 18.75%, rgb(93.382% 23.554% 27.941%) 25%, rgb(87.449% 23.951% 32.52%) 31.25%, rgb(78.597% 24.544% 39.35%) 37.5%, rgb(66.243% 25.37% 48.883%) 43.75%, rgb(49.804% 26.471% 61.569%) 50%, rgb(33.365% 27.571% 74.254%) 56.25%, rgb(21.011% 28.398% 83.787%) 62.5%, rgb(12.159% 28.99% 90.617%) 68.75%, rgb(6.225% 29.387% 95.196%) 75%, rgb(2.626% 29.628% 97.973%) 81.25%, rgb(0.778% 29.752% 99.4%) 87.5%, rgb(0.097% 29.797% 99.925%) 93.75%, rgb(0% 29.804% 100%) 100% );
+  background: linear-gradient(90deg,
+    rgb(99.608% 23.137% 23.137%) 0%,
+    rgb(99.511% 23.144% 23.212%) 6.25%,
+    rgb(98.83% 23.189% 23.738%) 12.5%,
+    rgb(96.981% 23.313% 25.164%) 18.75%,
+    rgb(93.382% 23.554% 27.941%) 25%,
+    rgb(87.449% 23.951% 32.52%) 31.25%,
+    rgb(78.597% 24.544% 39.35%) 37.5%,
+    rgb(66.243% 25.37% 48.883%) 43.75%,
+    rgb(49.804% 26.471% 61.569%) 50%,
+    rgb(33.365% 27.571% 74.254%) 56.25%,
+    rgb(21.011% 28.398% 83.787%) 62.5%,
+    rgb(12.159% 28.99% 90.617%) 68.75%,
+    rgb(6.225% 29.387% 95.196%) 75%,
+    rgb(2.626% 29.628% 97.973%) 81.25%,
+    rgb(0.778% 29.752% 99.4%) 87.5%,
+    rgb(0.097% 29.797% 99.925%) 93.75%,
+    rgb(0% 29.804% 100%) 100% );
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
+  box-shadow: var(--shadow-sm);
 }
 
 #redButtons, #blueButtons {
   width: 50%;
-  /* display: flex; */
   justify-content: space-around;
   flex-direction: column;
-
   border-radius: 10px;
-  /* border-top-left-radius: 10px;
-  border-top-right-radius: 10px; */
 }
 
 #redButtons > *, #blueButtons > * {
   margin: 4px 10px;
-  
-  background: rgb(102, 51, 153, 0.6);
-  border: 5px solid #663399;
+  background: var(--brand-veil);
+  border: 5px solid var(--brand);
   border-radius: 40px;
-
   font-weight: bolder;
   color: white;
-  
   height: 30px;
   width: 80%;
-
   cursor: pointer;
+  transition: transform var(--speed), box-shadow var(--speed), opacity var(--speed);
 }
 
 #redButtons > *:disabled, #blueButtons > *:disabled {
   background: rgba(54, 31, 78, 0.8);
-  border-color: #222;
-
+  border-color: var(--bg);
   color: gray;
-
   cursor: default;
+  opacity: 0.8;
 }
 
-#redButtons {
-  /*background: linear-gradient(to right, red, transparent);*/
-  
-  padding: 5px 10px;
-}
-
-#redButtons > * {
-  margin-left: 0;
-}
+#redButtons { padding: 5px 10px; }
+#redButtons > * { margin-left: 0; }
 
 #blueButtons {
-  /*background: linear-gradient(to left, lightblue, transparent);*/
-  
-  /* Required to get on right side of box */
   display: flex;
   align-items: flex-end;
-  
   padding: 5px 10px;
 }
-
-#blueButtons > * {
-  margin-right: 0;
-}
+#blueButtons > * { margin-right: 0; }
 
 #deselect {
   margin-top: 20px;
   width: 250px;
   height: 40px;
-  
-  background: rgb(102, 51, 153, 0.6);
-  border: 5px solid #663399;
-
+  background: var(--brand-veil);
+  border: 5px solid var(--brand);
   font-weight: bold;
   font-size: 1.1rem;
   letter-spacing: 1px;
   color: white;
-
-  border: none;
   border-radius: 30px;
-
   cursor: pointer;
+  transition: transform var(--speed), box-shadow var(--speed), opacity var(--speed);
 }
 
-/* specific to super scouting */
+#deselect:hover,
+#deselect:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  opacity: 0.95;
+}
+
+/* ===== Super scouting table ===== */
+
 #sqlTblDiv{
   margin:auto;
   width:80%;
   height:200px;
-
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-sm);
 }
+#sqlTblDiv::-webkit-scrollbar { display: none; }
+
 #sqlTbl {
-border-collapse: collapse;
-border-spacing: 0;
-width: auto;
-border: 1px solid #663399;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+  border: 1px solid var(--brand);
+  background: rgba(0,0,0,0.15);
 }
 
 #sqlTh, #sqlTd {
-text-align: left;
-/* padding: 8px; */
-font-size:15px;
-border: 1px solid #663399;
+  text-align: left;
+  font-size:15px;
+  border: 1px solid var(--brand);
+  color: var(--text);
+  padding: 6px 8px;
 }
 
-#sqlTblDiv::-webkit-scrollbar { 
-  display: none;
+/* ===== Footer ===== */
+
+.footer {
+  position: absolute;
+  top: 1700px;   /* kept as-is to preserve layout */
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  background-color: var(--brand);
+  color: white;
+  text-align: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-#sqlTblDiv {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
-}
+/* ===== Utility ===== */
 
+.tbl-container { margin-left: auto; margin-right: auto; }
+
+/* Shortcut button (fixed broken trailing text, kept look/colors) */
 .shortcut-button {
   display:inline-block;
   margin-left: 40px;
   height: 30px;
   width: 30px;
-  border: 1px solid white;
+  border: 1px solid white; /* keep the overall layout the same and don't mess up the colors */
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--speed), box-shadow var(--speed), background-color var(--speed);
+}
+.shortcut-button:hover,
+.shortcut-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.1);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Motion safety ===== */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* === Brighten inputs/textareas so they're never "black" === */
+:root {
+  --field-bg: rgba(255,255,255,0.10);   /* default (visible) */
+  --field-bg-focus: rgba(255,255,255,0.18);
+  --field-border: #663399;
+}
+
+.inp,
+#account_table input[type="text"],
+.question textarea,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+  background: var(--field-bg) !important;   /* no more near-black fields */
+  color: #fff !important;
+  border: 2px solid var(--field-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  caret-color: #fff;
+  transition: background 200ms, box-shadow 200ms, border-color 200ms;
+}
+
+/* If you have a specific “setup box”, these catch common names */
+#setupBox,
+.setupBox,
+#setup,
+.setup {
+  background: var(--field-bg) !important;
+  border: 2px solid var(--field-border) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 10px 12px;
+}
+
+/* Focus/hover states: clearer, brighter */
+.inp:focus,
+.inp:focus-visible,
+#account_table input[type="text"]:focus,
+.question textarea:focus,
+input:focus,
+select:focus,
+#setupBox:focus,
+.setupBox:focus,
+#setup:focus,
+.setup:focus {
+  background: var(--field-bg-focus) !important;
+  border-color: var(--field-border) !important;
+  box-shadow: 0 0 0 4px rgba(102,51,153,0.25);
+  outline: none;
+}
+
+/* Stronger placeholder so users see where to type */
+::placeholder {
+  color: rgba(255,255,255,0.8);
+  opacity: 1; /* Firefox */
+}
+
+/* Slightly larger clickable area for number stepper buttons you made */
+.subtractButton, .addButton {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Optional: give textareas a visible min height & padding */
+.question textarea,
+#setupBox,
+.setupBox,
+#setup,
+.setup {
+  min-height: 120px;
+  padding: 12px 14px;
 }
