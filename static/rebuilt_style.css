@@ -1,0 +1,379 @@
+  .hidden {
+      display: none;
+  }
+
+  /* 3 columns, stack on small screens, lwk might not work on chromebooks */
+  .rebuiltShell {
+      max-width: 1400px;
+      margin: 0 auto;
+  }
+
+  .rebuiltGrid {
+      display: grid;
+      grid-template-columns: minmax(500px, 800px) 400px;
+      gap: 20px;
+      align-items: start;
+      justify-content: center;
+  }
+
+  .rebuiltCol {
+      min-width: 0;
+  }
+
+  .rebuiltGridRev {
+      display: grid;
+      grid-template-columns: 400px minmax(500px, 800px);
+      gap: 20px;
+      align-items: start;
+      justify-content: center;
+  }
+
+  .rebuiltColTele {
+      min-width: 0;
+  }
+
+  .rebuiltColRight {
+      min-width: 0;
+  }
+
+  @media (max-width: 1200px) {
+      .rebuiltGrid {
+          grid-template-columns: 1fr;
+      }
+  }
+
+
+
+
+
+  /* ALL STEPPERS ARE FROM TEMPLATE LINKED IN THE COMMENTS */
+
+
+
+  /* polish */
+  .rebuiltCard {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      overflow: hidden;
+  }
+
+  .rebuiltHeader {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+  }
+
+  .pad10 {
+      padding: 10px !important;
+  }
+
+  .center {
+      text-align: center;
+  }
+
+  .muted {
+      opacity: 0.75;
+  }
+
+  /* shots stepper */
+  .stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .stepInput {
+      width: 64px;
+      text-align: center;
+      font-weight: 800;
+  }
+
+  .stepBtnGroup {
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+  }
+
+  .stepBtn {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(124, 58, 237, 0.12);
+      color: #f3f4f6;
+      font-weight: 900;
+      border-radius: 8px;
+      padding: 8px 10px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.06s ease, background 0.12s ease, border-color 0.12s ease;
+  }
+
+  .stepBtn--neg {
+      background: rgba(239, 68, 68, 0.14);
+  }
+
+  .stepBtn:hover {
+      border-color: rgba(124, 58, 237, 0.35);
+      background: rgba(124, 58, 237, 0.22);
+  }
+
+  .stepBtn--neg:hover {
+      border-color: rgba(239, 68, 68, 0.45);
+      background: rgba(239, 68, 68, 0.24);
+  }
+
+  .stepBtn:active {
+      transform: translateY(1px);
+  }
+
+  /* accuracy slider NEED TO CHANGE TO INCREMENTS OF 5 NOT 1 */
+  .sliderRow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .slider {
+      width: 170px;
+      max-width: 100%;
+  }
+
+  .pct {
+      font-weight: 900;
+      min-width: 44px;
+      display: inline-block;
+      text-align: right;
+  }
+
+  /* FIELD MAP WITH WRAPPING SO NO SIZING ERRORZ */
+  .fieldMapCard {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 10px;
+  }
+
+  .fieldMapTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+  }
+
+  .fieldMapHint {
+      font-size: 12px;
+      opacity: 0.85;
+      display: block;
+      margin-bottom: 6px;
+  }
+
+  .fieldMapMeta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+  }
+
+  .fieldMapPill {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(124, 58, 237, 0.12);
+  }
+
+  .fieldMapActions {
+      display: flex;
+      gap: 8px;
+  }
+
+  .miniBtn {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(124, 58, 237, 0.20);
+      color: #f3f4f6;
+      font-weight: 900;
+      border-radius: 10px;
+      padding: 7px 10px;
+      cursor: pointer;
+      line-height: 1;
+  }
+
+  .miniBtn:hover {
+      background: rgba(124, 58, 237, 0.28);
+  }
+
+  .miniBtn--danger {
+      background: rgba(239, 68, 68, 0.18);
+  }
+
+  .miniBtn--danger:hover {
+      background: rgba(239, 68, 68, 0.28);
+  }
+
+  .fieldMapWrap {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.25);
+  }
+
+  .fieldMapImg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-drag: none;
+  }
+
+  @media (max-width: 1200px) {
+      .fieldMapImg {
+          max-height: 600px;
+      }
+  }
+
+  .fieldMapOverlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: auto;
+      cursor: crosshair;
+  }
+
+  .fieldMapDot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.92);
+      background: rgba(124, 58, 237, 0.92);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.22);
+  }
+
+  .fieldMapDot--blue {
+      background: rgba(59, 130, 246, 0.95);
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.22);
+  }
+
+  .fieldMapDot--red {
+      background: rgba(239, 68, 68, 0.95);
+      box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.22);
+  }
+
+  .fieldMapNote {
+      margin-top: 8px;
+      font-size: 12px;
+  }
+
+  /* css for tower, need to change when implementing image for climb */
+  .climbGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 220px;
+      margin: 0 auto;
+  }
+
+  .climbGridBtn {
+      padding: 14px 10px;
+      font-size: 14px;
+      font-weight: 900;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.90);
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.15s;
+  }
+
+  .climbGridBtn:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.97);
+  }
+
+  .climbGridBtn.selected {
+      background: rgba(124, 58, 237, 0.95);
+      color: #fff;
+      border-color: rgba(124, 58, 237, 0.95);
+  }
+
+  .timerBtn {
+      padding: 10px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      background: rgba(124, 58, 237, 0.95);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 900;
+  }
+
+  .timerBtn.active {
+      background: rgba(245, 158, 11, 0.95);
+  }
+
+  .timerReadout {
+      font-size: 18px;
+      font-weight: 900;
+      margin: 0 12px;
+      display: inline-block;
+      min-width: 64px;
+  }
+
+  .inlineCheck {
+      margin-left: 10px;
+      font-weight: 800;
+  }
+
+  /* steppers for fouls */
+  .miniStepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
+  }
+
+  .miniStepInput {
+      width: 64px;
+      text-align: center;
+      font-weight: 900;
+  }
+
+  .miniStepBtn {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-weight: 900;
+      cursor: pointer;
+      line-height: 1;
+      color: #f3f4f6;
+  }
+
+  .miniStepBtn--neg {
+      background: rgba(239, 68, 68, 0.20);
+  }
+
+  .miniStepBtn--pos {
+      background: rgba(34, 197, 94, 0.20);
+  }
+
+  .miniStepBtn--neg:hover {
+      background: rgba(239, 68, 68, 0.30);
+  }
+
+  .miniStepBtn--pos:hover {
+      background: rgba(34, 197, 94, 0.30);
+  }
+
+  /* comments section */
+  .compactInfo {
+      width: 100%;
+      min-height: 150px;
+      max-height: 250px;
+      resize: vertical;
+  }

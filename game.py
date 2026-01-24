@@ -247,50 +247,36 @@ class RebuiltForm(FlaskForm):
 
     # Autonomous fields
     autoMobility = BooleanField('autoMobility', default=False)
-    autoL1 = IntegerField('autoL1', validators=[DataRequired()], default=0)
-    autoL2 = IntegerField('autoL2', validators=[DataRequired()], default=0)
-    autoL3 = IntegerField('autoL3', validators=[DataRequired()], default=0)
-    autoL4 = IntegerField('autoL4', validators=[DataRequired()], default=0)
+    autoL1 = BooleanField('autoL1', default=False) # Climb checkbox
+    
 
-    autoAlgaeRemoved = IntegerField('autoAlgaeRemoved', validators=[DataRequired()], default=0)
-    autoProcessor = IntegerField('autoProcessor', validators=[DataRequired()], default=0)
-    autoNet = IntegerField('autoNet', validators=[DataRequired()], default=0)
+    autoShots = IntegerField('autoShots', validators=[DataRequired()], default=0)
+
+    autoShotAccuracy = IntegerField('autoShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
 
     # Teleoperated fields
-    teleopL1 = IntegerField('teleopL1', validators=[DataRequired()], default=0)
-    teleopL2 = IntegerField('teleopL2', validators=[DataRequired()], default=0)
-    teleopL3 = IntegerField('teleopL3', validators=[DataRequired()], default=0)
-    teleopL4 = IntegerField('teleopL4', validators=[DataRequired()], default=0)
 
-    teleopAlgaeRemoved = IntegerField('teleopAlgaeRemoved', validators=[DataRequired()], default=0)
-    teleopProcessor = IntegerField('teleopProcessor', validators=[DataRequired()], default=0)
-    teleopNet = IntegerField('teleopNet', validators=[DataRequired()], default=0)
-    
+
+    teleopShots = IntegerField('teleopShots', validators=[DataRequired()], default=0)
+
+    teleopShotAccuracy = IntegerField('teleopShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
+    teleopPassed = BooleanField('teleopPassed', default=False) #did they pass?
+    teleopDefense = BooleanField('teleopDefense', default=False)  # did they play defense?
+    teleopScoreLocation = StringField('teleopScoreLocation', default='none')  # CSV list from field map
     # Endgame fields
     climb = SelectField('climb', validators=[DataRequired()], choices=[
         ('none', 'None'),
-        ('park', 'Park'),
-        ('shallow', 'Shallow'),
-        ('deep', 'Deep')
+        ('level1', 'L1'),
+        ('level2', 'L2'),
+        ('level3', 'L3')
     ])
-
-    climbSpeed = SelectField('climbSpeed', validators=[DataRequired()], choices=[
-        (0, '0-5s'),
-        (1, '5-10s'),
-        (2, '10-15s'),
-        (3, '15-20s'),
-        (4, '20+ seconds')
-    ])
+    
+    climbFailed = BooleanField('climbFailed', default=False)
 
     # Other fields
-    defense = BooleanField('defense', default=False)
     defenseExperienced = StringField('defenseExperienced')
-    droppedPieces = IntegerField('droppedPieces', validators=[DataRequired()], default=0)
     fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
     failure = BooleanField('failure', default=False)
+    failureDetails = StringField('failureDetails', default='')
 
     info = TextAreaField('info', validators=[DataRequired()])
-
-
-class heatmap(FlaskForm):
-    name = "Rebuilt heatmap test"

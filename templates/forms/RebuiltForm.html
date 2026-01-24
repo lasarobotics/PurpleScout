@@ -1,383 +1,355 @@
 {% extends "scout.html" %}
 {% block form %}
 
-<div class="horizontalBlock">
-    <!-- Autonomous Section -->
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th style="font-size: 20px;" class="a  color-fade" colspan="3">AUTO</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="mobilityTr">
-                <td></td>
-                <th>Mobility</th>
-                <td>
-                    {{ form.autoMobility(class="inp check") }}
-                </td>
-            </tr>
-            <tr>
-                <th>Coral</th>
-                <th>L4</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoL4(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>L3</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoL3(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>L2</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoL2(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>L1</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoL1(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Algae</th>
-                <th>Removed</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoAlgaeRemoved(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Processor</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoProcessor(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Net</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.autoNet(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<link rel="stylesheet" type="text/css" href="static/rebuilt_style.css">
 
-    <!-- Teleop Section -->
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th style="font-size: 20px;" class="a  color-fade" colspan="4">TELEOP</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="defenseTr">
-                <th colspan="2">Played Defense</th>
-                <td>
 
-                    {{ form.defense(class="inp") }}
-
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">Who was defended?</th>
-                <td>
-                    {{ form.defenseExperienced(class="inp wide")}}
-                </td>
-            </tr>
-            <tr>
-                <th>Coral</th>
-                <th>L4</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton" id="coralL4Dec">-</button>
-                        {{ form.teleopL4(class="inp") }}
-                        <button type="button" class="addButton" id="coralL4Inc">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>L3</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton" id="coralL3Dec">-</button>
-                        {{ form.teleopL3(class="inp") }}
-                        <button type="button" class="addButton" id="coralL3Inc">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>L2</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton" id="coralL2Dec">-</button>
-                        {{ form.teleopL2(class="inp") }}
-                        <button type="button" class="addButton" id="coralL2Inc">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>L1</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton" id="coralL1Dec">-</button>
-                        {{ form.teleopL1(class="inp") }}
-                        <button type="button" class="addButton" id="coralL1Inc">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Algae</th>
-                <th>Removed</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.teleopAlgaeRemoved(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Processor</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.teleopProcessor(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Net</th>
-                <td>
-                    <div class="addsubInput">
-                        <button type="button" class="subtractButton">-</button>
-                        {{ form.teleopNet(class="inp") }}
-                        <button type="button" class="addButton">+</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="tbl-container inline-block">
-        <!-- Endgame Section -->
-        <table class="tbl">
+<div class="container-fluid px-2 rebuiltShell">
+    <div>
+        <br>
+    </div>
+    <!-- TOP SECTION: AUTO -->
+    <div class="rebuiltCol" style="margin-bottom: 20px; width: 100%; display: flex; justify-content: center;">
+        <table class="tbl rebuiltCard" style="width: 100%; max-width: 800px; margin: 0 auto;">
             <thead>
                 <tr>
-                    <th style="font-size: 20px;" class="a color-fade" colspan="2">ENDGAME</th>
+                    <th class="a color-fade rebuiltHeader" colspan="3">AUTO</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>Climb</th>
-                    <td>{{ form.climb(class="inp select") }}</td>
+                <tr id="mobilityTr">
+                    <td></td>
+                    <th>Mobility</th>
+                    <td>{{ form.autoMobility(class="inp check") }}</td>
                 </tr>
-            </tbody>
-        </table>
 
-        <!-- Endgame Section -->
-        <table class="tbl">
-            <thead>
                 <tr>
-                    <th style="font-size: 20px;" class="a color-fade" colspan="2">ERRORS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="fumbleTr">
-                    <th>PHumbles</th>
-                    <td>
-                        <div class="addsubInput">
-                            <button type="button" class="subtractButton">-</button>
-                            {{ form.droppedPieces(class="inp") }}
-                            <button type="button" class="addButton">+</button>
+                    <td colspan="3">
+                        <div class="stepper" style="justify-content: center; padding: 5px 0;">
+                            <span style="font-weight: 800; color: #f3f4f6; margin-right: 15px;">Shots Missed</span>
+                            <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
+                                aria-label="Auto shots minus one">-</button>
+                            {{ form.autoShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
+                            <div class="stepBtnGroup" role="group" aria-label="Auto shots increment">
+                                <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
+                                <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
+                                <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
+                            </div>
                         </div>
                     </td>
-                </tr>
-                <tr id="foulTr">
-                    <th>PHouls</th>
-                    <td>
-                        <div class="addsubInput">
-                            <button type="button" class="subtractButton">-</button>
-                            {{ form.fouls(class="inp") }}
-                            <button type="button" class="addButton">+</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr id="brokenTr">
-                    <th>PHailure</th>
-                    <td>{{ form.failure(class="inp check") }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-</div>
+    <div class="rebuiltGrid">
 
-<div class="comments">
-    <h2>Comments</h2>
-    {{ form.info(class="info") }}
-    <div id="infoTooltip" style="display: none;">
-        Take notes on anything that can't be recorded in the form above.
-        <ul>
-            <li>— How effective was their defense?</li>
-            <li>— What kind of fouls did they commit?</li>
-            <li>— How did the robot break? Did it revive?</li>
-            <li>— How skilled is their driver?</li>
-            <li>— Any other interesting notes?</li>
-        </ul>
+        <!-- COLUMN 1: HEATMAP (Left) -->
+        <div class="rebuiltCol centerCol">
+            <style>
+                #heatmapContainer {
+                    width: 100%;
+                    max-width: 800px;
+                    aspect-ratio: 2 / 1;
+                    position: relative;
+                    margin: 0 auto 15px auto;
+                    background-image: url('/static/rebuilt.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    border: 2px solid #333;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                #heatmapHeader {
+                    text-align: center;
+                    color: #fff;
+                    font-size: 20px;
+                    margin-bottom: 5px;
+                }
+            </style>
+
+            <h1 id="heatmapHeader">Field Map</h1>
+
+            <!-- SVG Container for Heatmap -->
+            <div id="heatmapContainer">
+                <svg id="heatmapSvg" width="100%" height="100%" viewBox="0 0 800 400"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:0" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- Hidden input for heatmap data -->
+            <input type="hidden" name="heatmap_data" id="heatmap_data">
+        </div>
+
+        <!-- COLUMN 2: TELEOP (Right) -->
+        <div class="rebuiltCol rebuiltColRight">
+            <!-- TELEOP -->
+            <table class="tbl rebuiltCard">
+                <thead>
+                    <tr>
+                        <th class="a color-fade rebuiltHeader" colspan="3">TELEOP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Shots</th>
+                        <th>Attempted</th>
+                        <td>
+                            <div class="stepper" data-target="teleopShots">
+                                <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
+                                    aria-label="Teleop shots minus one">-</button>
+                                {{ form.teleopShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                <div class="stepBtnGroup" role="group" aria-label="Teleop shots increment">
+                                    <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
+                                    <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
+                                    <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr id="passTr">
+                        <th colspan="2">Passed?</th>
+                        <td>{{ form.teleopPassed(class="inp check") }}</td>
+                    </tr>
+
+                    <tr id="defenseTr">
+                        <th colspan="2">Played Defense</th>
+                        <td>{{ form.teleopDefense(class="inp check") }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
-<div>
-</div>
+    <!-- ROW 2: ENDGAME & ERRORS -->
+    <div class="rebuiltGrid" style="margin-top: 25px;">
+        <!-- FIELD MAP (Left) - Replaces Endgame -->
+        <div class="rebuiltCol">
+            <div class="fieldMapCard">
+                <div class="fieldMapTop">
+                    <div class="fieldMapTopLeft">
+                        <span class="fieldMapHint">Tap/click climbing position.</span>
+                        <div class="fieldMapMeta">
+                            <span class="fieldMapPill">Count: <span id="fieldMapCount">0</span></span>
+                            <span class="fieldMapPill">Last: <span id="fieldMapLast">none</span></span>
+                        </div>
+                    </div>
+                    <div class="fieldMapActions" role="group" aria-label="Field map actions">
+                        <button type="button" id="fieldClearBtn" class="miniBtn miniBtn--danger"
+                            title="Clear all clicks">Clear</button>
+                    </div>
+                </div>
 
+                <div class="fieldMapWrap" id="fieldMapWrap" aria-label="Field map">
+                    <img id="rebuiltFieldImg" class="fieldMapImg" src="/static/tower.png" alt="2026 REBUILT field map">
+                    <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
+                </div>
 
+                <!-- stored as CSV, or single value for now as requested -->
+                {{ form.teleopScoreLocation(class="inp hidden") }}
+                <input type="hidden" name="climb_map_data" id="climb_map_data">
+                <div class="fieldMapNote">
+                    <span class="muted">Clicks outside valid areas are ignored.</span>
+                </div>
+            </div>
+        </div>
 
-<!-- Heatmap Section -->
-<div>
-    <style>
-        #heatmapContainer {
-            width: 800px;
-            height: 400px;
-            position: relative;
-            margin: 20px auto;
-            background-image: url('/static/rebuilt.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            border: 2px solid #333;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        #heatmapHeader {
-            text-align: center;
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-    </style>
-
-    <h1 id="heatmapHeader">Click on the field to add data points!</h1>
-
-    <!-- SVG Container for Heatmap -->
-    <div id="heatmapContainer">
-        <svg id="heatmapSvg" width="100%" height="100%" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <!-- Restored "Heat" Gradient: Red center fading to transparent -->
-                <!-- Lower opacity allows overlapping points to "average" (build up intensity) -->
-                <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                    <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:0.6" />
-                    <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:0" />
-                </radialGradient>
-            </defs>
-            <!-- Existing points will be added here -->
-        </svg>
+        <!-- ERRORS (Right) -->
+        <div class="rebuiltCol">
+            <table class="tbl rebuiltCard" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="a color-fade rebuiltHeader" colspan="2">ERRORS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="foulTr">
+                        <th>Fouls</th>
+                        <td>
+                            <div class="miniStepper" data-target="fouls">
+                                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
+                                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="brokenTr">
+                        <th>Failure</th>
+                        <td>
+                            {{ form.failure(class="inp check", id="failureCheck") }}
+                            <div id="failureDetailsContainer" style="display: none; margin-top: 5px;">
+                                {{ form.failureDetails(class="inp", placeholder="What failed?", style="width: 100%;") }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <!-- Hidden input to store heatmap SVG data -->
-    <input type="hidden" name="heatmap_data" id="heatmap_data">
 
     <script>
-        window.addEventListener('load', function () {
-            var svg = document.getElementById('heatmapSvg');
-            var bgDataURL = "";
+        document.addEventListener('DOMContentLoaded', function () {
+            const failureCheck = document.getElementById('failureCheck');
+            const failureDetailsContainer = document.getElementById('failureDetailsContainer');
 
-            // Pre-load the background image as Base64 to embed in the SVG
-            var img = new Image();
-            img.crossOrigin = "Anonymous";
-            img.onload = function () {
-                var canvas = document.createElement("canvas");
-                canvas.width = img.width;
-                canvas.height = img.height;
-                var ctx = canvas.getContext("2d");
-                ctx.drawImage(img, 0, 0);
-                // This data URL will be used in the SVG href
-                bgDataURL = canvas.toDataURL("image/png");
-                console.log("Background image loaded and encoded.");
-            };
-            // Use the same path as the CSS background
-            img.src = "/static/rebuilt.png";
+            function toggleFailureDetails() {
+                if (failureCheck.checked) {
+                    failureDetailsContainer.style.display = 'block';
+                } else {
+                    failureDetailsContainer.style.display = 'none';
+                }
+            }
 
-            // Click handler to add SVG circles
-            svg.addEventListener('click', function (ev) {
-                // Use offsetX/offsetY for simplicity and reliability
-                // distinct from the complex matrixTransform which seemed to fail
-                var x = ev.offsetX;
-                var y = ev.offsetY;
-
-                // Create circle element
-                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                circle.setAttribute("cx", x);
-                circle.setAttribute("cy", y);
-                circle.setAttribute("r", 25); // Slightly larger for better coverage
-                circle.setAttribute("fill", "url(#grad1)");
-                circle.setAttribute("pointer-events", "none");
-
-                svg.appendChild(circle);
-            });
-
-            // Simplify submission: Sync capture on submit
-            var form = document.querySelector('form');
-            form.addEventListener('submit', function () {
-                var points = svg.innerHTML;
-
-                // Use the pre-loaded data URL if available, otherwise fallback (which likely won't work offline)
-                var imageHref = bgDataURL || "/static/rebuilt.png";
-
-                // Construct full SVG string
-                // preserveAspectRatio="xMidYMid meet" matches CSS background-size: contain
-                var finalSvg = '<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">' +
-                    '<image href="' + imageHref + '" width="800" height="400" preserveAspectRatio="xMidYMid meet"/>' +
-                    points +
-                    '</svg>';
-
-                document.getElementById('heatmap_data').value = finalSvg;
-            });
+            if (failureCheck) {
+                failureCheck.addEventListener('change', toggleFailureDetails);
+                // Run on load in case it's pre-filled
+                toggleFailureDetails();
+            }
         });
     </script>
+
+    <!-- ROW 3: COMMENTS (Full width below) -->
+    <div class="center-row" style="margin-top: 25px; display: flex; justify-content: center; width: 100%;">
+        <div class="rebuiltCol" style="width: 100%; max-width: 1220px;">
+            <table class="tbl rebuiltCard" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="a color-fade rebuiltHeader">COMMENTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="pad10">
+                            {{ form.info(class="info compactInfo", placeholder="Notes...") }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
+<script>
+    window.addEventListener('load', function () {
+        var svg = document.getElementById('heatmapSvg');
+        var bgDataURL = "";
 
+        // Pre-load the background image as Base64 to embed in the SVG
+        var img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = function () {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            bgDataURL = canvas.toDataURL("image/png");
+        };
+        img.src = "/static/rebuilt.png";
 
+        // CLICK HANDLER FOR NEW FIELD MAP (Single Click)
+        var fieldMapOverlay = document.getElementById('fieldMapOverlay');
+        var fieldMapCount = document.getElementById('fieldMapCount');
+        var fieldMapLast = document.getElementById('fieldMapLast');
+        var teleopScoreInput = document.querySelector('input[name="teleopScoreLocation"]');
+        var fieldUndoBtn = document.getElementById('fieldUndoBtn');
+        var fieldClearBtn = document.getElementById('fieldClearBtn');
+
+        function updateFieldMap(x, y) {
+            // Enforce single click: clear previous dots
+            fieldMapOverlay.innerHTML = '';
+
+            var dot = document.createElement('div');
+            dot.className = 'fieldMapDot';
+            dot.style.left = x + 'px';
+            dot.style.top = y + 'px';
+            fieldMapOverlay.appendChild(dot);
+
+            teleopScoreInput.value = Math.round(x) + ',' + Math.round(y);
+            fieldMapCount.textContent = '1';
+            fieldMapLast.textContent = Math.round(x) + ',' + Math.round(y);
+        }
+
+        fieldMapOverlay.addEventListener('mousedown', function (ev) {
+            // Get coordinates relative to the overlay
+            var rect = fieldMapOverlay.getBoundingClientRect();
+            var x = ev.clientX - rect.left;
+            var y = ev.clientY - rect.top;
+            updateFieldMap(x, y);
+        });
+
+        if (fieldUndoBtn) {
+            fieldUndoBtn.addEventListener('click', function () {
+                fieldMapOverlay.innerHTML = '';
+                teleopScoreInput.value = '';
+                fieldMapCount.textContent = '0';
+                fieldMapLast.textContent = 'none';
+            });
+        }
+
+        if (fieldClearBtn) {
+            fieldClearBtn.addEventListener('click', function () {
+                fieldMapOverlay.innerHTML = '';
+                teleopScoreInput.value = '';
+                fieldMapCount.textContent = '0';
+                fieldMapLast.textContent = 'none';
+            });
+        }
+
+        // Click handler to add SVG circles for THE OTHER HEATMAP (Original one)
+        svg.addEventListener('click', function (ev) {
+            var x = ev.offsetX;
+            var y = ev.offsetY;
+            var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            circle.setAttribute("cx", x);
+            circle.setAttribute("cy", y);
+            circle.setAttribute("r", 25);
+            circle.setAttribute("fill", "url(#grad1)");
+            circle.setAttribute("pointer-events", "none");
+            svg.appendChild(circle);
+        });
+
+        // Simplify submission: Sync capture on submit
+        var formSubmit = document.querySelector('form');
+        formSubmit.addEventListener('submit', function () {
+            // First heatmap
+            var points = svg.innerHTML;
+            var imageHref = bgDataURL || "/static/rebuilt.png";
+            var finalSvg = '<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">' +
+                '<image href="' + imageHref + '" width="800" height="400" preserveAspectRatio="xMidYMid meet"/>' +
+                points +
+                '</svg>';
+            document.getElementById('heatmap_data').value = finalSvg;
+
+            // Climbing map (new)
+            var climbPoints = fieldMapOverlay.innerHTML;
+            if (climbPoints) {
+                // Convert DIV dots to SVG circles
+                var svgPoints = "";
+                var dots = fieldMapOverlay.querySelectorAll('.fieldMapDot');
+                dots.forEach(function (dot) {
+                    var x = parseFloat(dot.style.left);
+                    var y = parseFloat(dot.style.top);
+                    svgPoints += '<circle cx="' + x + '" cy="' + y + '" r="6" fill="#7c3aed" stroke="white" stroke-width="2"/>';
+                });
+
+                var climbSvg = '<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">' +
+                    '<image href="/static/tower.png" width="400" height="500" preserveAspectRatio="xMidYMid meet"/>' +
+                    svgPoints +
+                    '</svg>';
+                document.getElementById('climb_map_data').value = climbSvg;
+            }
+        });
+    });
+</script>
+<script src="static/rebuilt_script.js"></script>
 
 {% endblock %}

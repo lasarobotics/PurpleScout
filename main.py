@@ -207,6 +207,24 @@ def scoutSubmit():
             except Exception as e:
                 print(f"Error saving heatmap: {e}")
 
+        if 'climb_map_data' in data and data['climb_map_data']:
+            try:
+                climb_svg = data['climb_map_data']
+                heatmap_dir = os.path.join(app.root_path, 'data', 'heatmap_captures')
+                if not os.path.exists(heatmap_dir):
+                    os.makedirs(heatmap_dir)
+                
+                filename = f"climb_match{matchNum}_team{teamNum}_{scoutID}_{int(datetime.now().timestamp())}.svg"
+                filepath = os.path.join(heatmap_dir, filename)
+                
+                with open(filepath, 'w') as f:
+                    f.write(climb_svg)
+                
+                print(f"Saved climb map to {filepath}")
+                del data['climb_map_data']
+            except Exception as e:
+                print(f"Error saving climb map: {e}")
+
         print(data)
 
     return site
