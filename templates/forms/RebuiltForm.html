@@ -116,14 +116,33 @@
                     </tr>
 
                     <tr id="passTr">
-                        <th colspan="2">Passed?</th>
-                        <td>{{ form.teleopPassed(class="inp check") }}</td>
+                        <th colspan="2">Passes Made (not # balls)</th>
+                        <td>
+                            <div class="miniStepper" data-target="fouls">
+                                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
+                                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                            </div>
+                        </td>
                     </tr>
 
                     <tr id="defenseTr">
-                        <th colspan="2">Played Defense</th>
+                        <th colspan="2">Defense Played?</th>
                         <td>{{ form.teleopDefense(class="inp check") }}</td>
                     </tr>
+
+                    <tr id="stopsTr">
+                        <th colspan="2">Successful Stops from Defense</th>
+                        <td>
+                            <div class="miniStepper" data-target="fouls">
+                                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
+                                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    
                 </tbody>
             </table>
         </div>
