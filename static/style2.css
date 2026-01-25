@@ -89,9 +89,11 @@ a { color: inherit; }
   font-size: 25px;
   font-weight: bold;
   display: inline-block;
-  border-bottom: 5px solid var(--brand);
+  border-bottom: 5px solid #663399;
   margin: 0;
+  /* Remove default margin */
   padding: 3px 0;
+  /* Add padding for spacing */
 }
 
 /* ===== Type scale ===== */
@@ -155,10 +157,12 @@ th, th>select {
 .button:hover::before,
 .button:focus-visible::before { width: 100%; }
 
-.button:hover,
-.button:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+.topnav {
+  overflow: hidden;
+  background-color: #663399;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 /* Small add/sub buttons beside number inputs */
@@ -227,18 +231,56 @@ select.inp.select {
   border: none;
 }
 
-.addsubInput :nth-child(1),
-.addsubInput :nth-child(3) {
-  color: white;
-  font-weight: bolder;
-  border-radius: 5px;
-  width: 40px;
+/* Buttons to left/right of numbers */
+.subtractButton,
+.addButton,
+.add5Button,
+.add10Button {
+  /* Width and formatting handled by flexbox rules below */
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.addsubInput :nth-child(1) {
-  background-color: rgb(150, 0, 0);
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+button.subtractButton {
+  color: white;
+  font-weight: bold;
+}
+
+button.addButton,
+button.add5Button,
+button.add10Button {
+  color: white;
+  font-weight: bold;
+}
+
+button.subtractButton:hover {
+  background-color: red;
+  color: white;
+}
+
+button.addButton:hover {
+  background-color: rgb(0, 204, 0);
+  color: white;
+}
+
+button.add5Button:hover {
+  background-color: rgb(0, 204, 0);
+  color: white;
+}
+
+button.add10Button:hover {
+  background-color: rgb(0, 204, 0);
+  color: white;
+}
+
+.tbl {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  font-family: 'Trebuchet MS', sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .addsubInput :nth-child(2) { border-radius: 0; }
@@ -249,15 +291,11 @@ select.inp.select {
   border-bottom-left-radius: 0;
 }
 
-/* Text inputs in account table */
-#account_table input[type="text"] {
-  width: 200px;
-  text-align: left;
-  background: rgba(0,0,0,0.25);
-  color: var(--text);
-  border: 2px solid var(--ink);
-  border-radius: var(--radius-s);
-  padding: 6px 10px;
+.tbl th,
+.tbl td {
+  padding: 10px 10px;
+  border-bottom: 2px solid #111;
+  text-align: center;
 }
 
 /* ===== Tables ===== */
@@ -323,17 +361,27 @@ select.inp.select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+
+  margin-bottom: 20px;
 }
 
 #teamSelect {
-  margin: 0 auto 20px auto;
-  display:flex;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100vw; */
+  display: flex;
   align-items: flex-start;
   justify-content: center;
   left: 50vw;
+  margin-bottom: 20px;
+  /* transform: translateX(10%); */
 }
 
-th, th>select { font-size: 25px; }
+th,
+th>select {
+  font-size: 25px;
+}
 
 #questionaireGrouping {
   display: flex;
@@ -351,6 +399,7 @@ th, th>select { font-size: 25px; }
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 30px 10px;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -384,7 +433,12 @@ th, th>select { font-size: 25px; }
   top: 3vmin;
   width: 80px;
   aspect-ratio: 1;
-  background: var(--brand-veil);
+
+  background: rgba(0, 0, 0, 0.2);
+  /* The 'important' is required for some reason so that the border actually shows up */
+  /* border: 10px solid #663399 !important; */
+
+  background: rgba(102, 51, 153, 0.5);
   background-image: url("/static/home_icon.png");
   background-size: 80%;
   background-position: center;
@@ -394,8 +448,8 @@ th, th>select { font-size: 25px; }
   padding: 20px !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: opacity var(--speed), transform var(--speed), box-shadow var(--speed);
-  box-shadow: var(--shadow-sm);
+
+  transition: 0.5s ease-in-out;
 }
 
 #home_button:hover {
@@ -422,7 +476,80 @@ th, th>select { font-size: 25px; }
   flex-wrap: wrap;
 }
 
-/* ===== Submit block ===== */
+.addsubInput>* {
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.addsubInput {
+  display: flex;
+  align-items: stretch;
+  /* Stretch items to fill the 40px height */
+  justify-content: center;
+  height: 40px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Base styling for all items in the input group */
+.addsubInput>* {
+  /* height: 100%; handled by align-items: stretch */
+  padding: 0;
+  border: none;
+  font-weight: bolder;
+  color: #111;
+  display: flex;
+  /* Flex inside button to center text */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 1. The Subtract Button (First item) */
+.subtractButton {
+  background-color: rgb(150, 0, 0);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 40px;
+}
+
+/* 2. The Input Field (Middle item) */
+.addsubInput input {
+  border-radius: 0;
+  width: 50px;
+  /* Slightly wider to fit numbers */
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  /* Ensure padding doesn't affect width */
+  text-align: center;
+  /* Ensure no default borders interfere */
+  border: none;
+  outline: none;
+}
+
+/* 3. The Add Buttons (Right items) */
+.addButton,
+.add5Button,
+.add10Button {
+  background-color: rgb(0, 75, 0);
+  width: 50px;
+  /* Increased width to fit +10 */
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+  /* Slightly smaller font to insure fit */
+}
+
+/* Add radius to the very last button in the group */
+.addsubInput> :last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#account_table input[type="text"] {
+  width: 200px;
+  text-align: left;
+}
 
 #submitBlock {
   margin: auto;
@@ -457,51 +584,39 @@ th, th>select { font-size: 25px; }
 /* ===== Team Buttons Panel ===== */
 
 #teamButtons {
-  background: linear-gradient(90deg,
-    rgb(99.608% 23.137% 23.137%) 0%,
-    rgb(99.511% 23.144% 23.212%) 6.25%,
-    rgb(98.83% 23.189% 23.738%) 12.5%,
-    rgb(96.981% 23.313% 25.164%) 18.75%,
-    rgb(93.382% 23.554% 27.941%) 25%,
-    rgb(87.449% 23.951% 32.52%) 31.25%,
-    rgb(78.597% 24.544% 39.35%) 37.5%,
-    rgb(66.243% 25.37% 48.883%) 43.75%,
-    rgb(49.804% 26.471% 61.569%) 50%,
-    rgb(33.365% 27.571% 74.254%) 56.25%,
-    rgb(21.011% 28.398% 83.787%) 62.5%,
-    rgb(12.159% 28.99% 90.617%) 68.75%,
-    rgb(6.225% 29.387% 95.196%) 75%,
-    rgb(2.626% 29.628% 97.973%) 81.25%,
-    rgb(0.778% 29.752% 99.4%) 87.5%,
-    rgb(0.097% 29.797% 99.925%) 93.75%,
-    rgb(0% 29.804% 100%) 100% );
+  background: linear-gradient(90deg, rgb(99.608% 23.137% 23.137%) 0%, rgb(99.511% 23.144% 23.212%) 6.25%, rgb(98.83% 23.189% 23.738%) 12.5%, rgb(96.981% 23.313% 25.164%) 18.75%, rgb(93.382% 23.554% 27.941%) 25%, rgb(87.449% 23.951% 32.52%) 31.25%, rgb(78.597% 24.544% 39.35%) 37.5%, rgb(66.243% 25.37% 48.883%) 43.75%, rgb(49.804% 26.471% 61.569%) 50%, rgb(33.365% 27.571% 74.254%) 56.25%, rgb(21.011% 28.398% 83.787%) 62.5%, rgb(12.159% 28.99% 90.617%) 68.75%, rgb(6.225% 29.387% 95.196%) 75%, rgb(2.626% 29.628% 97.973%) 81.25%, rgb(0.778% 29.752% 99.4%) 87.5%, rgb(0.097% 29.797% 99.925%) 93.75%, rgb(0% 29.804% 100%) 100%);
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
   box-shadow: var(--shadow-sm);
 }
 
-#redButtons, #blueButtons {
+#redButtons,
+#blueButtons {
   width: 50%;
   justify-content: space-around;
   flex-direction: column;
   border-radius: 10px;
 }
 
-#redButtons > *, #blueButtons > * {
+#redButtons>*,
+#blueButtons>* {
   margin: 4px 10px;
-  background: var(--brand-veil);
-  border: 5px solid var(--brand);
+
+  background: rgb(102, 51, 153, 0.6);
+  border: 5px solid #663399;
   border-radius: 40px;
   font-weight: bolder;
   color: white;
+
   height: 30px;
   width: 80%;
   cursor: pointer;
   transition: transform var(--speed), box-shadow var(--speed), opacity var(--speed);
 }
 
-#redButtons > *:disabled, #blueButtons > *:disabled {
+#redButtons>*:disabled,
+#blueButtons>*:disabled {
   background: rgba(54, 31, 78, 0.8);
   border-color: var(--bg);
   color: gray;
@@ -509,22 +624,38 @@ th, th>select { font-size: 25px; }
   opacity: 0.8;
 }
 
-#redButtons { padding: 5px 10px; }
-#redButtons > * { margin-left: 0; }
+#redButtons {
+  /*background: linear-gradient(to right, red, transparent);*/
 
-#blueButtons {
-  display: flex;
-  align-items: flex-end;
   padding: 5px 10px;
 }
-#blueButtons > * { margin-right: 0; }
+
+#redButtons>* {
+  margin-left: 0;
+}
+
+#blueButtons {
+  /*background: linear-gradient(to left, lightblue, transparent);*/
+
+  /* Required to get on right side of box */
+  display: flex;
+  align-items: flex-end;
+
+  padding: 5px 10px;
+}
+
+#blueButtons>* {
+  margin-right: 0;
+}
 
 #deselect {
   margin-top: 20px;
   width: 250px;
   height: 40px;
-  background: var(--brand-veil);
-  border: 5px solid var(--brand);
+
+  background: rgb(102, 51, 153, 0.6);
+  border: 5px solid #663399;
+
   font-weight: bold;
   font-size: 1.1rem;
   letter-spacing: 1px;
@@ -534,57 +665,38 @@ th, th>select { font-size: 25px; }
   transition: transform var(--speed), box-shadow var(--speed), opacity var(--speed);
 }
 
-#deselect:hover,
-#deselect:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-  opacity: 0.95;
-}
+/* specific to super scouting */
+#sqlTblDiv {
+  margin: auto;
+  width: 80%;
+  height: 200px;
 
-/* ===== Super scouting table ===== */
-
-#sqlTblDiv{
-  margin:auto;
-  width:80%;
-  height:200px;
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  border-radius: var(--radius-s);
-  box-shadow: var(--shadow-sm);
 }
-#sqlTblDiv::-webkit-scrollbar { display: none; }
 
 #sqlTbl {
   border-collapse: collapse;
   border-spacing: 0;
   width: auto;
-  border: 1px solid var(--brand);
-  background: rgba(0,0,0,0.15);
+  border: 1px solid #663399;
 }
 
-#sqlTh, #sqlTd {
+#sqlTh,
+#sqlTd {
   text-align: left;
-  font-size:15px;
-  border: 1px solid var(--brand);
-  color: var(--text);
-  padding: 6px 8px;
+  /* padding: 8px; */
+  font-size: 15px;
+  border: 1px solid #663399;
 }
 
-/* ===== Footer ===== */
+#sqlTblDiv::-webkit-scrollbar {
+  display: none;
+}
 
-.footer {
-  position: absolute;
-  top: 1700px;   /* kept as-is to preserve layout */
-  width: 100%;
-  height: 50px;
-  font-size: 20px;
-  background-color: var(--brand);
-  color: white;
-  text-align: center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+#sqlTblDiv {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* ===== Utility ===== */
@@ -593,7 +705,7 @@ th, th>select { font-size: 25px; }
 
 /* Shortcut button (fixed broken trailing text, kept look/colors) */
 .shortcut-button {
-  display:inline-block;
+  display: inline-block;
   margin-left: 40px;
   height: 30px;
   width: 30px;

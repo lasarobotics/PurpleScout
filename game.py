@@ -277,5 +277,6 @@ class RebuiltForm(FlaskForm):
     defenseExperienced = StringField('defenseExperienced')
     fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
     failure = BooleanField('failure', default=False)
+    failureDetails = StringField('failureDetails', default='')
 
     info = TextAreaField('info', validators=[DataRequired()])
