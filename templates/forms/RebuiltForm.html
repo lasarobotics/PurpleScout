@@ -209,6 +209,20 @@
                             </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th colspan="3">Climb Timer</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding: 10px; text-align: center;">
+                            <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
+                            <span id="climbTimer" style="font-size: 20px; font-weight: bold; margin: 0 15px;">0.0s</span>
+                            <label style="margin-left: 15px;">
+                                {{ form.climbFailed(class="inp check") }}
+                                Failed
+                            </label>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
