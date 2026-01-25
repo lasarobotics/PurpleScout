@@ -22,7 +22,7 @@ socketio = SocketIO(app)
 app.config['SCOUT_FORM'] = RebuiltForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWorlds2025.db')
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWorlds2025.db') # change to your database path in /data
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 
@@ -51,7 +51,7 @@ conn.close()
 # Index
 @app.route('/')
 def index():
-    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name) # creates home page with form name
 
 # Home
 @app.route('/home.html')
@@ -160,17 +160,20 @@ def scoutSubmit():
         del data['teamNum']
         del data['scoutID']
 
-        # # make sure checkboxes appear
-        if 'autoMobility' not in data:
-            data['autoMobility'] = False
-        if 'defense' not in data:
-            data['defense'] = False
-        if 'failure' not in data:
-            data['failure'] = False
+        # Ensure checkbox and optional fields always exist and are normalized
+        bool_fields = ['autoMobility', 'teleopPassed', 'teleopDefense', 'climbFailed', 'failure']
 
-        data['autoMobility'] = True if data['autoMobility'] == 'y' else False
-        data['defense'] = True if data['defense'] == 'y' else False
-        data['failure'] = True if data['failure'] == 'y' else False
+        for k in bool_fields:
+            if k not in data:
+                data[k] = False
+            else:
+                v = str(data[k]).lower()
+                data[k] = (v in ['y', 'on', 'true', '1'])
+
+        # Field-map clicks (CSV string
+        if 'teleopScoreLocation' not in data or not str(data['teleopScoreLocation']).strip():
+            data['teleopScoreLocation'] = 'none'
+
 
         current_time = str(datetime.now())
 
