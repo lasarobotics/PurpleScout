@@ -118,9 +118,9 @@
                     <tr id="passTr">
                         <th colspan="2">Passes Made (not # balls)</th>
                         <td>
-                            <div class="miniStepper" data-target="fouls">
+                            <div class="miniStepper" data-target="passes">
                                 <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
-                                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                {{ form.passes(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*", value=0) }}
                                 <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
                             </div>
                         </td>
@@ -134,9 +134,9 @@
                     <tr id="stopsTr">
                         <th colspan="2">Successful Stops from Defense</th>
                         <td>
-                            <div class="miniStepper" data-target="fouls">
+                            <div class="miniStepper" data-target="successfulStops">
                                 <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
-                                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                {{ form.successfulStops(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
                                 <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
                             </div>
                         </td>
