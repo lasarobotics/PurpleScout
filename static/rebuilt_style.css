@@ -113,7 +113,8 @@
 
   .stepBtn:hover {
       border-color: rgba(124, 58, 237, 0.35);
-      background: rgba(124, 58, 237, 0.22);
+      background: rgba(124, 58, 237, 0.23);
+
   }
 
   .stepBtn--neg:hover {
