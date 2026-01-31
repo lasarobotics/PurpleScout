@@ -4,7 +4,7 @@ function safeParseInt(v) {
     return isNaN(n) ? 0 : n;
 }
 
-// ---------- accuracy sliders you HAVE TO SYNC hidden WTForms fields (VERY IMPORTANT, WILL BREAK APP W/O)----------
+// ---------- accuracy sliders you HAVE TO SYNC hidden WTForms fields----------
 function initSlider(sliderId, hiddenId, labelId) {
     const slider = document.getElementById(sliderId);
     const hidden = document.getElementById(hiddenId);
@@ -25,7 +25,6 @@ function initSlider(sliderId, hiddenId, labelId) {
 initSlider('autoAccuracySlider', 'autoShotAccuracy', 'autoAccuracyValue');
 initSlider('teleopAccuracySlider', 'teleopShotAccuracy', 'teleopAccuracyValue');
 
-// ---------- increment for shooting esti with error catching (-1) ----------
 document.querySelectorAll('.stepper').forEach(stepper => {
     const targetName = stepper.dataset.target;
     const input = document.getElementById(targetName);
@@ -41,7 +40,8 @@ document.querySelectorAll('.stepper').forEach(stepper => {
     });
 });
 
-// ---------- i removed addbutton, fixed the double counting fouls erorr ----------
+
+
 document.querySelectorAll('.miniStepper').forEach(stepper => {
     const targetName = stepper.dataset.target;
     const input = document.getElementById(targetName);
@@ -57,7 +57,6 @@ document.querySelectorAll('.miniStepper').forEach(stepper => {
     });
 });
 
-// ---------- climb grid (from samarth) ----------
 (function initClimb() {
     const climbInput = document.getElementById('climb');
     if (!climbInput) return;
@@ -73,7 +72,6 @@ document.querySelectorAll('.miniStepper').forEach(stepper => {
     });
 })();
 
-// ----------  timer for climb, can extrapolate to overall timer etc. (from samarth) ----------
 let timerInterval = null;
 let timerStartTime = null;
 const climbStartBtn = document.getElementById('climbStartBtn');
@@ -85,7 +83,7 @@ function updateClimbTimer() {
     climbTimer.textContent = elapsed.toFixed(1) + 's';
 }
 
-function stopClimbTimer() { //from samarth
+function stopClimbTimer() {
     if (timerInterval !== null) {
         clearInterval(timerInterval);
         timerInterval = null;
@@ -96,7 +94,7 @@ function stopClimbTimer() { //from samarth
     }
 }
 
-if (climbStartBtn) { //from samarth
+if (climbStartBtn) { 
     climbStartBtn.addEventListener('click', function (e) {
         e.preventDefault();
         if (timerInterval === null) {
@@ -110,7 +108,7 @@ if (climbStartBtn) { //from samarth
     });
 }
 
-if (climbFailedCheckbox) { //from samarth
+if (climbFailedCheckbox) {
     climbFailedCheckbox.addEventListener('change', function () {
         if (this.checked) {
             stopClimbTimer();
@@ -142,18 +140,15 @@ if (climbFailedCheckbox) { //from samarth
     const RED_BAND_MIN_X = 0.82;  // right band
 
     function classifyAllowed(xNorm, yNorm) {
-        // ignore everything except trench-separated scoring bands -> const value, can change later if needed
         if (xNorm <= BLUE_BAND_MAX_X) {
-            // blue side (left band), i split by front/back via vertical position
             const fb = (yNorm < 0.5) ? 'front' : 'back';
             return { label: `blue_${fb}_left`, dotClass: 'fieldMapDot--blue' };
         }
         if (xNorm >= RED_BAND_MIN_X) {
-            // red side (right band), const value baseed on the 2026-field.png
             const fb = (yNorm < 0.5) ? 'front' : 'back';
             return { label: `red_${fb}_right`, dotClass: 'fieldMapDot--red' };
         }
-        return null; // ignore wrong values
+        return null;
     }
 
     function renderDots() { //this is how you show all dots on the map at once, instead of only 1 at a time
@@ -176,7 +171,7 @@ if (climbFailedCheckbox) { //from samarth
 
     function addClick(xNorm, yNorm) {
         const cls = classifyAllowed(xNorm, yNorm);
-        if (!cls) return; // ignore invalid click
+        if (!cls) return;
 
         clicks.push({ label: cls.label, dotClass: cls.dotClass, x: xNorm, y: yNorm });
         renderDots();
@@ -189,7 +184,6 @@ if (climbFailedCheckbox) { //from samarth
         const clientY = (e.clientY !== undefined) ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : null);
         if (clientX === null || clientY === null) return null;
 
-        // correct by computing the actual rendered image box within the element, extraplote size to all comps
         const naturalW = img.naturalWidth || rect.width;
         const naturalH = img.naturalHeight || rect.height;
         const rectRatio = rect.width / rect.height;
@@ -213,7 +207,6 @@ if (climbFailedCheckbox) { //from samarth
         const x = (clientX - rect.left - offsetX) / drawW;
         const y = (clientY - rect.top - offsetY) / drawH;
 
-        // if click is in the letterboxed area, ignore
         if (x < 0 || x > 1 || y < 0 || y > 1) return null;
 
         return { xNorm: Math.min(1, Math.max(0, x)), yNorm: Math.min(1, Math.max(0, y)) };
@@ -245,17 +238,14 @@ if (climbFailedCheckbox) { //from samarth
         syncHidden();
     });
 
-    // initialize from existing value (if any)
     const existing = (hidden.value || '').trim();
     if (existing && existing !== 'none') {
-        // only restore labels, not positions
         // can also store points, but only labels for now. probably need to change this so the map is more accurate in sheets when data is transferred
         const labels = existing.split(',').map(s => s.trim()).filter(Boolean);
         for (const label of labels) {
             // place restored dots off-screen but preserve list
             clicks.push({ label, dotClass: label.startsWith('blue_') ? 'fieldMapDot--blue' : 'fieldMapDot--red', x: -1, y: -1 });
         }
-        // just sync hidden/count/last -> not actually render dots since we dont have positions. this is a limitation of only storing labels but can be changed. simplified bc i wanted to finish quickly.
         syncHidden();
         overlay.innerHTML = '';
     } else {
