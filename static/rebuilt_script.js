@@ -264,3 +264,73 @@ if (climbFailedCheckbox) { //from samarth
     }
 
 })();
+
+        
+        
+const heatClicks = []; // {x, y, t}
+
+function svgClientToViewBox(svgEl, clientX, clientY) {
+  const pt = svgEl.createSVGPoint();
+  pt.x = clientX;
+  pt.y = clientY;
+  const ctm = svgEl.getScreenCTM();
+  if (!ctm) return { x: 0, y: 0 };
+  const inv = ctm.inverse();
+  const p = pt.matrixTransform(inv);
+  return { x: p.x, y: p.y };
+}
+
+svg.addEventListener('click', function (ev) {
+  const { x, y } = svgClientToViewBox(svg, ev.clientX, ev.clientY);
+
+heatClicks.push({ x: Math.round(x), y: Math.round(y), t: Date.now()/1000 });
+
+const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+circle.setAttribute("cx", x);
+circle.setAttribute("cy", y);
+circle.setAttribute("r", 25);
+circle.setAttribute("fill", "url(#grad1)");
+circle.setAttribute("pointer-events", "none");
+svg.appendChild(circle);
+
+document.getElementById("positions").value = JSON.stringify(heatClicks);
+sortIntoFreqs({ x: Math.round(x), y: Math.round(y)});
+});
+
+ var heatmap_fr={
+    R1:0,
+    R2:0,
+    R3:0,
+    R4:0,
+    B1:0,
+    B2:0,
+    B3:0,
+    B4:0
+ }
+//helper method for sorting into frequencies
+function sortIntoFreqs(coordinate){
+    if(coordinate.y<=100 && coordinate.x<=200)
+        heatmap_fr.R1+=1;
+    else if(coordinate.y<=200 && coordinate.x<=200){
+        heatmap_fr.R2+=1;
+    }
+    else if(coordinate.y<=300 && coordinate.x<=200){
+        heatmap_fr.R3+=1;
+    }
+    else if(coordinate.y<=400 && coordinate.x<=200){
+        heatmap_fr.R4+=1;
+    }
+    else if(coordinate.y<=100 && coordinate.x>=600){
+        heatmap_fr.B1+=1;
+    }
+    else if(coordinate.y<=200 && coordinate.x>=600){
+        heatmap_fr.B2+=1;
+    }
+    else if(coordinate.y<=300 && coordinate.x>=600){
+        heatmap_fr.B3+=1;
+    }
+    else if(coordinate.y<=400 && coordinate.x>=600){
+        heatmap_fr.B4+=1;
+    }
+    document.getElementById("heatmap_frequencies").value=JSON.stringify(heatmap_fr);
+}
