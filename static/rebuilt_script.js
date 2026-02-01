@@ -265,72 +265,63 @@ if (climbFailedCheckbox) { //from samarth
 
 })();
 
-        
-        
-const heatClicks = []; // {x, y, t}
 
-function svgClientToViewBox(svgEl, clientX, clientY) {
-  const pt = svgEl.createSVGPoint();
-  pt.x = clientX;
-  pt.y = clientY;
-  const ctm = svgEl.getScreenCTM();
-  if (!ctm) return { x: 0, y: 0 };
-  const inv = ctm.inverse();
-  const p = pt.matrixTransform(inv);
-  return { x: p.x, y: p.y };
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const svg = document.getElementById("heatmapSvg");
+  if (!svg) return;
 
-svg.addEventListener('click', function (ev) {
-  const { x, y } = svgClientToViewBox(svg, ev.clientX, ev.clientY);
+  const heatClicks = []; // {x, y, t}
 
-heatClicks.push({ x: Math.round(x), y: Math.round(y), t: Date.now()/1000 });
+  const heatmap_fr = {
+    R1: 0, R2: 0, R3: 0, R4: 0,
+    B1: 0, B2: 0, B3: 0, B4: 0
+  };
 
-const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-circle.setAttribute("cx", x);
-circle.setAttribute("cy", y);
-circle.setAttribute("r", 25);
-circle.setAttribute("fill", "url(#grad1)");
-circle.setAttribute("pointer-events", "none");
-svg.appendChild(circle);
+  function svgClientToViewBox(svgEl, clientX, clientY) {
+    const pt = svgEl.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const ctm = svgEl.getScreenCTM();
+    if (!ctm) return { x: 0, y: 0 };
+    return pt.matrixTransform(ctm.inverse());
+  }
 
-document.getElementById("positions").value = JSON.stringify(heatClicks);
-sortIntoFreqs({ x: Math.round(x), y: Math.round(y)});
+  function sortIntoFreqs(coordinate) {
+    if (coordinate.x <= 200) {
+      if (coordinate.y <= 100) heatmap_fr.R1 += 1;
+      else if (coordinate.y <= 200) heatmap_fr.R2 += 1;
+      else if (coordinate.y <= 300) heatmap_fr.R3 += 1;
+      else if (coordinate.y <= 400) heatmap_fr.R4 += 1;
+    } else if (coordinate.x >= 600) {
+      if (coordinate.y <= 100) heatmap_fr.B1 += 1;
+      else if (coordinate.y <= 200) heatmap_fr.B2 += 1;
+      else if (coordinate.y <= 300) heatmap_fr.B3 += 1;
+      else if (coordinate.y <= 400) heatmap_fr.B4 += 1;
+    }
+
+    const freqEl = document.getElementById("heatmap_frequencies");
+    if (freqEl) freqEl.value = JSON.stringify(heatmap_fr);
+  }
+
+  svg.addEventListener("click", (ev) => {
+    const p = svgClientToViewBox(svg, ev.clientX, ev.clientY);
+    const x = Math.round(p.x);
+    const y = Math.round(p.y);
+
+    const t = Math.floor(Date.now() / 1000);
+    heatClicks.push({ x, y, t });
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", p.x);
+    circle.setAttribute("cy", p.y);
+    circle.setAttribute("r", 25);
+    circle.setAttribute("fill", "url(#grad1)");
+    circle.setAttribute("pointer-events", "none");
+    svg.appendChild(circle);
+
+    const posEl = document.getElementById("total_positions");
+    if (posEl) posEl.value = JSON.stringify(heatClicks);
+
+    sortIntoFreqs({ x, y });
+  });
 });
-
- var heatmap_fr={
-    R1:0,
-    R2:0,
-    R3:0,
-    R4:0,
-    B1:0,
-    B2:0,
-    B3:0,
-    B4:0
- }
-//helper method for sorting into frequencies
-function sortIntoFreqs(coordinate){
-    if(coordinate.y<=100 && coordinate.x<=200)
-        heatmap_fr.R1+=1;
-    else if(coordinate.y<=200 && coordinate.x<=200){
-        heatmap_fr.R2+=1;
-    }
-    else if(coordinate.y<=300 && coordinate.x<=200){
-        heatmap_fr.R3+=1;
-    }
-    else if(coordinate.y<=400 && coordinate.x<=200){
-        heatmap_fr.R4+=1;
-    }
-    else if(coordinate.y<=100 && coordinate.x>=600){
-        heatmap_fr.B1+=1;
-    }
-    else if(coordinate.y<=200 && coordinate.x>=600){
-        heatmap_fr.B2+=1;
-    }
-    else if(coordinate.y<=300 && coordinate.x>=600){
-        heatmap_fr.B3+=1;
-    }
-    else if(coordinate.y<=400 && coordinate.x>=600){
-        heatmap_fr.B4+=1;
-    }
-    document.getElementById("heatmap_frequencies").value=JSON.stringify(heatmap_fr);
-}

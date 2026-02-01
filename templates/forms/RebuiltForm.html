@@ -86,8 +86,8 @@
 
             <!-- Hidden input for heatmap data -->
             <input type="hidden" name="heatmap_data" id="heatmap_data">
-            <input type="hidden" id="total_positions">
-            <input type="hidden" id="heatmap_frequencies">
+            <input type="hidden" name="total_positions" id="total_positions">
+            <input type="hidden" name="total_positions" id="heatmap_frequencies">
         </div>
 
         <!-- COLUMN 2: TELEOP (Right) -->
@@ -339,18 +339,7 @@
             });
         }
 
-        // Click handler to add SVG circles for THE OTHER HEATMAP (Original one)
-        svg.addEventListener('click', function (ev) {
-            var x = ev.offsetX;
-            var y = ev.offsetY;
-            var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("cx", x);
-            circle.setAttribute("cy", y);
-            circle.setAttribute("r", 25);
-            circle.setAttribute("fill", "url(#grad1)");
-            circle.setAttribute("pointer-events", "none");
-            svg.appendChild(circle);
-        });
+
 
         // Simplify submission: Sync capture on submit
         var formSubmit = document.querySelector('form');
