@@ -17,6 +17,12 @@
                 </tr>
             </thead>
             <tbody>
+                <tr id="mobilityTr">
+                    <td></td>
+                    <th>Mobility</th>
+                    <td>{{ form.autoMobility(class="inp check") }}</td>
+                </tr>
+
                 <tr>
                     <td colspan="3">
                         <div class="stepper" data-target="autoShots" style="justify-content: center; padding: 5px 0;">
@@ -61,7 +67,6 @@
                     font-size: 20px;
                     margin-bottom: 5px;
                 }
-            
             </style>
 
             <h1 id="heatmapHeader">Field Map</h1>
@@ -79,6 +84,7 @@
                 </svg>
             </div>
 
+            <!-- Hidden input for heatmap data -->
             <input type="hidden" name="heatmap_data" id="heatmap_data">
         </div>
 
@@ -93,8 +99,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Shots Missed</th>
-                        <th></th>
+                        <th>Shots</th>
+                        <th>Attempted</th>
                         <td>
                             <div class="stepper" data-target="teleopShots">
                                 <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
@@ -160,13 +166,13 @@
                             title="Clear all clicks">Clear</button>
                     </div>
                 </div>
-                
-
 
                 <div class="fieldMapWrap" id="fieldMapWrap" aria-label="Field map">
                     <img id="rebuiltFieldImg" class="fieldMapImg" src="/static/tower.png" alt="2026 REBUILT field map">
                     <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
                 </div>
+
+                <!-- stored as CSV, or single value for now as requested -->
                 {{ form.teleopScoreLocation(class="inp hidden") }}
                 <input type="hidden" name="climb_map_data" id="climb_map_data">
                 <div class="fieldMapNote">
@@ -222,6 +228,8 @@
         </div>
     </div>
 
+    <input type="hidden" name="climbTime" id="climbTime">
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const failureCheck = document.getElementById('failureCheck');
@@ -237,12 +245,13 @@
 
             if (failureCheck) {
                 failureCheck.addEventListener('change', toggleFailureDetails);
+                // Run on load in case it's pre-filled
                 toggleFailureDetails();
             }
         });
     </script>
 
-    <!-- ROW 3: COMMENTS -->
+    <!-- ROW 3: COMMENTS (Full width below) -->
     <div class="center-row" style="margin-top: 25px; display: flex; justify-content: center; width: 100%;">
         <div class="rebuiltCol" style="width: 100%; max-width: 1220px;">
             <table class="tbl rebuiltCard" style="width: 100%;">
@@ -290,6 +299,7 @@
         var fieldClearBtn = document.getElementById('fieldClearBtn');
 
         function updateFieldMap(x, y) {
+            // Enforce single click: clear previous dots
             fieldMapOverlay.innerHTML = '';
 
             var dot = document.createElement('div');
@@ -304,6 +314,7 @@
         }
 
         fieldMapOverlay.addEventListener('mousedown', function (ev) {
+            // Get coordinates relative to the overlay
             var rect = fieldMapOverlay.getBoundingClientRect();
             var x = ev.clientX - rect.left;
             var y = ev.clientY - rect.top;
@@ -344,6 +355,7 @@
         // Simplify submission: Sync capture on submit
         var formSubmit = document.querySelector('form');
         formSubmit.addEventListener('submit', function () {
+            // First heatmap
             var points = svg.innerHTML;
             var imageHref = bgDataURL || "/static/rebuilt.png";
             var finalSvg = '<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">' +
@@ -355,6 +367,7 @@
             // Climbing map (new)
             var climbPoints = fieldMapOverlay.innerHTML;
             if (climbPoints) {
+                // Convert DIV dots to SVG circles
                 var svgPoints = "";
                 var dots = fieldMapOverlay.querySelectorAll('.fieldMapDot');
                 dots.forEach(function (dot) {
@@ -369,6 +382,7 @@
                     '</svg>';
                 document.getElementById('climb_map_data').value = climbSvg;
             }
+            document.getElementById('climbTime').value = document.getElementById('climbTimer').textContent;
         });
     });
 </script>

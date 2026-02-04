@@ -272,6 +272,7 @@ class RebuiltForm(FlaskForm):
     ])
     
     climbFailed = BooleanField('climbFailed', default=False)
+    climbTime = StringField('climbTime', default='0.0s')
 
     # Other fields
     defenseExperienced = StringField('defenseExperienced')
