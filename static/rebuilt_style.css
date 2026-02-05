@@ -2,7 +2,7 @@
       display: none;
   }
 
-  /* 3 columns, stack on small screens, lwk might not work on chromebooks */
+  /* 3 columns, stack on small screens*/
   .rebuiltShell {
       max-width: 1400px;
       margin: 0 auto;
@@ -108,12 +108,13 @@
   }
 
   .stepBtn--neg {
-      background: rgba(239, 68, 68, 0.14);
+      background: rgba(239, 68, 68, 0.15);
   }
 
   .stepBtn:hover {
       border-color: rgba(124, 58, 237, 0.35);
-      background: rgba(124, 58, 237, 0.22);
+      background: rgba(124, 58, 237, 0.23);
+
   }
 
   .stepBtn--neg:hover {
@@ -124,8 +125,6 @@
   .stepBtn:active {
       transform: translateY(1px);
   }
-
-  /* accuracy slider NEED TO CHANGE TO INCREMENTS OF 5 NOT 1 */
   .sliderRow {
       display: flex;
       align-items: center;
@@ -144,7 +143,7 @@
       text-align: right;
   }
 
-  /* FIELD MAP WITH WRAPPING SO NO SIZING ERRORZ */
+  /* FIELD MAP WITH WRAPPING SO NO SIZING ERRORS */
   .fieldMapCard {
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(0, 0, 0, 0.15);
@@ -245,15 +244,16 @@
       cursor: crosshair;
   }
 
-  .fieldMapDot {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      border: 2px solid rgba(255, 255, 255, 0.92);
-      background: rgba(124, 58, 237, 0.92);
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.22);
+  .fieldMapDot{
+    width: 30px;
+    height: 30px;
+    border-radius: 4px; 
+    background: rgba(124,58,237,0.85);
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    pointer-events: none;
   }
 
   .fieldMapDot--blue {
@@ -270,38 +270,6 @@
       margin-top: 8px;
       font-size: 12px;
   }
-
-  /* css for tower, need to change when implementing image for climb */
-  .climbGrid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      max-width: 220px;
-      margin: 0 auto;
-  }
-
-  .climbGridBtn {
-      padding: 14px 10px;
-      font-size: 14px;
-      font-weight: 900;
-      border: 2px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.90);
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.15s;
-  }
-
-  .climbGridBtn:hover {
-      border-color: rgba(255, 255, 255, 0.35);
-      background: rgba(255, 255, 255, 0.97);
-  }
-
-  .climbGridBtn.selected {
-      background: rgba(124, 58, 237, 0.95);
-      color: #fff;
-      border-color: rgba(124, 58, 237, 0.95);
-  }
-
   .timerBtn {
       padding: 10px 16px;
       font-size: 15px;
@@ -364,6 +332,18 @@
 
   .miniStepBtn--neg:hover {
       background: rgba(239, 68, 68, 0.30);
+  }
+
+
+
+  .undoLast{
+    border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-weight: 900;
+      cursor: pointer;
+      line-height: 1;
+      color: #740449;
   }
 
   .miniStepBtn--pos:hover {
