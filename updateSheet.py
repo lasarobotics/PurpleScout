@@ -2,7 +2,8 @@ import sqlite3, requests, json
 import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
-SCRIPT = "https://script.google.com/macros/s/AKfycbyFWSAVL4ubii6sGGC8UQV72jN50DIoaAPNiBu6jSZQ05NdOtjyAbUAH9zu4CfAvfVbNQ/exec"
+# SCRIPT = "https://script.google.com/macros/s/AKfycbyFWSAVL4ubii6sGGC8UQV72jN50DIoaAPNiBu6jSZQ05NdOtjyAbUAH9zu4CfAvfVbNQ/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbziwWt5hm6KhF2MNk5P6tvEvqXfy7dMLpmUoRto_-PoppcKItxRcET_e6Wo2UskPzDdJw/exec"
 #################################################################################
 
 def get_data(min, max):

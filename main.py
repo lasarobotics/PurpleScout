@@ -190,8 +190,9 @@ def scoutSubmit():
         cursor = conn.cursor()
         cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
         count = cursor.fetchone()[0]
+        print(f"Match {matchNum} has {count} scout submissions.")
         conn.close()
-        if count == 3:
+        if count % 6 == 0:
             print(f"Match {matchNum} complete, sending data.")
             status = updateSheet.send_match(int(matchNum))
             print(status)
