@@ -69,7 +69,7 @@ def move_to_old(scout_rows):
     conn_old.close()
     
     # Delete from original database
-    conn = sqlite3.connect('data/scout_data.db')
+    conn = sqlite3.connect('data/scouting_dat.db')
     c = conn.cursor()
     # Delete the specific rows that were sent
     for row in scout_rows:
@@ -101,7 +101,7 @@ def send():
         # print(data)
         print(f"Done.\nResponse code: {resp.status_code} {resp.reason}")
 
-        # Move data from scout_data to scout_data_old
+        # Move data
         if resp.status_code == 200:
             move_to_old(scout_rows)
 
@@ -261,7 +261,7 @@ def send_match(matchNum):
         return "Error: POST request failed"
 
     print("Success")
-    # Move data from scout_data to scout_data_old after successful send
+    # Move data from scouting_dat to scouting_dat_old after successful send
     move_to_old(scout_rows)
     return f"Sent {len(data)} lines. Server response: {resp.status_code} {resp.reason}"
 

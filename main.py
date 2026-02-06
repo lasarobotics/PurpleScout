@@ -134,8 +134,7 @@ def scoutSubmit():
         print("DATA: " + str(data))
         print("hasn't failed yet")
 
-        # append data to data/scout.csv
-        with open('data/scout.csv', 'a', newline='') as f:
+        with open('data/scouting_dat.csv', 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=list(data.keys()))
             data['info'] = data.get('info').encode("utf-8")
             writer.writerow(data)
