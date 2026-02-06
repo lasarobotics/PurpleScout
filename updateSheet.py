@@ -8,7 +8,7 @@ SCRIPT = "https://script.google.com/macros/s/AKfycbyFWSAVL4ubii6sGGC8UQV72jN50DI
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 
-    conn = sqlite3.connect('data/scoutWorlds2025.db')
+    conn = sqlite3.connect('data/scouting_dat.db')
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
     rows = c.fetchall()
@@ -16,6 +16,7 @@ def get_data(min, max):
 
     # Format data
     to_send = []
+    scout_rows = []  # Keep track of original scout rows
     for row in rows:
         if row[3] == "test": continue
         to_send.append(json.loads(row[4])) # Extract information in the 'data' column
@@ -24,6 +25,7 @@ def get_data(min, max):
         to_send[-1]["teamNum"] = row[2]
         to_send[-1]["scoutID"] = row[3]
         to_send[-1]["type"] = "scout"
+        scout_rows.append(row)  # Store original row
     
     # Super Scout
     conn = sqlite3.connect('data/scoutManor2025.db')
@@ -41,23 +43,67 @@ def get_data(min, max):
         to_send[-1]["scoutID"] = row[3]
         to_send[-1]["type"] = "superScout"
 
-    # Return object
-    return to_send
+    # Return object and scout rows
+    return to_send, scout_rows
 
-def manual_send():
+def move_to_old(scout_rows):
+    if not scout_rows:
+        return  # No scout data to move
 
-    print("Input the range of matches to send to the sheet")
-    print("(same value for min and max to send only one match)")
-    min = int(input("first match? "))
-    max = int(input("last match? "))
+    # Connect to old database
+    conn_old = sqlite3.connect('data/scouting_dat_old.db')
+    c_old = conn_old.cursor()
+    
+    # Create table if not exists (assuming same schema as scoutData)
+    c_old.execute('''CREATE TABLE IF NOT EXISTS scoutData (
+        timestamp TEXT,
+        matchNum INTEGER,
+        teamNum INTEGER,
+        scoutID TEXT,
+        data TEXT
+    )''')
+    
+    # Insert rows into old database
+    c_old.executemany('INSERT INTO scoutData VALUES (?, ?, ?, ?, ?)', scout_rows)
+    conn_old.commit()
+    conn_old.close()
+    
+    # Delete from original database
+    conn = sqlite3.connect('data/scout_data.db')
+    c = conn.cursor()
+    # Delete the specific rows that were sent
+    for row in scout_rows:
+        c.execute('DELETE FROM scoutData WHERE timestamp = ? AND matchNum = ? AND teamNum = ? AND scoutID = ? AND data = ?',
+                  (row[0], row[1], row[2], row[3], row[4]))
+    conn.commit()
+    conn.close()
 
-    data = get_data(min, max)
+def send():
 
-    if input(f"Sending {len(data)} lines (this should be 8). Confirm? (y/n) ") == "y":
+    # Read current match from file set by megaScout
+    try:
+        with open('data/current_match.txt', 'r') as f:
+            matchNum = int(f.read().strip())
+    except FileNotFoundError:
+        print("Current match not set. Please set it in megaScout.")
+        return
+    except ValueError:
+        print("Invalid match number in file.")
+        return
+
+    print(f"Sending data for match {matchNum}")
+
+    data, scout_rows = get_data(matchNum, matchNum)
+
+    if input(f"Sending {len(data)} lines. Confirm? (y/n) ") == "y":
 
         resp = requests.post(SCRIPT, data=json.dumps(data).encode())
         # print(data)
         print(f"Done.\nResponse code: {resp.status_code} {resp.reason}")
+
+        # Move data from scout_data to scout_data_old
+        if resp.status_code == 200:
+            move_to_old(scout_rows)
 
     else:
         print("Abort")
@@ -68,7 +114,7 @@ def send_match(matchNum):
 
     print(f"Uploading data from match {matchNum}... ", end="")
 
-    data = get_data(matchNum, matchNum)
+    data, scout_rows = get_data(matchNum, matchNum)
     dataColor = pd.read_csv('data\\matchList.csv')
     teamsColors = []
 
@@ -215,8 +261,10 @@ def send_match(matchNum):
         return "Error: POST request failed"
 
     print("Success")
+    # Move data from scout_data to scout_data_old after successful send
+    move_to_old(scout_rows)
     return f"Sent {len(data)} lines. Server response: {resp.status_code} {resp.reason}"
 
 
 if __name__ == "__main__":
-    manual_send()
+    send()

@@ -17,6 +17,11 @@ var socket = io();
 // disable the start match button until teams are fetched
 $('#sendInfo').prop('disabled', true);
 
+// Set current match when matchNum changes
+$('#matchNum').on('input', function() {
+    socket.emit('setCurrentMatch', {matchNum: $(this).val()});
+});
+
 
 
 

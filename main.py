@@ -22,11 +22,12 @@ socketio = SocketIO(app)
 app.config['SCOUT_FORM'] = RebuiltForm  # Change this to the form you want to use
 app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scoutWorlds2025.db') # change to your database path in /data
+app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scouting_dat.db') # change to your database path in /data
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 
 # Create scoutData and superScoutData tables in sqlite database
+print("here")
 conn = sqlite3.connect(app.config['DB_PATH'])
 cursor = conn.cursor()
 cursor.execute(f'''CREATE TABLE IF NOT EXISTS {app.config['SCOUT_TABLE']} (
@@ -184,6 +185,17 @@ def scoutSubmit():
         print("failed now")
         conn.commit()
         conn.close()
+
+        # Check if match is complete (6 scouts submitted)
+        conn = sqlite3.connect(app.config['DB_PATH'])
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
+        count = cursor.fetchone()[0]
+        conn.close()
+        if count == 3:
+            print(f"Match {matchNum} complete, sending data.")
+            status = updateSheet.send_match(int(matchNum))
+            print(status)
 
         if 'heatmap_data' in data and data['heatmap_data']:
             try:
@@ -347,6 +359,14 @@ def handle_postData(data):
     print(status)
     emit('postDataStatus', {'status': status})
 
+
+@socketio.on('setCurrentMatch')
+def handle_setCurrentMatch(data):
+    matchNum = data.get('matchNum')
+    if matchNum:
+        with open('data/current_match.txt', 'w') as f:
+            f.write(str(matchNum))
+        print(f"Current match set to {matchNum}")
 
 @socketio.on('matchReset')
 def handle_matchReset():
