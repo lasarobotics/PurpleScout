@@ -325,6 +325,7 @@ function removeLastClick(){
     circles[circles.length - 1].remove();
     item=window.heatClicks.pop();
     const coordinate = item;
+
     if (coordinate.x <= 200) {
       if (coordinate.y <= 100) window.heatmap_fr.R1 -= 1;
       else if (coordinate.y <= 200) window.heatmap_fr.R2 -= 1;

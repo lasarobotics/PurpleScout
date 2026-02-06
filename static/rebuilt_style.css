@@ -343,7 +343,8 @@
       font-weight: 900;
       cursor: pointer;
       line-height: 1;
-      color: #740449;
+      color: #f3f4f6;
+      background: rgba(0,0,0,0);
   }
 
   .miniStepBtn--pos:hover {
