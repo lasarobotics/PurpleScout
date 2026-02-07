@@ -254,3 +254,96 @@ if (climbFailedCheckbox) {
     }
 
 })();
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const svg = document.getElementById("heatmapSvg");
+  if (!svg) return;
+
+  window.heatClicks = window.heatClicks || []; // {x, y, t}
+
+  window.heatmap_fr = window.heatmap_fr || {
+    R1: 0, R2: 0, R3: 0, R4: 0,
+    B1: 0, B2: 0, B3: 0, B4: 0
+  };
+
+  function svgClientToViewBox(svgEl, clientX, clientY) {
+    const pt = svgEl.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const ctm = svgEl.getScreenCTM();
+    if (!ctm) return { x: 0, y: 0 };
+    return pt.matrixTransform(ctm.inverse());
+  }
+
+  function sortIntoFreqs(coordinate) {
+    if (coordinate.x <= 200) {
+      if (coordinate.y <= 100) window.heatmap_fr.R1 += 1;
+      else if (coordinate.y <= 200) window.heatmap_fr.R2 += 1;
+      else if (coordinate.y <= 300) window.heatmap_fr.R3 += 1;
+      else if (coordinate.y <= 400) window.heatmap_fr.R4 += 1;
+    } else if (coordinate.x >= 600) {
+      if (coordinate.y <= 100) window.heatmap_fr.B1 += 1;
+      else if (coordinate.y <= 200) window.heatmap_fr.B2 += 1;
+      else if (coordinate.y <= 300) window.heatmap_fr.B3 += 1;
+      else if (coordinate.y <= 400) window.heatmap_fr.B4 += 1;
+    }
+
+    const freqEl = document.getElementById("heatmap_frequencies");
+    if (freqEl) freqEl.value = JSON.stringify(window.heatmap_fr);
+  }
+
+  svg.addEventListener("click", (ev) => {
+    const p = svgClientToViewBox(svg, ev.clientX, ev.clientY);
+    const x = Math.round(p.x);
+    const y = Math.round(p.y);
+
+    const t = Math.floor(Date.now() / 1000);
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", p.x);
+    circle.setAttribute("cy", p.y);
+    circle.setAttribute("r", 25);
+    circle.setAttribute("fill", "url(#grad1)");
+    circle.setAttribute("pointer-events", "none");
+    if(p.x>30 && p.x<770 && p.y>30 && p.y<370 && (p.x<=200 || p.x>=600)) {
+        svg.appendChild(circle);
+        window.heatClicks.push({ x, y, t });
+        const posEl = document.getElementById("total_positions");
+        if (posEl) posEl.value = JSON.stringify(window.heatClicks);
+        sortIntoFreqs({ x, y });
+    }
+  });
+});
+
+
+
+
+function removeLastClick(){
+    const svg = document.getElementById("heatmapSvg");
+    if (!svg) return;
+    const circles = svg.querySelectorAll("circle");
+    circles[circles.length - 1].remove();
+    item=window.heatClicks.pop();
+    const coordinate = item;
+
+    if (coordinate.x <= 200) {
+      if (coordinate.y <= 100) window.heatmap_fr.R1 -= 1;
+      else if (coordinate.y <= 200) window.heatmap_fr.R2 -= 1;
+      else if (coordinate.y <= 300) window.heatmap_fr.R3 -= 1;
+      else if (coordinate.y <= 400) window.heatmap_fr.R4 -= 1;
+    } else if (coordinate.x >= 600) {
+      if (coordinate.y <= 100) window.heatmap_fr.B1 += 1;
+      else if (coordinate.y <= 200) window.heatmap_fr.B2 += 1;
+      else if (coordinate.y <= 300) window.heatmap_fr.B3 += 1;
+      else if (coordinate.y <= 400) window.heatmap_fr.B4 += 1;
+    }
+
+    const freqEl = document.getElementById("heatmap_frequencies");
+    if (freqEl) freqEl.value = JSON.stringify(window.heatmap_fr);
+
+    const posEl = document.getElementById('total_positions');
+    if (posEl) posEl.value = JSON.stringify(window.heatClicks);
+}
+
