@@ -256,6 +256,7 @@ if (climbFailedCheckbox) {
 })();
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const svg = document.getElementById("heatmapSvg");
   if (!svg) return;
@@ -315,6 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
