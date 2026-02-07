@@ -334,6 +334,19 @@
       background: rgba(239, 68, 68, 0.30);
   }
 
+
+
+  .undoLast{
+    border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-weight: 900;
+      cursor: pointer;
+      line-height: 1;
+      color: #f3f4f6;
+      background: rgba(0,0,0,0);
+  }
+
   .miniStepBtn--pos:hover {
       background: rgba(34, 197, 94, 0.30);
   }
