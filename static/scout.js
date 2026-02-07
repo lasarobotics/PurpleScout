@@ -44,6 +44,9 @@ $(document).ready(function () {
         console.log("aaah");
         percentage = 0;
         pluggedIn = false;
+        console.log(navigator.getBattery());
+        // const battery = await navigator.getBattery();
+        
         try {
             const battery = await navigator.getBattery();
             const batteryInfo = {
@@ -100,7 +103,7 @@ $(document).ready(function () {
     });
 
 
-    // When the super scout gives the go ahead, start the match
+    // When the mega scout gives the go ahead, start the match
     socket.on('scoutAssign', function (data) {
         console.log('Scouter ' + selectedTeam + ' is assigned to team ' + data[selectedTeam]);
         alert("The mega scout has started Match #" + data.matchNum + "! You are scouting " + selectedTeam + " and have been assigned to team " + data[selectedTeam] + ".");

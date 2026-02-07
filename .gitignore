@@ -22,6 +22,8 @@ scoutManor2025.db
 scoutMercury2025.db
 scoutWaco2025.db
 backup.db
+server.crt
+server.key
 
 
 # Python-generated files

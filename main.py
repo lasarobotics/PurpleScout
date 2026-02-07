@@ -12,6 +12,8 @@ import socket
 import updateSheet
 import psutil
 
+import ssl
+
 
 # Create app
 app = Flask(__name__)
@@ -49,29 +51,7 @@ cursor.execute(f'''CREATE TABLE IF NOT EXISTS {app.config['SUPER_SCOUT_TABLE']} 
 conn.commit()
 conn.close()
 
-# Index
-@app.route('/')
-def index():
-    return render_template('home.html', name=app.config['SCOUT_FORM'].name) # creates home page with form name
-
-# Home
-@app.route('/home.html')
-def home():
-    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
-
-# Test
-@app.route('/test.html')
-def test():
-    # Instantiate your SCOUT_FORM
-    form = app.config['SCOUT_FORM']()
-
-    # Optionally retrieve cookies
-    account_info = request.cookies.get("acc_info")
-    cookie_values = account_info if account_info else None
-
-    # Pass 'form' and 'cookie_values' to test.html
-    return render_template('test2.html', form=form, cookie_values=cookie_values)
-
+# Function to change value
 def changeValue(inputString="", val=""):
     print("input: " + inputString + " | val: " + val)
 
@@ -85,7 +65,17 @@ def changeValue(inputString="", val=""):
     print("input: " + inputString)
     return inputString
 
-# Scout
+# Flask Route: Index
+@app.route('/')
+def index():
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name) # creates home page with form name
+
+# Flask Route: Home
+@app.route('/home.html')
+def home():
+    return render_template('home.html', name=app.config['SCOUT_FORM'].name)
+
+# Flask Route: Scout
 @app.route('/scout.html')
 def scout():
     form = app.config['SCOUT_FORM']()
@@ -100,17 +90,18 @@ def scout():
                            form=form, 
                            cookie_values=cookie_values)
 
-# Super scout
+# Flask Route: Super Scout
 @app.route('/superScout.html')
 def superScout():
-    form = app.config['SUPER_FORM']()
-    # Tell the scouts that the super scout is ready 
-    socketio.emit('superScoutConnect')
-    print(vars(CrescendoSuperScoutForm()))
+    # form = app.config['SUPER_FORM']()
+    # # Tell the scouts that the super scout is ready 
+    # socketio.emit('superScoutConnect')
+    # print(vars(CrescendoSuperScoutForm()))
     
-    return render_template('superForms/' + app.config['SUPER_FORM'].__name__ + '.html', form=form)
+    # return render_template('superForms/' + app.config['SUPER_FORM'].__name__ + '.html', form=form)
+    return render_template('superScout2026.html')
 
-# Admin
+# Flask Route: Mega Scout (Admin)
 @app.route('/megaScout.html')
 def megaScout():
     conn = sqlite3.connect(app.config['DB_PATH'])
@@ -123,33 +114,32 @@ def megaScout():
     print(newArr)
     return render_template('megaScout.html', dat=newArr, len=len(newArr))
 
-# Normal scout submit
+# Flask Route: Scout Submit
 @app.route('/scoutSubmit.html', methods=['POST', 'GET'])
 def scoutSubmit():
-    print(f"got request via {request.method}")
+    # Submit POST request has been received.
     site = make_response(render_template("scoutSubmit.html"))
     if request.method == 'POST':
-        print("working")
         data = request.form.to_dict()
-        print("DATA: " + str(data))
-        print("hasn't failed yet")
+        print(data)
 
+        # Store scouting data locally in a CSV file (BACKUP)
         with open('data/scouting_dat.csv', 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=list(data.keys()))
             data['info'] = data.get('info').encode("utf-8")
             writer.writerow(data)
             f.close()
-        print("hasn't failed yet")
         data['info'] = data.get('info').decode("utf-8")
-        print(data)
 
-        # append data to sqlite3 database
+        # Append scouting data to the SQLite Database
         conn = sqlite3.connect(app.config['DB_PATH'])
         cursor = conn.cursor()
         
         scoutID = data['scoutID']
         matchNum = data['matchNum']
         teamNum = data['teamNum']
+
+        print(list(data.keys()))
 
         site.set_cookie("acc_info", str(scoutID))
         print(f"scout: {scoutID}")
@@ -184,18 +174,6 @@ def scoutSubmit():
         print("failed now")
         conn.commit()
         conn.close()
-
-        # Check if match is complete (6 scouts submitted)
-        conn = sqlite3.connect(app.config['DB_PATH'])
-        cursor = conn.cursor()
-        cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
-        count = cursor.fetchone()[0]
-        print(f"Match {matchNum} has {count} scout submissions.")
-        conn.close()
-        if count % 6 == 0:
-            print(f"Match {matchNum} complete, sending data.")
-            status = updateSheet.send_match(int(matchNum))
-            print(status)
 
         if 'heatmap_data' in data and data['heatmap_data']:
             try:
@@ -321,6 +299,22 @@ def handle_echo(data):
 def handle_fetchTeams(data):
     print('getTeams')
     matchNum = data['matchNum']
+
+    # Check if match is complete (6 scouts submitted)
+    conn = sqlite3.connect(app.config['DB_PATH'])
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
+    count = cursor.fetchone()[0]
+    print(f"Match {matchNum} has {count} scout submissions.")
+    conn.close()
+
+    #Send the previous data once resetting for the next match.
+
+    if count % 6 == 0:
+        print(f"Match {matchNum -1} complete, sending data.")
+        status = updateSheet.send_match(int(matchNum-1))
+        print(status)
+    
     with open('data/matchList.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -359,7 +353,6 @@ def handle_postData(data):
     print(status)
     emit('postDataStatus', {'status': status})
 
-
 @socketio.on('setCurrentMatch')
 def handle_setCurrentMatch(data):
     matchNum = data.get('matchNum')
@@ -371,6 +364,7 @@ def handle_setCurrentMatch(data):
 @socketio.on('matchReset')
 def handle_matchReset():
     print('received matchReset')
+    
     emit('matchReset', broadcast=True)
 
 @socketio.on('message')
@@ -407,10 +401,18 @@ if __name__ == '__main__':
         except Exception as e:
             print(f"⚠ Warning: Could not register Zeroconf service: {e}")
             print("  The app will continue running, but may not be discoverable via mDNS.")
+
+        sslCert = "server.crt"
+        sslKey = "server.key"
+
+        context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        context.load_cert_chain(certfile=sslCert, keyfile=sslKey)
+
+
         
         try:
             # Start the Flask app
-            socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
+            socketio.run(app, host='0.0.0.0', debug=True, ssl_context=context, allow_unsafe_werkzeug=True)
         finally:
             # After Flask app stops, unregister the service
             if zeroconf is not None:
