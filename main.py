@@ -309,11 +309,11 @@ def handle_fetchTeams(data):
     conn.close()
 
     #Send the previous data once resetting for the next match.
-
-    if count % 6 == 0:
-        print(f"Match {matchNum -1} complete, sending data.")
-        status = updateSheet.send_match(int(matchNum-1))
-        print(status)
+    # print(count)
+    # if count % 1 == 0:
+    #     print(f"Match {int(matchNum) -1} complete, sending data.")
+    #     status = updateSheet.send_match(int(matchNum)-1)
+    #     print(status)
     
     with open('data/matchList.csv', 'r') as f:
         reader = csv.DictReader(f)
@@ -362,8 +362,23 @@ def handle_setCurrentMatch(data):
         print(f"Current match set to {matchNum}")
 
 @socketio.on('matchReset')
-def handle_matchReset():
+def handle_matchReset(data):
     print('received matchReset')
+    matchNum = data['matchNum']
+    
+    # Check if match is complete (6 scouts submitted)
+    conn = sqlite3.connect(app.config['DB_PATH'])
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
+    count = cursor.fetchone()[0]
+    print(f"Match {matchNum} has {count} scout submissions.")
+    conn.close()
+
+    print(count)
+    if count % 1 == 0:
+        print(f"Match {int(matchNum) -1} complete, sending data.")
+        status = updateSheet.send_match(int(matchNum)-1)
+        print(status)
     
     emit('matchReset', broadcast=True)
 

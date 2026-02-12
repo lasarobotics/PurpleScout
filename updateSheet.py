@@ -3,7 +3,7 @@ import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
 # SCRIPT = "https://script.google.com/macros/s/AKfycbyFWSAVL4ubii6sGGC8UQV72jN50DIoaAPNiBu6jSZQ05NdOtjyAbUAH9zu4CfAvfVbNQ/exec"
-SCRIPT = "https://script.google.com/macros/s/AKfycbziwWt5hm6KhF2MNk5P6tvEvqXfy7dMLpmUoRto_-PoppcKItxRcET_e6Wo2UskPzDdJw/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycbwWSZ7ieS9HV65ZprYOtLdsmvK-osftUT5gb4FvQAoPRjK1b9AJ1Pwy7aVs2a12VJaw/exec"
 #################################################################################
 
 def get_data(min, max):
@@ -19,6 +19,7 @@ def get_data(min, max):
     to_send = []
     scout_rows = []  # Keep track of original scout rows
     for row in rows:
+        print(row)
         if row[3] == "test": continue
         to_send.append(json.loads(row[4])) # Extract information in the 'data' column
         to_send[-1]["timestamp"] = row[0] # Append metadata
@@ -26,23 +27,27 @@ def get_data(min, max):
         to_send[-1]["teamNum"] = row[2]
         to_send[-1]["scoutID"] = row[3]
         to_send[-1]["type"] = "scout"
-        scout_rows.append(row)  # Store original row
+        to_send.append(row)  # Store original row
     
-    # Super Scout
-    conn = sqlite3.connect('data/scoutManor2025.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM superScoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
-    rows = c.fetchall()
-    conn.close()
+    # # Super Scout
+    # conn = sqlite3.connect('data/scouting_dat.db')
+    # c = conn.cursor()
+    # c.execute('SELECT * FROM superScoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
+    # rows = c.fetchall()
+    # conn.close()
 
-    for row in rows:
-        if row[3] == "test": continue
-        to_send.append(json.loads(row[4])) # Extract information in the 'data' column
-        to_send[-1]["timestamp"] = row[0] # Append metadata
-        to_send[-1]["matchNum"] = row[1]
-        to_send[-1]["teamNum"] = row[2]
-        to_send[-1]["scoutID"] = row[3]
-        to_send[-1]["type"] = "superScout"
+    # for row in rows:
+    #     if row[3] == "test": continue
+    #     to_send.append(json.loads(row[4])) # Extract information in the 'data' column
+    #     to_send[-1]["timestamp"] = row[0] # Append metadata
+    #     to_send[-1]["matchNum"] = row[1]
+    #     to_send[-1]["teamNum"] = row[2]
+    #     to_send[-1]["scoutID"] = row[3]
+    #     to_send[-1]["type"] = "superScout"
+
+
+    print(to_send, scout_rows, "ahh")
+    print("67")
 
     # Return object and scout rows
     return to_send, scout_rows
@@ -116,6 +121,7 @@ def send_match(matchNum):
     print(f"Uploading data from match {matchNum}... ", end="")
 
     data, scout_rows = get_data(matchNum, matchNum)
+    print(data, scout_rows, "aaaah")
     dataColor = pd.read_csv('data\\matchList.csv')
     teamsColors = []
 
@@ -135,6 +141,9 @@ def send_match(matchNum):
         teamsColor.append(bl3[1])
         teamsColors.append(teamsColor)
 
+    print(teamsColors)
+    print(len(data))
+
     redDATA = []
     blueDATA = []
 
@@ -142,6 +151,7 @@ def send_match(matchNum):
 
     for i in data:
         tNum = (i.get("teamNum"))
+        print("ahahaha", tNum)
         if (tNum == teamsColors[matchNum-1][0] or tNum == teamsColors[matchNum-1][1] or tNum == teamsColors[matchNum-1][2]):
             redDATA.append(i)
         else:

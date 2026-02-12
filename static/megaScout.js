@@ -109,7 +109,7 @@ $('button#sendInfo').click(function() {
 
 $('button#matchReset').click(function() {
     console.log('resetting match');
-    socket.emit('matchReset');
+    socket.emit('matchReset', {matchNum: $('#matchNum').val()});
 });
 
 $('button#postData').click(function() {
