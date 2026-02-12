@@ -3,7 +3,7 @@ import pandas as pd
 
 ### Update this link every time a new version of the Sheets script is created ###
 # SCRIPT = "https://script.google.com/macros/s/AKfycbyFWSAVL4ubii6sGGC8UQV72jN50DIoaAPNiBu6jSZQ05NdOtjyAbUAH9zu4CfAvfVbNQ/exec"
-SCRIPT = "https://script.google.com/macros/s/AKfycbwWSZ7ieS9HV65ZprYOtLdsmvK-osftUT5gb4FvQAoPRjK1b9AJ1Pwy7aVs2a12VJaw/exec"
+SCRIPT = "https://script.google.com/macros/s/AKfycby58nMZG0JEFfrKPJupiPNyYxC4KATJoVK2QvbBjwCRWo3r_HdDCFAvQBGa4Qw3wSOh/exec"
 #################################################################################
 
 def get_data(min, max):
