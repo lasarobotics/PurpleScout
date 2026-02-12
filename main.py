@@ -122,6 +122,9 @@ def scoutSubmit():
     if request.method == 'POST':
         data = request.form.to_dict()
         print(data)
+        data = {k:v for k, v in request.form.to_dict().items() if k!= "heatmap_data"}
+        print(type(data))
+        print(data)
 
         # Store scouting data locally in a CSV file (BACKUP)
         with open('data/scouting_dat.csv', 'a', newline='') as f:
@@ -175,30 +178,30 @@ def scoutSubmit():
         conn.commit()
         conn.close()
 
-        if 'heatmap_data' in data and data['heatmap_data']:
-            try:
-                heatmap_svg = data['heatmap_data']
+        # if 'heatmap_data' in data and data['heatmap_data']:
+        #     try:
+        #         heatmap_svg = data['heatmap_data']
                 
-                # Create directory if it doesn't exist
-                heatmap_dir = os.path.join(app.root_path, 'data', 'heatmap_captures')
-                if not os.path.exists(heatmap_dir):
-                    os.makedirs(heatmap_dir)
+        #         # Create directory if it doesn't exist
+        #         heatmap_dir = os.path.join(app.root_path, 'data', 'heatmap_captures')
+        #         if not os.path.exists(heatmap_dir):
+        #             os.makedirs(heatmap_dir)
                 
-                # Generate filename
-                filename = f"match{matchNum}_team{teamNum}_{scoutID}_{int(datetime.now().timestamp())}.svg"
-                filepath = os.path.join(heatmap_dir, filename)
+        #         # Generate filename
+        #         filename = f"match{matchNum}_team{teamNum}_{scoutID}_{int(datetime.now().timestamp())}.svg"
+        #         filepath = os.path.join(heatmap_dir, filename)
                 
-                # Write SVG string to file
-                with open(filepath, 'w') as f:
-                    f.write(heatmap_svg)
+        #         # Write SVG string to file
+        #         with open(filepath, 'w') as f:
+        #             f.write(heatmap_svg)
                 
-                print(f"Saved heatmap to {filepath}")
+        #         print(f"Saved heatmap to {filepath}")
                 
-                # Remove huge SVG string from data before saving to CSV/DB to keep them clean
-                del data['heatmap_data']
+        #         # Remove huge SVG string from data before saving to CSV/DB to keep them clean
+        #         del data['heatmap_data']
                 
-            except Exception as e:
-                print(f"Error saving heatmap: {e}")
+        #     except Exception as e:
+        #         print(f"Error saving heatmap: {e}")
 
         if 'climb_map_data' in data and data['climb_map_data']:
             try:

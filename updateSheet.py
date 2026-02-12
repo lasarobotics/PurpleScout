@@ -27,7 +27,7 @@ def get_data(min, max):
         to_send[-1]["teamNum"] = row[2]
         to_send[-1]["scoutID"] = row[3]
         to_send[-1]["type"] = "scout"
-        to_send.append(row)  # Store original row
+        scout_rows.append(row)  # Store original row
     
     # # Super Scout
     # conn = sqlite3.connect('data/scouting_dat.db')
@@ -44,10 +44,6 @@ def get_data(min, max):
     #     to_send[-1]["teamNum"] = row[2]
     #     to_send[-1]["scoutID"] = row[3]
     #     to_send[-1]["type"] = "superScout"
-
-
-    print(to_send, scout_rows, "ahh")
-    print("67")
 
     # Return object and scout rows
     return to_send, scout_rows
@@ -121,7 +117,6 @@ def send_match(matchNum):
     print(f"Uploading data from match {matchNum}... ", end="")
 
     data, scout_rows = get_data(matchNum, matchNum)
-    print(data, scout_rows, "aaaah")
     dataColor = pd.read_csv('data\\matchList.csv')
     teamsColors = []
 
@@ -140,9 +135,6 @@ def send_match(matchNum):
         teamsColor.append(bl2[1])
         teamsColor.append(bl3[1])
         teamsColors.append(teamsColor)
-
-    print(teamsColors)
-    print(len(data))
 
     redDATA = []
     blueDATA = []
