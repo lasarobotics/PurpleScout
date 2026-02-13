@@ -122,7 +122,9 @@ def scoutSubmit():
     if request.method == 'POST':
         data = request.form.to_dict()
         print(data)
-        data = {k:v for k, v in request.form.to_dict().items() if k!= "heatmap_data"}
+        data = {k:v for k, v in data.items() if k!= "heatmap_data"}
+        data = {k:v for k, v in data.items() if k!= "climb_map_data"}
+
         print(type(data))
         print(data)
 
@@ -147,6 +149,7 @@ def scoutSubmit():
         site.set_cookie("acc_info", str(scoutID))
         print(f"scout: {scoutID}")
 
+        
         socketio.emit('scoutSubmit', data)
 
         del data['matchNum']
@@ -203,23 +206,25 @@ def scoutSubmit():
         #     except Exception as e:
         #         print(f"Error saving heatmap: {e}")
 
-        if 'climb_map_data' in data and data['climb_map_data']:
-            try:
-                climb_svg = data['climb_map_data']
-                heatmap_dir = os.path.join(app.root_path, 'data', 'heatmap_captures')
-                if not os.path.exists(heatmap_dir):
-                    os.makedirs(heatmap_dir)
+        # if 'climb_map_data' in data and data['climb_map_data']:
+        #     try: 
+        #         climb_svg = data['climb_map_data']
+        #         heatmap_dir = os.path.join(app.root_path, 'data', 'heatmap_captures')
+        #         if not os.path.exists(heatmap_dir):
+        #             os.makedirs(heatmap_dir)
                 
-                filename = f"climb_match{matchNum}_team{teamNum}_{scoutID}_{int(datetime.now().timestamp())}.svg"
-                filepath = os.path.join(heatmap_dir, filename)
+        #         filename = f"climb_match{matchNum}_team{teamNum}_{scoutID}_{int(datetime.now().timestamp())}.svg"
+        #         filepath = os.path.join(heatmap_dir, filename)
                 
-                with open(filepath, 'w') as f:
-                    f.write(climb_svg)
+        #         with open(filepath, 'w') as f:
+        #             f.write(climb_svg)
                 
-                print(f"Saved climb map to {filepath}")
-                del data['climb_map_data']
-            except Exception as e:
-                print(f"Error saving climb map: {e}")
+        #         print(f"Saved climb map to {filepath}")
+        #         del data['climb_map_data']
+        #     except Exception as e:
+        #         print(f"Error saving climb map: {e}")
+        answer = (data["teleopScoreLocation"]).split(",") if "teleopScoreLocation" in data else []
+        data['teleopScoreLocation'] = str(answer)
 
         print(data)
 

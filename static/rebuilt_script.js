@@ -176,6 +176,7 @@ if (climbFailedCheckbox) {
         clicks.push({ label: cls.label, dotClass: cls.dotClass, x: xNorm, y: yNorm });
         renderDots();
         syncHidden();
+        console.log("aaah", clicks);
     }
 
     function getNormalizedFromEvent(e) {
@@ -217,6 +218,7 @@ if (climbFailedCheckbox) {
         const norm = getNormalizedFromEvent(e);
         if (!norm) return;
         addClick(norm.xNorm, norm.yNorm);
+        console.log("clicked at", norm);
     }
 
     img.addEventListener('pointerdown', onPointer);
@@ -294,6 +296,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (freqEl) freqEl.value = JSON.stringify(window.heatmap_fr);
   }
 
+  clicksActual = []
+
   svg.addEventListener("click", (ev) => {
     const p = svgClientToViewBox(svg, ev.clientX, ev.clientY);
     const x = Math.round(p.x);
@@ -314,6 +318,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (posEl) posEl.value = JSON.stringify(window.heatClicks);
         sortIntoFreqs({ x, y });
     }
+    clicksActual.push({ x, y, t });
+    console.log(clicksActual);
   });
 });
 
