@@ -115,6 +115,55 @@ def megaScout():
     print(newArr)
     return render_template('megaScout.html', dat=newArr, len=len(newArr))
 
+# API: Get current scouting data as JSON
+@app.route('/api/mega/current')
+def api_mega_current():
+    print("Check before")
+    try:
+        conn = sqlite3.connect(app.config['DB_PATH'])
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} ORDER BY timestamp DESC")
+        rows = cursor.fetchall()
+        conn.close()
+        out = []
+        for ts, mn, tn, sid, d in rows:
+            try:
+                parsed = json.loads(d)
+            except:
+                parsed = d
+            out.append({'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
+            print("Check after: ", {'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
+        return json.dumps(out), 200, {'Content-Type': 'application/json'}
+    except Exception as e:
+        print(f"Error fetching current data: {e}")
+        return json.dumps([]), 500, {'Content-Type': 'application/json'}
+    
+
+# API: Get old scouting data as JSON
+@app.route('/api/mega/old')
+def api_mega_old():
+    print("Check before")
+    try:
+        if not os.path.exists(app.config['DB_OLD_PATH']):
+            return json.dumps([]), 200, {'Content-Type': 'application/json'}
+        conn = sqlite3.connect(app.config['DB_OLD_PATH'])
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} ORDER BY timestamp DESC")
+        rows = cursor.fetchall()
+        conn.close()
+        out = []
+        for ts, mn, tn, sid, d in rows:
+            try:
+                parsed = json.loads(d)
+            except:
+                parsed = d
+            out.append({'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
+            print("Check after ", {'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
+        return json.dumps(out), 200, {'Content-Type': 'application/json'}
+    except Exception as e:
+        print(f"Error fetching old data: {e}")
+        return json.dumps([]), 500, {'Content-Type': 'application/json'}
+
 # Flask Route: Scout Submit
 @app.route('/scoutSubmit.html', methods=['POST', 'GET'])
 def scoutSubmit():

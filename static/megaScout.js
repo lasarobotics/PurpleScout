@@ -14,6 +14,73 @@ var socket = io();
 
 // });
 
+// ========== Side-by-Side DB Viewer with Real-Time Updates ==========
+
+function renderTables(currentList, oldList) {
+    // Clear existing tables
+    $('#dbViewerContainer').html('');
+    
+    // Create container for two columns
+    const container = $('<div style="display: flex; gap: 20px; margin-top: 20px;">');
+    
+    // Current DB table
+    const currentTable = $('<div style="flex: 1;">');
+    currentTable.append('<h3>Current Database (scouting_dat.db)</h3>');
+    const currentTbl = $('<table class="tbl" style="width: 100%; font-size: 12px;"><thead><tr><th>Timestamp</th><th>Match</th><th>Team</th><th>Scout ID</th></tr></thead><tbody id="currentTableBody"></tbody></table>');
+    currentTable.append(currentTbl);
+    
+    // Populate current table (use local tbody reference so we don't depend on DOM insertion order)
+    const $currentTbody = currentTbl.find('tbody');
+    if (!currentList || currentList.length === 0) {
+        $currentTbody.append(`<tr><td colspan="4">No rows in current database</td></tr>`);
+    } else {
+        currentList.forEach(row => {
+            $currentTbody.append(`<tr><td>${row.timestamp}</td><td>${row.matchNum}</td><td>${row.teamNum}</td><td>${row.scoutID}</td></tr>`);
+        });
+    }
+    
+    // Old DB table
+    const oldTable = $('<div style="flex: 1;">');
+    oldTable.append('<h3>Old Database (scouting_dat_old.db)</h3>');
+    const oldTbl = $('<table class="tbl" style="width: 100%; font-size: 12px;"><thead><tr><th>Timestamp</th><th>Match</th><th>Team</th><th>Scout ID</th></tr></thead><tbody id="oldTableBody"></tbody></table>');
+    oldTable.append(oldTbl);
+    
+    // Populate old table (use local tbody reference)
+    const $oldTbody = oldTbl.find('tbody');
+    if (!oldList || oldList.length === 0) {
+        $oldTbody.append(`<tr><td colspan="4">No rows in old database</td></tr>`);
+    } else {
+        oldList.forEach(row => {
+            $oldTbody.append(`<tr><td>${row.timestamp}</td><td>${row.matchNum}</td><td>${row.teamNum}</td><td>${row.scoutID}</td></tr>`);
+        });
+    }
+    
+    // Append both tables to container
+    container.append(currentTable);
+    container.append(oldTable);
+    $('#dbViewerContainer').append(container);
+}
+
+async function fetchAndRender() {
+    try {
+        const [curRes, oldRes] = await Promise.all([
+            fetch('/api/mega/current'),
+            fetch('/api/mega/old')
+        ]);
+        const curData = await curRes.json();
+        const oldData = await oldRes.json();
+        renderTables(curData, oldData);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        $('#dbViewerContainer').html('<p style="color: red;">Error loading database data</p>');
+    }
+}
+
+// Load tables on page load
+$(document).ready(function() {
+    fetchAndRender();
+});
+
 // disable the start match button until teams are fetched
 $('#sendInfo').prop('disabled', true);
 
@@ -140,4 +207,6 @@ socket.on('scoutSubmit', function(data) {
     } else if (data.alliance == "blue") {
         $('#blueSuperStatus').text('Done');
     }
+    // Refresh the DB tables in real-time
+    fetchAndRender();
 });
