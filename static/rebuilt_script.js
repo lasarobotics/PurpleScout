@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(p.x>30 && p.x<770 && p.y>30 && p.y<370 && (p.x<=200 || p.x>=600)) {
         svg.appendChild(circle);
         window.heatClicks.push({ x, y, t });
-        const posEl = document.getElementById("total_positions");
+        const posEl = document.getElementById("totalPositions");
         if (posEl) posEl.value = JSON.stringify(window.heatClicks);
         sortIntoFreqs({ x, y });
     }
@@ -349,7 +349,7 @@ function removeLastClick(){
     const freqEl = document.getElementById("heatmap_frequencies");
     if (freqEl) freqEl.value = JSON.stringify(window.heatmap_fr);
 
-    const posEl = document.getElementById('total_positions');
+    const posEl = document.getElementById('totalPositions');
     if (posEl) posEl.value = JSON.stringify(window.heatClicks);
 }
 
