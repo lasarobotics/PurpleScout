@@ -19,7 +19,7 @@ def get_data(min, max):
     to_send = []
     scout_rows = []  # Keep track of original scout rows
     for row in rows:
-        print(row)
+        print(row, "row beta")
         if row[3] == "test": continue
         to_send.append(json.loads(row[4])) # Extract information in the 'data' column
         to_send[-1]["timestamp"] = row[0] # Append metadata
@@ -115,6 +115,7 @@ def send_match(matchNum):
     # send_match: fetches data from one match and 
 
     print(f"Uploading data from match {matchNum}... ", end="")
+    print("ahh")
 
     data, scout_rows = get_data(matchNum, matchNum)
     dataColor = pd.read_csv('data\\matchList.csv')
@@ -244,7 +245,7 @@ def send_match(matchNum):
     
     dataNew = []
     for i in redDATA:
-        print(i)
+        print(i, "huiafo;awkjlega")
         print("\n")
         dataNew.append(i)
     for i in blueDATA:

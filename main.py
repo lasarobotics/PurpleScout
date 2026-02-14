@@ -408,7 +408,7 @@ def handle_scoutAssign(data):
 @socketio.on('postData')
 def handle_postData(data):
     status = updateSheet.send_match(int(data['matchNum']))
-    print(status)
+    print(status, "aaaahstatus")
     emit('postDataStatus', {'status': status})
 
 @socketio.on('setCurrentMatch')
