@@ -169,7 +169,7 @@
                     <img id="rebuiltFieldImg" class="fieldMapImg" src="/static/tower.png" alt="2026 REBUILT field map">
                     <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
                 </div>
-                {{ form.teleopScoreLocation(class="inp hidden") }}
+                {{ form.climbLocation(class="inp hidden") }}
                 <input type="hidden" name="climb_map_data" id="climb_map_data">
                 <div class="fieldMapNote">
                     <span class="muted">Clicks outside valid areas are ignored.</span>
@@ -289,7 +289,7 @@
         var fieldMapOverlay = document.getElementById('fieldMapOverlay');
         var fieldMapCount = document.getElementById('fieldMapCount');
         var fieldMapLast = document.getElementById('fieldMapLast');
-        var teleopScoreInput = document.querySelector('input[name="teleopScoreLocation"]');
+        var climbInput = document.querySelector('input[name="climbLocation"]');
         var fieldUndoBtn = document.getElementById('fieldUndoBtn');
         var fieldClearBtn = document.getElementById('fieldClearBtn');
 
@@ -302,7 +302,7 @@
             dot.style.top = y + 'px';
             fieldMapOverlay.appendChild(dot);
 
-            teleopScoreInput.value = Math.round(x) + ',' + Math.round(y);
+            climbInput.value = Math.round(x) + ',' + Math.round(y);
             fieldMapCount.textContent = '1';
             fieldMapLast.textContent = Math.round(x) + ',' + Math.round(y);
         }

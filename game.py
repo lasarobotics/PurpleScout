@@ -262,7 +262,7 @@ class RebuiltForm(FlaskForm):
     teleopShotAccuracy = IntegerField('teleopShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
     teleopPassed = BooleanField('teleopPassed', default=False) #did they pass?
     teleopDefense = BooleanField('teleopDefense', default=False)  # did they play defense?
-    teleopScoreLocation = StringField('teleopScoreLocation', default='none')  # CSV list from field map
+    climbLocation = StringField('climbLocation', default='none')  # CSV list from field map
     # Endgame fields
     climb = SelectField('climb', validators=[DataRequired()], choices=[
         ('none', 'None'),

@@ -25,6 +25,7 @@ app.config['SCOUT_FORM'] = RebuiltForm  # Change this to the form you want to us
 app.config['SUPER_FORM'] = ReefscapeSuperScoutForm
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scouting_dat.db') # change to your database path in /data
+app.config['DB_OLD_PATH'] = os.path.join(app.root_path, 'data', 'scouting_dat_old.db')
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 

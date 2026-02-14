@@ -126,7 +126,7 @@ if (climbFailedCheckbox) {
     const overlay = document.getElementById('fieldMapOverlay');
     const hidden = document.getElementById('teleopScoreLocation');
     const countEl = document.getElementById('fieldMapCount');
-    const lastEl = document.getElementById('fieldMapLast');
+    const lastEl = document.getElementById('fieldMapLas/;d[t');
     const undoBtn = document.getElementById('fieldUndoBtn');
     const clearBtn = document.getElementById('fieldClearBtn');
     if (!img || !overlay || !hidden || !countEl || !lastEl || !undoBtn || !clearBtn) return;
