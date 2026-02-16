@@ -76,10 +76,6 @@ $(document).ready(function () {
             selectedTeam = this.id;
             console.log(selectedTeam);
 
-            // Remove active class from all buttons and add to the clicked one
-            $('button.teamSelect').removeClass('active');
-            $(this).addClass('active');
-
             if (this.id.includes('red')) {
                 $('.color-fade').css('background-color', '#c93434');
                 $('tbody tr:last-of-type').css('border-bottom-color', '#c93434');
@@ -90,7 +86,6 @@ $(document).ready(function () {
         } else {
             // deselect: reset all values to default
             team_text.text('None');
-            $('button.teamSelect').removeClass('active');
             $('.color-fade').css('background-color', '#663399');
             $('tbody tr:last-of-type').css('border-bottom-color', '#663399');
             socket.emit('scoutSelect', { type: selectedTeam, action: 'deselect' });
