@@ -14,7 +14,6 @@ import psutil
 
 import ssl
 
-
 # Create app
 app = Flask(__name__)
 app.register_blueprint(pitScout_bp,url_prefix='/pitScout.html')
