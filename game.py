@@ -253,6 +253,7 @@ class RebuiltForm(FlaskForm):
     autoShots = IntegerField('autoShots', validators=[DataRequired()], default=0)
 
     autoShotAccuracy = IntegerField('autoShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
+    autonClimb=BooleanField('autonClimb', default=False) 
 
     # Teleoperated fields
 
