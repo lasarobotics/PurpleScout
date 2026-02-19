@@ -210,3 +210,14 @@ socket.on('scoutSubmit', function(data) {
     // Refresh the DB tables in real-time
     fetchAndRender();
 });
+
+// Refresh DB viewer when server notifies DB updates
+socket.on('scoutSubmit', function(data) {
+    console.log('currentDBUpdated', data);
+    fetchAndRender();
+});
+
+socket.on('matchReset', function(data) {
+    console.log('oldDBUpdated', data);
+    fetchAndRender();
+});

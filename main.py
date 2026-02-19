@@ -184,6 +184,7 @@ def scoutSubmit():
             data['info'] = data.get('info').encode("utf-8")
             writer.writerow(data)
             f.close()
+            
         data['info'] = data.get('info').decode("utf-8")
 
         # Append scouting data to the SQLite Database
