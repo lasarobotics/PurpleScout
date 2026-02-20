@@ -81,12 +81,12 @@ def send_match(matchNum):
 
     status = response.json()
     if status['status'] != 'success':
-        print(f"Failed: {status}")
-        return "error"
+        print(f"App script returned failing status: {status}")
+        return "Error: App script returned failing status"
     
-    else:
-        print("Success")
-        # Move data from scouting_dat to scouting_dat_old after successful send
 
-        move_to_old(scout_rows)
-        return f"Sent {len(data)} lines. Server response: {response.status_code} {response.reason}"
+    print("Success")
+    # Move data from scouting_dat to scouting_dat_old after successful send
+
+    move_to_old(scout_rows)
+    return f"Sent {len(data)} lines. Server response: {response.status_code} {response.reason}"
