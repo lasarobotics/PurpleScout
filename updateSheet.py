@@ -2,8 +2,7 @@ import sqlite3, requests, json
 import pandas as pd
 
 
-url = "https://script.google.com/macros/s/AKfycbx96-wZNNvUZ31i7DccfHr4FRy3H9HPlOS-ErT1lwxqzJCJGJWWodeVv9M9AqJkVLuwNw/exec"
-
+url="https://script.google.com/macros/s/AKfycbyyvkI3fcBH9Q5VVAPhF5zbthbpmBgdOu9TDyeMHdBrxBxJWoH_SHfob3yGSuM6NMwX/exec"
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 
@@ -80,8 +79,14 @@ def send_match(matchNum):
             print("Failed")
             return "Error: POST request failed"
 
-    print("Success")
-    # Move data from scouting_dat to scouting_dat_old after successful send
+    status = response.json()
+    if status['status'] != 'success':
+        print(f"Failed: {status}")
+        return "error"
+    
+    else:
+        print("Success")
+        # Move data from scouting_dat to scouting_dat_old after successful send
 
-    move_to_old(scout_rows)
-    return f"Sent {len(data)} lines. Server response: {response.status_code} {response.reason}"
+        move_to_old(scout_rows)
+        return f"Sent {len(data)} lines. Server response: {response.status_code} {response.reason}"
