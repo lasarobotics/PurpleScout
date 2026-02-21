@@ -26,6 +26,7 @@ server.crt
 server.key
 .DS_Store
 .env
+node_modules/
 
 # Python-generated files
 __pycache__/
