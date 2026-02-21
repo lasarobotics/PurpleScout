@@ -24,7 +24,8 @@ scoutWaco2025.db
 backup.db
 server.crt
 server.key
-
+.DS_Store
+.env
 
 # Python-generated files
 __pycache__/
