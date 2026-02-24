@@ -2,14 +2,14 @@ import sqlite3, requests, json
 import pandas as pd
 
 
-url="https://script.google.com/macros/s/AKfycbyyvkI3fcBH9Q5VVAPhF5zbthbpmBgdOu9TDyeMHdBrxBxJWoH_SHfob3yGSuM6NMwX/exec"
+url="https://script.google.com/macros/s/AKfycbxs5lt44hS5nY7VmS0Xbb0IkTzzKzwAUsWoOvThcGsqH3wuW1fn4V0Q4Jc-DRcu2Ou5CQ/exec"
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 
     conn = sqlite3.connect('data/scouting_dat.db')
     c = conn.cursor()
     c.execute('SELECT * FROM scoutData WHERE matchNum BETWEEN ? AND ?;', (min, max))
-    rows = c.fetchall()
+    rows = c.fetchall() 
     print(rows)
     conn.close()
 

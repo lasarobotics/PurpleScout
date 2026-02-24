@@ -14,6 +14,18 @@ $(document).ready(function () {
 
     var selectedTeam = null;
 
+    function handleClick() {
+        alert('Button was clicked!');
+    }
+
+    var teamID = $('#cookieTeamNum').text();
+    console.log(teamID);
+    document.getElementById(teamID).buttonClick();
+    document.getElementById(teamID).addEventListener('click', handleClick);
+    var myButtonElement = document.getElementById(teamID);
+    console.log(myButtonElement)
+    myButtonElement.click();
+
     async function getBatteryInfo() {
         try {
             const battery = await navigator.getBattery();
@@ -38,7 +50,7 @@ $(document).ready(function () {
 
 
     // Team select handler
-    $('button.teamSelect').click(async function () {
+    $('button.teamSelect').click(async function buttonClick() {
         //assign.style.display = 'none';
         //waiting.style.display = 'block';
         console.log("aaah");
