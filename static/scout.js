@@ -3,10 +3,6 @@ $(document).ready(function () {
 
     var socket = io();
 
-    // Tell the server that this scouter is ready
-    //const username = prompt('Enter your name: ');
-    //socket.emit('scouterReady', {name: username});
-
     const assign = document.getElementById('preMatch');
     const waiting = document.getElementById('waiting');
     const form = document.getElementById('scoutForm');
@@ -14,64 +10,23 @@ $(document).ready(function () {
 
     var selectedTeam = null;
 
-    function handleClick() {
-        alert('Button was clicked!');
+    var teamID = $('#cookieTeamNum').text().trim(); 
+    if (teamID) {
+        selectedTeamProcess(teamID);
     }
-
-    var teamID = $('#cookieTeamNum').text()
-
-    // var myButtonElement = null
-
-    if (teamID != null){
-        console.log(teamID);
-        var $btn = $('#' + teamID);
-        $btn.trigger('click');
-        console.log($btn);
-    }
-    // document.getElementById(teamID).buttonClick();
-    
-    // var myButtonElement = document.getElementById(teamID);
-    // // myButtonElement.addEventListener('click', handleClick);
-    // console.log(myButtonElement)
-    // myButtonElement.click();
-
-    async function getBatteryInfo() {
-        try {
-            const battery = await navigator.getBattery();
-            const batteryInfo = {
-                percent: battery.level * 100,
-                plugged: battery.charging,
-                chargingTime: battery.chargingTime,
-                dischargingTime: battery.dischargingTime
-            };
-            console.log("Battery Info:", batteryInfo.percent, batteryInfo.plugged);
-            percentage = batteryInfo.percent;
-            pluggedIn = batteryInfo.plugged;
-
-            return { percent: percentage, pluggedIn: pluggedIn };
-        } catch (error) {
-            return "error";
-
-        }
-    }
-
-    // Call the function to get battery info
 
 
     // Team select handler
-    $('button.teamSelect').click(function() {
-        selectTeam(this.id); // call the same function
-    });
-        
-    async function selectTeam(teamID) {
-        //assign.style.display = 'none';
-        //waiting.style.display = 'block';
-        console.log("aaah");
+    $('button.teamSelect').click(function () {
+        selectedTeamProcess(this.id)});
+
+    async function selectedTeamProcess(teamID){
+
+        if (!teamID) return;
+
         percentage = 0;
         pluggedIn = false;
         console.log(navigator.getBattery());
-        // const battery = await navigator.getBattery();
-        
         try {
             const battery = await navigator.getBattery();
             const batteryInfo = {
@@ -85,23 +40,21 @@ $(document).ready(function () {
             pluggedIn = batteryInfo.plugged;
         } catch (error) {
             return "error";
-
         }
 
         // emit scoutSelect event with the id of the button clicked
-        if (this.id != 'deselect') {
-
+        if (teamID  != 'deselect') {
 
             // deselect the current one, and select the new one
             socket.emit('scoutSelect', { type: selectedTeam, action: 'deselect' })
-            socket.emit('scoutSelect', { type: this.id, scoutID: $('#scoutID').val(), action: 'select', batteryP: percentage, batteryPlug: pluggedIn });
+            socket.emit('scoutSelect', { type: teamID, scoutID: $('#scoutID').val(), action: 'select', batteryP: percentage, batteryPlug: pluggedIn });
             // show the waiting message
             waiting.style.display = 'block';
-            team_text.text(this.id);
-            selectedTeam = this.id;
+            team_text.text(teamID);
+            selectedTeam = teamID ;
             console.log(selectedTeam);
 
-            if (this.id.includes('red')) {
+            if (teamID.includes('red')) {
                 $('.color-fade').css('background-color', '#c93434');
                 $('tbody tr:last-of-type').css('border-bottom-color', '#c93434');
             } else {
@@ -115,7 +68,7 @@ $(document).ready(function () {
             $('tbody tr:last-of-type').css('border-bottom-color', '#663399');
             socket.emit('scoutSelect', { type: selectedTeam, action: 'deselect' });
         }
-    };
+    }
 
     // When another scouter clicks a button, disable it
     socket.on('scoutSelect', function (data) {
@@ -127,6 +80,7 @@ $(document).ready(function () {
         }
     });
 
+    
 
     // When the mega scout gives the go ahead, start the match
     socket.on('scoutAssign', function (data) {
@@ -174,40 +128,5 @@ $(document).ready(function () {
         trigger: 'click',
         maxWidth: 'none',
     });
-
-
-    /*
-    const keysPressed = {};
-    // Keyboard shortcuts
-    $(document).on('keydown', function(e) {
-        // Skip if the focus is in a text input, textarea, or contenteditable element
-        if ($(e.target).is('input, textarea, [contenteditable="true"]')) {
-            return;
-        }
-        console.log(e.which);
-    
-        if (!keysPressed[e.which]) {
-            keysPressed[e.which] = true;
-            switch (e.key) {
-                case '4':
-                    $('#coralL4Inc').click();
-                    break;
-                case '3':
-                    $('#coralL3Inc').click();
-                    break;
-                case '2':
-                    $('#coralL2Inc').click();
-                    break;
-                case '1':
-                    $('#coralL1Inc').click();
-                    break;
-            }
-        }
-    });
-    
-    $(document).on('keyup', function (e) {
-        keysPressed[e.which] = false;
-    });
-    */
 
 });
