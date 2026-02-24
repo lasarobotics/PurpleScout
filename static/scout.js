@@ -18,13 +18,22 @@ $(document).ready(function () {
         alert('Button was clicked!');
     }
 
-    var teamID = $('#cookieTeamNum').text();
-    console.log(teamID);
-    document.getElementById(teamID).buttonClick();
-    document.getElementById(teamID).addEventListener('click', handleClick);
-    var myButtonElement = document.getElementById(teamID);
-    console.log(myButtonElement)
-    myButtonElement.click();
+    var teamID = $('#cookieTeamNum').text()
+
+    // var myButtonElement = null
+
+    if (teamID != null){
+        console.log(teamID);
+        var $btn = $('#' + teamID);
+        $btn.trigger('click');
+        console.log($btn);
+    }
+    // document.getElementById(teamID).buttonClick();
+    
+    // var myButtonElement = document.getElementById(teamID);
+    // // myButtonElement.addEventListener('click', handleClick);
+    // console.log(myButtonElement)
+    // myButtonElement.click();
 
     async function getBatteryInfo() {
         try {
@@ -50,7 +59,11 @@ $(document).ready(function () {
 
 
     // Team select handler
-    $('button.teamSelect').click(async function buttonClick() {
+    $('button.teamSelect').click(function() {
+        selectTeam(this.id); // call the same function
+    });
+        
+    async function selectTeam(teamID) {
         //assign.style.display = 'none';
         //waiting.style.display = 'block';
         console.log("aaah");
@@ -102,7 +115,7 @@ $(document).ready(function () {
             $('tbody tr:last-of-type').css('border-bottom-color', '#663399');
             socket.emit('scoutSelect', { type: selectedTeam, action: 'deselect' });
         }
-    });
+    };
 
     // When another scouter clicks a button, disable it
     socket.on('scoutSelect', function (data) {
@@ -155,7 +168,7 @@ $(document).ready(function () {
         placement: 'top',
     });
     tippy('#info', {
-        content: document.getElementById('infoTooltip').innerHTML,
+        // content: document.getElementById('infoTooltip').innerHTML,
         placement: 'top',
         allowHTML: true,
         trigger: 'click',
