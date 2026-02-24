@@ -119,10 +119,20 @@ def megaScout():
 @app.route('/api/mega/current')
 def api_mega_current():
     print("Check before")
+    
+    # Get optional matchNum filter from query parameters
+    matchNum = request.args.get('matchNum')
+    
     try:
         conn = sqlite3.connect(app.config['DB_PATH'])
         cursor = conn.cursor()
-        cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} ORDER BY timestamp DESC")
+        
+        # Build query with optional matchNum filter
+        if matchNum:
+            cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ? ORDER BY timestamp DESC", (matchNum,))
+        else:
+            cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} ORDER BY timestamp DESC")
+        
         rows = cursor.fetchall()
         conn.close()
         out = []
@@ -143,12 +153,22 @@ def api_mega_current():
 @app.route('/api/mega/old')
 def api_mega_old():
     print("Check before")
+    
+    # Get optional matchNum filter from query parameters
+    matchNum = request.args.get('matchNum')
+    
     try:
         if not os.path.exists(app.config['DB_OLD_PATH']):
             return json.dumps([]), 200, {'Content-Type': 'application/json'}
         conn = sqlite3.connect(app.config['DB_OLD_PATH'])
         cursor = conn.cursor()
-        cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} ORDER BY timestamp DESC")
+        
+        # Build query with optional matchNum filter
+        if matchNum:
+            cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ? ORDER BY timestamp DESC", (matchNum,))
+        else:
+            cursor.execute(f"SELECT timestamp, matchNum, teamNum, scoutID, data FROM {app.config['SCOUT_TABLE']} ORDER BY timestamp DESC")
+        
         rows = cursor.fetchall()
         conn.close()
         out = []
