@@ -82,14 +82,28 @@ def scout():
     form = app.config['SCOUT_FORM']()
     
     account_info = request.cookies.get("acc_info")
+    tInfo = request.cookies.get("team_info")
+
     if account_info is not None:
         cookie_values = account_info
     else:
         cookie_values = None
 
+
+    teamInfoSend = ""
+    if tInfo is not None:
+        team_info = int(tInfo)
+        if team_info < 4:
+            teamInfoSend = "red"+str(team_info)
+        else:
+            teamInfoSend = "blue"+str(int(team_info)-3)
+    else:
+        teamInfoSend = None
+
     return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html',
                            form=form, 
-                           cookie_values=cookie_values)
+                           cookie_values=cookie_values,
+                           teamInfo=teamInfoSend)
 
 # Flask Route: Super Scout
 @app.route('/superScout.html')
@@ -218,7 +232,9 @@ def scoutSubmit():
         print(list(data.keys()))
 
         site.set_cookie("acc_info", str(scoutID))
+        site.set_cookie("team_info", str(teamNum))
         print(f"scout: {scoutID}")
+        print(f"team: {teamNum}")
 
         
         socketio.emit('scoutSubmit', data)
@@ -443,23 +459,26 @@ def handle_setCurrentMatch(data):
 @socketio.on('matchReset')
 def handle_matchReset(data):
     print('received matchReset')
-    matchNum = data['matchNum']
-    
-    # Check if match is complete (6 scouts submitted)
-    conn = sqlite3.connect(app.config['DB_PATH'])
-    cursor = conn.cursor()
-    cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
-    count = cursor.fetchone()[0]
-    print(f"Match {matchNum} has {count} scout submissions.")
-    conn.close()
-
-    print(count)
-    if count % 1 == 0:
-        print(f"Match {int(matchNum) -1} complete, sending data.")
-        status = updateSheet.send_match(int(matchNum)-1)
-        print(status)
-    
     emit('matchReset', broadcast=True)
+    matchNum = data['matchNum']
+    try:
+        # Check if match is complete (6 scouts submitted)
+        conn = sqlite3.connect(app.config['DB_PATH'])
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT COUNT(*) FROM {app.config['SCOUT_TABLE']} WHERE matchNum = ?", (matchNum,))
+        count = cursor.fetchone()[0]
+        print(f"Match {matchNum} has {count} scout submissions.")
+        conn.close()
+
+        print(count)
+        if count % 1 == 0:
+            print(f"Match {int(matchNum) -1} complete, sending data.")
+            status = updateSheet.send_match(int(matchNum))
+            print(status)
+    except:
+        print("No WiFi-- try again later!")
+        
+    
 
 @socketio.on('message')
 def handle_message(data):
