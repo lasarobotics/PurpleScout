@@ -63,9 +63,16 @@ function renderTables(currentList, oldList) {
 
 async function fetchAndRender() {
     try {
+        // Get the matchNum from the input field
+        const matchNum = $('#matchNum').val();
+        
+        // Build the URL with optional matchNum parameter
+        const currentUrl = matchNum ? `/api/mega/current?matchNum=${encodeURIComponent(matchNum)}` : '/api/mega/current';
+        const oldUrl = matchNum ? `/api/mega/old?matchNum=${encodeURIComponent(matchNum)}` : '/api/mega/old';
+        
         const [curRes, oldRes] = await Promise.all([
-            fetch('/api/mega/current'),
-            fetch('/api/mega/old')
+            fetch(currentUrl),
+            fetch(oldUrl)
         ]);
         const curData = await curRes.json();
         const oldData = await oldRes.json();
@@ -87,6 +94,8 @@ $('#sendInfo').prop('disabled', true);
 // Set current match when matchNum changes
 $('#matchNum').on('input', function() {
     socket.emit('setCurrentMatch', {matchNum: $(this).val()});
+    // Refresh the database tables with the new matchNum filter
+    fetchAndRender();
 });
 
 

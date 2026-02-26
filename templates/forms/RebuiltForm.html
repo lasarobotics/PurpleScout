@@ -3,371 +3,405 @@
 
 <link rel="stylesheet" type="text/css" href="static/rebuilt_style.css">
 
-<div class = "horizontalBlock">
-<div class="container-fluid px-2 rebuiltShell">
-    <div>
-        <br>
-    </div>
-    <!-- TOP SECTION: AUTO -->
-    <div class="rebuiltCol" style="margin-bottom: 20px; width: 100%; display: flex; justify-content: center;">
-        <table class="tbl rebuiltCard" style="width: 100%; max-width: 800px; margin: 0 auto;">
-            <thead>
-                <tr>
-                    <th class="a color-fade rebuiltHeader" colspan="3">AUTO</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="3">
-                        <div class="stepper" data-target="autoShots" style="justify-content: center; padding: 5px 0;">
-                            <span style="font-weight: 800; color: #f3f4f6; margin-right: 15px;">Shots Missed</span>
-                            <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
-                                aria-label="Auto shots minus one">-</button>
-                            {{ form.autoShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
-                            <div class="stepBtnGroup" role="group" aria-label="Auto shots increment">
-                                <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
-                                <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
-                                <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
-                            </div>
-                            {{ form.autonClimb(class="inp check", id="autonClimb") }}<p>Did they do autonomous climb?</p>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="rebuiltGrid">
-
-        <!-- COLUMN 1: HEATMAP (Left) -->
-        <div class="rebuiltCol centerCol">
-            <style>
-                #heatmapContainer {
-                    width: 100%;
-                    max-width: 800px;
-                    aspect-ratio: 2 / 1;
-                    position: relative;
-                    margin: 0 auto 15px auto;
-                    background-image: url('/static/rebuilt.png');
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    border: 2px solid #333;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                }
-
-                #heatmapHeader {
-                    text-align: center;
-                    color: #fff;
-                    font-size: 20px;
-                    margin-bottom: 5px;
-                }
-            
-            </style>
-
-            <h1 id="heatmapHeader">Field Map</h1>
-            <button type="button" id="undoLastClick" id="undoclick" class="undoLast" onclick="removeLastClick()">Undo Last Click</button>
-            <!-- SVG Container for Heatmap -->
-            <div id="heatmapContainer">
-                <svg id="heatmapSvg" width="100%" height="100%" viewBox="0 0 800 400"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                            <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:0.6" />
-                            <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:0" />
-                        </radialGradient>
-                    </defs>
-                </svg>
-            </div>
-
-            <input type="hidden" name="heatmap_data" id="heatmap_data">
-            <input type="hidden" name="totalPositions" id="totalPositions">
-            <input type="hidden" name="totalPositions" id="heatmap_frequencies">
+<div class="horizontalBlock">
+    <div class="container-fluid px-2 rebuiltShell">
+        <div>
+            <br>
         </div>
-
-        <!-- COLUMN 2: TELEOP (Right) -->
-        <div class="rebuiltCol rebuiltColRight">
-            <!-- TELEOP -->
-            <table class="tbl rebuiltCard">
+        <!-- TOP SECTION: AUTO -->
+        <div class="rebuiltCol" style="margin-bottom: 20px; width: 100%; display: flex; justify-content: center;">
+            <table class="tbl rebuiltCard" style="width: 100%; max-width: 800px; margin: 0 auto;">
                 <thead>
                     <tr>
-                        <th class="a color-fade rebuiltHeader" colspan="3">TELEOP</th>
+                        <th class="a color-fade rebuiltHeader" colspan="4">AUTO</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Shots Missed</th>
-                        <th></th>
-                        <td>
-                            <div class="stepper" data-target="teleopShots">
+                        <td colspan="3">
+                            <div class="stepper" data-target="autoShots"
+                                style="justify-content: center; padding: 5px 0;">
+                                <span style="font-weight: 800; color: #f3f4f6; margin-right: 15px;">Shots Missed</span>
                                 <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
-                                    aria-label="Teleop shots minus one">-</button>
-                                {{ form.teleopShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
-                                <div class="stepBtnGroup" role="group" aria-label="Teleop shots increment">
+                                    aria-label="Auto shots minus one">-</button>
+                                {{ form.autoShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                <div class="stepBtnGroup" role="group" aria-label="Auto shots increment">
                                     <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
                                     <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
                                     <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
                                 </div>
+                                <div>
+                                    <label for="autonClimb"
+                                        style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer; margin-left: 40px;">
+                                        <b>Climb?</b>
+                                        {{ form.autonClimb(class="inp check", id="autonClimb", style="width: 24px;
+                                        height: 24px;") }}
+                                    </label>
+                                </div>
                             </div>
                         </td>
-                    </tr>
-
-                    <tr id="passTr">
-                        <th colspan="2">Passes Made (not # balls)</th>
                         <td>
-                            <div class="miniStepper" data-target="passes">
-                                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
-                                {{ form.passes(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*", value=0) }}
-                                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
-                            </div>
+
                         </td>
                     </tr>
-
-                    <tr id="defenseTr">
-                        <th colspan="2">Defense Played?</th>
-                        <td>{{ form.teleopDefense(class="inp check") }}</td>
-                    </tr>
-
-                    <tr id="stopsTr">
-                        <th colspan="2">Successful Stops from Defense</th>
-                        <td>
-                            <div class="miniStepper" data-target="successfulStops">
-                                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
-                                {{ form.successfulStops(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
-                                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <!-- ROW 2: ENDGAME & ERRORS -->
-    <div class="rebuiltGrid" style="margin-top: 25px;">
-        <!-- FIELD MAP (Left) - Replaces Endgame -->
-        <div class="rebuiltCol">
-            <div class="fieldMapCard">
-                <div class="fieldMapTop">
-                    <div class="fieldMapTopLeft">
-                        <span class="fieldMapHint">Tap/click climbing position.</span>
-                        <div class="fieldMapMeta">
-                            <span class="fieldMapPill">Count: <span id="fieldMapCount">0</span></span>
-                            <span class="fieldMapPill">Last: <span id="fieldMapLast">none</span></span>
-                        </div>
-                    </div>
-                    <div class="fieldMapActions" role="group" aria-label="Field map actions">
-                        <button type="button" id="fieldClearBtn" class="miniBtn miniBtn--danger"
-                            title="Clear all clicks">Clear</button>
-                    </div>
+        <div class="rebuiltGrid">
+
+            <!-- COLUMN 1: HEATMAP (Left) -->
+            <div class="rebuiltCol centerCol">
+                <style>
+                    #heatmapContainer {
+                        width: 100%;
+                        max-width: 800px;
+                        aspect-ratio: 2 / 1;
+                        position: relative;
+                        margin: 0 auto 15px auto;
+                        background-image: url('/static/rebuilt.png');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        border: 2px solid #333;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    }
+
+                    #heatmapHeader {
+                        text-align: center;
+                        color: #fff;
+                        font-size: 20px;
+                        margin-bottom: 5px;
+                    }
+                </style>
+
+                <h1 id="heatmapHeader">Field Map</h1>
+                <button type="button" id="undoLastClick" id="undoclick" class="undoLast"
+                    onclick="removeLastClick()">Undo Last Click</button>
+                <!-- SVG Container for Heatmap -->
+                <div id="heatmapContainer">
+                    <svg id="heatmapSvg" width="100%" height="100%" viewBox="0 0 800 400"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                <stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+                    </svg>
                 </div>
-                
+
+                <input type="hidden" name="heatmap_data" id="heatmap_data">
+                <input type="hidden" name="totalPositions" id="totalPositions">
+                <input type="hidden" name="totalPositions" id="heatmap_frequencies">
+            </div>
+
+            <!-- COLUMN 2: TELEOP (Right) -->
+            <div class="rebuiltCol rebuiltColRight">
+                <!-- TELEOP -->
+                <table class="tbl rebuiltCard">
+                    <thead>
+                        <tr>
+                            <th class="a color-fade rebuiltHeader" colspan="3">TELEOP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Shots Missed</th>
+                            <th></th>
+                            <td>
+                                <div class="stepper" data-target="teleopShots">
+                                    <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
+                                        aria-label="Teleop shots minus one">-</button>
+                                    {{ form.teleopShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                    <div class="stepBtnGroup" role="group" aria-label="Teleop shots increment">
+                                        <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
+                                        <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
+                                        <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr id="passTr">
+                            <th colspan="2">Passes Made (not # balls)</th>
+                            <td>
+                                <div class="miniStepper" data-target="passes">
+                                    <button type="button" class="miniStepBtn miniStepBtn--neg"
+                                        data-delta="-1">-</button>
+                                    {{ form.passes(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*",
+                                    value=0) }}
+                                    <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr id="defenseTr">
+                            <th colspan="2">Defense Played?</th>
+                            <td>{{ form.teleopDefense(class="inp check") }}</td>
+                        </tr>
+
+                        <tr id="stopsTr">
+                            <th colspan="2">Successful Stops from Defense</th>
+                            <td>
+                                <div class="miniStepper" data-target="successfulStops">
+                                    <button type="button" class="miniStepBtn miniStepBtn--neg"
+                                        data-delta="-1">-</button>
+                                    {{ form.successfulStops(class="inp miniStepInput", inputmode="numeric",
+                                    pattern="[0-9]*") }}
+                                    <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                                </div>
+                            </td>
+                        </tr>
 
 
-                <div class="fieldMapWrap" id="fieldMapWrap" aria-label="Field map">
-                    <img id="rebuiltFieldImg" class="fieldMapImg" src="/static/tower.png" alt="2026 REBUILT field map">
-                    <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
-                </div>
-                {{ form.climbLocation(class="inp hidden") }}
-                <input type="hidden" name="climb_map_data" id="climb_map_data">
-                <div class="fieldMapNote">
-                    <span class="muted">Clicks outside valid areas are ignored.</span>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <!-- ERRORS (Right) -->
-        <div class="rebuiltCol">
-            <table class="tbl rebuiltCard" style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th class="a color-fade rebuiltHeader" colspan="2">ERRORS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="foulTr">
-                        <th>PHouls</th>
-                        <td>
-                            <div class="miniStepper" data-target="fouls">
-                                <button type="button" class="miniStepBtn miniStepBtn--neg" data-delta="-1">-</button>
-                                {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
-                                <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+        <!-- ROW 2: ENDGAME & ERRORS -->
+        <div class="rebuiltGrid" style="margin-top: 25px;">
+            <!-- FIELD MAP (Left) - Replaces Endgame -->
+            <div class="rebuiltCol">
+                <div class="fieldMapCard">
+                    <div class="fieldMapTop">
+                        <div class="fieldMapTopLeft">
+                            <span class="fieldMapHint">Tap/click climbing position.</span>
+                            <div class="fieldMapMeta">
+                                <span class="fieldMapPill">Count: <span id="fieldMapCount">0</span></span>
+                                <span class="fieldMapPill">Last: <span id="fieldMapLast">none</span></span>
                             </div>
-                        </td>
-                    </tr>
-                    <tr id="brokenTr">
-                        <th>PHailure</th>
-                        <td>
-                            {{ form.failure(class="inp check", id="failureCheck") }}
-                            <div id="failureDetailsContainer" style="display: none; margin-top: 5px;">
-                                {{ form.failureDetails(class="inp", placeholder="What failed?", style="width: 100%;") }}
-                            </div>
-                        </td>
-                    </tr>
+                        </div>
+                        <div class="fieldMapActions" role="group" aria-label="Field map actions">
+                            <button type="button" id="fieldClearBtn" class="miniBtn miniBtn--danger"
+                                title="Clear all clicks">Clear</button>
+                        </div>
+                    </div>
 
-                    <tr>
-                        <th colspan="3">Climb Timer</th>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="padding: 10px; text-align: center;">
-                            <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
-                            <span id="climbTimer" style="font-size: 20px; font-weight: bold; margin: 0 15px;">0.0s</span>
-                            <label style="margin-left: 15px;">
-                                {{ form.climbFailed(class="inp check") }}
-                                Failed
-                            </label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+
+                    <div class="fieldMapWrap" id="fieldMapWrap" aria-label="Field map">
+                        <img id="rebuiltFieldImg" class="fieldMapImg" src="/static/tower.png"
+                            alt="2026 REBUILT field map">
+                        <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
+                    </div>
+                    {{ form.climbLocation(class="inp hidden") }}
+                    <input type="hidden" name="climb_map_data" id="climb_map_data">
+                    <div class="fieldMapNote">
+                        <span class="muted">Clicks outside valid areas are ignored.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ERRORS (Right) -->
+            <div class="rebuiltCol">
+                <table class="tbl rebuiltCard" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="a color-fade rebuiltHeader" colspan="2">ERRORS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="foulTr">
+                            <th>PHouls</th>
+                            <td>
+                                <div class="miniStepper" data-target="fouls">
+                                    <button type="button" class="miniStepBtn miniStepBtn--neg"
+                                        data-delta="-1">-</button>
+                                    {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
+                                    <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="brokenTr">
+                            <th>PHailure</th>
+                            <td>
+                                {{ form.failure(class="inp check", id="failureCheck") }}
+                                <div id="failureDetailsContainer" style="display: none; margin-top: 5px;">
+                                    {{ form.failureDetails(class="inp", placeholder="What failed?", style="width:
+                                    100%;") }}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="3">Climb Timer</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="padding: 10px; text-align: center;">
+                                <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
+                                <span id="climbTimer"
+                                    style="font-size: 20px; font-weight: bold; margin: 0 15px;">0.0s</span>
+                                <label style="margin-left: 15px;">
+                                    {{ form.climbFailed(class="inp check") }}
+                                    Failed
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <input type="hidden" name="climbTime" id="climbTime">
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const failureCheck = document.getElementById('failureCheck');
+                const failureDetailsContainer = document.getElementById('failureDetailsContainer');
+
+                function toggleFailureDetails() {
+                    if (failureCheck.checked) {
+                        failureDetailsContainer.style.display = 'block';
+                    } else {
+                        failureDetailsContainer.style.display = 'none';
+                    }
+                }
+
+                if (failureCheck) {
+                    failureCheck.addEventListener('change', toggleFailureDetails);
+                    toggleFailureDetails();
+                }
+            });
+        </script>
+
+        <!-- ROW 3: COMMENTS -->
+        <div class="center-row" style="margin-top: 25px; display: flex; justify-content: center; width: 100%;">
+            <div class="rebuiltCol" style="width: 100%; max-width: 1220px;">
+                <table class="tbl rebuiltCard" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="a color-fade rebuiltHeader">COMMENTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pad10">
+                                {{ form.info(class="info compactInfo", placeholder="Notes...") }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <input type="hidden" name="climbTime" id="climbTime">
-
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const failureCheck = document.getElementById('failureCheck');
-            const failureDetailsContainer = document.getElementById('failureDetailsContainer');
+        window.addEventListener('load', function () {
+            var svg = document.getElementById('heatmapSvg');
+            var bgDataURL = "";
 
-            function toggleFailureDetails() {
-                if (failureCheck.checked) {
-                    failureDetailsContainer.style.display = 'block';
-                } else {
-                    failureDetailsContainer.style.display = 'none';
-                }
+            // Pre-load the background image as Base64 to embed in the SVG
+            var img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.onload = function () {
+                var canvas = document.createElement("canvas");
+                canvas.width = img.width;
+                canvas.height = img.height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+                bgDataURL = canvas.toDataURL("image/png");
+            };
+            img.src = "/static/rebuilt.png";
+
+            // CLICK HANDLER FOR NEW FIELD MAP (Single Click)
+            var fieldMapOverlay = document.getElementById('fieldMapOverlay');
+            var fieldMapCount = document.getElementById('fieldMapCount');
+            var fieldMapLast = document.getElementById('fieldMapLast');
+            var climbInput = document.querySelector('input[name="climbLocation"]');
+            var fieldUndoBtn = document.getElementById('fieldUndoBtn');
+            var fieldClearBtn = document.getElementById('fieldClearBtn');
+
+            function updateFieldMap(x, y) {
+                fieldMapOverlay.innerHTML = '';
+
+                var dot = document.createElement('div');
+                dot.className = 'fieldMapDot';
+                dot.style.left = x + 'px';
+                dot.style.top = y + 'px';
+                fieldMapOverlay.appendChild(dot);
+
+                climbInput.value = Math.round(x) + ',' + Math.round(y);
+                fieldMapCount.textContent = '1';
+                fieldMapLast.textContent = Math.round(x) + ',' + Math.round(y);
             }
 
-            if (failureCheck) {
-                failureCheck.addEventListener('change', toggleFailureDetails);
-                toggleFailureDetails();
+            fieldMapOverlay.addEventListener('mousedown', function (ev) {
+                var rect = fieldMapOverlay.getBoundingClientRect();
+                var x = ev.clientX - rect.left;
+                var y = ev.clientY - rect.top;
+                updateFieldMap(x, y);
+            });
+
+            if (fieldUndoBtn) {
+                fieldUndoBtn.addEventListener('click', function () {
+                    fieldMapOverlay.innerHTML = '';
+                    climbInput.value = '';
+                    fieldMapCount.textContent = '0';
+                    fieldMapLast.textContent = 'none';
+                });
+            }
+
+            if (fieldClearBtn) {
+                fieldClearBtn.addEventListener('click', function () {
+                    fieldMapOverlay.innerHTML = '';
+                    climbInput.value = '';
+                    fieldMapCount.textContent = '0';
+                    fieldMapLast.textContent = 'none';
+                });
+            }
+
+
+
+            // Simplify submission: Sync capture on submit
+            var formSubmit = document.querySelector('form');
+            formSubmit.addEventListener('submit', function () {
+                var points = svg.innerHTML;
+                var imageHref = bgDataURL || "/static/rebuilt.png";
+                var finalSvg = '<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">' +
+                    '<image href="' + imageHref + '" width="800" height="400" preserveAspectRatio="xMidYMid meet"/>' +
+                    points +
+                    '</svg>';
+                document.getElementById('heatmap_data').value = finalSvg;
+
+                // Climbing map (new)
+                var climbPoints = fieldMapOverlay.innerHTML;
+                if (climbPoints) {
+                    var svgPoints = "";
+                    var dots = fieldMapOverlay.querySelectorAll('.fieldMapDot');
+                    dots.forEach(function (dot) {
+                        var x = parseFloat(dot.style.left);
+                        var y = parseFloat(dot.style.top);
+                        svgPoints += '<circle cx="' + x + '" cy="' + y + '" r="6" fill="#7c3aed" stroke="white" stroke-width="2"/>';
+                    });
+
+                    // var climbSvg = '<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">' +
+                    //     '<image href="/static/tower.png" width="400" height="500" preserveAspectRatio="xMidYMid meet"/>' +
+                    //     svgPoints +
+                    //     '</svg>';
+                    //document.getElementById('climb_map_data').value = climbSvg;
+                }
+                document.getElementById('climbTime').value = document.getElementById('climbTimer').textContent;
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkbox = document.querySelector('.inp.check');
+            const button = document.getElementById('climbStartBtn');
+
+            if (checkbox && button) {
+                checkbox.addEventListener('change', function () {
+                    button.disabled = checkbox.checked;
+                });
+
+                // Initialize button state on page load
+                button.disabled = checkbox.checked;
+                document.getElementById("climbTimer").innerHTML = "0.0s";
             }
         });
     </script>
-
-    <!-- ROW 3: COMMENTS -->
-    <div class="center-row" style="margin-top: 25px; display: flex; justify-content: center; width: 100%;">
-        <div class="rebuiltCol" style="width: 100%; max-width: 1220px;">
-            <table class="tbl rebuiltCard" style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th class="a color-fade rebuiltHeader">COMMENTS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="pad10">
-                            {{ form.info(class="info compactInfo", placeholder="Notes...") }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<script>
-    window.addEventListener('load', function () {
-        var svg = document.getElementById('heatmapSvg');
-        var bgDataURL = "";
-
-        // Pre-load the background image as Base64 to embed in the SVG
-        var img = new Image();
-        img.crossOrigin = "Anonymous";
-        img.onload = function () {
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            bgDataURL = canvas.toDataURL("image/png");
-        };
-        img.src = "/static/rebuilt.png";
-
-        // CLICK HANDLER FOR NEW FIELD MAP (Single Click)
-        var fieldMapOverlay = document.getElementById('fieldMapOverlay');
-        var fieldMapCount = document.getElementById('fieldMapCount');
-        var fieldMapLast = document.getElementById('fieldMapLast');
-        var climbInput = document.querySelector('input[name="climbLocation"]');
-        var fieldUndoBtn = document.getElementById('fieldUndoBtn');
-        var fieldClearBtn = document.getElementById('fieldClearBtn');
-
-        function updateFieldMap(x, y) {
-            fieldMapOverlay.innerHTML = '';
-
-            var dot = document.createElement('div');
-            dot.className = 'fieldMapDot';
-            dot.style.left = x + 'px';
-            dot.style.top = y + 'px';
-            fieldMapOverlay.appendChild(dot);
-
-            climbInput.value = Math.round(x) + ',' + Math.round(y);
-            fieldMapCount.textContent = '1';
-            fieldMapLast.textContent = Math.round(x) + ',' + Math.round(y);
-        }
-
-        fieldMapOverlay.addEventListener('mousedown', function (ev) {
-            var rect = fieldMapOverlay.getBoundingClientRect();
-            var x = ev.clientX - rect.left;
-            var y = ev.clientY - rect.top;
-            updateFieldMap(x, y);
-        });
-
-        if (fieldUndoBtn) {
-            fieldUndoBtn.addEventListener('click', function () {
-                fieldMapOverlay.innerHTML = '';
-                climbInput.value = '';
-                fieldMapCount.textContent = '0';
-                fieldMapLast.textContent = 'none';
-            });
-        }
-
-        if (fieldClearBtn) {
-            fieldClearBtn.addEventListener('click', function () {
-                fieldMapOverlay.innerHTML = '';
-                climbInput.value = '';
-                fieldMapCount.textContent = '0';
-                fieldMapLast.textContent = 'none';
-            });
-        }
-
-
-
-        // Simplify submission: Sync capture on submit
-        var formSubmit = document.querySelector('form');
-        formSubmit.addEventListener('submit', function () {
-            var points = svg.innerHTML;
-            var imageHref = bgDataURL || "/static/rebuilt.png";
-            var finalSvg = '<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">' +
-                '<image href="' + imageHref + '" width="800" height="400" preserveAspectRatio="xMidYMid meet"/>' +
-                points +
-                '</svg>';
-            document.getElementById('heatmap_data').value = finalSvg;
-
-            // Climbing map (new)
-            var climbPoints = fieldMapOverlay.innerHTML;
-            if (climbPoints) {
-                var svgPoints = "";
-                var dots = fieldMapOverlay.querySelectorAll('.fieldMapDot');
-                dots.forEach(function (dot) {
-                    var x = parseFloat(dot.style.left);
-                    var y = parseFloat(dot.style.top);
-                    svgPoints += '<circle cx="' + x + '" cy="' + y + '" r="6" fill="#7c3aed" stroke="white" stroke-width="2"/>';
-                });
-
-                // var climbSvg = '<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">' +
-                //     '<image href="/static/tower.png" width="400" height="500" preserveAspectRatio="xMidYMid meet"/>' +
-                //     svgPoints +
-                //     '</svg>';
-                //document.getElementById('climb_map_data').value = climbSvg;
-            }
-            document.getElementById('climbTime').value = document.getElementById('climbTimer').textContent;
-        });
-    });
-</script>
-<script src="static/rebuilt_script.js"></script>
+    <script src="static/rebuilt_script.js"></script>
 </div>
 
 {% endblock %}
