@@ -10,17 +10,25 @@ $(document).ready(function () {
 
     var selectedTeam = null;
 
-    var teamID = $('#cookieTeamNum').text().trim(); 
-    if (teamID) {
+    var teamID = $('#cookieTeamNum').text().trim();
+    console.log("Team ID from cookie:", teamID);
+    if (teamID != 'None' && teamID != "") {
         selectedTeamProcess(teamID);
+    } else {
+        console.log("No team ID cookie found, starting with no team selected.");
+        team_text.text('None');
+        $('.color-fade').css('background-color', '#663399');
+        $('tbody tr:last-of-type').css('border-bottom-color', '#663399');
+        socket.emit('scoutSelect', { type: selectedTeam, action: 'deselect' });
     }
 
 
     // Team select handler
     $('button.teamSelect').click(function () {
-        selectedTeamProcess(this.id)});
+        selectedTeamProcess(this.id)
+    });
 
-    async function selectedTeamProcess(teamID){
+    async function selectedTeamProcess(teamID) {
 
         if (!teamID) return;
 
@@ -43,7 +51,7 @@ $(document).ready(function () {
         }
 
         // emit scoutSelect event with the id of the button clicked
-        if (teamID  != 'deselect') {
+        if (teamID != 'deselect') {
 
             // deselect the current one, and select the new one
             socket.emit('scoutSelect', { type: selectedTeam, action: 'deselect' })
@@ -51,7 +59,7 @@ $(document).ready(function () {
             // show the waiting message
             waiting.style.display = 'block';
             team_text.text(teamID);
-            selectedTeam = teamID ;
+            selectedTeam = teamID;
             console.log(selectedTeam);
 
             if (teamID.includes('red')) {
@@ -80,7 +88,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
 
     // When the mega scout gives the go ahead, start the match
     socket.on('scoutAssign', function (data) {
@@ -92,7 +100,7 @@ $(document).ready(function () {
         $('#matchNum').val(data.matchNum);
 
         // scroll down to form
-        document.querySelector('div.horizontalBlock').scrollIntoView({
+        document.querySelector('div.rebuiltBlock').scrollIntoView({
             behavior: 'smooth',
             block: 'center',
         });

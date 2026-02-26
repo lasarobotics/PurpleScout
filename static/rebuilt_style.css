@@ -111,6 +111,9 @@
       background: rgba(239, 68, 68, 0.15);
   }
 
+  .stepBtn--pos {
+      background: rgba(239, 68, 68, 0.15);
+  }
   .stepBtn:hover {
       border-color: rgba(124, 58, 237, 0.35);
       background: rgba(124, 58, 237, 0.23);
@@ -373,4 +376,8 @@
 
   th {
       border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  circle {
+    color:yellow;
   }
