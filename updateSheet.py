@@ -2,7 +2,7 @@ import sqlite3, requests, json
 import pandas as pd
 
 
-url="https://script.google.com/macros/s/AKfycbxs5lt44hS5nY7VmS0Xbb0IkTzzKzwAUsWoOvThcGsqH3wuW1fn4V0Q4Jc-DRcu2Ou5CQ/exec"
+url="https://script.google.com/macros/s/AKfycbzX_hR5dCfgLu6m_W4bjP1kbAcTgurJU4YbFwkTUG8Nz97Pnab126vOcayuxz5aJ--S-g/exec"
 def get_data(min, max):
     # return the rows whose matchNum is within the range [min, max] inclusive
 

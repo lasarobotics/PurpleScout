@@ -99,6 +99,8 @@ def scout():
     else:
         teamInfoSend = None
 
+    print(teamInfoSend)
+
     return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html',
                            form=form, 
                            cookie_values=cookie_values,
@@ -206,6 +208,8 @@ def scoutSubmit():
         data = {k:v for k, v in data.items() if k!= "climb_map_data"}
         print(data)
 
+
+
         # Store scouting data locally in a CSV file (BACKUP)
         with open('data/scouting_dat.csv', 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=list(data.keys()))
@@ -223,10 +227,30 @@ def scoutSubmit():
         matchNum = data['matchNum']
         teamNum = data['teamNum']
 
+        teamNumUpdated = ""
+
         print(list(data.keys()))
 
+        with open('data//matchList.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if str(matchNum) == row[1]:
+                    if (str(teamNum) == row[2]):
+                        teamNumUpdated = "1"
+                    elif (str(teamNum) == row[3]):
+                        teamNumUpdated = "2"
+                    elif (str(teamNum) == row[4]):
+                        teamNumUpdated = "3"
+                    elif (str(teamNum) == row[5]):
+                        teamNumUpdated = "4"
+                    elif (str(teamNum) == row[6]):
+                        teamNumUpdated = "5"
+                    elif (str(teamNum) == row[7]):
+                        teamNumUpdated = "6"
+
         site.set_cookie("acc_info", str(scoutID))
-        site.set_cookie("team_info", str(teamNum))
+        site.set_cookie("team_info", str(teamNumUpdated))
+        print(teamNumUpdated)
         print(f"scout: {scoutID}")
         print(f"team: {teamNum}")
 
