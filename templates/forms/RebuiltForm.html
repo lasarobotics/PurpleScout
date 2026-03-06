@@ -13,35 +13,39 @@
             <table class="tbl rebuiltCard" style="width: 100%; max-width: 800px; margin: 0 auto;">
                 <thead>
                     <tr>
-                        <th class="a color-fade rebuiltHeader" colspan="4">AUTO</th>
+                        <th class="a color-fade rebuiltHeader" colspan="2">AUTO</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="3">
+                        <th>
+                            <span style="font-weight: 800; font-size:20px; color: #f3f4f6; margin-right: 15px;">Shots
+                                Missed</span>
+                        </th>
+                        <th>
+                            <span
+                                style="font-weight: 800; font-size:20px; color: #f3f4f6; margin-right: 15px;">Autonomous
+                                Climb</span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
                             <div class="stepper" data-target="autoShots"
                                 style="justify-content: center; padding: 5px 0;">
-                                <span style="font-weight: 800; color: #f3f4f6; margin-right: 15px;">Shots Missed</span>
+
                                 <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
                                     aria-label="Auto shots minus one">-</button>
                                 {{ form.autoShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
                                 <div class="stepBtnGroup" role="group" aria-label="Auto shots increment">
-                                    <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
-                                    <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
-                                    <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
-                                </div>
-                                <div>
-                                    <label for="autonClimb"
-                                        style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer; margin-left: 40px;">
-                                        <b>Climb?</b>
-                                        {{ form.autonClimb(class="inp check", id="autonClimb", style="width: 24px;
-                                        height: 24px;") }}
-                                    </label>
+                                    <button type="button" class="stepBtn" data-delta="1">+1</button>
+                                    <button type="button" class="stepBtn" data-delta="5">+5</button>
+                                    <button type="button" class="stepBtn" data-delta="10">+10</button>
                                 </div>
                             </div>
-                        </td>
-                        <td>
-
+                        </th>
+                        <th>
+                            {{ form.autonClimb(class="inp check", id="autonClimb") }}
+                        </th>
                         </td>
                     </tr>
                 </tbody>
@@ -115,9 +119,9 @@
                                         aria-label="Teleop shots minus one">-</button>
                                     {{ form.teleopShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
                                     <div class="stepBtnGroup" role="group" aria-label="Teleop shots increment">
-                                        <button type="button" class="stepBtn stepBtn--pos" data-delta="1">+1</button>
-                                        <button type="button" class="stepBtn stepBtn--pos" data-delta="5">+5</button>
-                                        <button type="button" class="stepBtn stepBtn--pos" data-delta="10">+10</button>
+                                        <button type="button" class="stepBtn" data-delta="1">+1</button>
+                                        <button type="button" class="stepBtn" data-delta="5">+5</button>
+                                        <button type="button" class="stepBtn" data-delta="10">+10</button>
                                     </div>
                                 </div>
                             </td>
@@ -202,6 +206,8 @@
                             <th class="a color-fade rebuiltHeader" colspan="2">ERRORS</th>
                         </tr>
                     </thead>
+
+
                     <tbody>
                         <tr id="foulTr">
                             <th>PHouls</th>
@@ -212,6 +218,8 @@
                                     {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
                                     <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
                                 </div>
+
+
                             </td>
                         </tr>
                         <tr id="brokenTr">
@@ -226,18 +234,22 @@
                         </tr>
 
                         <tr>
-                            <th colspan="3">Climb Timer</th>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="padding: 10px; text-align: center;">
+                            <th colspan="1">Climb Timer</th>
+                            <th>
                                 <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
                                 <span id="climbTimer"
-                                    style="font-size: 20px; font-weight: bold; margin: 0 15px;">0.0s</span>
-                                <label style="margin-left: 15px;">
+                                    style="font-size: 18px; font-weight: bold; margin: 0 15px;">0.0s</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="1">Climb Failed?</th>
+                            <th>
+                                <label>
                                     {{ form.climbFailed(class="inp check") }}
-                                    Failed
                                 </label>
-                            </td>
+                            </th>
+                        </tr>
+                        <tr>
                         </tr>
                     </tbody>
                 </table>
@@ -247,8 +259,12 @@
         <input type="hidden" name="climbTime" id="climbTime">
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            function disableClimb() {
                 const failureCheck = document.getElementById('failureCheck');
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+
+                console.log(failureCheck)
                 const failureDetailsContainer = document.getElementById('failureDetailsContainer');
 
                 function toggleFailureDetails() {
@@ -384,21 +400,6 @@
                 }
                 document.getElementById('climbTime').value = document.getElementById('climbTimer').textContent;
             });
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const checkbox = document.querySelector('.inp.check');
-            const button = document.getElementById('climbStartBtn');
-
-            if (checkbox && button) {
-                checkbox.addEventListener('change', function () {
-                    button.disabled = checkbox.checked;
-                });
-
-                // Initialize button state on page load
-                button.disabled = checkbox.checked;
-                document.getElementById("climbTimer").innerHTML = "0.0s";
-            }
         });
     </script>
     <script src="static/rebuilt_script.js"></script>

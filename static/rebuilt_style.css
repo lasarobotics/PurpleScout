@@ -111,6 +111,9 @@
       background: rgba(239, 68, 68, 0.15);
   }
 
+  .stepBtn--pos {
+      background: rgba(239, 68, 68, 0.15);
+  }
   .stepBtn:hover {
       border-color: rgba(124, 58, 237, 0.35);
       background: rgba(124, 58, 237, 0.23);
@@ -125,6 +128,7 @@
   .stepBtn:active {
       transform: translateY(1px);
   }
+
   .sliderRow {
       display: flex;
       align-items: center;
@@ -244,16 +248,16 @@
       cursor: crosshair;
   }
 
-  .fieldMapDot{
-    width: 30px;
-    height: 30px;
-    border-radius: 4px; 
-    background: rgba(124,58,237,0.85);
-    border: 2px solid #ffffff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-    transform: translate(-50%, -50%);
-    position: absolute;
-    pointer-events: none;
+  .fieldMapDot {
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      background: rgba(124, 58, 237, 0.85);
+      border: 2px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      pointer-events: none;
   }
 
   .fieldMapDot--blue {
@@ -270,6 +274,7 @@
       margin-top: 8px;
       font-size: 12px;
   }
+
   .timerBtn {
       padding: 10px 16px;
       font-size: 15px;
@@ -301,25 +306,35 @@
   /* steppers for fouls */
   .miniStepper {
       display: flex;
+      /* 1. Set flex container */
+      justify-content: center;
+      /* 2. Center horizontally */
       align-items: center;
-      gap: 8px;
-      justify-content: flex-end;
+      /* 3. Center vertically */
+      height: 5vh;
+      gap: 5%;
   }
 
   .miniStepInput {
-      width: 64px;
-      text-align: center;
+      width: 44px;
+      height: 44px;
+      /* text-align: center; */
       font-weight: 900;
+      font-size: 28px;
+      display: flex;
+      justify-content: flex-end;
   }
 
   .miniStepBtn {
+      width: 44px;
+      height: 34px;
+      font-weight: 900;
+      font-size: 18px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 10px;
-      padding: 8px 12px;
-      font-weight: 900;
       cursor: pointer;
-      line-height: 1;
       color: #f3f4f6;
+
   }
 
   .miniStepBtn--neg {
@@ -336,15 +351,15 @@
 
 
 
-  .undoLast{
-    border: 1px solid rgba(255, 255, 255, 0.12);
+  .undoLast {
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 10px;
       padding: 8px 12px;
       font-weight: 900;
       cursor: pointer;
       line-height: 1;
       color: #f3f4f6;
-      background: rgba(0,0,0,0);
+      background: rgba(0, 0, 0, 0);
   }
 
   .miniStepBtn--pos:hover {
@@ -357,4 +372,12 @@
       min-height: 150px;
       max-height: 250px;
       resize: vertical;
+  }
+
+  th {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  circle {
+    color:yellow;
   }

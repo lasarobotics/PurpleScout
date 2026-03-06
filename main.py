@@ -30,7 +30,6 @@ app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
 
 # Create scoutData and superScoutData tables in sqlite database
-print("here")
 conn = sqlite3.connect(app.config['DB_PATH'])
 cursor = conn.cursor()
 cursor.execute(f'''CREATE TABLE IF NOT EXISTS {app.config['SCOUT_TABLE']} (
@@ -100,6 +99,8 @@ def scout():
     else:
         teamInfoSend = None
 
+    print(teamInfoSend)
+
     return render_template('forms/' + app.config['SCOUT_FORM'].__name__ + '.html',
                            form=form, 
                            cookie_values=cookie_values,
@@ -126,13 +127,11 @@ def megaScout():
     newArr = []
     for i in range(len(vals)):
         newArr.append(json.loads(vals[i][0]))
-    print(newArr)
     return render_template('megaScout.html', dat=newArr, len=len(newArr))
 
 # API: Get current scouting data as JSON
 @app.route('/api/mega/current')
 def api_mega_current():
-    print("Check before")
     
     # Get optional matchNum filter from query parameters
     matchNum = request.args.get('matchNum')
@@ -156,7 +155,7 @@ def api_mega_current():
             except:
                 parsed = d
             out.append({'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
-            print("Check after: ", {'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
+            # print("Check after: ", {'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
         return json.dumps(out), 200, {'Content-Type': 'application/json'}
     except Exception as e:
         print(f"Error fetching current data: {e}")
@@ -166,7 +165,6 @@ def api_mega_current():
 # API: Get old scouting data as JSON
 @app.route('/api/mega/old')
 def api_mega_old():
-    print("Check before")
     
     # Get optional matchNum filter from query parameters
     matchNum = request.args.get('matchNum')
@@ -192,7 +190,7 @@ def api_mega_old():
             except:
                 parsed = d
             out.append({'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
-            print("Check after ", {'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
+            # print("Check after ", {'timestamp': ts, 'matchNum': mn, 'teamNum': tn, 'scoutID': sid, 'data': parsed})
         return json.dumps(out), 200, {'Content-Type': 'application/json'}
     except Exception as e:
         print(f"Error fetching old data: {e}")
@@ -205,12 +203,12 @@ def scoutSubmit():
     site = make_response(render_template("scoutSubmit.html"))
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)
+        # print("DATAATAAATTATA", data)
         data = {k:v for k, v in data.items() if k!= "heatmap_data"}
         data = {k:v for k, v in data.items() if k!= "climb_map_data"}
-
-        print(type(data))
         print(data)
+
+
 
         # Store scouting data locally in a CSV file (BACKUP)
         with open('data/scouting_dat.csv', 'a', newline='') as f:
@@ -229,10 +227,30 @@ def scoutSubmit():
         matchNum = data['matchNum']
         teamNum = data['teamNum']
 
+        teamNumUpdated = ""
+
         print(list(data.keys()))
 
+        with open('data//matchList.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if str(matchNum) == row[1]:
+                    if (str(teamNum) == row[2]):
+                        teamNumUpdated = "1"
+                    elif (str(teamNum) == row[3]):
+                        teamNumUpdated = "2"
+                    elif (str(teamNum) == row[4]):
+                        teamNumUpdated = "3"
+                    elif (str(teamNum) == row[5]):
+                        teamNumUpdated = "4"
+                    elif (str(teamNum) == row[6]):
+                        teamNumUpdated = "5"
+                    elif (str(teamNum) == row[7]):
+                        teamNumUpdated = "6"
+
         site.set_cookie("acc_info", str(scoutID))
-        site.set_cookie("team_info", str(teamNum))
+        site.set_cookie("team_info", str(teamNumUpdated))
+        print(teamNumUpdated)
         print(f"scout: {scoutID}")
         print(f"team: {teamNum}")
 
@@ -260,11 +278,9 @@ def scoutSubmit():
 
         current_time = str(datetime.now())
 
-        print("still working")
             
         cursor.execute(f"INSERT INTO {app.config['SCOUT_TABLE']} (timestamp, matchNum, teamNum, scoutID, data) VALUES (?, ?, ?, ?, ?)", 
                        (current_time, matchNum, teamNum, scoutID, json.dumps(data)))
-        print("failed now")
         conn.commit()
         conn.close()
 
@@ -313,7 +329,6 @@ def scoutSubmit():
         answer = (data["teleopScoreLocation"]).split(",") if "teleopScoreLocation" in data else []
         data['teleopScoreLocation'] = str(answer)
 
-        print(data)
 
     return site
 
@@ -360,8 +375,6 @@ def superScoutSubmit():
                        (str(datetime.now()), matchNum, alliance, scoutID, json.dumps(data)))
         conn.commit()
         conn.close()
-
-        print(data)
 
         # return redirect(url_for('superScoutSubmit'))
 
