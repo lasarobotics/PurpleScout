@@ -186,6 +186,7 @@ $('button#sendInfo').click(function() {
 $('button#matchReset').click(function() {
     console.log('resetting match');
     socket.emit('matchReset', {matchNum: $('#matchNum').val()});
+    fetchAndRender();
 });
 
 $('button#postData').click(function() {
@@ -198,6 +199,7 @@ socket.on('postDataStatus', function(data) {
     console.log(data);
     $('#postDataStatus').text(data.status);
     $('button#postData').prop('disabled', false);
+    fetchAndRender();
 });
 
 // let the super scout know that the scouts have submitted (feature in testing)
