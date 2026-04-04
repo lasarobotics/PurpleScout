@@ -231,10 +231,15 @@ def scoutSubmit():
 
         print(list(data.keys()))
 
-        with open('data//matchList.csv', 'r') as f:
+        with open('data/matchList.csv', 'r', newline='') as f:
             reader = csv.reader(f)
             for row in reader:
+                if not row or len(row) < 2:
+                    continue
                 if str(matchNum) == row[1]:
+                    if len(row) < 8:
+                        # Skip malformed match entries that don't include full team slots.
+                        continue
                     if (str(teamNum) == row[2]):
                         teamNumUpdated = "1"
                     elif (str(teamNum) == row[3]):
