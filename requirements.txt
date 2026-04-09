@@ -12,3 +12,4 @@ zero-conf
 cryptography
 matplotlib
 xlwings
+openpyxl
