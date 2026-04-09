@@ -19,30 +19,12 @@
                 <tbody>
                     <tr>
                         <th>
-                            <span style="font-weight: 800; font-size:20px; color: #f3f4f6; margin-right: 15px;">Shots
-                                Missed</span>
-                        </th>
-                        <th>
                             <span
                                 style="font-weight: 800; font-size:20px; color: #f3f4f6; margin-right: 15px;">Autonomous
                                 Climb</span>
                         </th>
                     </tr>
                     <tr>
-                        <th>
-                            <div class="stepper" data-target="autoShots"
-                                style="justify-content: center; padding: 5px 0;">
-
-                                <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
-                                    aria-label="Auto shots minus one">-</button>
-                                {{ form.autoShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
-                                <div class="stepBtnGroup" role="group" aria-label="Auto shots increment">
-                                    <button type="button" class="stepBtn" data-delta="1">+1</button>
-                                    <button type="button" class="stepBtn" data-delta="5">+5</button>
-                                    <button type="button" class="stepBtn" data-delta="10">+10</button>
-                                </div>
-                            </div>
-                        </th>
                         <th>
                             {{ form.autonClimb(class="inp check", id="autonClimb") }}
                         </th>
@@ -106,100 +88,19 @@
                 <table class="tbl rebuiltCard">
                     <thead>
                         <tr>
-                            <th class="a color-fade rebuiltHeader" colspan="3">TELEOP</th>
+                            <th class="a color-fade rebuiltHeader" colspan="2">TELEOP</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>Shots Missed</th>
-                            <th></th>
-                            <td>
-                                <div class="stepper" data-target="teleopShots">
-                                    <button type="button" class="stepBtn stepBtn--neg" data-delta="-1"
-                                        aria-label="Teleop shots minus one">-</button>
-                                    {{ form.teleopShots(class="inp stepInput", inputmode="numeric", pattern="[0-9]*") }}
-                                    <div class="stepBtnGroup" role="group" aria-label="Teleop shots increment">
-                                        <button type="button" class="stepBtn" data-delta="1">+1</button>
-                                        <button type="button" class="stepBtn" data-delta="5">+5</button>
-                                        <button type="button" class="stepBtn" data-delta="10">+10</button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr id="passTr">
-                            <th colspan="2">Passes Made (not # balls)</th>
-                            <td>
-                                <div class="miniStepper" data-target="passes">
-                                    <button type="button" class="miniStepBtn miniStepBtn--neg"
-                                        data-delta="-1">-</button>
-                                    {{ form.passes(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*",
-                                    value=0) }}
-                                    <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
-                                </div>
-                            </td>
-                        </tr>
-
                         <tr id="defenseTr">
-                            <th colspan="2">Defense Played?</th>
+                            <th>Defense Played?</th>
                             <td>{{ form.teleopDefense(class="inp check") }}</td>
                         </tr>
-
-                        <tr id="stopsTr">
-                            <th colspan="2">Successful Stops from Defense</th>
-                            <td>
-                                <div class="miniStepper" data-target="successfulStops">
-                                    <button type="button" class="miniStepBtn miniStepBtn--neg"
-                                        data-delta="-1">-</button>
-                                    {{ form.successfulStops(class="inp miniStepInput", inputmode="numeric",
-                                    pattern="[0-9]*") }}
-                                    <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
-                                </div>
-                            </td>
-                        </tr>
-
-
                     </tbody>
                 </table>
-            </div>
-        </div>
 
-        <!-- ROW 2: ENDGAME & ERRORS -->
-        <div class="rebuiltGrid" style="margin-top: 25px;">
-            <!-- FIELD MAP (Left) - Replaces Endgame -->
-            <div class="rebuiltCol">
-                <div class="fieldMapCard">
-                    <div class="fieldMapTop">
-                        <div class="fieldMapTopLeft">
-                            <span class="fieldMapHint">Tap/click climbing position.</span>
-                            <div class="fieldMapMeta">
-                                <span class="fieldMapPill">Count: <span id="fieldMapCount">0</span></span>
-                                <span class="fieldMapPill">Last: <span id="fieldMapLast">none</span></span>
-                            </div>
-                        </div>
-                        <div class="fieldMapActions" role="group" aria-label="Field map actions">
-                            <button type="button" id="fieldClearBtn" class="miniBtn miniBtn--danger"
-                                title="Clear all clicks">Clear</button>
-                        </div>
-                    </div>
-
-
-
-                    <div class="fieldMapWrap" id="fieldMapWrap" aria-label="Field map">
-                        <img id="rebuiltFieldImg" class="fieldMapImg" src="/static/tower.png"
-                            alt="2026 REBUILT field map">
-                        <div id="fieldMapOverlay" class="fieldMapOverlay" aria-hidden="true"></div>
-                    </div>
-                    {{ form.climbLocation(class="inp hidden") }}
-                    <input type="hidden" name="climb_map_data" id="climb_map_data">
-                    <div class="fieldMapNote">
-                        <span class="muted">Clicks outside valid areas are ignored.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ERRORS (Right) -->
-            <div class="rebuiltCol">
+                <!-- ERRORS (Right) -->
+                <div class="rebuiltCol">
                 <table class="tbl rebuiltCard" style="width: 100%;">
                     <thead>
                         <tr>
@@ -232,29 +133,33 @@
                                 </div>
                             </td>
                         </tr>
-
-                        <tr>
-                            <th colspan="1">Climb Timer</th>
-                            <th>
-                                <button type="button" id="climbStartBtn" class="timerBtn">Start Timer</button>
-                                <span id="climbTimer"
-                                    style="font-size: 18px; font-weight: bold; margin: 0 15px;">0.0s</span>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th colspan="1">Climb Failed?</th>
-                            <th>
-                                <label>
-                                    {{ form.climbFailed(class="inp check") }}
-                                </label>
-                            </th>
-                        </tr>
                         <tr>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
+        <!-- CLIMB LEVEL -->
+        <div class="rebuiltCol" style="margin-top: 20px; width: 100%; display: flex; justify-content: center;">
+            <table class="tbl rebuiltCard" style="width: 100%; max-width: 400px; margin: 0 auto; text-align: center; color: white;">
+                <thead>
+                    <tr>
+                        <th class="a color-fade rebuiltHeader" colspan="2">ENDGAME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Climb Level</th>
+                        <td>{{ form.climb(class="inp", style="background-color: black !important; color: white !important;") }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+            </div>
+        </div>
+            
 
         <input type="hidden" name="climbTime" id="climbTime">
 

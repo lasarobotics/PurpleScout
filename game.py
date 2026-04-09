@@ -246,24 +246,10 @@ class RebuiltForm(FlaskForm):
     scoutID = StringField('scoutID', validators=[DataRequired()])
 
     # Autonomous fields
-    autoMobility = BooleanField('autoMobility', default=False)
-    autoL1 = BooleanField('autoL1', default=False) # Climb checkbox
-    
-
-    autoShots = IntegerField('autoShots', validators=[DataRequired()], default=0)
-
-    autoShotAccuracy = IntegerField('autoShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
-    autonClimb=BooleanField('autonClimb', default=False) 
+    autonClimb=BooleanField('autonClimb', default=False)
 
     # Teleoperated fields
-
-
-    teleopShots = IntegerField('teleopShots', validators=[DataRequired()], default=0)
-
-    teleopShotAccuracy = IntegerField('teleopShotAccuracy', validators=[DataRequired()], default=0) #needs to be a slider
-    teleopPassed = BooleanField('teleopPassed', default=False) #did they pass?
     teleopDefense = BooleanField('teleopDefense', default=False)  # did they play defense?
-    climbLocation = StringField('climbLocation', default='none')  # CSV list from field map
     # Endgame fields
     climb = SelectField('climb', validators=[DataRequired()], choices=[
         ('none', 'None'),
@@ -271,14 +257,9 @@ class RebuiltForm(FlaskForm):
         ('level2', 'L2'),
         ('level3', 'L3')
     ])
-    
-    climbFailed = BooleanField('climbFailed', default=False)
-    climbTime = StringField('climbTime', default='0.0s')
 
     # Other fields
     defenseExperienced = StringField('defenseExperienced')
-    passes = IntegerField('passes', validators=[DataRequired()], default=0)
-    successfulStops = IntegerField('successfulStops', validators=[DataRequired()], default=0)
     fouls = IntegerField('fouls', validators=[DataRequired()], default=0)
     failure = BooleanField('failure', default=False)
     failureDetails = StringField('failureDetails', default='')
