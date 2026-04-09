@@ -52,7 +52,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#151515, #663399);
+  background: url('soumik1.ico') center/contain no-repeat, linear-gradient(#151515, #663399);
   transform: rotateY(calc(90deg*var(--i))) translateZ(150px);
 }
 
@@ -62,7 +62,7 @@ body {
   left: 0;
   width: 300px;
   height: 300px;
-  background: #222;
+  background: url('soumik1.ico') center/contain no-repeat, #222;
   transform: rotateX(90deg) translateZ(150px);
 }
 

@@ -32,22 +32,26 @@ $(document).ready(function () {
 
         if (!teamID) return;
 
-        percentage = 0;
-        pluggedIn = false;
-        console.log(navigator.getBattery());
-        try {
-            const battery = await navigator.getBattery();
-            const batteryInfo = {
-                percent: battery.level * 100,
-                plugged: battery.charging,
-                chargingTime: battery.chargingTime,
-                dischargingTime: battery.dischargingTime
-            };
-            console.log("Battery Info:", batteryInfo.percent, batteryInfo.plugged);
-            percentage = batteryInfo.percent;
-            pluggedIn = batteryInfo.plugged;
-        } catch (error) {
-            return "error";
+        let percentage = 0;
+        let pluggedIn = false;
+
+        if (navigator.getBattery) {
+            try {
+                const battery = await navigator.getBattery();
+                const batteryInfo = {
+                    percent: battery.level * 100,
+                    plugged: battery.charging,
+                    chargingTime: battery.chargingTime,
+                    dischargingTime: battery.dischargingTime
+                };
+                console.log("Battery Info:", batteryInfo.percent, batteryInfo.plugged);
+                percentage = batteryInfo.percent;
+                pluggedIn = batteryInfo.plugged;
+            } catch (error) {
+                console.warn('Battery API failed, continuing without battery info', error);
+            }
+        } else {
+            console.warn('Battery API not supported; continuing without battery info.');
         }
 
         // emit scoutSelect event with the id of the button clicked

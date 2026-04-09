@@ -164,14 +164,29 @@ socket.on('scoutSelect', function(data) {
 $('button#sendInfo').click(function() {
     console.log('sending info');
     $('#sendInfo').text('Info sent!');
+    const red1Num = $('#red1teamNum').text();
+    const red2Num = $('#red2teamNum').text();
+    const red3Num = $('#red3teamNum').text();
+    const blue1Num = $('#blue1teamNum').text();
+    const blue2Num = $('#blue2teamNum').text();
+    const blue3Num = $('#blue3teamNum').text();
+
     socket.emit('scoutAssign', {
         matchNum: $('#matchNum').val(),
-        red1: $('#red1teamNum').text(),
-        red2: $('#red2teamNum').text(),
-        red3: $('#red3teamNum').text(),
-        blue1: $('#blue1teamNum').text(),
-        blue2: $('#blue2teamNum').text(),
-        blue3: $('#blue3teamNum').text()
+        red1: red1Num,
+        red2: red2Num,
+        red3: red3Num,
+        blue1: blue1Num,
+        blue2: blue2Num,
+        blue3: blue3Num,
+        robotNumbers: {
+            red1: red1Num,
+            red2: red2Num,
+            red3: red3Num,
+            blue1: blue1Num,
+            blue2: blue2Num,
+            blue3: blue3Num
+        }
     });
     $('#red1Status').text('Scouting');
     $('#red2Status').text('Scouting');

@@ -88,13 +88,28 @@
                 <table class="tbl rebuiltCard">
                     <thead>
                         <tr>
-                            <th class="a color-fade rebuiltHeader" colspan="2">TELEOP</th>
+                            <th class="a color-fade rebuiltHeader" colspan="3">TELEOP</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr id="defenseTr">
                             <th>Defense Played?</th>
+                            <td></td>
                             <td>{{ form.teleopDefense(class="inp check") }}</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr id="stopsTr">
+                            <th colspan="2">Successful Stops from Defense</th>
+                            <td>
+                                <div class="miniStepper" data-target="successfulStops">
+                                    <button type="button" class="miniStepBtn miniStepBtn--neg"
+                                        data-delta="-1">-</button>
+                                    {{ form.successfulStops(class="inp miniStepInput", inputmode="numeric",
+                                    pattern="[0-9]*") }}
+                                    <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

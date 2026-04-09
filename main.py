@@ -746,7 +746,7 @@ def superScoutSubmit():
 # Favicon
 @app.route('/favicon.ico')
 def favicon():
-    with open('static/favicon.ico', 'rb') as f:
+    with open('soumik.ico', 'rb') as f:
         r = Response(f.read())
         r.content_type = "image/png"
         return r
@@ -755,6 +755,10 @@ def favicon():
 @app.route('/teapot')
 def teapot():
     return "<img src='static/teapot.jpg'/>", 418
+
+@app.route('/soumik')
+def soumik():
+    return "<img src='static/soumik.ico'/>", 418
 
 #### Socket routes ####
 @socketio.on('echo')  # test route
