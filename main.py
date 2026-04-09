@@ -6,12 +6,18 @@ import csv, secrets, json, sqlite3
 from blueprints.PitScout.pitScout import pitScout_bp
 # from pitScout_bp import my_blueprint 
 from datetime import datetime
+from io import BytesIO
 import os
 from zeroconf import Zeroconf, ServiceInfo
 import socket
 import updateSheet
 import psutil
 
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import xlwings as xw
 import ssl
 
 
@@ -90,7 +96,7 @@ def scout():
 
 
     teamInfoSend = ""
-    if tInfo is not None:
+    if tInfo is not None and tInfo != "":
         team_info = int(tInfo)
         if team_info < 4:
             teamInfoSend = "red"+str(team_info)
@@ -338,6 +344,358 @@ def scoutSubmit():
     return site
 
 
+def load_all_teams_sheet():
+    candidate_names = [
+        'ManorOfficialScouting.xlsx',
+        'ManorOfficialScouting2026.xlsx'
+    ]
+    for name in candidate_names:
+        excel_path = os.path.join(app.root_path, name)
+        if os.path.exists(excel_path):
+            xw_app = None
+            try:
+                # Use xlwings to evaluate formulas
+                xw_app = xw.App(visible=False)
+                wb = xw_app.books.open(excel_path)
+                sheet = wb.sheets['allTeams']
+                df = sheet.used_range.options(pd.DataFrame, header=1, index=False).value
+                wb.close()
+                
+                # Clean up the dataframe: remove columns that are all None
+                df = df.dropna(axis=1, how='all')
+                return df
+            except Exception as e:
+                print(f"Error loading with xlwings: {e}")
+                # Fallback to pandas if xlwings fails
+                try:
+                    return pd.read_excel(excel_path, sheet_name='allTeams')
+                except Exception as e2:
+                    print(f"Error loading with pandas: {e2}")
+                    continue
+            finally:
+                if xw_app is not None:
+                    try:
+                        xw_app.quit()
+                    except:
+                        pass
+
+    # fallback: scan for matching files in the app root
+    for filename in os.listdir(app.root_path):
+        if filename.lower().startswith('manorofficialscouting') and filename.lower().endswith('.xlsx'):
+            xw_app = None
+            try:
+                xw_app = xw.App(visible=False)
+                wb = xw_app.books.open(os.path.join(app.root_path, filename))
+                sheet = wb.sheets['allTeams']
+                df = sheet.used_range.options(pd.DataFrame, header=1, index=False).value
+                wb.close()
+                
+                # Clean up the dataframe: remove columns that are all None
+                df = df.dropna(axis=1, how='all')
+                return df
+            except Exception as e:
+                print(f"Error loading {filename} with xlwings: {e}")
+                continue
+            finally:
+                if xw_app is not None:
+                    try:
+                        xw_app.quit()
+                    except:
+                        pass
+
+    available = [f for f in os.listdir(app.root_path) if f.lower().endswith('.xlsx')]
+    raise FileNotFoundError(
+        f"Excel file not found. Expected ManorOfficialScouting.xlsx or a matching ManorOfficialScouting*.xlsx in {app.root_path}. "
+        f"Found: {available}"
+    )
+
+def load_raw_match_data():
+    candidate_names = [
+        'ManorOfficialScouting.xlsx',
+        'ManorOfficialScouting2026.xlsx'
+    ]
+    for name in candidate_names:
+        excel_path = os.path.join(app.root_path, name)
+        if os.path.exists(excel_path):
+            xw_app = None
+            try:
+                xw_app = xw.App(visible=False)
+                wb = xw_app.books.open(excel_path)
+                sheet = wb.sheets['raw match data']
+                df = sheet.used_range.options(pd.DataFrame, header=1, index=False).value
+                wb.close()
+                
+                # Clean up the dataframe
+                df = df.dropna(axis=1, how='all')
+                
+                # Rename key columns by position
+                if len(df.columns) >= 3:
+                    df.columns = ['timestamp' if i == 0 else 
+                                 'matchNum' if i == 1 else 
+                                 'teamNum' if i == 2 else 
+                                 col for i, col in enumerate(df.columns)]
+                
+                return df
+            except Exception as e:
+                print(f"Error loading raw match data with xlwings: {e}")
+                continue
+            finally:
+                if xw_app is not None:
+                    try:
+                        xw_app.quit()
+                    except:
+                        pass
+
+    available = [f for f in os.listdir(app.root_path) if f.lower().endswith('.xlsx')]
+    raise FileNotFoundError(f"Excel file not found for raw match data. Found: {available}")
+
+@app.route('/visualize.html')
+def visualize():
+    error = None
+    try:
+        df = load_all_teams_sheet()
+        column_counts = df.count()
+        visible_columns = [c for c in df.columns if column_counts[c] > 0]
+        numeric_cols = [c for c in visible_columns if pd.api.types.is_numeric_dtype(df[c]) and column_counts[c] > 0]
+
+        if len(numeric_cols) == 0:
+            error = "No numeric columns with data found in sheet 'allTeams'."
+            x_col = y_col = None
+        else:
+            x_col = request.args.get('x') or numeric_cols[0]
+            if x_col not in numeric_cols:
+                x_col = numeric_cols[0]
+            y_col = request.args.get('y') or (numeric_cols[1] if len(numeric_cols) > 1 else '')
+            if y_col and y_col not in numeric_cols:
+                y_col = ''
+
+        preview_columns = visible_columns
+        preview = df[preview_columns].head(15).fillna('').to_dict(orient='records')
+        return render_template('visualize.html',
+                               file_name='ManorOfficialScouting2026.xlsx',
+                               sheet_name='allTeams',
+                               numeric_cols=numeric_cols,
+                               x_col=x_col,
+                               y_col=y_col,
+                               preview=preview,
+                               preview_columns=preview_columns,
+                               column_counts=column_counts.to_dict(),
+                               error=error)
+    except Exception as e:
+        return render_template('visualize.html',
+                               file_name='ManorOfficialScouting2026.xlsx',
+                               sheet_name='allTeams',
+                               numeric_cols=[],
+                               x_col=None,
+                               y_col=None,
+                               preview=[],
+                               preview_columns=[],
+                               column_counts={},
+                               error=str(e))
+
+@app.route('/visualize_plot.png')
+def visualize_plot():
+    try:
+        df = load_all_teams_sheet()
+        column_counts = df.count()
+        numeric_cols = [c for c in df.columns if pd.api.types.is_numeric_dtype(df[c]) and column_counts[c] > 0]
+        if len(numeric_cols) == 0:
+            raise ValueError("No numeric columns with data available for plotting.")
+
+        x_col = request.args.get('x') or numeric_cols[0]
+        y_col = request.args.get('y')
+        show_labels = request.args.get('labels', 'false').lower() == 'true'
+        
+        if x_col not in numeric_cols:
+            x_col = numeric_cols[0]
+        if y_col and y_col not in numeric_cols:
+            y_col = ''
+
+        plot_x = df[x_col].dropna()
+        if plot_x.empty:
+            raise ValueError(f"Selected x-axis column '{x_col}' contains no data.")
+
+        fig, ax = plt.subplots(figsize=(12, 8))
+        
+        if y_col:
+            plot_y = df[y_col].dropna()
+            if plot_y.empty:
+                raise ValueError(f"Selected y-axis column '{y_col}' contains no data.")
+            
+            # Create scatter plot with team identification
+            scatter = ax.scatter(df[x_col], df[y_col], alpha=0.7, s=50)
+            
+            if show_labels:
+                # Add team name labels to points
+                team_names = df['Team Name'].fillna('')
+                for i, (x, y, name) in enumerate(zip(df[x_col], df[y_col], team_names)):
+                    if pd.notna(x) and pd.notna(y) and name:
+                        ax.annotate(name, (x, y), xytext=(5, 5), textcoords='offset points', 
+                                  fontsize=8, alpha=0.8, bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.8))
+            
+            ax.set_xlabel(x_col)
+            ax.set_ylabel(y_col)
+            ax.set_title(f"{y_col} vs. {x_col} ({len(df)} teams)")
+        else:
+            # Histogram
+            ax.hist(plot_x, bins=20, color='#4b3f72', edgecolor='black', alpha=0.7)
+            ax.set_xlabel(x_col)
+            ax.set_title(f"Distribution of {x_col} ({len(df)} teams)")
+
+        ax.grid(True, linestyle='--', alpha=0.35)
+        fig.tight_layout()
+
+        buf = BytesIO()
+        fig.savefig(buf, format='png', dpi=100)
+        plt.close(fig)
+        buf.seek(0)
+        return Response(buf.getvalue(), mimetype='image/png')
+    except Exception as e:
+        return Response(str(e), status=500, mimetype='text/plain')
+
+@app.route('/trends.html')
+def trends():
+    error = None
+    try:
+        df = load_raw_match_data()
+        
+        # Clean and convert team numbers
+        df['teamNum'] = pd.to_numeric(df['teamNum'], errors='coerce')
+        df = df.dropna(subset=['teamNum'])
+        df['teamNum'] = df['teamNum'].astype(int)
+        
+        # Get unique teams and matches
+        teams = sorted(df['teamNum'].unique())
+        matches = sorted(df['matchNum'].dropna().unique())
+        
+        selected_team = request.args.get('team')
+        selected_metric = request.args.get('metric', 'Auto (5-6)')  # Default to auto score
+        
+        if selected_team:
+            try:
+                selected_team = int(selected_team)
+            except:
+                selected_team = None
+        
+        # Get available metrics (all columns except timestamp, matchNum, teamNum)
+        # Filter out None columns and system columns
+        all_columns = [col for col in df.columns if col not in ['timestamp', 'matchNum', 'teamNum'] and col is not None]
+
+        # Use all available metrics instead of filtering to specific ones
+        potential_metrics = all_columns
+        
+        return render_template('trends.html',
+                               teams=teams,
+                               matches=matches,
+                               metrics=potential_metrics,
+                               selected_team=selected_team,
+                               selected_metric=selected_metric,
+                               error=error)
+    except Exception as e:
+        return render_template('trends.html',
+                               teams=[],
+                               matches=[],
+                               metrics=[],
+                               selected_team=None,
+                               selected_metric='Auto (5-6)',
+                               error=str(e))
+
+@app.route('/trends_plot.png')
+def trends_plot():
+    try:
+        df = load_raw_match_data()
+        
+        # Clean and convert team numbers
+        df['teamNum'] = pd.to_numeric(df['teamNum'], errors='coerce')
+        df = df.dropna(subset=['teamNum'])
+        df['teamNum'] = df['teamNum'].astype(int)
+        
+        team = request.args.get('team')
+        metric = request.args.get('metric', 'Auto (5-6)')
+        
+        if not team:
+            raise ValueError("Please select a team")
+        
+        try:
+            team = int(team)
+        except:
+            raise ValueError("Invalid team number")
+        
+        # Filter data for the selected team
+        team_data = df[df['teamNum'] == team].copy()
+        team_data = team_data.sort_values('matchNum')
+        
+        if team_data.empty:
+            raise ValueError(f"No data found for team {team}")
+        
+        # Try to extract numeric values from the metric column
+        metric_values = []
+        match_nums = []
+        
+        for idx, row in team_data.iterrows():
+            match_num = row['matchNum']
+            metric_val = row.get(metric)
+            
+            # Try to parse the metric value as a number
+            try:
+                if isinstance(metric_val, str):
+                    # Look for numbers in the string
+                    import re
+                    numbers = re.findall(r'\d+\.?\d*', metric_val)
+                    if numbers:
+                        val = float(numbers[0])
+                    else:
+                        val = 0
+                elif pd.isna(metric_val):
+                    val = 0
+                else:
+                    val = float(metric_val)
+                
+                metric_values.append(val)
+                match_nums.append(match_num)
+            except:
+                continue
+        
+        if not metric_values:
+            raise ValueError(f"No numeric data found for metric '{metric}' and team {team}")
+        
+        fig, ax = plt.subplots(figsize=(12, 6), facecolor='#222')
+        ax.set_facecolor('#333')
+        
+        # Plot the data
+        ax.plot(match_nums, metric_values, 'o-', linewidth=2, markersize=8, color='#663399', markerfacecolor='#4b3f72', markeredgecolor='white')
+        
+        # Style the axes and labels
+        ax.set_xlabel('Match Number', color='white', fontsize=12, fontweight='bold')
+        ax.set_ylabel(str(metric), color='white', fontsize=12, fontweight='bold')
+        ax.set_title(f'Team {team} - {metric} Over Matches', color='white', fontsize=14, fontweight='bold', pad=20)
+        
+        # Style the grid
+        ax.grid(True, linestyle='--', alpha=0.3, color='#666')
+        
+        # Style the ticks
+        ax.tick_params(colors='white', labelsize=10)
+        for spine in ax.spines.values():
+            spine.set_edgecolor('#666')
+        
+        # Add value labels on points with better styling
+        for x, y in zip(match_nums, metric_values):
+            ax.annotate(f'{y}', (x, y), xytext=(0, 10), textcoords='offset points', 
+                       ha='center', fontsize=9, color='white',
+                       bbox=dict(boxstyle='round,pad=0.3', facecolor='#444', alpha=0.8, edgecolor='#666'))
+        
+        fig.tight_layout()
+        
+        fig.tight_layout()
+        
+        buf = BytesIO()
+        fig.savefig(buf, format='png', dpi=100)
+        plt.close(fig)
+        buf.seek(0)
+        return Response(buf.getvalue(), mimetype='image/png')
+    except Exception as e:
+        return Response(str(e), status=500, mimetype='text/plain')
+
 # Pit Scout
 @app.route('/pitScout.html', methods=['POST', 'GET'])
 def pitScout():
@@ -543,7 +901,7 @@ if __name__ == '__main__':
         
         try:
             # Start the Flask app
-            socketio.run(app, host='0.0.0.0', debug=True, ssl_context=context, allow_unsafe_werkzeug=True)
+            socketio.run(app, host='0.0.0.0', debug=True, use_reloader=False, ssl_context=context, allow_unsafe_werkzeug=True)
         finally:
             # After Flask app stops, unregister the service
             if zeroconf is not None:
@@ -555,4 +913,4 @@ if __name__ == '__main__':
                     print(f"⚠ Warning: Could not unregister Zeroconf service: {e}")
     else:
         # In the main process, just start the Flask app
-        socketio.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
+        socketio.run(app, host='0.0.0.0', debug=True, use_reloader=False, allow_unsafe_werkzeug=True)

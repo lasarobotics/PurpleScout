@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Visualize Data{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/home.css">
+<style>
+body {
+    background: #111;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.visualize-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.visualize-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.visualize-header h1 {
+    color: #663399;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.controls-section {
+    background: #222;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+}
+
+.controls-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: end;
+    justify-content: center;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.control-group label {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.control-group select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #333;
+    color: white;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: #663399;
+    box-shadow: 0 0 0 2px rgba(102, 51, 153, 0.2);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px;
+}
+
+.checkbox-group label {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.update-btn {
+    background: #663399;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    min-height: 44px;
+}
+
+.update-btn:hover {
+    background: #7c4da6;
+}
+
+.plot-section {
+    background: #222;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.plot-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.info-text {
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    background: #4b3f72;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+.back-link:hover {
+    background: #5a4a8a;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.data-preview h2 {
+    color: #663399;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.data-table {
+    overflow-x: auto;
+    background: #222;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #333;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.data-table th {
+    border: 1px solid #555;
+    padding: 12px;
+    text-align: left;
+    background: #333;
+    color: white;
+    font-weight: 600;
+}
+
+.data-table td {
+    border: 1px solid #555;
+    padding: 12px;
+    color: white;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="visualize-container">
+    <div class="visualize-header">
+        <h1>ManorOfficialScouting.xlsx — allTeams</h1>
+        <a href="/trends.html" class="back-link">📈 View Team Trends Over Matches</a>
+    </div>
+
+    {% if error %}
+        <div class="error-message">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% else %}
+        <div class="info-text">
+        </div>
+
+        <div class="controls-section">
+            <form method="get" class="controls-form">
+                <div class="control-group">
+                    <label for="x-select">X axis</label>
+                    <select name="x" id="x-select">
+                        {% for col in numeric_cols %}
+                            <option value="{{ col }}" {% if col == x_col %}selected{% endif %}>{{ col }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="y-select">Y axis (optional)</label>
+                    <select name="y" id="y-select">
+                        <option value="">Histogram</option>
+                        {% for col in numeric_cols %}
+                            <option value="{{ col }}" {% if col == y_col %}selected{% endif %}>{{ col }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="checkbox-group">
+                    <label for="labels-checkbox">Show team labels</label>
+                    <input type="checkbox" name="labels" id="labels-checkbox" value="true" {% if request.args.get('labels') == 'true' %}checked{% endif %}>
+                </div>
+                <button type="submit" class="update-btn">Update plot</button>
+            </form>
+        </div>
+
+        <div class="plot-section">
+            <img src="{{ url_for('visualize_plot', x=x_col, y=y_col, labels=request.args.get('labels', 'false')) }}" alt="Visualization plot" class="plot-image" />
+        </div>
+
+        <div class="data-preview">
+            <h2>Data preview</h2>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                        {% for col in preview_columns %}
+                            <th>{{ col }}</th>
+                        {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in preview %}
+                            <tr>
+                            {% for col in preview_columns %}
+                                <td>{{ row[col] }}</td>
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

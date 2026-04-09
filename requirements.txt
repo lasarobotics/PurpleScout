@@ -10,3 +10,5 @@ oauth2client
 google-api-python-client
 zero-conf
 cryptography
+matplotlib
+xlwings

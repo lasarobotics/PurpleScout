@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% block title %}Team Trends{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/home.css">
+<style>
+body {
+    background: #111;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.trends-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.trends-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.trends-header h1 {
+    color: #663399;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.controls-section {
+    background: #222;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+}
+
+.controls-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: end;
+    justify-content: center;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.control-group label {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.control-group select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #333;
+    color: white;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: #663399;
+    box-shadow: 0 0 0 2px rgba(102, 51, 153, 0.2);
+}
+
+.submit-btn {
+    background: #663399;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    min-height: 44px;
+}
+
+.submit-btn:hover {
+    background: #7c4da6;
+}
+
+.plot-section {
+    background: #222;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+}
+
+.plot-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.plot-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.stats-section {
+    background: #222;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.stats-section h2 {
+    color: #663399;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+.stat-card strong {
+    font-size: 2em;
+    color: #663399;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.teams-list h3 {
+    color: #663399;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+}
+
+.team-tag {
+    background: #4b3f72;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-link {
+    display: inline-block;
+    background: #4b3f72;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+.back-link:hover {
+    background: #5a4a8a;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="trends-container">
+    <div class="trends-header">
+        <h1>Team Performance Trends</h1>
+        <a href="/visualize.html" class="back-link">📊 Back to Team Comparisons</a>
+    </div>
+
+    {% if error %}
+        <div class="error-message">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% else %}
+        <div class="controls-section">
+            <form method="get" class="controls-form">
+                <div class="control-group">
+                    <label for="team-select">Select Team</label>
+                    <select name="team" id="team-select">
+                        <option value="">Choose team...</option>
+                        {% for team in teams %}
+                            <option value="{{ team }}" {% if team == selected_team %}selected{% endif %}>{{ team }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="metric-select">Metric to Track</label>
+                    <select name="metric" id="metric-select">
+                        {% for metric in metrics %}
+                            <option value="{{ metric }}" {% if metric == selected_metric %}selected{% endif %}>{{ metric }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Show Trend</button>
+            </form>
+        </div>
+
+        {% if selected_team %}
+        <div class="plot-section">
+            <div class="plot-container">
+                <img src="{{ url_for('trends_plot', team=selected_team, metric=selected_metric) }}" alt="Trend plot" class="plot-image" />
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="stats-section">
+            <h2>Available Data Summary</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <strong>{{ teams|length }}</strong>
+                    teams with data
+                </div>
+                <div class="stat-card">
+                    <strong>{{ matches|length }}</strong>
+                    matches recorded
+                </div>
+                <div class="stat-card">
+                    <strong>{{ metrics|length }}</strong>
+                    performance metrics
+                </div>
+            </div>
+
+            <div class="teams-list">
+                <h3>Teams Available:</h3>
+                <div class="teams-grid">
+                    {% for team in teams %}
+                        <span class="team-tag">{{ team }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
