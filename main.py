@@ -757,13 +757,14 @@ def superScoutSubmit():
 
     return render_template('superScoutSubmit.html')
 
-# Favicon
+Favicon
 @app.route('/favicon.ico')
 def favicon():
-    with open('soumik.ico', 'rb') as f:
+    with open('static/favicon.ico', 'rb') as f:
         r = Response(f.read())
         r.content_type = "image/png"
         return r
+
     
 # Teapot
 @app.route('/teapot')
@@ -951,54 +952,101 @@ def handle_updateBalance(data):
 
 # Run app 
 
+# if __name__ == '__main__':
+#     # Only register Zeroconf in the reloader process (not the main process)
+#     # This prevents duplicate registration when debug=True
+#     if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+#         zeroconf = None
+#         try:
+#             # Get the local IP address of your server
+#             ip_address = socket.gethostbyname(socket.gethostname())
+
+#             # Create the service info
+#             info = ServiceInfo(
+#                 "_http._tcp.local.",
+#                 "purplescout._http._tcp.local.",
+#                 addresses=[socket.inet_aton(ip_address)],
+#                 port=5000,
+#                 properties={},
+#                 server="purplescout.local."
+#             )
+
+#             # Register the service with Zeroconf
+#             zeroconf = Zeroconf()
+#             zeroconf.register_service(info)
+#             print(f"✓ Zeroconf service registered: purplescout._http._tcp.local. at {ip_address}:5000")
+        
+#         except Exception as e:
+#             print(f"⚠ Warning: Could not register Zeroconf service: {e}")
+#             print("  The app will continue running, but may not be discoverable via mDNS.")
+
+#         sslCert = "server.crt"
+#         sslKey = "server.key"
+
+#         context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+#         context.load_cert_chain(certfile=sslCert, keyfile=sslKey)
+
+
+        
+#         try:
+#             # Start the Flask app
+#             socketio.run(app, host='0.0.0.0', debug=True, use_reloader=False, ssl_context=context, allow_unsafe_werkzeug=True)
+#         finally:
+#             # After Flask app stops, unregister the service
+#             if zeroconf is not None:
+#                 try:
+#                     zeroconf.unregister_service(info)
+#                     zeroconf.close()
+#                     print("✓ Zeroconf service unregistered")
+#                 except Exception as e:
+#                     print(f"⚠ Warning: Could not unregister Zeroconf service: {e}")
+#     else:
+#         # In the main process, just start the Flask app
+#         socketio.run(app, host='0.0.0.0', debug=True, use_reloader=False, allow_unsafe_werkzeug=True)
+
+
 if __name__ == '__main__':
-    # Only register Zeroconf in the reloader process (not the main process)
-    # This prevents duplicate registration when debug=True
-    if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
-        zeroconf = None
-        try:
-            # Get the local IP address of your server
-            ip_address = socket.gethostbyname(socket.gethostname())
+    zeroconf = None
 
-            # Create the service info
-            info = ServiceInfo(
-                "_http._tcp.local.",
-                "purplescout._http._tcp.local.",
-                addresses=[socket.inet_aton(ip_address)],
-                port=5000,
-                properties={},
-                server="purplescout.local."
-            )
+    try:
+        ip_address = socket.gethostbyname(socket.gethostname())
 
-            # Register the service with Zeroconf
-            zeroconf = Zeroconf()
-            zeroconf.register_service(info)
-            print(f"✓ Zeroconf service registered: purplescout._http._tcp.local. at {ip_address}:5000")
-        
-        except Exception as e:
-            print(f"⚠ Warning: Could not register Zeroconf service: {e}")
-            print("  The app will continue running, but may not be discoverable via mDNS.")
+        info = ServiceInfo(
+            "_http._tcp.local.",
+            "purplescout._http._tcp.local.",
+            addresses=[socket.inet_aton(ip_address)],
+            port=5000,
+            properties={},
+            server="purplescout.local."
+        )
 
-        sslCert = "server.crt"
-        sslKey = "server.key"
+        zeroconf = Zeroconf()
+        zeroconf.register_service(info)
+        print(f"✓ Zeroconf registered at {ip_address}:5000")
 
-        context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-        context.load_cert_chain(certfile=sslCert, keyfile=sslKey)
+    except Exception as e:
+        print(f"Zeroconf failed: {e}")
 
+    sslCert = "server.crt"
+    sslKey = "server.key"
 
-        
-        try:
-            # Start the Flask app
-            socketio.run(app, host='0.0.0.0', debug=True, use_reloader=False, ssl_context=context, allow_unsafe_werkzeug=True)
-        finally:
-            # After Flask app stops, unregister the service
-            if zeroconf is not None:
-                try:
-                    zeroconf.unregister_service(info)
-                    zeroconf.close()
-                    print("✓ Zeroconf service unregistered")
-                except Exception as e:
-                    print(f"⚠ Warning: Could not unregister Zeroconf service: {e}")
-    else:
-        # In the main process, just start the Flask app
-        socketio.run(app, host='0.0.0.0', debug=True, use_reloader=False, allow_unsafe_werkzeug=True)
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    context.load_cert_chain(certfile=sslCert, keyfile=sslKey)
+
+    try:
+        socketio.run(
+            app,
+            host='0.0.0.0',
+            port=5000,
+            debug=True,
+            use_reloader=False,
+            ssl_context=context,
+            allow_unsafe_werkzeug=True
+        )
+    finally:
+        if zeroconf:
+            try:
+                zeroconf.unregister_service(info)
+                zeroconf.close()
+            except:
+                pass

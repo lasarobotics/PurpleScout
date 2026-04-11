@@ -236,7 +236,7 @@ def send_match(matchNum):
                 entry.get("timestamp", ""),
                 entry.get("matchNum", ""),
                 entry.get("teamNum", ""),
-                entry.get("scoutID", ""),
+                entry.get("scoutID", ""), # 67
                 autonClimb,
                 entry.get("totalPositions", ""),
                 teleopDefense,
