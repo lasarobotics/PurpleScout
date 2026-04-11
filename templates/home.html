@@ -11,19 +11,40 @@
 
 {% block body %}
 
-<div class="cube">
-    <div class="top"></div>
-    <div>
-        <span style="--i:0;"></span>
-        <span style="--i:1;"></span>
-        <span style="--i:2;"></span>
-        <span style="--i:3;"></span>
+<div class="home-hero">
+    <!-- Leaderboard Widget -->
+    <div id="home_leaderboard" class="leaderboard-widget">
+        <h3 class="leaderboard-title">🏆 Top 10 Scouts</h3>
+        <ol id="lb_list" class="leaderboard-list">
+            <li class="leaderboard-empty">Loading...</li>
+        </ol>
+        <div class="leaderboard-footer">
+            <a href="leaderboard.html" class="leaderboard-link">View Full Board ➔</a>
+        </div>
     </div>
+
+    <!-- The Cube -->
+    <div class="hero-cube-wrap">
+        <div class="cube">
+            <div class="top"></div>
+            <div>
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-spacer" aria-hidden="true"></div>
 </div>
-<div class="txt">
-    <bold><p style = "font-weight:bolder; font-family:sans-serif" id="purpleScout">
-        ℙ𝕦𝕣𝕡𝕝𝕖𝕊𝕔𝕠𝕦𝕥 - {{ name }}
-    </p></bold>
+
+<div class="txt" style="margin-top: 30px;">
+    <bold>
+        <p style="font-weight:bolder; font-family:sans-serif" id="purpleScout">
+            ℙ𝕦𝕣𝕡𝕝𝕖𝕊𝕔𝕠𝕦𝕥 - {{ name }}
+        </p>
+    </bold>
 </div>
 
 
@@ -39,4 +60,29 @@
 <!-- <div class="footer">
     <p><b>Courtesy of LASA Robotics, Software Developed by Soumik Chemudupati</b></p>
 </div> -->
+<script src="static/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.getJSON('/api/leaderboard', function(data) {
+            let list = $('#lb_list');
+            list.empty();
+            if (data.length === 0) {
+                list.append('<li class="leaderboard-empty">No scores available yet!</li>');
+            } else {
+                let top10 = data.slice(0, 10);
+                top10.forEach((item, index) => {
+                    let rankClass = '';
+                    if (index === 0) rankClass = 'first';
+                    else if (index === 1) rankClass = 'second';
+                    else if (index === 2) rankClass = 'third';
+
+                    const scoutName = (item.scoutID || 'Unknown').toString().substring(0, 12);
+                    list.append(
+                        `<li class="leaderboard-item ${rankClass}"><span class="leaderboard-name">${scoutName}</span><span class="leaderboard-balance">${item.balance}</span></li>`
+                    );
+                });
+            }
+        });
+    });
+</script>
 {% endblock %}

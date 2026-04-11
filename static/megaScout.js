@@ -93,9 +93,42 @@ $('#sendInfo').prop('disabled', true);
 
 // Set current match when matchNum changes
 $('#matchNum').on('input', function() {
-    socket.emit('setCurrentMatch', {matchNum: $(this).val()});
+    let matchNum = $(this).val();
+    socket.emit('setCurrentMatch', {matchNum: matchNum});
     // Refresh the database tables with the new matchNum filter
     fetchAndRender();
+    
+    // Load probabilities from local memory
+    try {
+        let storedProbs = JSON.parse(localStorage.getItem('win_probs') || '{}');
+        if (storedProbs[matchNum]) {
+            $('#redWinPct').val(storedProbs[matchNum].red);
+            $('#blueWinPct').val(storedProbs[matchNum].blue);
+        }
+    } catch(e) {}
+});
+
+// Save probabilities local handler
+$('button#confirmProbs').click(function() {
+    let matchNum = $('#matchNum').val();
+    if (!matchNum) {
+        alert("Please enter a match number first!");
+        return;
+    }
+    try {
+        let storedProbs = JSON.parse(localStorage.getItem('win_probs') || '{}');
+        storedProbs[matchNum] = {
+            red: $('#redWinPct').val(),
+            blue: $('#blueWinPct').val()
+        };
+        localStorage.setItem('win_probs', JSON.stringify(storedProbs));
+        
+        let btn = $(this);
+        let orig = btn.text();
+        btn.text('Saved! ✓');
+        btn.css('background-color', 'green');
+        setTimeout(() => { btn.text(orig); btn.css('background-color', '#663399'); }, 1500);
+    } catch(e) {}
 });
 
 
@@ -171,6 +204,9 @@ $('button#sendInfo').click(function() {
     const blue2Num = $('#blue2teamNum').text();
     const blue3Num = $('#blue3teamNum').text();
 
+    const redPct = (parseFloat($('#redWinPct').val()) || 50) / 100.0;
+    const bluePct = (parseFloat($('#blueWinPct').val()) || 50) / 100.0;
+
     socket.emit('scoutAssign', {
         matchNum: $('#matchNum').val(),
         red1: red1Num,
@@ -186,6 +222,11 @@ $('button#sendInfo').click(function() {
             blue1: blue1Num,
             blue2: blue2Num,
             blue3: blue3Num
+        },
+        multipliers: {
+            Red: redPct > 0 ? (1 / redPct).toFixed(2) : 1,
+            Blue: bluePct > 0 ? (1 / bluePct).toFixed(2) : 1,
+            Tie: 100
         }
     });
     $('#red1Status').text('Scouting');
@@ -200,8 +241,21 @@ $('button#sendInfo').click(function() {
 
 $('button#matchReset').click(function() {
     console.log('resetting match');
-    socket.emit('matchReset', {matchNum: $('#matchNum').val()});
+    let winnerVal = $('#matchWinner').val();
+    if (!winnerVal) {
+        if (!confirm("No winner selected. Proceed with reset WITHOUT paying out any bets?")) {
+            return;
+        }
+    }
+    socket.emit('matchReset', {matchNum: $('#matchNum').val(), winner: winnerVal});
+    $('#matchWinner').val(''); // Reset winner field
     fetchAndRender();
+});
+
+$('button#cancelBetsBtn').click(function() {
+    if (confirm("Are you explicitly sure you want to CANCEL ALL active/locked scout bets universally right now?")) {
+        socket.emit('cancelBets', {});
+    }
 });
 
 $('button#postData').click(function() {

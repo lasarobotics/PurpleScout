@@ -19,83 +19,163 @@
     </center>
 </div>
 
-<p hidden id = "cookieTeamNum">{{ teamInfo }}</p>
+<p hidden id="cookieTeamNum">{{ teamInfo }}</p>
 
-<form id="scoutForm" action="/scoutSubmit.html" method="POST"
-    onsubmit="return download_csv_file(event)">
-    <table id="account_table" class="tbl">
-        <thead>
-            <tr>
-                <th style="font-size: 20px;" class="a color-fade" colspan="3">Set Up</th>
-            </tr>
-            <tr>
-                <th>ScoutID:</th>
-                <th>
-                    {{ form.scoutID(class_="inp wide", value=cookie_values) }}
-                </th>
-            </tr>
-            <tr>
-                <th>Match #:</th>
-                <th>
-                    {{ form.matchNum(class_="inp wide") }}
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <center>Robot #: </center>
-                </th>
-                <th>
-                    {{ form.teamNum(class_="inp wide") }}
-                </th>
-            </tr>
-            <tr>
-                <!--
-                <th>
-                    <center>Team #: </center>
-                </th>
-                <th>
-                    <select name="allianceNum" id="allianceNum">
-                        <option value="Red 1" {% if cookie_values[2]=='Red 1' %} selected {% endif %}> Red 1 </option>
-                        <option value="Red 2" {% if cookie_values[2]=='Red 2' %} selected {% endif %}> Red 2 </option>
-                        <option value="Red 3" {% if cookie_values[2]=='Red 3' %} selected {% endif %}> Red 3 </option>
-                        <option value="Blue 1" {% if cookie_values[2]=='Blue 1' %} selected {% endif %}> Blue 1
-                        </option>
-                        <option value="Blue 2" {% if cookie_values[2]=='Blue 2' %} selected {% endif %}> Blue 2
-                        </option>
-                        <option value="Blue 3" {% if cookie_values[2]=='Blue 3' %} selected {% endif %}> Blue 3
-                        </option>
-                    </select>
-                </th>
-            -->
-                <th colspan="2">
-                    <center id="waiting">
-                        Select your team:
-                        <b>
-                            <span>None</span>
-                        </b>
-                    </center>
-                </th>
-                <!-- <p>Select your assigned team:</p> -->
-            </tr>
-            <tr>
-                <th colspan="2">
-                    <div id="teamButtons">
-                        <div id="redButtons">
-                            <button type="button" class="teamSelect" id="red1">RED 1</button>
-                            <button type="button" class="teamSelect" id="red2">RED 2</button>
-                            <button type="button" class="teamSelect" id="red3">RED 3</button>
+<form id="scoutForm" action="/scoutSubmit.html" method="POST" onsubmit="return download_csv_file(event)">
+    <div
+        style="display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex-wrap: wrap; margin: 30px auto 20px auto;">
+        <table id="account_table" class="tbl" style="margin: 0;">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a color-fade" colspan="3">Set Up</th>
+                </tr>
+                <tr>
+                    <th>ScoutID:</th>
+                    <th>
+                        {{ form.scoutID(class_="inp wide", value=cookie_values) }}
+                    </th>
+                </tr>
+                <tr>
+                    <th>Bet Password:</th>
+                    <th>
+                        <div style="display: flex; gap: 5px;">
+                            <input type="password" id="scoutPassword" name="scoutPassword" class="inp wide"
+                                placeholder="****" required autocomplete="new-password">
+                            <button type="button" id="authBtn" style="background-color: #663399; color: white; border: none; border-radius: 5px; cursor: pointer; padding: 0 15px; font-weight: bold;">Check</button>
                         </div>
-                        <div id="blueButtons">
-                            <button type="button" class="teamSelect" id="blue1">BLUE 1</button>
-                            <button type="button" class="teamSelect" id="blue2">BLUE 2</button>
-                            <button type="button" class="teamSelect" id="blue3">BLUE 3</button>
+                        <span id="authStatus"
+                            style="font-size: 14px; font-weight: normal; color: red; margin-top: 5px; display:block;">Requires Auth vs
+                            Server</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Match #:</th>
+                    <th>
+                        {{ form.matchNum(class_="inp wide") }}
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <center>Robot #: </center>
+                    </th>
+                    <th>
+                        {{ form.teamNum(class_="inp wide") }}
+                    </th>
+                </tr>
+                <tr>
+                    <!--
+                    <th>
+                        <center>Team #: </center>
+                    </th>
+                    <th>
+                        <select name="allianceNum" id="allianceNum">
+                            <option value="Red 1" {% if cookie_values[2]=='Red 1' %} selected {% endif %}> Red 1 </option>
+                            <option value="Red 2" {% if cookie_values[2]=='Red 2' %} selected {% endif %}> Red 2 </option>
+                            <option value="Red 3" {% if cookie_values[2]=='Red 3' %} selected {% endif %}> Red 3 </option>
+                            <option value="Blue 1" {% if cookie_values[2]=='Blue 1' %} selected {% endif %}> Blue 1
+                            </option>
+                            <option value="Blue 2" {% if cookie_values[2]=='Blue 2' %} selected {% endif %}> Blue 2
+                            </option>
+                            <option value="Blue 3" {% if cookie_values[2]=='Blue 3' %} selected {% endif %}> Blue 3
+                            </option>
+                        </select>
+                    </th>
+                -->
+                    <th colspan="2">
+                        <center id="waiting">
+                            Select your team:
+                            <b>
+                                <span>None</span>
+                            </b>
+                        </center>
+                    </th>
+                    <!-- <p>Select your assigned team:</p> -->
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <div id="teamButtons">
+                            <div id="redButtons">
+                                <button type="button" class="teamSelect" id="red1">RED 1</button>
+                                <button type="button" class="teamSelect" id="red2">RED 2</button>
+                                <button type="button" class="teamSelect" id="red3">RED 3</button>
+                            </div>
+                            <div id="blueButtons">
+                                <button type="button" class="teamSelect" id="blue1">BLUE 1</button>
+                                <button type="button" class="teamSelect" id="blue2">BLUE 2</button>
+                                <button type="button" class="teamSelect" id="blue3">BLUE 3</button>
+                            </div>
                         </div>
-                    </div>
-                    <button type="button" class="teamSelect color-fade" id="deselect">Deselect</button>
-                </th>
-            </tr>
-        </thead>
-    </table>
+                        <button type="button" class="teamSelect color-fade" id="deselect">Deselect</button>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- Prediction Box -->
+        <table class="tbl" id="prediction_table" style="margin: 0; min-width: 250px;">
+            <thead>
+                <tr>
+                    <th style="font-size: 20px;" class="a color-fade" colspan="2">Match Prediction 🎲</th>
+                </tr>
+                <tr>
+                    <th colspan="2" style="font-weight: normal;">Which alliance will win?</th>
+                </tr>
+                <tr>
+                    <th colspan="2" style="padding: 15px 10px;">
+                        <div class="prediction-buttons"
+                            style="display: flex; gap: 10px; justify-content: space-between; margin-bottom: 10px;">
+                            <label class="pred-btn pred-red"
+                                style="flex: 1; text-align: center; background-color: rgba(255,0,0,0.3); border: 2px solid #ff4444; border-radius: 8px; padding: 15px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                                <input type="radio" name="prediction" value="Red" style="display: none;">
+                                RED
+                            </label>
+
+                            <label class="pred-btn pred-blue"
+                                style="flex: 1; text-align: center; background-color: rgba(0,0,255,0.3); border: 2px solid #4444ff; border-radius: 8px; padding: 15px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                                <input type="radio" name="prediction" value="Blue" style="display: none;">
+                                BLUE
+                            </label>
+                        </div>
+                        <label class="pred-btn pred-tie"
+                            style="display: block; text-align: center; background-color: rgba(128,128,128,0.3); border: 2px solid #aaaaaa; border-radius: 8px; padding: 15px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                            <input type="radio" name="prediction" value="Tie" style="display: none;">
+                            TIE MATCH
+                        </label>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2" style="background-color: var(--field-bg);">
+                        <strong style="font-size: 18px;">Balance: </strong><span id="ph_bucks"
+                            style="font-size: 18px;">100</span> PH Bucks
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2"
+                        style="padding-top: 20px; padding-bottom: 20px; background-color: rgba(0,0,0,0.15);">
+                        <label for="bet_amount" style="font-size: 18px;">Bet Amount: <strong><span
+                                    id="bet_display">0</span></strong></label><br>
+                        <input type="range" id="bet_amount" name="bet_amount" min="0" max="100" value="0"
+                            style="width: 90%; margin-top: 15px; cursor: pointer; accent-color: var(--brand);">
+                        <div style="margin-top: 15px; font-size: 16px; color: #ccc;">
+                            Est. Payout: <strong style="color: #4CAF50; font-size: 20px;"><span
+                                    id="payout_display">0</span> Bucks</strong>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <div style="display: flex; gap: 5px;">
+                            <button type="button" id="lock_bet_btn"
+                                style="flex: 3; font-size: 16px; font-weight: bold; padding: 12px; margin-top: 5px; background-color: #663399; color: white; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">🔒 Lock
+                                Prediction</button>
+                            <button type="button" id="cancel_bet_btn"
+                                style="flex: 1; display: none; font-size: 14px; font-weight: bold; padding: 12px; margin-top: 5px; background-color: #aa3333; color: white; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">Cancel</button>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 
     {% block form %}
     {% endblock %}

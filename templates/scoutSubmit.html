@@ -20,8 +20,63 @@
 
 <script>
     var socket = io();
-    socket.on('matchReset', function() {
+
+    function getBetAuth() {
+        let sid = (
+            sessionStorage.getItem('scoutAuthSID_temp') ||
+            localStorage.getItem('acc_info') ||
+            ''
+        ).toString().trim();
+        let pwd = (sessionStorage.getItem('scoutPassword_temp') || '').toString();
+        return { sid: sid, pwd: pwd };
+    }
+
+    socket.on('matchReset', function(data) {
+        if (data && data.winner) {
+            try {
+                let active_bet = JSON.parse(localStorage.getItem('active_bet'));
+                if (active_bet) {
+                    if (active_bet.prediction === data.winner) {
+                        let current_balance = parseInt(localStorage.getItem('ph_bucks') || 100);
+                        let payout = parseInt(active_bet.expected_payout);
+                        let new_balance = current_balance + payout;
+                        localStorage.setItem('ph_bucks', new_balance);
+                        localStorage.setItem('pending_balance_target', String(new_balance));
+                        localStorage.setItem('last_bet_result', JSON.stringify({won: true, payout: payout}));
+
+                        let auth = getBetAuth();
+                        let sid = auth.sid;
+                        let pwd = auth.pwd;
+                        if (sid && pwd) socket.emit('updateBalance', {scoutID: sid, password: pwd, newBalance: parseInt(new_balance)});
+                    } else {
+                        localStorage.setItem('last_bet_result', JSON.stringify({won: false, winner: data.winner}));
+                    }
+                }
+            } catch (e) {}
+            localStorage.removeItem('active_bet');
+        }
+        
         // Navigate to scout.html
+        window.location.href = '/scout.html';
+    });
+
+    socket.on('cancelBets', function(data) {
+        try {
+            let active_bet = JSON.parse(localStorage.getItem('active_bet'));
+            if (active_bet && active_bet.original_bet !== undefined) {
+                let current_balance = parseInt(localStorage.getItem('ph_bucks') || 100);
+                let new_balance = current_balance + parseInt(active_bet.original_bet);
+                localStorage.setItem('ph_bucks', new_balance);
+                localStorage.setItem('pending_balance_target', String(new_balance));
+                localStorage.setItem('last_bet_result', JSON.stringify({won: true, payout: parseInt(active_bet.original_bet), cancelled: true}));
+
+                let auth = getBetAuth();
+                let sid = auth.sid;
+                let pwd = auth.pwd;
+                if (sid && pwd) socket.emit('updateBalance', {scoutID: sid, password: pwd, newBalance: parseInt(new_balance)});
+            }
+        } catch (e) {}
+        localStorage.removeItem('active_bet');
         window.location.href = '/scout.html';
     });
 </script>

@@ -37,6 +37,16 @@
                 
                 <td><span id="postDataStatus"></span></td>
             </tr>
+            <tr>
+                <td colspan="3" style="text-align: center; border-top: 1px solid #444; border-bottom: 1px solid #444; padding: 10px;">
+                    <strong style="margin-right: 15px;">Win Probability:</strong>
+                    Red: <input type="number" id="redWinPct" class="inp" style="width: 50px; font-size: 16px; border-radius: 5px;" min="1" max="99" value="50">%
+                    &nbsp;&nbsp;&nbsp;
+                    Blue: <input type="number" id="blueWinPct" class="inp" style="width: 50px; font-size: 16px; border-radius: 5px;" min="1" max="99" value="50">%
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" id="confirmProbs" style="background-color: #663399; color: white; padding: 5px 15px; border-radius: 5px; border: none; cursor: pointer; transition: 0.3s; margin-left: 10px; font-weight: bold;">Confirm</button>
+                </td>
+            </tr>
         </thead>
         <tr>
             <td>Pre-Match</td>
@@ -46,7 +56,16 @@
         <tr>
             <td>Post-Match</td>
             <td><button type="button" id="postData">Post Match Data</button></td>
-            <td><button type="button" id="matchReset">Reset Match</button></td>
+            <td style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+                <select id="matchWinner" class="inp select" style="width: 100px; font-size: 16px; padding: 5px;">
+                    <option value="">Winner...</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Tie">Tie</option>
+                </select>
+                <button type="button" id="matchReset">Reset Match</button>
+                <button type="button" id="cancelBetsBtn" style="background-color: #aa3333; color: white;">Cancel Bets</button>
+            </td>
         </tr>
     </table>
 

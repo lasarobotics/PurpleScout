@@ -1,5 +1,5 @@
 # Import Flask application
-from flask import Flask, render_template, request, redirect, url_for, make_response, Response
+from flask import Flask, render_template, request, redirect, url_for, make_response, Response, jsonify
 from game import *
 from flask_socketio import SocketIO, emit
 import csv, secrets, json, sqlite3
@@ -19,6 +19,19 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import xlwings as xw
 import ssl
+import sys
+import socketserver
+
+# Patch socketserver to ignore harmless Errno 57 "Socket is not connected" log spam
+# resulting from sudden client disconnects (common on Apple Silicon and mobile devices)
+original_handle_error = socketserver.BaseServer.handle_error
+def handle_error_patched(self, request, client_address):
+    err = sys.exc_info()[1]
+    if isinstance(err, OSError) and err.errno == 57:
+        return
+    original_handle_error(self, request, client_address)
+socketserver.BaseServer.handle_error = handle_error_patched
+
 
 
 # Create app
@@ -34,6 +47,7 @@ app.config['DB_PATH'] = os.path.join(app.root_path, 'data', 'scouting_dat.db') #
 app.config['DB_OLD_PATH'] = os.path.join(app.root_path, 'data', 'scouting_dat_old.db')
 app.config['SCOUT_TABLE'] = "scoutData"
 app.config['SUPER_SCOUT_TABLE'] = "superScoutData"
+app.config['BETTING_ACCOUNTS_PATH'] = os.path.join(app.root_path, 'data', 'betting_accounts.json')
 
 # Create scoutData and superScoutData tables in sqlite database
 conn = sqlite3.connect(app.config['DB_PATH'])
@@ -836,10 +850,34 @@ def handle_setCurrentMatch(data):
             f.write(str(matchNum))
         print(f"Current match set to {matchNum}")
 
+@app.route('/api/leaderboard')
+def api_leaderboard():
+    try:
+        with open(app.config['BETTING_ACCOUNTS_PATH'], 'r') as f:
+            accounts = json.load(f)
+        
+        board = []
+        for sid, v in accounts.items():
+            board.append({'scoutID': sid, 'balance': v.get('balance', 100)})
+            
+        board.sort(key=lambda x: (-x['balance'], x['scoutID'].lower()))
+        return jsonify(board)
+    except Exception:
+        return jsonify([])
+
+@app.route('/leaderboard.html')
+def leaderboard_page():
+    return render_template('leaderboard.html')
+
+@socketio.on('cancelBets')
+def handle_cancelBets(data):
+    print('received cancelBets')
+    emit('cancelBets', data, broadcast=True)
+
 @socketio.on('matchReset')
 def handle_matchReset(data):
     print('received matchReset')
-    emit('matchReset', broadcast=True)
+    emit('matchReset', data, broadcast=True)
     matchNum = data['matchNum']
     try:
         # Check if match is complete (6 scouts submitted)
@@ -864,6 +902,52 @@ def handle_matchReset(data):
 def handle_message(data):
     print('message: ' + data['msg'])
     emit('message', data, broadcast=True)
+
+@socketio.on('checkBettingAccount')
+def handle_checkBettingAccount(data):
+    sid = data.get('scoutID')
+    pwd = data.get('password')
+    if not sid or not pwd:
+        return
+    try:
+        with open('data/betting_accounts.json', 'r') as f:
+            accounts = json.load(f)
+    except Exception:
+        accounts = {}
+
+    if str(sid) not in accounts:
+        accounts[str(sid)] = {'password': str(pwd), 'balance': 100}
+        try:
+            with open('data/betting_accounts.json', 'w') as f:
+                json.dump(accounts, f)
+        except Exception:
+            pass
+        emit('bettingAccountResponse', {'success': True, 'balance': 100})
+    else:
+        if accounts[str(sid)]['password'] == str(pwd):
+            emit('bettingAccountResponse', {'success': True, 'balance': accounts[str(sid)]['balance']})
+        else:
+            emit('bettingAccountResponse', {'success': False, 'message': 'Incorrect Password'})
+
+@socketio.on('updateBalance')
+def handle_updateBalance(data):
+    sid = data.get('scoutID')
+    pwd = data.get('password')
+    new_bal = data.get('newBalance')
+    if not sid or not pwd or new_bal is None:
+        return
+    try:
+        with open('data/betting_accounts.json', 'r') as f:
+            accounts = json.load(f)
+    except Exception:
+        accounts = {}
+    if str(sid) in accounts and accounts[str(sid)]['password'] == str(pwd):
+        accounts[str(sid)]['balance'] = int(new_bal)
+        try:
+            with open('data/betting_accounts.json', 'w') as f:
+                json.dump(accounts, f)
+        except Exception:
+            pass
 
 # Run app 
 
