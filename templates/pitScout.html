@@ -1,6 +1,7 @@
-<!doctype html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block title %}🔎 Pit Scouting 🔎{% endblock %}
+
+{% block head %}
   <meta charset="utf-8">
   <title>Google Sheets To SQL | Robotics</title>
   <link rel="stylesheet" type="text/css" href="/static/pitScoutStyle.css">
@@ -14,8 +15,11 @@
         <li><a href="/pitScout.html"><b>Pit</b>Scout</a></li>
     </ul>
 </div>
-<body>
-  <h1>Purple Haze PIT SCOUTING FORM</h1>
+{% endblock %}
+
+{% block body %}
+  <a href="https://forms.gle/cicQfUMhX7BVC8D76" style="color:aliceblue; font-size:large">Link to Google Form Pit Scouting</a>
+  <!-- <h1>Purple Haze PIT SCOUTING FORM</h1>
   <p>Developed by Soumik Chemudupati and Miles Fritzmather of Team 418 (Purple Haze)</p>
   <hr>
   <div id="submissionGroup">
@@ -62,8 +66,8 @@
     <h2>Extra Functionality:</h2>
     <span id="button_holder">
       <button onclick="window.location.href += '/UpdateSheets'; alert('working')">Post All Submissions to Google Sheet</button>
-      <!-- <button onclick="window.location.href += '/Download'">Download Images</button> -->
-      <button onclick="clearSubmissions()">Clear Submissions</button><br>
+      <button onclick="window.location.href += '/Download'">Download Images</button> -->
+      <!-- <button onclick="clearSubmissions()">Clear Submissions</button><br>
     </span>
     
   </div>
@@ -185,6 +189,5 @@
         <p id="empty">No posted robots</p>
       {% endif %}
     </div>
-  </div>
-</body>
-</html>
+  </div> -->
+{% endblock %}
