@@ -757,7 +757,7 @@ def superScoutSubmit():
 
     return render_template('superScoutSubmit.html')
 
-
+Favicon
 @app.route('/favicon.ico')
 def favicon():
     with open('static/favicon.ico', 'rb') as f:
