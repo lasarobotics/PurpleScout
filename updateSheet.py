@@ -226,23 +226,32 @@ def send_match(matchNum):
 
     for entry in data:
         try:
-            failure = "y" if entry.get("failureCheck") == "y" else ""
-            autonClimb = "y" if entry.get("autonClimb") == "y" else ""
-            teleopDefense = "true" if entry.get("teleopDefense") == "true" else ""
-            climbFailed = "true" if entry.get("climbFailed") == "true" else ""
+            failure = "true" if entry.get("failureCheck") == "true" else "false"
+            autonClimb = "true" if entry.get("autonClimb") == "false" else "false"
+            teleopDefense = "true" if entry.get("teleopDefense") is True or entry.get("teleopDefense") == "true" or entry.get("teleopDefense") == "true" else "false"
 
+            val = entry.get("climb")
+            print(val)
+            if(val == "None" or val == "none" or val == "" or val is None):
+                climb = 0
+            elif val == "level1":
+                climb = 1
+            elif val == "level2":
+                climb = 2
+            elif val == "level3":
+                climb = 3
 
             ws.append([
                 entry.get("timestamp", ""),
                 entry.get("matchNum", ""),
                 entry.get("teamNum", ""),
-                entry.get("scoutID", ""), # 67
+                entry.get("scoutID", ""),
                 autonClimb,
                 entry.get("totalPositions", ""),
+                "",
                 teleopDefense,
                 entry.get("successfulStops", ""),
-                entry.get("climb", ""),
-                climbFailed,
+                climb,
                 entry.get("failureDetails", ""),
                 failure,
                 entry.get("fouls", ""),

@@ -138,7 +138,7 @@ def superScout():
     return render_template('superScout2026.html')
 
 # Flask Route: Mega Scout (Admin)
-@app.route('/megaScout.html')
+@app.route('/a3ms3i2')
 def megaScout():
     conn = sqlite3.connect(app.config['DB_PATH'])
     cursor = conn.cursor()
@@ -757,7 +757,7 @@ def superScoutSubmit():
 
     return render_template('superScoutSubmit.html')
 
-Favicon
+
 @app.route('/favicon.ico')
 def favicon():
     with open('static/favicon.ico', 'rb') as f:

@@ -267,4 +267,4 @@ class RebuiltForm(FlaskForm):
     failure = BooleanField('failure', default=False)
     failureDetails = StringField('failureDetails', default='')
 
-    info = TextAreaField('info', default='')
+    info = TextAreaField('info', validators=[DataRequired()], default='')

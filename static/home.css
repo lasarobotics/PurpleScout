@@ -321,4 +321,12 @@ li {
   .hero-spacer {
     display: none;
   }
+
+
+  #not-clickable {
+    pointer-events: none;  
+    cursor: not-allowed;   
+    opacity: 0.5;           
+    filter: grayscale(1);    
+}
 }

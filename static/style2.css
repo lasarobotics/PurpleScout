@@ -298,6 +298,16 @@ button.add10Button:hover {
   text-align: center;
 }
 
+.match-number-row td.match-number-label {
+  text-align: right !important;
+  width: 180px;
+  vertical-align: middle;
+}
+
+.match-number-row td:nth-child(2) {
+  text-align: left;
+}
+
 /* ===== Tables ===== */
 
 .tbl,

@@ -82,8 +82,8 @@
                 <input type="hidden" name="totalPositions" id="heatmap_frequencies">
             </div>
 
-            <!-- COLUMN 2: TELEOP (Right) -->
-            <div class="rebuiltCol rebuiltColRight">
+            <!-- COLUMN 2: RIGHT STACK -->
+            <div class="rebuiltCol rebuiltColRight" style="display: flex; flex-direction: column; gap: 20px;">
                 <!-- TELEOP -->
                 <table class="tbl rebuiltCard">
                     <thead>
@@ -114,16 +114,13 @@
                     </tbody>
                 </table>
 
-                <!-- ERRORS (Right) -->
-                <div class="rebuiltCol">
+                <!-- ERRORS -->
                 <table class="tbl rebuiltCard" style="width: 100%;">
                     <thead>
                         <tr>
                             <th class="a color-fade rebuiltHeader" colspan="2">ERRORS</th>
                         </tr>
                     </thead>
-
-
                     <tbody>
                         <tr id="foulTr">
                             <th>PHouls</th>
@@ -134,8 +131,6 @@
                                     {{ form.fouls(class="inp miniStepInput", inputmode="numeric", pattern="[0-9]*") }}
                                     <button type="button" class="miniStepBtn miniStepBtn--pos" data-delta="1">+</button>
                                 </div>
-
-
                             </td>
                         </tr>
                         <tr id="brokenTr">
@@ -143,35 +138,27 @@
                             <td>
                                 {{ form.failure(class="inp check", id="failureCheck") }}
                                 <div id="failureDetailsContainer" style="display: none; margin-top: 5px;">
-                                    {{ form.failureDetails(class="inp", placeholder="What failed?", style="width:
-                                    100%;") }}
+                                    {{ form.failureDetails(class="inp", placeholder="What failed?", style="width: 100%;") }}
                                 </div>
                             </td>
                         </tr>
+                    </tbody>
+                </table>
+
+                <!-- ENDGAME -->
+                <table class="tbl rebuiltCard" style="width: 100%; text-align: center; color: white;">
+                    <thead>
                         <tr>
+                            <th class="a color-fade rebuiltHeader" colspan="2">ENDGAME</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Climb Level</th>
+                            <td>{{ form.climb(class="inp", style="background-color: black !important; color: white !important;") }}</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <!-- CLIMB LEVEL -->
-        <div class="rebuiltCol" style="margin-top: 20px; width: 100%; display: flex; justify-content: center;">
-            <table class="tbl rebuiltCard" style="width: 100%; max-width: 400px; margin: 0 auto; text-align: center; color: white;">
-                <thead>
-                    <tr>
-                        <th class="a color-fade rebuiltHeader" colspan="2">ENDGAME</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Climb Level</th>
-                        <td>{{ form.climb(class="inp", style="background-color: black !important; color: white !important;") }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
             </div>
         </div>
             
@@ -214,7 +201,7 @@
                     <tbody>
                         <tr>
                             <td class="pad10">
-                                {{ form.info(class="info compactInfo", placeholder="Notes...") }}
+                                {{ form.info(class="info compactInfo", placeholder="Notes...", required=True) }}
                             </td>
                         </tr>
                     </tbody>
